@@ -38,3 +38,6 @@ MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATH = './plugins'
 PLUGINS = ['ipynb.markup']
+
+# theme
+THEME = "/users/kthomas1/pelican-themes/Flex"
