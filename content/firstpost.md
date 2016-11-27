@@ -9,6 +9,6 @@ Hello World
 
 This is a first post
 
-hello world again[^1]
+hello world again
 
-[^1]: here is a footnote
+
