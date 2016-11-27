@@ -1,16 +1,22 @@
 #!/usr/bin/env python
+
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'"kyle thomas"'
-SITENAME = u'"command build"'
-SITEURL = 'http://tkthomas27.github.io'
+AUTHOR = u'kyle thomas'
+SITENAME = u'command build'
+SITEURL = 'tkthomas27.github.io'
 
 PATH = 'content'
 
 TIMEZONE = 'America/New_York'
 
 DEFAULT_LANG = u'en'
+
+BROWSER_COLOR = '#f4f9f9'
+PYGMENTS_STYLE = 'monokai'
+SITESUBTITLE = 'a temporary blog'
+
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -20,14 +26,11 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+LINKS = (('Github', 'http://google.com/'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+#SOCIAL = (('You can add links in your config file', '#'),
+#          ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = 10
 
