@@ -11,4 +11,4 @@ This is a first post
 
 hello world again
 
-
+$$\sqrt{2}$$
