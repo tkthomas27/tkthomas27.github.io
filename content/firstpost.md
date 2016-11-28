@@ -9,6 +9,8 @@ Hello World
 
 This is a first post
 
-hello world again
+hello world again[^1]
 
 $$\sqrt{2}$$
+
+[^1]: footnote

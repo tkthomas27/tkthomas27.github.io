@@ -37,10 +37,10 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-#MARKUP = ('md', 'ipynb')
+#MARKUP = ('md')
 
-#PLUGIN_PATH = './plugins'
-#PLUGINS = ['ipynb.markup']
+PLUGIN_PATH = ['/users/kthomas1/pelican-plugins']
+PLUGINS = ['render_math']
 
 # theme
 THEME = "/users/kthomas1/pelican-themes/Flex"
