@@ -39,7 +39,7 @@ RELATIVE_URLS = True
 
 #MARKUP = ('md')
 
-PLUGIN_PATH = ['/users/kthomas1/pelican-plugins']
+PLUGIN_PATHS = ['/users/kthomas1/pelican-plugins']
 PLUGINS = ['render_math']
 
 # theme
