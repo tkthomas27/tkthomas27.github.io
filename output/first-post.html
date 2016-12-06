@@ -54,15 +54,13 @@
       </a>
       <h1><a href="."></a></h1>
 
-<p>a temporary blog</p>
-      <nav>
-        <ul class="list">
-
-          <li><a href="http://google.com/" target="_blank">Github</a></li>
-        </ul>
-      </nav>
+<p>cmd+build</p>
 
       <ul class="social">
+        <li><a class="sc-github" href="https://github.com/tkthomas27" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/timothy-thomas-6206134a" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/tkylethomas27" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-youtube" href="https://www.linkedin.com/in/timothy-thomas-6206134a" target="_blank"><i class="fa fa-youtube"></i></a></li>
       </ul>
     </div>
 
@@ -83,18 +81,354 @@
 
 
   <div>
-    <p>Hello World</p>
-<p>This is a first post</p>
-<p>hello world again<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
-<div class="math">$$\sqrt{2}$$</div>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>footnote&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+    <h1>1 Machine Preparation</h1>
+<p>each one of these can be a post in a series</p>
+<h2>1.1 Machine Configuration</h2>
+<ul>
+<li>Key Mappings<ul>
+<li>Capslock = ESC</li>
+<li>ctrl + arrow = left right max</li>
+<li>shift + ctrl + arrow = switch desktops</li>
+<li>cmd + esc = open iTerm</li>
+</ul>
 </li>
-</ol>
-</div>
+</ul>
+<h2>1.2 Package Management</h2>
+<ul>
+<li><code>brew</code>: basic package management for command line software (distributed under open source)<ul>
+<li>install: <code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></li>
+<li><code>brew search</code> search for packages/formulas</li>
+<li><code>brew tap caskroom/cask</code> taps into cask repo allowing you access to formulas in that repo</li>
+<li><code>brew link --overwrite --dry-run</code></li>
+<li><a href="https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md#homebrew-terminology">homebrew formula cookbook</a></li>
+<li>use brew to install and maintain important programs like r/rstudio</li>
+</ul>
+</li>
+<li><code>cask</code>: extension of brew for more complicated, licensed software (<code>brew cask</code>)<ul>
+<li>install:</li>
+<li><code>cleanup</code></li>
+<li><code>doctor</code></li>
+<li><code>brew cask info caskroom/cask/rstudio</code> check version of app before installing (might need to <code>tap</code> first)</li>
+<li>https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md</li>
+</ul>
+</li>
+<li><code>npm</code>: package manager for javascript<ul>
+<li>install:</li>
+</ul>
+</li>
+<li><code>gem</code>: package manager for ruby<ul>
+<li>install:</li>
+</ul>
+</li>
+<li>Misc:<ul>
+<li>macports - alternative but not using</li>
+</ul>
+</li>
+</ul>
+<h2>1.3 Shell</h2>
+<ul>
+<li>iterm: terminal replacement; heavily customizable<ul>
+<li>install: <code>brew cask install iterm2</code></li>
+<li>need profile saved?</li>
+<li>color schemes: currently using solarized dark</li>
+</ul>
+</li>
+<li>tmux: terminal multiplexer; built into iterm<ul>
+<li>install: <code>brew install tmux</code></li>
+<li>cheatsheet:  https://tmuxcheatsheet.com</li>
+</ul>
+</li>
+<li>teamocil : save window/pane layouts for tmux<ul>
+<li>install: <code>gem install teamocil</code></li>
+<li><code>tmux</code> then <code>teamocil general</code> to runt he layout "general"</li>
+</ul>
+</li>
+<li>zsh: alternative to bash<ul>
+<li>install:</li>
+<li><code>run-help foo</code> see help for built in command</li>
+<li><code>chsh</code> change shell --- need more</li>
+<li>plugins<ul>
+<li>osx</li>
+<li>internet</li>
+<li>syntax-highlighting</li>
+<li>need to add more</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ohmyzsh: zsh framework<ul>
+<li>install:</li>
+<li>features: themes, shortcuts?</li>
+<li>what is the point</li>
+</ul>
+</li>
+<li>powerline: prompt configuration<ul>
+<li>install:</li>
+<li>need fonts from github</li>
+<li><code>sh install.sh</code></li>
+</ul>
+</li>
+<li>configuration<ul>
+<li>works well: http://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/</li>
+<li>works for getting powerline/vim to work: https://blog.codefront.net/2013/10/27/installing-powerline-on-os-x-homebrew/</li>
+<li>.zshrc: automatically modified by ohmyzsh</li>
+<li>.vimrc: awesomevim?</li>
+<li>.tmux.conf: maybe bunsen?</li>
+<li>dotfile repo: place to store and version control dotfiles<ul>
+<li>https://www.digitalocean.com/community/tutorials/how-to-use-git-to-manage-your-user-configuration-files-on-a-linux-vps</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>twitter <code>t</code><ul>
+<li>https://computers.tutsplus.com/tutorials/how-to-tweet-from-terminal-on-a-mac--cms-24177</li>
+<li><code>sudo gem install -n /usr/local/bin t</code> becasue of SIP</li>
+<li><code>t stream timeline</code> to stream timeline</li>
+</ul>
+</li>
+<li>Ruby<ul>
+<li>install:</li>
+<li><code>rvm get stable</code> update to latest version</li>
+</ul>
+</li>
+<li>Miscellaneous: each can be installed by <code>brew foo</code><ul>
+<li><code>cowsay</code> cow saying things</li>
+<li><code>cowsay -f dragon</code> dragon saying things</li>
+<li><code>fortune</code>gives fortune</li>
+<li><code>fortune | cowsay</code> has cow saying a fortune</li>
+<li><code>sl</code> steam locomotive</li>
+<li><code>figlet -f epic welcome</code> writes "welcome" in epic font</li>
+<li><code>telnet towel.blinkenlights.nl</code> shows star wars in terminal</li>
+<li><code>htop</code> shows computer diagnostics</li>
+<li><code>lolcat</code></li>
+<li>tetris: <code>emacs</code> Esc x <code>tetris</code></li>
+<li><code>cmatrix -a</code></li>
+<li><code>givegif</code></li>
+<li><code>movie Alien::Aliens</code></li>
+<li><code>ansiweather -l Cambridge,MA -u imperial -d true</code></li>
+<li><code>glances</code></li>
+<li><code>emojify</code></li>
+<li><code>rvt</code></li>
+</ul>
+</li>
+</ul>
+<h2>1.4 Version Control</h2>
+<ul>
+<li>git<ul>
+<li>need to install with homebrew</li>
+<li>then switch system git to this brew version</li>
+<li>http://michaelcrump.net/step-by-step-how-to-update-git/</li>
+</ul>
+</li>
+<li>github</li>
+</ul>
+<p>git submodules</p>
+<h2>1.5 Python</h2>
+<ul>
+<li>python version control: mac comes with default 2.7</li>
+<li><code>pip</code><ul>
+<li><code>pip install --upgrade pip</code></li>
+</ul>
+</li>
+<li><code>virtualenv -p python3 envname</code> for virtual environment and python 3 -- doesn't work</li>
+<li>currently setting up python 3.5 by downloading anaconda</li>
+<li><code>conda create -n yourenvname python=x.x anaconda</code> for creating virtual environment<ul>
+<li>https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/</li>
+</ul>
+</li>
+<li>jupyter: ipython notebooks</li>
+<li>rodeo: rstudio ide clone for python</li>
+<li>docker images</li>
+</ul>
+<p>https://dougblack.io/words/a-good-vimrc.html
+https://justin.abrah.ms/vim/vim_and_python.html</p>
+<h2>1.6 R/RStudio</h2>
+<p>managing r and rstudio with brew
+docker images
+need to maintain packages even during installation of new versions</p>
+<p>hadley advanced r: http://adv-r.had.co.nz</p>
+<p>spring R</p>
+<hr />
+<h2>1.7 Text Editing</h2>
+<ul>
+<li>Markdown</li>
+<li>Sublime Text<ul>
+<li>install: brew?</li>
+<li>package control</li>
+<li>packages:<ul>
+<li>Stata</li>
+<li>R</li>
+<li>Latexing</li>
+<li>latex cwl</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Evernote + Marxico</li>
+<li>Atom</li>
+</ul>
+<h3>1.7.1 Latex</h3>
+<ul>
+<li>install via brew, maybe use basictex if it is faster and lighter</li>
+<li>pdf viewer</li>
+<li>basictex?</li>
+</ul>
+<h3>1.7.2 Vim</h3>
+<p>plugins: http://vimawesome.com
+<em> vundler: plugin manager
+    * intall: <code>git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim</code>
+</em> <code>sv</code> <code>vs</code> open vertically/horizontally
+<em> <code>ctrl+hjkl</code>  change panes
+</em> <code>:ls</code> list open buffers
+* https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
+    * for most of setup</p>
+<hr />
+<h2>1.8 Applications</h2>
+<ul>
+<li>bar tender: for osx toolbar management</li>
+<li>istats menu: for toolbar diagnostics</li>
+<li>ubersicht: for desktop items</li>
+<li>moom vs bettersnaptool</li>
+<li>onyx: for maintenance of computer</li>
+</ul>
+<hr />
+<h2>1.9 Pelican</h2>
+<ul>
+<li>Pelican: python based, simple, fast</li>
+<li>https://www.fullstackpython.com/pelican.html</li>
+<li>github pages for free hosting?<ul>
+<li>need to redirect</li>
+</ul>
+</li>
+</ul>
+<p>downloaded pelican themes</p>
+<p>http://guizishanren.com/guide-to-set-up-github-page-and-pelican/
+this looks good</p>
+<h3>1.9.1 Theme</h3>
+<ul>
+<li>git clone xxxpelican themes</li>
+<li>chose Flex theme (responsive)</li>
+<li>themes in pelicanconf</li>
+<li>need relative url to be uncommented</li>
+<li>Flex documentation
+https://github.com/alexandrevicenzi/Flex/tree/5bc235cf579cb03bcc8f54b6029ff74493a0cb44</li>
+</ul>
+<h4>Theme Formatting</h4>
+<ul>
+<li>update pelican theme configuration using Flex author's config
+https://github.com/alexandrevicenzi/Flex/wiki/Configuration-example</li>
+<li>change css</li>
+<li><code>npm install -g less</code></li>
+<li><code>npm install -g less-plugin-clean-css</code></li>
+<li><code>cd</code> to <code>static/stylesheet</code> in Flex</li>
+<li><code>lessc --clean-css style.less style.min.css</code></li>
+</ul>
+<h3>1.9.2 Pelican Plugins</h3>
+<ul>
+<li>git clone xxxpelican plugins</li>
+<li>add lines in pelicanconf</li>
+<li>jax rendering works<ul>
+<li>maybe do some formating (render_math pelican plugin)</li>
+</ul>
+</li>
+<li>investigate<ul>
+<li>Auto Pages</li>
+<li>Category Order</li>
+<li>Figure References</li>
+<li>Filetime from Git: no b/c all articles get commited at once</li>
+<li>Neighbor articles</li>
+<li>Open graph</li>
+<li>Pelican Cite</li>
+<li>pelican-toc</li>
+<li>Pelican YouTube</li>
+<li>pelicanfly</li>
+<li>Random article</li>
+<li>Section number</li>
+<li>Summary</li>
+<li>Video Privacy Enhancer</li>
+</ul>
+</li>
+</ul>
+<h3>1.9.3 Local Testing</h3>
+<ul>
+<li><code>make html</code></li>
+<li><code>make devserver</code></li>
+<li><code>./develop_server.sh stop</code></li>
+<li>use blog template</li>
+</ul>
+<h3>1.9.4 Publish</h3>
+<ul>
+<li><code>ghp-import output -b master</code></li>
+<li><code>git push origin master</code></li>
+</ul>
+<hr />
+<h2>1.10 </h2>
+<h2>1.11 Learning</h2>
+<ul>
+<li>Dataquest</li>
+<li>Codeacademy</li>
+<li>Datacamp</li>
+<li>Coursera<ul>
+<li>Scala</li>
+</ul>
+</li>
+<li>edX</li>
+<li>vim adventure: for learning vim</li>
+</ul>
+<h3>1.11.1 Code block</h3>
+<div class="highlight"><pre><span></span><span class="nd">@requires_authorization</span>
+<span class="k">def</span> <span class="nf">somefunc</span><span class="p">(</span><span class="n">param1</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">param2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;A docstring&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">param1</span> <span class="o">&gt;</span> <span class="n">param2</span><span class="p">:</span> <span class="c1"># interesting</span>
+        <span class="k">print</span> <span class="s1">&#39;Greater&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">param2</span> <span class="o">-</span> <span class="n">param1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">None</span>
+<span class="k">class</span> <span class="nc">SomeClass</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;interpreter</span>
+<span class="s1">... prompt&#39;&#39;&#39;</span>
+</pre></div>
+
+
+<h3>1.11.2 LaTeX expression</h3>
+<div class="math">$$  x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</div>
+<h3>1.11.3 Table</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Item</th>
+<th align="right">Value</th>
+<th align="center">Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Computer</td>
+<td align="right">1600 USD</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="left">Phone</td>
+<td align="right">12 USD</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="left">Pipe</td>
+<td align="right">1 USD</td>
+<td align="center">234</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>To Do:
+git backup config files/dotfiles
+for macbook air: use hadleyverse docker for quickly getting setup</p>
+<p>https://www.codementor.io/linux/tutorial/configure-linux-toolset-zsh-tmux-vim</p>
+<p>from brew install vim (not sure if this is necessary)
+By default non-brewed cpan modules are installed to the Cellar. If you wish
+for your modules to persist across updates we recommend using <code>local::lib</code>.</p>
+<p>You can set that up like this:
+  PERL_MM_OPT="INSTALL_BASE=<span class="math">\(HOME/perl5" cpan local::lib
+  echo 'eval "\)</span>(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' &gt;&gt; ~/.zshrc</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

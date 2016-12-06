@@ -15,8 +15,7 @@ DEFAULT_LANG = u'en'
 
 BROWSER_COLOR = '#f4f9f9'
 PYGMENTS_STYLE = 'monokai'
-SITESUBTITLE = 'a temporary blog'
-
+SITESUBTITLE = 'cmd+build'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -26,11 +25,15 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Github', 'http://google.com/'),)
+SOCIAL = (('github', 'https://github.com/tkthomas27'),
+         ('linkedin', 'https://www.linkedin.com/in/timothy-thomas-6206134a'),
+          ('twitter', 'https://twitter.com/tkylethomas27'),
+         ('youtube', 'https://www.linkedin.com/in/timothy-thomas-6206134a'))
 
-# Social widget
-#SOCIAL = (('You can add links in your config file', '#'),
-#          ('Another social link', '#'),)
+MENUITEMS = (('Archives', '/archives.html'),
+            ('Categories', '/categories.html'),
+            ('Tags', '/tags.html'),)
+
 
 DEFAULT_PAGINATION = 10
 
@@ -38,9 +41,11 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 
 #MARKUP = ('md')
+#MD_EXTENSIONS = (['toc'])
 
+#PLUGINS
 PLUGIN_PATHS = ['/users/kthomas1/pelican-plugins']
-PLUGINS = ['render_math']
+PLUGINS = ['render_math','section_number']
 
 # theme
 THEME = "/users/kthomas1/pelican-themes/Flex"
