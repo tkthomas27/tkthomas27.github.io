@@ -14,7 +14,7 @@ TIMEZONE = 'America/New_York'
 DEFAULT_LANG = u'en'
 
 BROWSER_COLOR = '#f4f9f9'
-PYGMENTS_STYLE = 'monokai'
+PYGMENTS_STYLE = 'native'
 SITESUBTITLE = 'cmd+build'
 
 # Feed generation is usually not desired when developing
