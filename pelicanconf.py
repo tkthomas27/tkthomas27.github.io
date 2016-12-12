@@ -4,7 +4,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'kyle thomas'
-SITENAME = u'command build'
+SITENAME = u'cmd+build'
 SITEURL = 'tkthomas27.github.io'
 
 PATH = 'content'
@@ -15,7 +15,7 @@ DEFAULT_LANG = u'en'
 
 BROWSER_COLOR = '#f4f9f9'
 PYGMENTS_STYLE = 'native'
-SITESUBTITLE = 'cmd+build'
+SITESUBTITLE = ''
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
