@@ -40,12 +40,12 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-#MARKUP = ('md')
+MARKUP = ('md','rmd')
 #MD_EXTENSIONS = (['toc'])
 
 #PLUGINS
 PLUGIN_PATHS = ['/users/kthomas1/pelican-plugins']
-PLUGINS = ['render_math','section_number']
+PLUGINS = ['render_math','section_number','rmd_reader']
 
 # theme
 THEME = "/users/kthomas1/pelican-themes/Flex"
