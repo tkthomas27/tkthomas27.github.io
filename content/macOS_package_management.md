@@ -20,7 +20,11 @@ This series of articles will review packages and package managers for a variety 
 
 `brew`: basic package management for command line software (distributed under open source). A simple run down and further documentation details are found at the [brew website](http://brew.sh).
 
-For installation simply type: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+For installation simply type:
+
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
 A breakdown of what is happening with the installation command above:
 
@@ -55,8 +59,10 @@ Some useful commands:
 
 To install `cask`:
 
-* `brew tap caskroom/cask`
-* `brew install brew-cask`
+``` bash
+brew tap caskroom/cask
+brew install brew-cask
+```
 
 To install a program like RStudio:
 
