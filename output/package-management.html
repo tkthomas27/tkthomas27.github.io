@@ -28,11 +28,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="kyle thomas" />
-<meta name="description" content="Overview of package management tools for macOS, particularly homebrew." />
-<meta name="keywords" content="macos, brew, cask">
+<meta name="description" content="Overview of brew, a package manager for macOS" />
+<meta name="keywords" content="macos, brew, cask, tips">
 <meta property="og:site_name" content="cmd+build"/>
 <meta property="og:title" content="macOS Package Management"/>
-<meta property="og:description" content="Overview of package management tools for macOS, particularly homebrew."/>
+<meta property="og:description" content="Overview of brew, a package manager for macOS"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="./package-management.html"/>
 <meta property="og:type" content="article"/>
@@ -43,6 +43,7 @@
 <meta property="article:tag" content="macos"/>
 <meta property="article:tag" content="brew"/>
 <meta property="article:tag" content="cask"/>
+<meta property="article:tag" content="tips"/>
 <meta property="og:image" content="">
 
   <title>cmd+build &ndash; macOS Package Management</title>
@@ -83,15 +84,35 @@
 
 
   <div>
-    <p>why package management; management of dpendencies; cross sytem use; prserverance of states</p>
-<p>Package managers allow for ... This is the first in a series were we go over package managers for various things will focus on mac operating system (now referred to as macOS)</p>
+    <p>This is the first in a series of articles about package managers for various programs. Packages are optional plugins that provide some extra functionality to a program you use. They are often free and open source software (FOSS) made by individuals or consortiums. Packages are available to download for a range of programs: from apps you download (Sublime Text) to the operating system itself (macOS).</p>
+<p>On macOS for example, the <code>git</code> package gives you the super-popular version control language git while the <code>htop</code> package will display computer diagnostics in your terminal.</p>
+<p>Equally important are package managers that give you easy access to packages as well as the ability to maintain and update packages. Unfortunately, there is no unified package manager for all programs.</p>
+<p>This series of articles will review packages and package managers for a variety of programs such as macOS, frameworks (node), languages (R, Python, Ruby), and text editors (Sublime, Atom, and Vim).</p>
+<!-- You will need to be at least somewhat familiar with the command line to work with `brew`; please see XXX for a quick guide. -->
+
 <h1>1 homebrew</h1>
-<p><code>brew</code>: basic package management for command line software (distributed under open source). A simple run down and further documentation details are found at the <a href="http://brew.sh">brew webiste</a>.</p>
+<p><code>brew</code>: basic package management for command line software (distributed under open source). A simple run down and further documentation details are found at the <a href="http://brew.sh">brew website</a>.</p>
 <p>For installation simply type: <code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></p>
-<p>Terminology (for more details checkout the <a href="https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md#homebrew-terminology">formula cookbook</a>
-<em> <strong>formula</strong> is a package
-</em> <strong>keg</strong> is the installation prefix
-* <strong>cellar</strong> is where packages are installed</p>
+<p>A breakdown of what is happening with the installation command above:</p>
+<ul>
+<li><code>/usr/bin/ruby</code> calls ruby (which is used to install homebrew); ruby is pre-installed on macOS</li>
+<li><code>-e</code> tells ruby to run raw code that is being passed to it</li>
+<li><code>curl</code> program to download contents at specified URL</li>
+<li><code>fsSL</code> this is actually four flags<ul>
+<li><code>-f</code> fail silently if something goes wrong</li>
+<li><code>-s</code> silent mode; not progress or failure message</li>
+<li><code>-S</code> display error message if fails in silent mode</li>
+<li><code>-L</code> if server says that webpage has moved to a new location, curl will try that location</li>
+</ul>
+</li>
+<li>URL: location of installation script</li>
+</ul>
+<p>Terminology (for more details checkout the <a href="https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md#homebrew-terminology">formula cookbook</a></p>
+<ul>
+<li><strong>formula</strong> is a package</li>
+<li><strong>keg</strong> is the installation prefix</li>
+<li><strong>cellar</strong> is where packages are installed</li>
+</ul>
 <p>Some useful commands:</p>
 <ul>
 <li><code>brew install [formula]</code> install formula</li>
@@ -110,16 +131,54 @@
 <li><code>brew tap caskroom/cask</code></li>
 <li><code>brew install brew-cask</code></li>
 </ul>
+<p>To install a program like RStudio:</p>
+<p><code>brew install Caskroom/cask/rstudio</code></p>
 <h1>3 Current Packages</h1>
+<p>Below is a select list of packages that I use brew to manage. Some are trivial (e.g., <code>cowsay</code>) while others are frequently used system wide (e.g., <code>r</code>, <code>ruby</code>)</p>
 <h2>3.1 Brew Packages</h2>
-<p>A few packages I installed using <code>brew</code></p>
 <p><code>ansiweather</code> display weather in terminal</p>
+<!-- `cairo` 2D graphics library -->
+
 <p><code>cmatrix</code> turn your terminal into the Matrix</p>
+<p><code>coreutils</code> utilities for GNU</p>
+<p><code>cowsay</code> display a cow (or other creature) saying something</p>
+<!-- `cscope` browse source code -->
+
+<p><code>curl</code> transfer data with URL syntax</p>
+<p><code>doxygen</code> source code documentation and analysis tool</p>
+<p><code>elinks</code> text based web browser</p>
+<p><code>emojify</code> emojis on the command line</p>
+<p><code>fasd</code> quick access to files and directories</p>
+<p><code>figlet</code> display text as ascii art</p>
+<p><code>fortune</code> random quote</p>
+<p><code>gcc</code> GNU compiler collection</p>
+<p><code>gdbm</code> GNU database functions</p>
+<p><code>git</code> version control</p>
+<p><code>givegif</code> display gifs</p>
+<p><code>glib</code> core application building blocks for apps written in C</p>
 <p><code>htop</code> show computer diagnostics</p>
+<p><code>node</code> javascript framework</p>
+<p><code>pipes-sh</code> pipes screen saver</p>
+<p><code>python</code> python</p>
+<p><code>r</code> r</p>
+<p><code>ruby</code> ruby</p>
+<p><code>sl</code> have a steam locomotive run across your terminal</p>
+<p><code>tmux</code> terminal multiplexer</p>
+<p><code>tree</code> display directories as a tree</p>
+<p><code>vim</code> text editor</p>
+<p><code>youtube-dl</code> download youtube videos</p>
+<p><code>zsh</code> bash alternative</p>
+<p><code>zsh-completions</code> completions for zsh</p>
+<p>Over the next few days I'll add to this list and show some of the cool things you can do with them.</p>
 <h2>3.2 Cask Packages</h2>
-<p>RStudio</p>
-<p>Github file to download all of these commands?</p>
+<p><code>RStudio</code> IDE for developing R; <code>brew</code> is terrific for managing the frequent <a href="https://www.rstudio.com">updates</a></p>
+<!-- what about packages? -->
+
+<p><code>anaconda</code> scientific computing stack provided by <a href="https://www.continuum.io">Continuum</a></p>
+<!-- Github file to download all of these commands? -->
+
 <h1>4 Future Installments</h1>
+<p>Below are future articles for other package managers that I frequently use.</p>
 <ul>
 <li>npm</li>
 <li>gem</li>
@@ -193,6 +252,7 @@ a way to sidestep the issue all together
       <a href="./tag/macos.html">macos</a>
       <a href="./tag/brew.html">brew</a>
       <a href="./tag/cask.html">cask</a>
+      <a href="./tag/tips.html">tips</a>
     </p>
   </div>
 
