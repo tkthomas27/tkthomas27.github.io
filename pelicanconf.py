@@ -13,8 +13,8 @@ TIMEZONE = 'America/New_York'
 
 DEFAULT_LANG = u'en'
 
-BROWSER_COLOR = '#f4f9f9'
-PYGMENTS_STYLE = 'native'
+BROWSER_COLOR = ''
+#PYGMENTS_STYLE = 'native'
 SITESUBTITLE = ''
 
 # Feed generation is usually not desired when developing

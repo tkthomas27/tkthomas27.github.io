@@ -22,7 +22,7 @@ This series of articles will review packages and package managers for a variety 
 
 For installation simply type:
 
-```bash
+``` bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
