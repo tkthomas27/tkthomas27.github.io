@@ -92,7 +92,11 @@
 
 <h1>1 homebrew</h1>
 <p><code>brew</code>: basic package management for command line software (distributed under open source). A simple run down and further documentation details are found at the <a href="http://brew.sh">brew website</a>.</p>
-<p>For installation simply type: <code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></p>
+<p>For installation simply type:</p>
+<div class="highlight"><pre><span></span>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+
+
 <p>A breakdown of what is happening with the installation command above:</p>
 <ul>
 <li><code>/usr/bin/ruby</code> calls ruby (which is used to install homebrew); ruby is pre-installed on macOS</li>
@@ -127,10 +131,11 @@
 <h1>2 cask</h1>
 <p><code>cask</code> There is an extension for <code>brew</code> called <code>cask</code> for the installation of licensed software. Because <code>cask</code> is an extension of <code>brew</code> it works the same as <code>brew</code> in terms of commands and taps.</p>
 <p>To install <code>cask</code>:</p>
-<ul>
-<li><code>brew tap caskroom/cask</code></li>
-<li><code>brew install brew-cask</code></li>
-</ul>
+<div class="highlight"><pre><span></span>brew tap caskroom/cask
+brew install brew-cask
+</pre></div>
+
+
 <p>To install a program like RStudio:</p>
 <p><code>brew install Caskroom/cask/rstudio</code></p>
 <h1>3 Current Packages</h1>
