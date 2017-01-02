@@ -1,7 +1,7 @@
 Title: Quick Guide to Command Line Basics
 Date: 2016-12-09
 Tags: cli, bash, zsh, cli
-Category: the cyber
+Category: tech
 Slug: cli-basics
 Summary: This is a quick overview of some command line basics as well as a few tips on how to make your experience more efficient (and cool)
 
@@ -86,7 +86,7 @@ The easiest way to get started with zsh is to install it using brew (checkout my
 ``` bash
 brew install zsh zsh-completions
 ```
-To get the most out of zsh, you can try one of the several frameworks available. I am currently using [oh my zsh](http://ohmyz.sh). Oh my zsh gives you easy access to many useful (plugins)[https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins]
+To get the most out of zsh, you can try one of the several frameworks available. I am currently using [oh my zsh](http://ohmyz.sh). Oh my zsh gives you easy access to many useful [plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)
 
 
 <!-- need post on how I customized my setup

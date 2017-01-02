@@ -1,7 +1,7 @@
 Title: macOS Package Management
 Date: 2016-12-07
 Tags: macos, brew, cask, tips
-Category: the cyber
+Category: tech
 Slug: package-management
 Summary: Overview of `brew`, a package manager for macOS
 
