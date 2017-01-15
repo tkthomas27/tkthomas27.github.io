@@ -27,8 +27,8 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 SOCIAL = (('github', 'https://github.com/tkthomas27'),
          ('linkedin', 'https://www.linkedin.com/in/timothy-thomas-6206134a'),
-          ('twitter', 'https://twitter.com/tkylethomas27'),
-         ('youtube', 'https://www.linkedin.com/in/timothy-thomas-6206134a'))
+          ('twitter', 'https://twitter.com/tkylethomas27'))
+
 
 MENUITEMS = (('Archives', '/archives.html'),
             ('Categories', '/categories.html'),

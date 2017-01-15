@@ -1,5 +1,5 @@
 Title: Introduction to Statistical Learning
-Date: 2016-01-01
+Date: 2017-01-01
 Tags: data-science, learning, statistics
 Category: tech
 Slug: islr
