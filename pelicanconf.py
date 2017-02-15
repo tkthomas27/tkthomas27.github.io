@@ -11,6 +11,8 @@ PATH = 'content'
 
 TIMEZONE = 'America/New_York'
 
+DEFAULT_DATE = 'fs'
+
 DEFAULT_LANG = u'en'
 
 BROWSER_COLOR = ''
@@ -27,15 +29,17 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 SOCIAL = (('github', 'https://github.com/tkthomas27'),
          ('linkedin', 'https://www.linkedin.com/in/timothy-thomas-6206134a'),
-          ('twitter', 'https://twitter.com/tkylethomas27'))
+         ('twitter', 'https://twitter.com/tkylethomas27'))
 
 
-MENUITEMS = (('Archives', '/archives.html'),
+MAIN_MENU = True
+MENUITEMS = (('About','/about.html'),
+            ('Archives', '/archives.html'),
             ('Categories', '/categories.html'),
             ('Tags', '/tags.html'),)
 
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 25
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True

@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+<meta name="author" content="kyle thomas" />
+<meta name="description" content="In this week's issue we briefly look at the intriguing Nemesis hypothesis of periodic extinction, the master method for determining divide and conquer algorithm run time, as well as discuss the Super Bowl and universal basic income. Also, who is the greatest football player of all time?" />
+<meta name="keywords" content="space, algorithms, econ, nfl">
+<meta property="og:site_name" content="cmd+build"/>
+<meta property="og:title" content="The Scholar's Review: 5 February 2017"/>
+<meta property="og:description" content="In this week's issue we briefly look at the intriguing Nemesis hypothesis of periodic extinction, the master method for determining divide and conquer algorithm run time, as well as discuss the Super Bowl and universal basic income. Also, who is the greatest football player of all time?"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="./tsr_05feb2017.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-02-05 00:00:00-05:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="./author/kyle-thomas.html">
+<meta property="article:section" content="not-tech, tech"/>
+<meta property="article:tag" content="space"/>
+<meta property="article:tag" content="algorithms"/>
+<meta property="article:tag" content="econ"/>
+<meta property="article:tag" content="nfl"/>
+<meta property="og:image" content="">
+
+  <title>cmd+build &ndash; The Scholar's Review: 5 February 2017</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href=".">
+        <img src="./theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="."></a></h1>
+
+
+      <!--  -->
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/tkthomas27" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/timothy-thomas-6206134a" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/tkylethomas27" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href=".">    Home
+</a>
+
+      <a href="/about.html">About</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+    <h1 id="tsr_05feb2017">The Scholar's Review: 5 February 2017</h1>
+    <p>
+          Posted on Sun 05 February 2017 in <a href="./category/not-tech-tech.html">not-tech, tech</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <blockquote>
+<p>A firm rule must be imposed upon our nation before it destroys itself. The United States needs some theology and geometry, some taste and decency. I suspect that we are teetering on the edge of the abyss
+-- John Kennedy Toole, <em>A Confederacy of Dunces</em></p>
+</blockquote>
+<h1>1 Chips from a Cambridge Workshop</h1>
+<h2>1.1 Nemesis</h2>
+<p>Most stars are binary in nature, i.e., most stars have a counterpart star that orbits a mutual barycenter. So what about our sun? What if our sun had a sibling? And what if that sibling was the cause of the mass extinctions that have periodically wracked earth? Such is the speculation that gave rise to the theory of <a href="http://www.wikiwand.com/en/Nemesis_(hypothetical_star)">Nemesis</a>, a proposed star, small and very dark, that orbits with our Sun and periodically smashes through the Oort cloud every 26 million years, sending armageddon levels of debris to earth. In theory, this could include the impactor that lead to the extinction of the dinosaurs (if indeed they did go extinct from the impact of an extraterrestrial object).</p>
+<p>This theory quite engaging: in plays on our wonder at the enormity of the cosmos, the interconnectedness of time, as well as the possibility of mystery left in the universe. There is also something of the operatic in the idea of a long lost, evil twin who periodically ruins your life.</p>
+<p align="center">
+
+<img src="http://news.nationalgeographic.com/news/2006/03/images/060323_brown_dwarf_big.jpg">
+
+</p>
+
+<p>Unfortunately, as cool as this theory sounds, there is little evidence to support it. Despite being small and dark, such a body would have probably been detected by now. Furthermore the periodicity of mass extinctions has been challenged.</p>
+<h1>2 Tech Tips</h1>
+<p><strong>See Tim Roughgarden's Coursera course on Algorithms for more.</strong></p>
+<p>The <code>Master Method</code> is a general tool for analysis of the run time of divide and conquer algorithms. The general form of the master method is:</p>
+<div class="math">$$
+T(n) \leq a T(n/b) + O(n^d)
+$$</div>
+<p>Here the parameters are:</p>
+<ul>
+<li>
+<p><span class="math">\(a\)</span> is the number of recursive calls</p>
+</li>
+<li>
+<p><span class="math">\(b\)</span> is the factor by which input shrinks until recursion is called</p>
+</li>
+<li>
+<p><span class="math">\(d\)</span> is the exponent on the combine step</p>
+</li>
+</ul>
+<p>The relationship between these three parameters result in three different run times:</p>
+<ul>
+<li>
+<p>if <span class="math">\(a=b^d\)</span>, then <span class="math">\(O(n^d \space log \space n)\)</span></p>
+</li>
+<li>
+<p>if <span class="math">\(a&lt;b^d\)</span>, then <span class="math">\(O(n^d)\)</span></p>
+</li>
+<li>
+<p>if <span class="math">\(a&gt;b^d\)</span>, then <span class="math">\(O(n^{log_b a})\)</span></p>
+</li>
+</ul>
+<p>Mergesort, for example, has the form of <span class="math">\(T(n)=2 T(n/2)+O(n^1)\)</span>, which gives us a run time of <span class="math">\(O(n \space log \space n)\)</span>.</p>
+<h1>3 Economist Digest</h1>
+<p>From the <a href="http://www.economist.com/printedition/2017-02-04">February 4, 2017 edition</a></p>
+<ul>
+<li>
+<p><em>Universal Basic: Bonfire of the Subsidies</em>: I'm critical of UBI schemes in general because the income provided would dramatically cut the amount of welfare provided to the poorest while giving income to those who don't need it. In India, however, such a scheme might actually prove beneficial in that it wouldn't be "universal," would replace at similar cost the current proliferation of welfare schemes, and because Indian currency has very high purchasing power.</p>
+</li>
+<li>
+<p><em>Augmented Reality</em>: AR is very cool, but "social factors often govern the path to mass adoption, and for AR, two problems stand out." The first problem is aesthetics in that wearing the current headsets make you look like a Neal Stephenson gargoyle. The second problem is that you might act like a Neal Stephenson gargoyle by recording everything that happens around you (never forget the "Glasshole" phenomenon).</p>
+</li>
+<li>
+<p><em>Alternative Religions: The Joy of Sects</em>: I have about 13 years of formally studying religion (7 years at private Christian school, 4 years undergraduate degree in religion, 2 years at Harvard Divinity School) and my final conclusion is that religion is whatever the IRS says it is. Also, <a href="http://www.wikiwand.com/en/The_Joy_of_Sect">Simpsons did it</a>!</p>
+</li>
+<li>
+<p><em>Gambling in Japan</em>: Until December 2016, casino's were illegal in Japan, but that didn't keep the country from spending $203 billion on pachinko every year.</p>
+</li>
+<li>
+<p><em>The Indian Economy: Rupees for Nothing</em>: UBI would help with the nearly apocalyptic impact of Indian's demonitization scheme in November 2016, that severely impacted the mostly cash based economy.</p>
+</li>
+<li>
+<p><em>Asset Management: Ctrl Alt Beta</em>: A new kind of investment fund known as "alt-beta" funds attempts to replicate the putative advantage of a hedge fund by deriving returns uncorrelated (and hopefully positive) from the market. I see these as slightly more sophisticated trading automation plans like those found on <a href="https://www.portfolio123.com">Portfolio123</a>.</p>
+</li>
+</ul>
+<h1>4 The Week in History</h1>
+<ul>
+<li>January 30, 1649: In one of the first great modern political revolutions, King Charles I is beheaded</li>
+<li>January 31, 1937: American composer Philip Glass, notable for his scores in <em>Koyaanisqatsi</em> and <em>Candyman</em> (?!?), is born</li>
+<li>February 1, 2003: The space shuttle <em>Columbia</em> disintegrated on re-entry killing all on board. I remember waking on a cold February morning at my grandparents house and seeing this on the news.</li>
+<li>February 2: Boris Karloff, Sid Vicious, Bertrand Russell, Gene Kelly, Donald Pleasance, and Philip Seymour-Hoffman all died (in different years)</li>
+<li>February 3, 1943: The SS <em>Dorcester</em> was sunk by a German U-boat off the coast of Greenland; many were saved by the famous <a href="http://www.wikiwand.com/en/Four_Chaplains#/Sinking_of_the_Dorchester">Four Chaplains</a></li>
+<li>February 4, 1724: British entomologist Dru Drury is born</li>
+<li>February 5, 1958: The US Air Force loses a hydrogen bomb off the coast of Georgia</li>
+</ul>
+<h1>5 Sport</h1>
+<p><strong>Super Bowl</strong></p>
+<p>Stunning comeback or stunning collapse? An excellent <a href="https://fivethirtyeight.com/features/about-those-falcons-play-calls/">article</a> details how Falcons bumbled and the Patriots exploited a 99% chance of victory. Despite the Falcon's mind-boggling calls down the stretch (attempting passes despite Devonta Freeman averaging 8 yards a carry and only needing to run out the clock), the story during the course of the game was how little the Falcons offense was on the field.</p>
+<p>I would also be remiss if I didn't point out that the Patriots almost Seahawked themselves by throwing a nearly intercepted pass from the two yard line at the end of the game.</p>
+<p><strong>'Member when...</strong></p>
+<p>Given Tom Brady's legendary success in the NFL, much talk has been given to him as the "Greatest of All Time." This is a fine argument, but two caveats should be noted. Is he the greatest player of all time? That is a definitive no. <a href="http://www.wikiwand.com/en/Red_Grange">Red Grange</a>, a charter member of both the college and professional football hall of fame, is undeniably the greatest of all time. Is he the greatest QB of all time? Perhaps. Outside of Peyton Manning (who might be the <em>best</em> QB of all time), the biggest competition Brady has is Otto Graham: in his 10 year career he went to 10 championship games and won 7 of them.</p>
+<h1>6 Entertainment</h1>
+<p><strong>Listening</strong></p>
+<ul>
+<li><em>Hardcore History: Destroyer of Worlds</em>: Dan Carlin's latest podcast explores the early political machinations surrounding the use of atomic weaponry. It's quite amazing how resolute Truman, Eisenhower, and especially Kennedy were in declining to use nuclear weapons after Hiroshima and Nagasaki despite intense pressure to do so.</li>
+<li><em>Hacker's: Heroes of the Computer Revolution</em> by Steve Levy, cont'd: Steve Jobs was notorious for his unwashed, shoeless, extreme vegetarian lifestyle. Yet, for all his free spirited-ness, he was the first of the computer nerds to seek out professional management of a personal computer company. The result was Apple and its nearly trillion dollar market capitalization.</li>
+</ul>
+<p><strong>Reading</strong></p>
+<ul>
+<li><em>The Book of the Dying Sun</em> by Gene Wolfe: Words I discovered: peccary, pardine, bartizan, peltast, martello, conventicle, abattoir, par-terre, citron, sardonyx, tyrian, lansquenet, casern, monomachy, sabretache, nidorous, mensal, dray, onager, champian, tholus, delectation, lianas, smilodon, freshet, specula, soubrette, columbine, coryphees, harlequinas, figurantes, pagne, pavonine, misericorde, etc., etc.</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="./tag/space.html">space</a>
+      <a href="./tag/algorithms.html">algorithms</a>
+      <a href="./tag/econ.html">econ</a>
+      <a href="./tag/nfl.html">nfl</a>
+    </p>
+  </div>
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kyle thomas </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cmd+build ",
+  "url" : ".",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

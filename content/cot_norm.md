@@ -1,5 +1,5 @@
 Title: Chain of Thought: Norm
-Date: 2017-01-15
+Date: 2017-02-08
 Tags: linear-algebra, regression
 Category: tech
 Slug: cot-norm
