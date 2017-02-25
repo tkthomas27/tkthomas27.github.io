@@ -56,6 +56,7 @@ My wife and I currently live in the Boston metro area. I moved here a few years 
 2. **How did you get into business and/or computer stuff?** I got an opportunity at HBS and then worked really hard. Once I got in as an RA there was a need to quickly expand my technical skills. Luckily, computer science is essentially just logic -- which I've been studying all along as a philosophy student! Here's a game: go to a random Wikipedia article, click on the first word, and then keep clicking on the first word of each subsequent article. You will end up at the philosophy paper in at least 10 clicks.
 
 Outside of academics I like to:
+
 * Play the guitar (Gretsch Duo Jet Center Block; classical guitar) and bass (Squier Jaguar, all black). Rocksmith is a blast and I try to play everyday!
 * Read Sci-Fi. I'm currently on a quest to read all the "classics" in the genre (unfortunately this means a lot of Heinlein). My top two are currently *Dune* and *Hyperion*.
 * I don't watch movies as much as I used to, but my favorite movies are from Leone and Kurosawa.
