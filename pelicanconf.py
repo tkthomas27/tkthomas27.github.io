@@ -44,12 +44,12 @@ DEFAULT_PAGINATION = 25
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-MARKUP = ('md','rmd')
+MARKUP = ('md','ipynb','rmd')
 #MD_EXTENSIONS = (['toc'])
 
 #PLUGINS
 PLUGIN_PATHS = ['/users/kthomas1/pelican-plugins']
-PLUGINS = ['render_math','section_number','rmd_reader']
+PLUGINS = ['render_math','ipynb.markup','section_number','rmd_reader']
 
 #rm reader options
 STATIC_PATHS = ['figure']
