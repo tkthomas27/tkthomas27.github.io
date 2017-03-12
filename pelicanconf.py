@@ -8,6 +8,8 @@ SITENAME = u'cmd+build'
 SITEURL = 'tkthomas27.github.io'
 
 PATH = 'content'
+CACHE_CONTENT = True
+
 
 TIMEZONE = 'America/New_York'
 
@@ -28,7 +30,7 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 SOCIAL = (('github', 'https://github.com/tkthomas27'),
-         ('linkedin', 'https://www.linkedin.com/in/timothy-thomas-6206134a'),
+         ('linkedin', 'www.linkedin.com/in/timothykylethomas'),
          ('twitter', 'https://twitter.com/tkylethomas27'))
 
 
