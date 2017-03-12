@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+<meta name="author" content="kyle thomas" />
+<meta name="description" content="In this week(s) issue we explore the little known wreck of the Sultana, quantum computing, patent expirations, and macro-trade issues. We also review the most popular data analytic tools, renaming files using bash, and some Sanskrit vocab." />
+<meta name="keywords" content="quantum computing, data science, basketball, bash, sanskrit">
+<meta property="og:site_name" content="cmd+build"/>
+<meta property="og:title" content="The Scholar's Review: 05 March 2017"/>
+<meta property="og:description" content="In this week(s) issue we explore the little known wreck of the Sultana, quantum computing, patent expirations, and macro-trade issues. We also review the most popular data analytic tools, renaming files using bash, and some Sanskrit vocab."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="./tsr_04mar2017.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-03-05 00:00:00-05:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="./author/kyle-thomas.html">
+<meta property="article:section" content="not-tech, tech"/>
+<meta property="article:tag" content="quantum computing"/>
+<meta property="article:tag" content="data science"/>
+<meta property="article:tag" content="basketball"/>
+<meta property="article:tag" content="bash"/>
+<meta property="article:tag" content="sanskrit"/>
+<meta property="og:image" content="">
+
+  <title>cmd+build &ndash; The Scholar's Review: 05 March 2017</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href=".">
+        <img src="./theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="."></a></h1>
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/tkthomas27" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/timothy-thomas-6206134a" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/tkylethomas27" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    
+
+      <nav>
+        <ul class="list">
+
+          <li><a href="/about.html" target="_blank">About</a></li>
+          <li><a href="/archives.html" target="_blank">Archives</a></li>
+          <li><a href="/categories.html" target="_blank">Categories</a></li>
+          <li><a href="/tags.html" target="_blank">Tags</a></li>
+        </ul>
+      </nav>
+
+  </div>
+
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+    <h1 id="tsr_04mar2017">The Scholar's Review: 05 March 2017</h1>
+    <p>
+          Posted on Sun 05 March 2017 in <a href="./category/not-tech-tech.html">not-tech, tech</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <blockquote>
+<p>Reasoning will never make a Man correct an ill Opinion, which by Reasoning he never acquired</p>
+<p>---Jonathan Swift</p>
+</blockquote>
+<h1>1 Chips from a Cambridge Workshop</h1>
+<h2>1.1 Maritime Disasters</h2>
+<p>On April 15, 1912 the RMS <em>Titanic</em> sank in the northern Atlantic taking the lives of approximately 1500 people. Stop anyone on the streets, and they certainly could tell you the general outlines of the disaster. But what about the sinking of the <em>Sultana</em>? On April 27, 1865 (April is the cruelest month), the steamboat <a href="http://www.wikiwand.com/en/Sultana_(steamboat)"><em>Sultana</em></a> caught fire and sank on the Mississippi river killing roughly 1700 -- 200 more than the <em>Titanic</em>.</p>
+<p>So why does everyone remember the <em>Titanic</em> and not the <em>Sultana</em>. One reason is timing: the <em>Sultana</em> sank the day after John Wilkes Booth was killed after himself assassinating President Lincoln. Another reason would be media coverage and popular interest: the <em>Titanic</em> catered to social elites who the media naturally gravitates towards. Add in the morality play of the ship "that even God could not sink" sinking and killing most on board, and you have the perfect storm of everlasting infamy.</p>
+<p>Interestingly enough, this isn't the only dyad of famous/forgotten maritime disasters. Everyone knows about the <a href="http://www.wikiwand.com/en/Spanish_Armada">Spanish Armada</a> -- the most powerful naval force in the world dashed to pieces by the fury of an north Atlantic storm as it tried to attack England in 1588. Ultimately the loses Spain totaled 35 ships and 20,000 dead. But what about the <a href="http://www.wikiwand.com/en/English_Armada">English Armada</a>? In the ensuing year, the English attempted a punitive expedition against Spain but met a similar fate losing 40 ships and upwards of 15,000 men.</p>
+<p>A similar-in-magnitude dyad can be found in the disastrous "kamikaze" invasion of the Mongols into Japan in the 13th century and the massive losses suffered by Roman naval forces in the second Punic war -- both with high-end estimate losses of 100,000 men.</p>
+<h2>1.2 Patent Expirations and Bell Labs</h2>
+<p>Reading Walter Isaacson's <em>Innovators</em>, I was struck by his telling of the first-long distance phone call. In the 1910s, AT&amp;T was facing the expiration of their patent on the basic technology underlying telephone calls. To compensate, AT&amp;T aggressively pursued new technologies such as long-distance phone calling. Sure enough, by 1915 Alexander Graham Bell recreated his famous first phone call with Thomas A. Watson, except this time a continent separated them and not a room.</p>
+<p>I find it compelling how different it is today: namely, that a claim on intellectual property would be allowed to expire. Mickey Mouse, for example, should have gone into the <a href="https://priceonomics.com/how-mickey-mouse-evades-the-public-domain/">public domain</a> in 1984. However, due to intense lobbying, Disney has been able force changes in the law so that Mickey Mouse will almost always remain in the Disney vault. What kind of innovation has Disney denied the world by not letting their rodent mascot into the public domain?</p>
+<h2>1.3 Quantum Computing and the Future</h2>
+<p><strong>Here There Everywhere: Quantum Computing</strong>: Just the other day I was wondering what it was like to be a US civilian just prior to the atomic bomb drop in 1945. Was there any idea that the US was working on a super weapon? What was it like to realize that your country had been secretly coordinating with the greatest minds on earth and spending billions of dollars developing an unstoppable super weapon? What would be a current/future analog to this? Perhaps Russia attempts a major cyber attack on the US only to find out that America has developed a highly advanced quantum computer that not only renders the truly important parts of the US cyber infrastructure invulnerable, but also makes Russia an open book.</p>
+<p>Timely enough, the technology quarterly for this week's <em>Economist</em> focuses on quantum computers. The major take away is that progress in this field is rapidly advancing thanks to the growing and inevitable commercialization of quantum techniques. Quantum computers will soon provide more accurate location than GPS, more precise sensing abilities than anything available, unbreakable cryptography, and the ability to quickly solve problems in finance and engineering.</p>
+<p>This last point reminds of the time saved in solving liner equations that came with the advance of analytical engines and early computers. Problems with 6+ unknowns would take weeks to solve, but advances in simple computers reduced the time to mere hours (your computer could probably do it in seconds).</p>
+<p>From the <a href="https://www.economist.com/printedition/2017-03-11">March 11th Edition</a></p>
+<h1>2 Tech Tips</h1>
+<h2>2.1 Data Analytics Tools</h2>
+<p>KDNuggets runs an <a href="http://www.kdnuggets.com/2016/06/r-python-top-analytics-data-mining-data-science-software.html">annual survey</a> asking "What software you used for Analytics, Data Mining, Data Science, Machine Learning projects in the past 12 months?" The 2016 results are:</p>
+<ol>
+<li>R</li>
+<li>Python</li>
+<li>SQL</li>
+<li>Excel</li>
+<li>RapidMiner</li>
+<li>Hadoop</li>
+<li>Spark</li>
+<li>Tableau</li>
+<li>KNIME</li>
+<li>scikit-learn</li>
+</ol>
+<p>A few observations:</p>
+<ul>
+<li>
+<p>You know data science has gone mainstream when some of the most used analytics tools are point and click interfaces. I'm not talking about Excel (general purpose utility and industry standard for decades) or Tableau (visualization tool). I'm referring to RapidMiner and KNIME (although not listed, I prefer Orange). These tools allow you to run regressions, cluster analysis, PCA, etc. without ever typing a piece of code. It is interesting to see RapidMiner so high given its steep cost and all but useless free version.</p>
+</li>
+<li>
+<p>Notice what is missing? SAS and Stata. Want to know why? They're archaic and cost lots of money. The only reason they still exist is because of the imagined frictions of transitioning to R or Python. I'm not saying you shouldn't know how to use either (you never know when you'll encounter some legacy code), but they should not be your primary tools of analysis (I say this having spent my Saturday working in Stata...).</p>
+</li>
+<li>
+<p>I am amused that scikit-learn is on this list given that it is just a library for Python. How is it above pandas and numpy?</p>
+</li>
+</ul>
+<h2>2.2 Bash Tip</h2>
+<p>I downloaded exercise files from Lynda for a <a href="https://www.lynda.com/Python-tutorials/Python-Programming-Efficiently/534425-2.html">course</a> in efficient python programming. I wanted to preserve the original files, so I made two copies of the files in different folders. The problem is that I needed to change the name of all the files <em>en masse</em> to distinguish them from the original files. I modified some code I found online and used the following in the command line:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> file in *.ipynb<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> mv <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">file</span><span class="p">/begin./kt.</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">done</span>
+</pre></div>
+
+
+<p>The files were named <code>xx_begin.pynb</code>. The above code renames all of these files by replacing the "begin" part with "kt". A few points</p>
+<ul>
+<li>
+<p><code>for file in *.ipynb</code> creates a for loop that goes through each file ending in <code>.ipynb</code> (where each file name is saved to the variable <code>file</code>).</p>
+</li>
+<li>
+<p><code>;</code> mark line breaks</p>
+</li>
+<li>
+<p><code>do</code> and <code>done</code> demarcate the commands that are to be done in <code>bash</code></p>
+</li>
+<li>
+<p><code>echo</code> will read out what is happening in the loop</p>
+</li>
+<li>
+<p><code>mv</code> is what will use to rename the files. If a location is not specified, <code>mv</code> will simply rename the file where it is</p>
+</li>
+<li>
+<p><code>$file</code> is used to access the current file name in the for loop</p>
+</li>
+<li>
+<p><code>/begin./kt./</code> is a parameter expansion that searches the file name for <code>begin</code> and replaces it with <code>kt</code></p>
+</li>
+</ul>
+<h1>3 Economist Digest</h1>
+<p>From the <a href="http://www.economist.com/printedition/2017-02-25">February 25th Edition</a></p>
+<p><strong>The Sanctity of Trade Statistics</strong>: A proposal to remove re-exports from official figures would inflate the trade deficit and bolster the current administrations case for tougher trade relations. <em>The Economist</em> comments, "the new administration seems prone to using statistics as a drunk uses a lamppost -- for support rather than illumination."</p>
+<p>From the <a href="http://www.economist.com/printedition/2017-03-04">March 4th Edition</a></p>
+<p><strong>China and Currency Manipulation</strong> China has had its reputation as a currency manipulator longer than it has actually been a currency manipulator. This article, using their own measurements inspired by official US determinants, scores Taiwan and South Korea as greater depressors of their currencies than China. In fact, China has taken steps to strengthen the yuan to keep capital from flowing out.</p>
+<h1>4 Sport</h1>
+<h2>4.1 College Ball</h2>
+<p>A frustrating end for Carolina in the ACC tournament. I will go to my death not know what a foul is. Part of me also thinks that old Roy was holding out players with fouls as a lesson for the tournament. Listening to coaches and analysts, it seems to me the relevance of conference tournaments is hanging by a thread. When asked why they want to keep progressing through a conference tournament, I've seen several coaches laugh and say that it's "better than practice." No "we always play to win" or "we are competitors." Just a half-hearted joke. Further evidence, Roy didn't take is coat off and start screaming. (He's also said many times that winning the regular season is more significant than winning the conference tournament.)</p>
+<h1>5 Entertainment</h1>
+<h2>5.1 Reading</h2>
+<ul>
+<li><em>Book of the New Sun</em> by Gene Wolfe: <code>COMPLETE</code>. What a strange book. In many ways it's like reading the Bible - bizarre random things happening with no explanation or followup. But overall, well written and the narration device of the man with a perfect memory who also subtly deceives the reader is fun.</li>
+<li><em>Urth of the New Sun</em> by Gene Wolfe: I need answers. So I begin the fifth book. The first chapter is quite funny with Severian on a spaceship (given how the series began this is quite an unusual turn) and nonchalantly jumping into the blackness of space.</li>
+</ul>
+<h2>5.2 Watching</h2>
+<ul>
+<li><em>Arrival</em> was pretty good, but I probably had too high of expectations. I'm not entirely sure where they got the Sanskrit word for "war" from. I didn't find any "war" related words related to cows in <a href="http://dsal.uchicago.edu/dictionaries/apte/">Apte</a>. Personally, I would have gone with युद्धा.</li>
+</ul>
+<h2>5.3 Listening</h2>
+<ul>
+<li><em>Innovators</em> by Walter Isaacson: I never knew Lord Byron's life was so scandalous...  </li>
+</ul>
+<h2>5.4 Playing</h2>
+<p>I love Rocksmith. This week I'm playing some E♭ standard tuning songs:</p>
+<ul>
+<li>"Danger Zone" by Kenny Loggins</li>
+<li>"Pride and Joy" by Stevie Ray Vaughn</li>
+<li>"My Name is Jonas" by Weezer</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="./tag/quantum-computing.html">quantum computing</a>
+      <a href="./tag/data-science.html">data science</a>
+      <a href="./tag/basketball.html">basketball</a>
+      <a href="./tag/bash.html">bash</a>
+      <a href="./tag/sanskrit.html">sanskrit</a>
+    </p>
+  </div>
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kyle thomas </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cmd+build ",
+  "url" : ".",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>
