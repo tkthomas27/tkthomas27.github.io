@@ -1,6 +1,6 @@
 Title: Chain of Thought: Norm
 Date: 2017-02-08
-Tags: linear-algebra, regression
+Tags: linear-algebra, regression, math
 Category: tech
 Slug: cot-norm
 Summary: Chain of Thought: starting with regularization techniques of ridge regression and lasso we move to what is a norm while covering optimization, Moore-Penrose Pseudoinverse matrix, and Lagrangian multiplier.

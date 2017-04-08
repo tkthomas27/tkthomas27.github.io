@@ -1,7 +1,7 @@
 Title: Note, Melody Music: Buddhaghosa's Commentary on Evam Me Sutam
 Date: 2017-02-01
 Tags: buddhism
-Category: not-tech
+Category: misc
 Slug: note-melody-music
 Summary: Thus have I heard...
 

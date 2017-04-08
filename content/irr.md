@@ -1,7 +1,7 @@
 Title: A Note on Internal Rate of Return
 Date: 2017-01-24
-Tags: finance, business, accounting
-Category: tech
+Tags: finance, accounting, money
+Category: business
 Slug: irr-note
 Summary: Despite its many controversies, the IRR is a fundamental tool in financial analysis. In this note, we explore the basic formulation of IRR, what this formula looks like with multiple streams of cash, and how to solve for IRR.
 

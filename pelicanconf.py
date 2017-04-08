@@ -9,7 +9,7 @@ SITEURL = 'tkthomas27.github.io'
 
 PATH = 'content'
 CACHE_CONTENT = True
-
+LOAD_CONTENT_CACHE = True
 
 TIMEZONE = 'America/New_York'
 
@@ -46,6 +46,8 @@ DEFAULT_PAGINATION = 25
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
+IPYNB_IGNORE_CSS = True
+IPYNB_USE_META_SUMMARY = True
 MARKUP = ('md','ipynb','rmd')
 #MD_EXTENSIONS = (['toc'])
 
@@ -61,3 +63,5 @@ RMD_READER_KNITR_OPTS_CHUNK = {'fig.path': 'figure/'}
 
 # theme
 THEME = "/users/kthomas1/pelican-themes/Flex"
+
+
