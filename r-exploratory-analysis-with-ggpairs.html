@@ -88,60 +88,154 @@
   <div>
     <p>Quick visual analysis of data is an essential first step to familiarizing yourself with a dataset. In this note, we will explore rapid exploratory data analysis using some built-in R functions and the more powerful <code>ggpairs</code> tool.</p>
 <p>We will be using the banknote authentication data from <a href="http://archive.ics.uci.edu/ml/datasets.html">UCI machine learning repository</a>. This dataset contains five variables: a binary class variable indicating if a banknote is fake or note and four variables of visual data from a scan of each banknote (variance, skew, kurtosis, and entropy). The nature of the data itself is not important for our purposes; we are merely interested in the distribution of the four continuous variables over the binary class variable. In a practical setting, the goal of this quick analysis would be to give us a hint as to which variables are most important to explaining the classification of each bank note.</p>
+<div class="highlight"><pre><span></span>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;/Users/kthomas1/github/
+## r_code/data/data_banknote_authentication.txt&#39;: No such file or directory
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## Error in file(file, &quot;rt&quot;): cannot open the connection
+</pre></div>
+
+
 <p>In this first chunk, read in data, give each column a name, and present basic boxplots</p>
 <div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>GGally<span class="p">)</span>
+</pre></div>
 
-<span class="c1"># name attributes</span>
+
+<div class="highlight"><pre><span></span>## Error in library(GGally): there is no package called &#39;GGally&#39;
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># name attributes</span>
 <span class="kp">colnames</span><span class="p">(</span>note<span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;var&quot;</span><span class="p">,</span><span class="s">&quot;skew&quot;</span><span class="p">,</span><span class="s">&quot;kurt&quot;</span><span class="p">,</span><span class="s">&quot;entropy&quot;</span><span class="p">,</span><span class="s">&quot;class&quot;</span><span class="p">)</span>
+</pre></div>
 
-<span class="c1"># basic boxplot of variance</span>
+
+<div class="highlight"><pre><span></span><span class="c1">## Error in colnames(note) &lt;- c(&quot;var&quot;, &quot;skew&quot;, &quot;kurt&quot;, &quot;entropy&quot;, &quot;class&quot;): object &#39;note&#39; not found</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># basic boxplot of variance</span>
 boxplot<span class="p">(</span>note<span class="o">$</span>var<span class="p">,</span> data<span class="o">=</span>note<span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Variance&quot;</span><span class="p">,</span> bg<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_prep-1.png" title="plot of chunk note_prep" alt="plot of chunk note_prep" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in boxplot(note$var, data = note, main = &quot;Variance&quot;, bg = &quot;blue&quot;): object &#39;note&#39; not found
+</pre></div>
+
+
 <div class="highlight"><pre><span></span><span class="c1"># boxplot of variance distributed over each class</span>
 boxplot<span class="p">(</span>var<span class="o">~</span><span class="kp">class</span><span class="p">,</span> data<span class="o">=</span>note<span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Variance over Class&quot;</span><span class="p">)</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_prep-2.png" title="plot of chunk note_prep" alt="plot of chunk note_prep" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in eval(expr, envir, enclos): object &#39;note&#39; not found
+</pre></div>
+
+
 <p>While this graph certainly gets the job done, it is not aesthetically pleasing. For better looking graphs, let use <code>ggplot2</code>. We would also like to see each variable distributed over class. So to present the graphs side by side, we will use the <code>grid.arrage</code> function from <code>gridExtra</code> package.</p>
 <div class="highlight"><pre><span></span><span class="c1"># load libraries</span>
 <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>gridExtra<span class="p">)</span>
+</pre></div>
 
-<span class="c1"># boxplots</span>
+
+<div class="highlight"><pre><span></span>## 
+## Attaching package: &#39;gridExtra&#39;
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     combine
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># boxplots</span>
 box_var<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>var<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span>
+</pre></div>
 
-box_skew<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>skew<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span>
 
-box_kurt<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>kurt<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span>## Error in ggplot(note, aes(factor(class), var)): object &#39;note&#39; not found
+</pre></div>
 
-box_entropy<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>entropy<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span>
 
-<span class="c1"># arrange in a 2x2 grid</span>
+<div class="highlight"><pre><span></span>box_skew<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>skew<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## Error in ggplot(note, aes(factor(class), skew)): object &#39;note&#39; not found
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>box_kurt<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>kurt<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## Error in ggplot(note, aes(factor(class), kurt)): object &#39;note&#39; not found
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>box_entropy<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>entropy<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## Error in ggplot(note, aes(factor(class), entropy)): object &#39;note&#39; not found
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># arrange in a 2x2 grid</span>
 grid.arrange<span class="p">(</span>box_var<span class="p">,</span> box_skew<span class="p">,</span> box_kurt<span class="p">,</span> box_entropy<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_ggplot-1.png" title="plot of chunk note_ggplot" alt="plot of chunk note_ggplot" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in arrangeGrob(...): object &#39;box_var&#39; not found
+</pre></div>
+
+
 <p>This looks much better and we can quickly see that the variable <code>var</code> provides the most variation over the two classes. For even better looking plots we can change the labeling:</p>
 <div class="highlight"><pre><span></span><span class="c1"># boxplots</span>
 box_var<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>var<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span><span class="o">+</span> labs<span class="p">(</span>x<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>y<span class="o">=</span><span class="s">&quot;Variance&quot;</span><span class="p">)</span> <span class="o">+</span> theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span><span class="o">+</span>theme<span class="p">(</span>plot.background <span class="o">=</span> element_rect<span class="p">(</span>fill <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">))</span>
+</pre></div>
 
-box_skew<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>skew<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span><span class="o">+</span> labs<span class="p">(</span>x<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>y<span class="o">=</span><span class="s">&quot;Skewness&quot;</span><span class="p">)</span> <span class="o">+</span> theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span><span class="o">+</span>theme<span class="p">(</span>plot.background <span class="o">=</span> element_rect<span class="p">(</span>fill <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">))</span>
 
-box_kurt<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>kurt<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span><span class="o">+</span> labs<span class="p">(</span>x<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>y<span class="o">=</span><span class="s">&quot;Kurtosis&quot;</span><span class="p">)</span> <span class="o">+</span> theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span><span class="o">+</span>theme<span class="p">(</span>plot.background <span class="o">=</span> element_rect<span class="p">(</span>fill <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span>## Error in ggplot(note, aes(factor(class), var)): object &#39;note&#39; not found
+</pre></div>
 
-box_entropy<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>entropy<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span><span class="o">+</span> labs<span class="p">(</span>x<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>y<span class="o">=</span><span class="s">&quot;Entropy&quot;</span><span class="p">)</span> <span class="o">+</span> theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span><span class="o">+</span>theme<span class="p">(</span>plot.background <span class="o">=</span> element_rect<span class="p">(</span>fill <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">))</span>
 
-<span class="c1"># arrange in a 2x2 grid</span>
+<div class="highlight"><pre><span></span>box_skew<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>skew<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span><span class="o">+</span> labs<span class="p">(</span>x<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>y<span class="o">=</span><span class="s">&quot;Skewness&quot;</span><span class="p">)</span> <span class="o">+</span> theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span><span class="o">+</span>theme<span class="p">(</span>plot.background <span class="o">=</span> element_rect<span class="p">(</span>fill <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## Error in ggplot(note, aes(factor(class), skew)): object &#39;note&#39; not found
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>box_kurt<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>kurt<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span><span class="o">+</span> labs<span class="p">(</span>x<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>y<span class="o">=</span><span class="s">&quot;Kurtosis&quot;</span><span class="p">)</span> <span class="o">+</span> theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span><span class="o">+</span>theme<span class="p">(</span>plot.background <span class="o">=</span> element_rect<span class="p">(</span>fill <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## Error in ggplot(note, aes(factor(class), kurt)): object &#39;note&#39; not found
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>box_entropy<span class="o">&lt;-</span>ggplot<span class="p">(</span>note<span class="p">,</span> aes<span class="p">(</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">),</span>entropy<span class="p">))</span><span class="o">+</span>geom_boxplot<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=</span><span class="kp">factor</span><span class="p">(</span><span class="kp">class</span><span class="p">)))</span><span class="o">+</span> labs<span class="p">(</span>x<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>y<span class="o">=</span><span class="s">&quot;Entropy&quot;</span><span class="p">)</span> <span class="o">+</span> theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span><span class="o">+</span>theme<span class="p">(</span>plot.background <span class="o">=</span> element_rect<span class="p">(</span>fill <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## Error in ggplot(note, aes(factor(class), entropy)): object &#39;note&#39; not found
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># arrange in a 2x2 grid</span>
 grid.arrange<span class="p">(</span>box_var<span class="p">,</span> box_skew<span class="p">,</span> box_kurt<span class="p">,</span> box_entropy<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_ggplot2-1.png" title="plot of chunk note_ggplot2" alt="plot of chunk note_ggplot2" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in arrangeGrob(...): object &#39;box_var&#39; not found
+</pre></div>
+
+
 <p>This looks good, however, but not super great. The code is repetitive and the layout is not really that pleasing. We could try to add a shared legend, play with the labeling some more, and try to bum some code. Or we could just use <code>ggpair</code>:</p>
 <div class="highlight"><pre><span></span><span class="c1"># set color theme so we don&#39;t have to repeat the theme background color code so much</span>
 theme_set<span class="p">(</span>theme_grey<span class="p">()</span><span class="o">+</span>theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span><span class="o">+</span>theme<span class="p">(</span>plot.background <span class="o">=</span> element_rect<span class="p">(</span>fill <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&#39;#ECF0F1&#39;</span><span class="p">)))</span>
@@ -151,39 +245,61 @@ ggpairs<span class="p">(</span>data<span class="o">=</span>note<span class="p">,
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_ggpairs1-1.png" title="plot of chunk note_ggpairs1" alt="plot of chunk note_ggpairs1" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in eval(expr, envir, enclos): could not find function &quot;ggpairs&quot;
+</pre></div>
+
+
 <p>This above chart is nice diagnostic of each variable by itself and of their relationship to each other. You'll notice, however, that it is treating class as a continuous variable when really it should be a factor (we manually specified this in the ggplot code above). Lets convert to a factor and then try again for each variable.</p>
 <div class="highlight"><pre><span></span><span class="c1"># convert class to a factor</span>
 note<span class="o">$</span>class <span class="o">&lt;-</span> <span class="kp">as.factor</span><span class="p">(</span>note<span class="o">$</span><span class="kp">class</span><span class="p">)</span>
+</pre></div>
 
-<span class="c1"># ggpairs</span>
+
+<div class="highlight"><pre><span></span>## Error in is.factor(x): object &#39;note&#39; not found
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># ggpairs</span>
 ggpairs<span class="p">(</span>data<span class="o">=</span>note<span class="p">,</span> columns<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">))</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_ggpairs2-1.png" title="plot of chunk note_ggpairs2" alt="plot of chunk note_ggpairs2" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in eval(expr, envir, enclos): could not find function &quot;ggpairs&quot;
+</pre></div>
+
+
 <div class="highlight"><pre><span></span>ggpairs<span class="p">(</span>data<span class="o">=</span>note<span class="p">,</span> columns<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">))</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_ggpairs2-2.png" title="plot of chunk note_ggpairs2" alt="plot of chunk note_ggpairs2" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in eval(expr, envir, enclos): could not find function &quot;ggpairs&quot;
+</pre></div>
+
+
 <div class="highlight"><pre><span></span>ggpairs<span class="p">(</span>data<span class="o">=</span>note<span class="p">,</span> columns<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">))</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_ggpairs2-3.png" title="plot of chunk note_ggpairs2" alt="plot of chunk note_ggpairs2" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in eval(expr, envir, enclos): could not find function &quot;ggpairs&quot;
+</pre></div>
+
+
 <div class="highlight"><pre><span></span>ggpairs<span class="p">(</span>data<span class="o">=</span>note<span class="p">,</span> columns<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">))</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_ggpairs2-4.png" title="plot of chunk note_ggpairs2" alt="plot of chunk note_ggpairs2" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in eval(expr, envir, enclos): could not find function &quot;ggpairs&quot;
+</pre></div>
+
+
 <p>Now this looks great. Not only do we have the boxplots from above, but we also get to see the distributions of each variable by itself. And finally, if want to see <code>ggpairs</code> for all combinations of data, we just simply call it over the entire dataframe.</p>
 <div class="highlight"><pre><span></span><span class="c1"># combine all into one ggpairs call</span>
 ggpairs<span class="p">(</span>data<span class="o">=</span>note<span class="p">,</span> columns<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">))</span>
 </pre></div>
 
 
-<p><img src="./figure/ggpairs-note_ggpairs3-1.png" title="plot of chunk note_ggpairs3" alt="plot of chunk note_ggpairs3" style="display: block; margin: auto;" /></p>
+<div class="highlight"><pre><span></span>## Error in eval(expr, envir, enclos): could not find function &quot;ggpairs&quot;
+</pre></div>
   </div>
   <div class="tag-cloud">
     <p>
