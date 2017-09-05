@@ -1,0 +1,6 @@
+Title: Getting started with NFLDB, PostgreSQL, and Python
+Slug: nfldb-postgresql
+Date: 2017-09-04
+Category: tech
+Tags: python, sql, postgresql, nfl
+Summary: NFLDB and PostgreSQL are powerful yet easy to use tools for querying NFL data. This workflow can be used to answer questions you might have regarding the NFL or building a predictive model.

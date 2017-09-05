@@ -1,0 +1,6 @@
+Title: Predicting NFL Wins with SQL and Logistic Regression
+Slug: nfl-prediction-1
+Date: 2017-09-04
+Category: tech
+Tags: python, machine-learning, regression, sql, postgresql, nfl
+Summary: The NFL season is upon us. Most pundits can barely pick over 50% of the games right. Can we use machine learning techniques to beat them? Using a PostgreSQL database, we can build statistical tables that fed into a logistic regression model to predict home team wins. We also strengthen our model using ridge regression, scaling, and cross validation.
