@@ -1,0 +1,1474 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+<meta name="author" content="kyle thomas" />
+<meta name="description" content="NFLDB and PostgreSQL are powerful yet easy to use tools for querying NFL data. This workflow can be used to answer questions you might have regarding the NFL or building a predictive model." />
+<meta name="keywords" content="python, sql, postgresql, nfl">
+<meta property="og:site_name" content="cmd+build"/>
+<meta property="og:title" content="Getting started with NFLDB, PostgreSQL, and Python"/>
+<meta property="og:description" content="NFLDB and PostgreSQL are powerful yet easy to use tools for querying NFL data. This workflow can be used to answer questions you might have regarding the NFL or building a predictive model."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="./nfldb-postgresql.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-09-04 00:00:00-04:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="./author/kyle-thomas.html">
+<meta property="article:section" content="tech"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="sql"/>
+<meta property="article:tag" content="postgresql"/>
+<meta property="article:tag" content="nfl"/>
+<meta property="og:image" content="">
+
+  <title>cmd+build &ndash; Getting started with NFLDB, PostgreSQL, and Python</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href=".">
+        <img src="./theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="."></a></h1>
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/tkthomas27" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="www.linkedin.com/in/timothykylethomas" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/tkylethomas27" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    
+
+      <nav>
+        <ul class="list">
+
+          <li><a href="/about.html" target="_blank">About</a></li>
+          <li><a href="/archives.html" target="_blank">Archives</a></li>
+          <li><a href="/categories.html" target="_blank">Categories</a></li>
+          <li><a href="/tags.html" target="_blank">Tags</a></li>
+        </ul>
+      </nav>
+
+  </div>
+
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+    <h1 id="nfldb-postgresql">Getting started with NFLDB, PostgreSQL, and Python</h1>
+    <p>
+          Posted on Mon 04 September 2017 in <a href="./category/tech.html">tech</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Initialization">Initialization<a class="anchor-link" href="#Initialization">¶</a></h1><p>Ever wonder who had the heaviest offensive line in the NFL? Or which team had the most penalties over the past few seasons? What if I told you that you didn't need to be an ESPN statistician to figure this out? What if---after a minimal investment in setup---you could easily query NFL data and start building your own predictive models?</p>
+<p>Well I'm here to tell you that it is actually pretty easy to do---even for non-coders. After a few days of tinkering I was able to establish an easy to use, mostly accurate pipeline for analyzing NFL data. This post is directed towards people of all skill levels, but particularly novices.</p>
+<p>What you'll need:</p>
+<ul>
+<li>Willingness to learn new things and to grind out the many small issues that inevitably arise</li>
+<li>A computer running MacOS (or any other Unix based system)</li>
+<li>Python</li>
+<li>nfldb</li>
+<li>PostgreSQL </li>
+</ul>
+<h2 id="Python">Python<a class="anchor-link" href="#Python">¶</a></h2><p>Python is a powerful yet easy to use programming language capable of processing and analyzing data. It is widely used throughout the industry and is pre-installed on MacOS (although we will be using Python 3). There are about a million different tutorials you can use to become more familiar with how Python is used; I recommend <a href="https://learnpythonthehardway.org">Python the Hard Way</a>. Interactive tutorials are available at <a href="https://www.datacamp.com/learn-python-with-anaconda?utm_source=Anaconda_download&amp;utm_campaign=datacamp_training&amp;utm_medium=banner">Datacamp</a>.</p>
+<p>Although Python is pre-installed on MacOS, I recommend installing it via <a href="https://www.anaconda.com">Anaconda</a>. Anaconda is a convenient bundle of Python and many of the additional libraries necessary to do data analysis. I will be using Python 3, so be sure to download that version (note that the download may take a while).</p>
+<p>Python code can be edited and run either by the command line or an interactive development environment (IDE). I highly recommend using an IDE as they are significanlty more useful in working with code. Anaconda comes with <strong>Jupyter</strong> (what I am using to write and publish this article). Jupyter uses your web browser to allow you to edit and execute your code in chunks. However, I use <a href="https://pythonhosted.org/spyder/">Spyder</a> to develop my code because it allows me to see variables, dataframes, arrays, etc. that I have generated. Once installed type either <code>jupyter notebook</code> or <code>spyder</code> in terminal and a new session will begin.</p>
+<h2 id="SQL">SQL<a class="anchor-link" href="#SQL">¶</a></h2><p>SQL (structured query language) is an ancient method of querying databases. It's super easy to figure out once you see it in practice. The bulk of this post will be a series of queries designed to illustrate the basic functionality of SQL.</p>
+<h2 id="PostgreSQL">PostgreSQL<a class="anchor-link" href="#PostgreSQL">¶</a></h2><p>PostgreSQL is a database management system that allows you to store and query your data using SQL. There are several ways to install PostgreSQL. You can either use the <a href="https://brew.sh">Homebrew</a> method or <a href="http://postgresapp.com">Postgres App</a>. The Postgres App is the easiest option for MacOS. I am currently using <a href="https://eggerapps.at/postico/">Postico</a> to view my data and test out different queries.</p>
+<h2 id="NFLDB">NFLDB<a class="anchor-link" href="#NFLDB">¶</a></h2><p>Once you have PostgreSQL setup, you are ready to get the NFL data. <a href="https://github.com/BurntSushi/nfldb">nfldb</a> is a module designed to scrape data from the NFL website and put it into a SQL table. The <a href="https://github.com/BurntSushi/nfldb/wiki/Installation">instructions</a> for installing nfldb are overly complicated, so here is a much more simple guide. Basically, all you need to do is create a blank Postgres datbase, run the SQL file, and then make a minor configuration change.</p>
+<p>The following is a list of instruction you will need to type into your command line. On Mac, simply open terminal and make sure you are in your <code>~</code> (aka your root directory). If you are unsure what the name of your <code>~</code> directory is, open finder and look at the name next to the house icon. Your terminal should open to <code>~</code> by default.</p>
+<ol>
+<li>Open terminal and type <code>psql</code> to launch PostgreSQL</li>
+<li>Type <code>CREATE DATABASE nfldb;</code>, then <code>\connect nfldb</code>, and then <code>CREATEUSER nfldb;</code></li>
+<li>Download the <a href="http://burntsushi.net/stuff/nfldb/nfldb.sql.zip">SQL file</a> and unzip it to your <code>~</code> directory</li>
+<li>Make sure terminal is in your <code>~</code> directory and type <code>psql -U nfldb nfldb < nfldb.sql</code>. This should create an empty NFL database in PostgreSQL</li>
+<li>Now type <code>pip install nfldb</code> to install the Python code necessary to fill in the NFL database</li>
+<li>Now type <code>locate config.ini.sample</code>. It should return a path like <code>/usr/local/share/nfldb/config.ini.sample</code>. Highlight this path and copy it</li>
+<li>Type <code>mkdir -p $HOME/.config/nfldb</code> and press enter</li>
+<li>Type <code>cp <paste the path from step 6 here> $HOME/.config/nfldb/config.ini</code></li>
+</ol>
+<p>And that's it! Everything should work now. The <a href="https://github.com/BurntSushi/nfldb/wiki/Installation">installation guide</a> has a few exercises to make sure everything is up and running.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Querying-the-Data">Querying the Data<a class="anchor-link" href="#Querying-the-Data">¶</a></h1><p>First thing we need to do is import the libraries we will be using. <strong>Pandas</strong> is an incredibly useful library for manipulating data. Here we will use the <code>pandas.read_sql</code> method to query the data and display the results in a nice table format. We will also be using <strong>psycopg2</strong> to create a connection to the PostgreSQL database.</p>
+<p>If for some reason neither pandas nor psycog2 is not installed, use <code>pip <package name></code> or <code>conda install <package name></code> to perform the installation.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># import psycopg2</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="c1"># provide your credentials; yours should look the same except with you user name</span>
+<span class="n">conn</span><span class="o">=</span><span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"dbname='nfldb' user='kthomas1' host='localhost' password='' port=5432"</span><span class="p">)</span>
+
+<span class="c1"># create the connection</span>
+<span class="n">cur</span><span class="o">=</span><span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="SELECT,-FROM,-WHERE,-LIMIT">SELECT, FROM, WHERE, LIMIT<a class="anchor-link" href="#SELECT,-FROM,-WHERE,-LIMIT">¶</a></h2><p>Here we will perform the most basic query. Let's look at the first 10 players for the Carolina Panthers listed in the <code>player</code> table. First we <code>SELECT</code> the variables we want <code>FROM</code> the <code>player</code> table. We use the <code>WHERE</code> command to filter to just the Panthers. Finally, we only want the first 10 observations, so  type <code>LIMIT 10</code> at the end.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">"""SELECT full_name, position, uniform_number, height, weight, college </span>
+<span class="s2">FROM player </span>
+<span class="s2">WHERE team='CAR' </span>
+<span class="s2">LIMIT 10"""</span><span class="p">,</span><span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>full_name</th>
+<th>position</th>
+<th>uniform_number</th>
+<th>height</th>
+<th>weight</th>
+<th>college</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>Robert McClain</td>
+<td>DB</td>
+<td>27</td>
+<td>69</td>
+<td>195</td>
+<td>Connecticut</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Daryl Williams</td>
+<td>OT</td>
+<td>60</td>
+<td>78</td>
+<td>335</td>
+<td>Oklahoma</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Jonathan Stewart</td>
+<td>RB</td>
+<td>28</td>
+<td>70</td>
+<td>240</td>
+<td>Oregon</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Brenton Bersin</td>
+<td>WR</td>
+<td>11</td>
+<td>75</td>
+<td>210</td>
+<td>Wofford</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Ted Ginn</td>
+<td>WR</td>
+<td>19</td>
+<td>71</td>
+<td>180</td>
+<td>Ohio State</td>
+</tr>
+<tr>
+<th>5</th>
+<td>James Bradberry</td>
+<td>CB</td>
+<td>24</td>
+<td>73</td>
+<td>210</td>
+<td>Samford</td>
+</tr>
+<tr>
+<th>6</th>
+<td>Daryl Worley</td>
+<td>CB</td>
+<td>26</td>
+<td>73</td>
+<td>205</td>
+<td>West Virginia</td>
+</tr>
+<tr>
+<th>7</th>
+<td>Ryan Kalil</td>
+<td>C</td>
+<td>67</td>
+<td>74</td>
+<td>300</td>
+<td>USC</td>
+</tr>
+<tr>
+<th>8</th>
+<td>Dean Marlowe</td>
+<td>FS</td>
+<td>29</td>
+<td>73</td>
+<td>210</td>
+<td>James Madison</td>
+</tr>
+<tr>
+<th>9</th>
+<td>Tyler Larsen</td>
+<td>OG</td>
+<td>69</td>
+<td>76</td>
+<td>335</td>
+<td>Utah</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And here we see the first limitation of the NFLDB dataset---it is outdated. Several of these players are not on the Carolina roster as of 2017. I have tried updating the database but have been unsuccessful. I will update this post if I can determine a solution.</p>
+<p>One of the nice things about Jupyer + pandas are that these dataframes have sortable columns.</p>
+<h2 id="COUNT,-AVG,-SUM,-MAX,-MIN">COUNT, AVG, SUM, MAX, MIN<a class="anchor-link" href="#COUNT,-AVG,-SUM,-MAX,-MIN">¶</a></h2><p>SQL allows us to count the number of entries that meet a certain criteria. We can also take the sum or average or find the max/min of a column.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># total number of posessions by Carolina from 2009-2016</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""SELECT COUNT(pos_team)</span>
+<span class="s2">FROM play</span>
+<span class="s2">WHERE pos_team='CAR'"""</span><span class="p">)</span>
+
+<span class="n">pos</span><span class="p">,</span><span class="o">=</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Total Number of Possessions by Carolin from 2009-2016: </span><span class="si">{:,}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total Number of Possessions by Carolin from 2009-2016: 13,532
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># average penalty yards for buffalo</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""SELECT AVG(penalty_yds)</span>
+<span class="s2">FROM play</span>
+<span class="s2">WHERE pos_team='BUF' AND penalty_yds!=0"""</span><span class="p">)</span>
+
+<span class="n">penalty</span><span class="p">,</span><span class="o">=</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Average Penalty Yards for Buffalo from 2009-2016: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">penalty</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Average Penalty Yards for Buffalo from 2009-2016: 8.64
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># total weight of offensive line for oakland</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""SELECT sum(weight)</span>
+<span class="s2">FROM player</span>
+<span class="s2">WHERE team='OAK' AND (position='OL' OR position='OG' OR position='OT' OR position='C')"""</span><span class="p">)</span>
+
+<span class="n">weight</span><span class="p">,</span><span class="o">=</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Total Weight of the Oakland offensive line: </span><span class="si">{:,}</span><span class="s2"> lbs"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total Weight of the Oakland offensive line: 1,611 lbs
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># the shortest player in the database</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""SELECT min(height)</span>
+<span class="s2">FROM player</span>
+<span class="s2">WHERE status='Active'"""</span><span class="p">)</span>
+
+<span class="n">height</span><span class="p">,</span><span class="o">=</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="n">height_feet</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">12</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Height of the shortest player in the database: </span><span class="si">{:.1f}</span><span class="s2"> ft"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">height_feet</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Height of the shortest player in the database: 5.5 ft
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ORDER-BY">ORDER BY<a class="anchor-link" href="#ORDER-BY">¶</a></h2><p>If we want to sort our queries we can use ORDER BY. Here we get a list of the 10 heaviest players in the database by using a descending order by on weight.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">"""select full_name, position, team, weight</span>
+<span class="s2">from player</span>
+<span class="s2">where status='Active'</span>
+<span class="s2">order by weight DESC</span>
+<span class="s2">limit 10"""</span><span class="p">,</span><span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>full_name</th>
+<th>position</th>
+<th>team</th>
+<th>weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>John Jenkins</td>
+<td>DT</td>
+<td>NO</td>
+<td>359</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Denzelle Good</td>
+<td>OT</td>
+<td>IND</td>
+<td>355</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Trent Brown</td>
+<td>OT</td>
+<td>SF</td>
+<td>355</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Dan McCullers-Sanders</td>
+<td>NT</td>
+<td>PIT</td>
+<td>352</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Alan Branch</td>
+<td>DT</td>
+<td>NE</td>
+<td>350</td>
+</tr>
+<tr>
+<th>5</th>
+<td>Damon Harrison</td>
+<td>DT</td>
+<td>NYG</td>
+<td>350</td>
+</tr>
+<tr>
+<th>6</th>
+<td>Dontari Poe</td>
+<td>NT</td>
+<td>KC</td>
+<td>346</td>
+</tr>
+<tr>
+<th>7</th>
+<td>Cordy Glenn</td>
+<td>T</td>
+<td>BUF</td>
+<td>345</td>
+</tr>
+<tr>
+<th>8</th>
+<td>Haloti Ngata</td>
+<td>DT</td>
+<td>DET</td>
+<td>345</td>
+</tr>
+<tr>
+<th>9</th>
+<td>Paul Soliai</td>
+<td>DT</td>
+<td>CAR</td>
+<td>345</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="DISTINCT,-GROUP-BY,-CHAR_LENGTH">DISTINCT, GROUP BY, CHAR_LENGTH<a class="anchor-link" href="#DISTINCT,-GROUP-BY,-CHAR_LENGTH">¶</a></h2><p>When exploring a database it is often useful to see the unique values in a column. SQL allows us to do that by using the DISTINCT command.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># all the positions from the player db</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">"""select DISTINCT position</span>
+<span class="s2">from player"""</span><span class="p">,</span><span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>RB</td>
+</tr>
+<tr>
+<th>1</th>
+<td>WR</td>
+</tr>
+<tr>
+<th>2</th>
+<td>G</td>
+</tr>
+<tr>
+<th>3</th>
+<td>SS</td>
+</tr>
+<tr>
+<th>4</th>
+<td>TE</td>
+</tr>
+<tr>
+<th>5</th>
+<td>DE</td>
+</tr>
+<tr>
+<th>6</th>
+<td>MLB</td>
+</tr>
+<tr>
+<th>7</th>
+<td>OG</td>
+</tr>
+<tr>
+<th>8</th>
+<td>NT</td>
+</tr>
+<tr>
+<th>9</th>
+<td>DB</td>
+</tr>
+<tr>
+<th>10</th>
+<td>LB</td>
+</tr>
+<tr>
+<th>11</th>
+<td>SAF</td>
+</tr>
+<tr>
+<th>12</th>
+<td>OT</td>
+</tr>
+<tr>
+<th>13</th>
+<td>UNK</td>
+</tr>
+<tr>
+<th>14</th>
+<td>K</td>
+</tr>
+<tr>
+<th>15</th>
+<td>FB</td>
+</tr>
+<tr>
+<th>16</th>
+<td>T</td>
+</tr>
+<tr>
+<th>17</th>
+<td>OL</td>
+</tr>
+<tr>
+<th>18</th>
+<td>ILB</td>
+</tr>
+<tr>
+<th>19</th>
+<td>QB</td>
+</tr>
+<tr>
+<th>20</th>
+<td>DT</td>
+</tr>
+<tr>
+<th>21</th>
+<td>LS</td>
+</tr>
+<tr>
+<th>22</th>
+<td>P</td>
+</tr>
+<tr>
+<th>23</th>
+<td>OLB</td>
+</tr>
+<tr>
+<th>24</th>
+<td>DL</td>
+</tr>
+<tr>
+<th>25</th>
+<td>C</td>
+</tr>
+<tr>
+<th>26</th>
+<td>FS</td>
+</tr>
+<tr>
+<th>27</th>
+<td>CB</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To figure out who had the most penalty yards from 2009-2016, we'll need to combine SUM, GROUP BY, and then ORDER BY. The query below essentially sums every entry in the <code>penalty_yds</code> column for each team. We also use the AS operator to rename the <code>sum(penalty_yds)</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># who had the most penalty yards for 2009-2016?</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">"""select pos_team, sum(penalty_yds) as total_penalty_yards</span>
+<span class="s2">from play</span>
+<span class="s2">group by pos_team</span>
+<span class="s2">order by sum(penalty_yds) DESC"""</span><span class="p">,</span><span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[10]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>pos_team</th>
+<th>total_penalty_yards</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>GB</td>
+<td>10443</td>
+</tr>
+<tr>
+<th>1</th>
+<td>BAL</td>
+<td>10375</td>
+</tr>
+<tr>
+<th>2</th>
+<td>SEA</td>
+<td>10017</td>
+</tr>
+<tr>
+<th>3</th>
+<td>OAK</td>
+<td>9909</td>
+</tr>
+<tr>
+<th>4</th>
+<td>TB</td>
+<td>9849</td>
+</tr>
+<tr>
+<th>5</th>
+<td>PIT</td>
+<td>9691</td>
+</tr>
+<tr>
+<th>6</th>
+<td>DEN</td>
+<td>9577</td>
+</tr>
+<tr>
+<th>7</th>
+<td>IND</td>
+<td>9570</td>
+</tr>
+<tr>
+<th>8</th>
+<td>ARI</td>
+<td>9562</td>
+</tr>
+<tr>
+<th>9</th>
+<td>PHI</td>
+<td>9506</td>
+</tr>
+<tr>
+<th>10</th>
+<td>CIN</td>
+<td>9469</td>
+</tr>
+<tr>
+<th>11</th>
+<td>NE</td>
+<td>9414</td>
+</tr>
+<tr>
+<th>12</th>
+<td>NO</td>
+<td>9359</td>
+</tr>
+<tr>
+<th>13</th>
+<td>WAS</td>
+<td>9240</td>
+</tr>
+<tr>
+<th>14</th>
+<td>NYG</td>
+<td>9109</td>
+</tr>
+<tr>
+<th>15</th>
+<td>BUF</td>
+<td>9083</td>
+</tr>
+<tr>
+<th>16</th>
+<td>TEN</td>
+<td>8999</td>
+</tr>
+<tr>
+<th>17</th>
+<td>ATL</td>
+<td>8993</td>
+</tr>
+<tr>
+<th>18</th>
+<td>DAL</td>
+<td>8915</td>
+</tr>
+<tr>
+<th>19</th>
+<td>DET</td>
+<td>8913</td>
+</tr>
+<tr>
+<th>20</th>
+<td>SF</td>
+<td>8802</td>
+</tr>
+<tr>
+<th>21</th>
+<td>CHI</td>
+<td>8782</td>
+</tr>
+<tr>
+<th>22</th>
+<td>SD</td>
+<td>8758</td>
+</tr>
+<tr>
+<th>23</th>
+<td>MIN</td>
+<td>8712</td>
+</tr>
+<tr>
+<th>24</th>
+<td>CAR</td>
+<td>8668</td>
+</tr>
+<tr>
+<th>25</th>
+<td>JAC</td>
+<td>8656</td>
+</tr>
+<tr>
+<th>26</th>
+<td>NYJ</td>
+<td>8437</td>
+</tr>
+<tr>
+<th>27</th>
+<td>KC</td>
+<td>8373</td>
+</tr>
+<tr>
+<th>28</th>
+<td>MIA</td>
+<td>8236</td>
+</tr>
+<tr>
+<th>29</th>
+<td>CLE</td>
+<td>8156</td>
+</tr>
+<tr>
+<th>30</th>
+<td>STL</td>
+<td>7957</td>
+</tr>
+<tr>
+<th>31</th>
+<td>HOU</td>
+<td>7909</td>
+</tr>
+<tr>
+<th>32</th>
+<td>LA</td>
+<td>1147</td>
+</tr>
+<tr>
+<th>33</th>
+<td>JAX</td>
+<td>110</td>
+</tr>
+<tr>
+<th>34</th>
+<td>LAC</td>
+<td>73</td>
+</tr>
+<tr>
+<th>35</th>
+<td>UNK</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Every play in the database is accompanied by a description of what happened on that play. If we wanted to find out which play has the longest description we can use the CHAR_LENGTH function along with ORDER BY DESC.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># play that have the longest description</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""select description</span>
+<span class="s2">from play</span>
+<span class="s2">order by char_length(description) DESC</span>
+<span class="s2">limit 1"""</span><span class="p">)</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[11]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>[('(:50) (Shotgun) D.Brees pass short left to M.Colston to CLE 22 for 4 yards (E.Wright). FUMBLES (E.Wright), and recovers at CLE 23. M.Colston to CLE 23 for no gain (E.Wright). After the play, the Saints attempted to rush a field goal attempt, as Cleveland through the CHALLENGE flag, asserting that Colston FUMBLED and the ball was recovered by Cleveland.  This challenge was DENIED, as the play was not reviewable. After the third quarter ended, the Saints then challenged the ruling that Colston was down by contact. New Orleans challenged the runner was down by contact ruling, and the play was REVERSED. (Shotgun) D.Brees pass short left to M.Colston to CLE 21 for 5 yards (E.Wright). After the play, the Saints attempted to rush a field goal attempt, as Cleveland through the CHALLENGE flag, asserting that Colston FUMBLED and the ball was recovered by Cleveland.  This challenge was DENIED, as the play was not reviewable. After the third quarter ended, the Saints then challenged the ruling that Colston was down by contact.  The overturn on review negated the fumble.',)]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I've read through that play description a few times and I still don't know what happened ¯\<em>| ಠ ∧ ಠ |</em>/¯</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="JOINS">JOINS<a class="anchor-link" href="#JOINS">¶</a></h2><p>Joining data is one of the most important functions of SQL but it is also the one most likely to lead to confusion. There are many <a href="https://www.tutorialspoint.com/postgresql/postgresql_using_joins.htm">resources</a> on SQL joins, but here we will just give a basic example.</p>
+<p>Our queries so far have used the entire dataset. For example, the table on most penalty yards was from all years in the <code>play</code> dataset. If we wanted to filter to just one year we would need to bring in the year from the <code>game</code> dataset. This would require us to join the <code>game</code> dataset with the <code>play</code> dataset.</p>
+<p>When joining tables, each variable that is selected needs to be prefaced by the name of the table it is coming from followed by a ".". For example, selecting <code>pos_team</code> from the <code>play</code> dataset would be written as <code>play.pos_team</code>.</p>
+<p>This is a very simple join and as such we can match in the tables simply using a WHERE clause that matches the shared game ids (<code>gsis_id</code>) between the two tables. We then filter to the year 2015 and the regular season.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># most penalty yards in 2015; need to join play to game and filter to regular season</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">"""select play.pos_team, sum(play.penalty_yds)</span>
+<span class="s2">from play, game where play.gsis_id=game.gsis_id and game.season_year=2015 and game.season_type='Regular'</span>
+<span class="s2">group by play.pos_team</span>
+<span class="s2">order by sum(play.penalty_yds) DESC</span>
+<span class="s2">limit 10"""</span><span class="p">,</span><span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>pos_team</th>
+<th>sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>GB</td>
+<td>1296</td>
+</tr>
+<tr>
+<th>1</th>
+<td>TB</td>
+<td>1152</td>
+</tr>
+<tr>
+<th>2</th>
+<td>ARI</td>
+<td>1149</td>
+</tr>
+<tr>
+<th>3</th>
+<td>SD</td>
+<td>1104</td>
+</tr>
+<tr>
+<th>4</th>
+<td>NE</td>
+<td>1064</td>
+</tr>
+<tr>
+<th>5</th>
+<td>PHI</td>
+<td>1061</td>
+</tr>
+<tr>
+<th>6</th>
+<td>BUF</td>
+<td>1059</td>
+</tr>
+<tr>
+<th>7</th>
+<td>STL</td>
+<td>1029</td>
+</tr>
+<tr>
+<th>8</th>
+<td>PIT</td>
+<td>1023</td>
+</tr>
+<tr>
+<th>9</th>
+<td>NYG</td>
+<td>1020</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="WITH-SUBQUERIES">WITH SUBQUERIES<a class="anchor-link" href="#WITH-SUBQUERIES">¶</a></h2><p>This is a slightly more advanced topic. WITH statements are a powerful tool that allows you to create sub tables and then join them together. For example, if wanted additional aggregate statistics for each drive not including in the drives dataset, we would have to aggregate these numbers from the play table to the drive level then join it to the drive table. The WITH statement allows us to do this in one query.</p>
+<p>For clarity is an example. Let's say we want the following table:</p>
+<table>
+<thead><tr>
+<th>game_id</th>
+<th>drive_id</th>
+<th>yards_gained</th>
+<th>passing_first_downs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>40</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>70</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>20</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>We would have to join the drive table:</p>
+<table>
+<thead><tr>
+<th>game_id</th>
+<th>drive_id</th>
+<th>yards_gained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>40</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>70</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>With the play table (here is a truncated example --- imagine the passing_first_down column sums to 2 where drive_id==1):</p>
+<table>
+<thead><tr>
+<th>game_id</th>
+<th>drive_id</th>
+<th>play_id</th>
+<th>passing_first_down</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>We would take the sum of passing_first_down across game_id and drive_id and then link the drive table and the play table on game_id and drive_id.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">"""with plays as</span>
+<span class="s2">	(select gsis_id, drive_id, sum(passing_first_down) as pass_first, sum(penalty_first_down) as penalty_first, sum(rushing_first_down) as rushing_first, sum(first_down) as first, sum(third_down_conv) as third</span>
+<span class="s2">	from play</span>
+<span class="s2">	group by gsis_id, drive_id),</span>
+<span class="s2">drives as</span>
+<span class="s2">	(select gsis_id, drive_id, pos_team, result, start_field, pos_time, penalty_yards, yards_gained, play_count</span>
+<span class="s2">	from drive)</span>
+<span class="s2">select * from drives</span>
+<span class="s2">inner join plays on (drives.gsis_id=plays.gsis_id and drives.drive_id=plays.drive_id)</span>
+<span class="s2">limit 10"""</span><span class="p">,</span><span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[13]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>gsis_id</th>
+<th>drive_id</th>
+<th>pos_team</th>
+<th>result</th>
+<th>start_field</th>
+<th>pos_time</th>
+<th>penalty_yards</th>
+<th>yards_gained</th>
+<th>play_count</th>
+<th>gsis_id</th>
+<th>drive_id</th>
+<th>pass_first</th>
+<th>penalty_first</th>
+<th>rushing_first</th>
+<th>first</th>
+<th>third</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2009081350</td>
+<td>1</td>
+<td>PIT</td>
+<td>Punt</td>
+<td>(-30)</td>
+<td>(239)</td>
+<td>4</td>
+<td>15</td>
+<td>6</td>
+<td>2009081350</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2009081350</td>
+<td>3</td>
+<td>PIT</td>
+<td>Punt</td>
+<td>(-42)</td>
+<td>(344)</td>
+<td>-5</td>
+<td>33</td>
+<td>8</td>
+<td>2009081350</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2009081350</td>
+<td>5</td>
+<td>PIT</td>
+<td>Field Goal</td>
+<td>(-39)</td>
+<td>(193)</td>
+<td>-5</td>
+<td>62</td>
+<td>6</td>
+<td>2009081350</td>
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2009081350</td>
+<td>12</td>
+<td>PIT</td>
+<td>Punt</td>
+<td>(-22)</td>
+<td>(55)</td>
+<td>0</td>
+<td>7</td>
+<td>3</td>
+<td>2009081350</td>
+<td>12</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2009081350</td>
+<td>14</td>
+<td>PIT</td>
+<td>Punt</td>
+<td>(-40)</td>
+<td>(92)</td>
+<td>0</td>
+<td>8</td>
+<td>3</td>
+<td>2009081350</td>
+<td>14</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>5</th>
+<td>2009081350</td>
+<td>15</td>
+<td>ARI</td>
+<td>Interception</td>
+<td>(-4)</td>
+<td>(29)</td>
+<td>-10</td>
+<td>0</td>
+<td>1</td>
+<td>2009081350</td>
+<td>15</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>6</th>
+<td>2009081350</td>
+<td>20</td>
+<td>PIT</td>
+<td>Punt</td>
+<td>(-16)</td>
+<td>(77)</td>
+<td>-5</td>
+<td>3</td>
+<td>3</td>
+<td>2009081350</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>2009081350</td>
+<td>23</td>
+<td>ARI</td>
+<td>End of Game</td>
+<td>(-18)</td>
+<td>(101)</td>
+<td>5</td>
+<td>55</td>
+<td>10</td>
+<td>2009081350</td>
+<td>23</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<th>8</th>
+<td>2009081351</td>
+<td>1</td>
+<td>PHI</td>
+<td>Punt</td>
+<td>(-23)</td>
+<td>(100)</td>
+<td>-10</td>
+<td>16</td>
+<td>3</td>
+<td>2009081351</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>9</th>
+<td>2009081351</td>
+<td>3</td>
+<td>PHI</td>
+<td>Punt</td>
+<td>(-28)</td>
+<td>(54)</td>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+<td>2009081351</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="./tag/python.html">python</a>
+      <a href="./tag/sql.html">sql</a>
+      <a href="./tag/postgresql.html">postgresql</a>
+      <a href="./tag/nfl.html">nfl</a>
+    </p>
+  </div>
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kyle thomas </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cmd+build ",
+  "url" : ".",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>
