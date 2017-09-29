@@ -101,20 +101,22 @@
 <ul>
 <li>munge our NFL data</li>
 <li>deploy a logistic regression for prediction</li>
+<li>use shrinking, scaling, hyperparameter tuning, and cross validation to improve our model</li>
 </ul>
-<p>This might seem simple but munging data is always the time-intensive part of the project. Logistic regression will be used to predict the binary classifier <code>home_win</code>. This model will be overly simplistic and is really just a proof of concept that we can successfully access, manipulate, and usefully deploy the NFL data. Later posts will posit more sophisticated models.</p>
-<p>If you are not familiar with logistic regression, just know that it is a modified version of linear regression designed for binary independent variables. In this case, our independent variable will be <code>home_win</code> and our dependent variables will will be rolling team statistics that we take difference of between home and away teams.</p>
+<p>The logistic regression will be used to predict the binary classifier <code>home_win</code>. This model will be overly simplistic and is really just a proof of concept that we can successfully access, manipulate, and usefully deploy the data from <code>nfldb</code>. Later posts will posit more sophisticated models.</p>
+<p>If you are not familiar with logistic regression, just know that it is a modified version of linear regression designed for binary independent variables. In this case, our independent variable will be <code>home_win</code> and our dependent variables differences between rolling team statistics over a five week period.</p>
 <p>If you need help getting started with NFLDB, PostgreSQL, and Python, please see my other post <a href="http://timothykylethomas.me/nfldb-postgresql.html">Getting started with NFLDB, PostgreSQL, and Python</a>.</p>
-<p>First thing we need to do is import our libraries and connect to PostgreSQL.</p>
+<p>Ok, first thing we need to do is import our libraries and connect to PostgreSQL.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#there are some deprecation warnings that we don't want to print</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
 
 <span class="c1"># import pandas and numpy for </span>
@@ -134,13 +136,13 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Game-Results">Game Results<a class="anchor-link" href="#Game-Results">¶</a></h1><p>Interestingly, there is no <code>win</code> variable in nfldb, so out first order of business is to create the variable <code>home_win</code>. We will also create a variable <code>away_win</code> and <code>tie</code> in case we find those useful later. Note that the way we generate the <code>home_win</code> variable is through a list comprehension. For those of you new to Python, this is one of the key differentiating features of Python.</p>
+<h1 id="Game-Results">Game Results<a class="anchor-link" href="#Game-Results">¶</a></h1><p>Interestingly, there is no <code>win</code> variable in <code>nfldb</code>, so out first order of business is to create the variable <code>home_win</code>. We will also create a variable <code>away_win</code> and <code>tie</code> in case we find those useful later. Note that the way we generate the <code>home_win</code> variable is through a list comprehension. For those of you new to Python, this is one of the most useful features of Python.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># query game results</span>
@@ -171,7 +173,7 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[2]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <table border="1" class="dataframe">
@@ -351,7 +353,7 @@
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Home Team Win Rate: 56.35% 
+<pre>Home Team Win Rate: 56.25% 
 </pre>
 </div>
 </div>
@@ -365,14 +367,14 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Stats">Stats<a class="anchor-link" href="#Stats">¶</a></h1><p>Now we need to process the statistics that will act as our dependent variables in the logistic regression. Broadly, this process will have the following steps:</p>
 <ol>
-<li>Query the statistics data</li>
+<li>Query the database of statistics</li>
 <li>Encode points and turnovers</li>
 <li>Split into Defensive and Offensive Statistics</li>
 <li>Compute lagged 5 week rolling sums </li>
 <li>Compute the difference between these values for each home and away team</li>
 </ol>
-<p>Encoding points and turnovers means that we will turn the word "Touchdown" ("Field Goal") into the number 7(3). Various other results are flagged as turnovers and encode as the number 1.</p>
-<p>By lagged 5 week rolling sums I mean that each week will have a teams previous 5 weeks of points, turnovers, etc. For example, the number of turnovers for Arizona in week 7 will be the sum of turnovers from weeks 2-6. <strong>The choice of 5 is arbitrary.</strong> A more thorough analysis will model AIC, R2, etc as we modulate this hyperparameter.</p>
+<p>Encoding points and turnovers means that we will turn the word "Touchdown" ("Field Goal") into the number 7(3). Various other results are flagged as turnovers and encoded as the number 1.</p>
+<p>By lagged 5 week rolling sums I mean that each week will have a teams previous 5 weeks of points, turnovers, etc. For example, the number of turnovers for Arizona in week 7 will be the sum of turnovers from weeks 2-6. <strong>The choice of 5 is arbitrary.</strong> A more thorough analysis will model AIC, R2, etc. as we modulate this hyperparameter.</p>
 <p>We then take the difference between the rolled sums between home and away teams. Again this is somewhat arbitrary. We could just as easily use the levels as our dependent variables. One motivation is that the differences will help the variables be on more similar scales. Another motivation is that the more points, the less turnovers a team has vs their opponent might be a better predictor than just the raw amount. As with any statistical analysis, these arbitrary decisions end up being more important than any statistical model.</p>
 </div>
 </div>
@@ -389,6 +391,7 @@
 
 <span class="c1">#replace la with stl</span>
 <span class="n">stats</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="s1">'LA'</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'STL'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="s1">'LAC'</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'SD'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># encode points results</span>
 <span class="n">stats</span><span class="p">[</span><span class="s1">'points'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span> <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="s2">"Field Goal"</span> <span class="k">else</span> <span class="mi">7</span> <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="s2">"Touchdown"</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">[</span><span class="s1">'result'</span><span class="p">]]</span>
@@ -612,7 +615,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since we are trying to predict next weeks results, we need (1) flag what next week will be (2) add blank statistical columns for that week to the dataset. We need to add blank columns because there are no statistics for next week available yet.</p>
+<p>Since we are trying to predict next weeks results, we need to (1) flag what next week will be (2) add blank statistical columns for that week to the dataset. We need to add blank columns because there are no statistics for next week available yet.</p>
 </div>
 </div>
 </div>
@@ -623,12 +626,12 @@
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#add next weeks stats</span>
 <span class="n">games_17</span> <span class="o">=</span> <span class="n">game_results</span><span class="p">[</span><span class="n">game_results</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">==</span><span class="mi">2017</span><span class="p">]</span>
-<span class="n">year</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2017</span><span class="p">]</span><span class="o">*</span><span class="mi">32</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">week</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="nb">max</span><span class="p">(</span><span class="n">games_17</span><span class="o">.</span><span class="n">week</span><span class="p">))]</span><span class="o">*</span><span class="mi">32</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">team</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">pos_team</span><span class="p">))),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-<span class="n">nweek</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">year</span><span class="p">,</span><span class="n">week</span><span class="p">,</span><span class="n">team</span><span class="p">]),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'year'</span><span class="p">,</span><span class="s1">'week'</span><span class="p">,</span><span class="s1">'team'</span><span class="p">])</span>
-<span class="n">nweek</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">nweek</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
-<span class="n">nweek</span><span class="p">[</span><span class="s1">'week'</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">nweek</span><span class="o">.</span><span class="n">week</span><span class="p">)</span>
+
+<span class="n">nweek</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">'year'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2017</span><span class="p">]</span> <span class="o">*</span> <span class="mi">32</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s1">'int32'</span><span class="p">),</span>
+        <span class="s1">'week'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">32</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s1">'int32'</span><span class="p">),</span>
+        <span class="s1">'team'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">pos_team</span><span class="p">))),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)})</span>
+
 <span class="n">nweek_d</span> <span class="o">=</span> <span class="n">nweek</span>
 <span class="n">nweek_o</span> <span class="o">=</span> <span class="n">nweek</span>
 </pre></div>
@@ -666,7 +669,7 @@
 <span class="n">stats_d</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">'team'</span><span class="p">,</span><span class="s1">'year'</span><span class="p">,</span><span class="s1">'week'</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1">## sum across year team week</span>
 <span class="n">stats_d</span><span class="o">=</span><span class="n">stats_d</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">'team'</span><span class="p">,</span><span class="s1">'year'</span><span class="p">,</span><span class="s1">'week'</span><span class="p">],</span><span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="c1">## rolling 2 week lagged</span>
+<span class="c1">## rolling 5 week lagged</span>
 <span class="n">rolling</span> <span class="o">=</span> <span class="n">stats_d</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'team'</span><span class="p">],</span><span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">'yards_allowed'</span><span class="p">,</span><span class="s1">'points_allowed'</span><span class="p">,</span><span class="s1">'turnovers_forced'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="c1">## join together</span>
 <span class="n">stats_d</span><span class="o">=</span><span class="n">stats_d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rolling</span><span class="p">,</span><span class="n">lsuffix</span><span class="o">=</span><span class="s1">'_weekly'</span><span class="p">,</span><span class="n">rsuffix</span><span class="o">=</span><span class="s1">'_rolling'</span><span class="p">)</span>
@@ -1130,8 +1133,7 @@
 <span class="n">stats_d</span> <span class="o">=</span> <span class="n">stats_d</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'level_0'</span><span class="p">,</span><span class="s1">'level_1'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># combine offense and defense stats</span>
-<span class="n">stats_od</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">stats_d</span><span class="p">,</span><span class="n">stats_o</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">stats_od</span><span class="o">=</span><span class="n">stats_od</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<span class="n">stats_od</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">stats_d</span><span class="p">,</span><span class="n">stats_o</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'team'</span><span class="p">,</span><span class="s1">'year'</span><span class="p">,</span><span class="s1">'week'</span><span class="p">])</span>
 
 <span class="c1"># drop the year 2009 becasue of the blank weeks</span>
 <span class="n">stats_od</span><span class="o">=</span><span class="n">stats_od</span><span class="p">[</span><span class="n">stats_od</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">!=</span><span class="mi">2009</span><span class="p">]</span>
@@ -1199,7 +1201,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
@@ -1208,7 +1210,7 @@
 <span class="n">past_games</span> <span class="o">=</span> <span class="n">games</span><span class="p">[(</span><span class="n">games</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">!=</span><span class="nb">max</span><span class="p">(</span><span class="n">games</span><span class="o">.</span><span class="n">year</span><span class="p">))</span> <span class="o">&</span> <span class="p">(</span><span class="n">games</span><span class="p">[</span><span class="s1">'week'</span><span class="p">]</span><span class="o">!=</span><span class="nb">max</span><span class="p">(</span><span class="n">games_17</span><span class="o">.</span><span class="n">week</span><span class="p">))]</span>
 
 <span class="c1"># create future games df that will be predicted using our trained model</span>
-<span class="n">future_games</span> <span class="o">=</span> <span class="n">games</span><span class="p">[(</span><span class="n">games</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">==</span><span class="nb">max</span><span class="p">(</span><span class="n">games</span><span class="o">.</span><span class="n">year</span><span class="p">))</span> <span class="o">&</span> <span class="p">(</span><span class="n">games</span><span class="p">[</span><span class="s1">'week'</span><span class="p">]</span><span class="o">==</span><span class="nb">max</span><span class="p">(</span><span class="n">games_17</span><span class="o">.</span><span class="n">week</span><span class="p">))]</span>
+<span class="n">future_games</span> <span class="o">=</span> <span class="n">games</span><span class="p">[(</span><span class="n">games</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">==</span><span class="nb">max</span><span class="p">(</span><span class="n">games</span><span class="o">.</span><span class="n">year</span><span class="p">))</span> <span class="o">&</span> <span class="p">(</span><span class="n">games</span><span class="p">[</span><span class="s1">'week'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)]</span>
 
 <span class="c1"># for statsmodels, we need to specify</span>
 <span class="n">past_games</span><span class="p">[</span><span class="s1">'intercept'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -1217,10 +1219,10 @@
 <span class="c1"># our training columns will be the diffs</span>
 <span class="n">training_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">games</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'diff'</span><span class="p">)]</span>
 <span class="c1"># need to add the intercept column</span>
-<span class="n">training_cols</span> <span class="o">=</span> <span class="n">training_cols</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"intercept"</span><span class="p">]</span>
+<span class="n">training_cols_intercept</span> <span class="o">=</span> <span class="n">training_cols</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"intercept"</span><span class="p">]</span>
 
 <span class="c1"># perform the regression</span>
-<span class="n">logit</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">past_games</span><span class="p">[</span><span class="s1">'home_win'</span><span class="p">],</span> <span class="n">past_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])</span>
+<span class="n">logit</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">past_games</span><span class="p">[</span><span class="s1">'home_win'</span><span class="p">],</span> <span class="n">past_games</span><span class="p">[</span><span class="n">training_cols_intercept</span><span class="p">])</span>
 
 <span class="c1"># save the results and print</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -1235,29 +1237,29 @@
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Optimization terminated successfully.
-         Current function value: 0.642621
+         Current function value: 0.641187
          Iterations 5
                            Logit Regression Results                           
 ==============================================================================
 Dep. Variable:               home_win   No. Observations:                 1680
 Model:                          Logit   Df Residuals:                     1671
 Method:                           MLE   Df Model:                            8
-Date:                Tue, 05 Sep 2017   Pseudo R-squ.:                 0.06125
-Time:                        10:59:28   Log-Likelihood:                -1079.6
-converged:                       True   LL-Null:                       -1150.0
-                                        LLR p-value:                 1.561e-26
+Date:                Thu, 28 Sep 2017   Pseudo R-squ.:                 0.06247
+Time:                        15:55:37   Log-Likelihood:                -1077.2
+converged:                       True   LL-Null:                       -1149.0
+                                        LLR p-value:                 4.335e-27
 ==============================================================================
                  coef    std err          z      P>|z|      [95.0% Conf. Int.]
 ------------------------------------------------------------------------------
-ya_diff       -0.0002      0.000     -0.758      0.448        -0.001     0.000
-pa_diff       -0.0070      0.002     -2.798      0.005        -0.012    -0.002
-tf_diff        0.0026      0.018      0.145      0.885        -0.032     0.038
-fd_diff        0.0103      0.006      1.750      0.080        -0.001     0.022
-yg_diff     7.547e-05      0.000      0.218      0.827        -0.001     0.001
-pc_diff       -0.0043      0.002     -2.323      0.020        -0.008    -0.001
-p_diff         0.0100      0.003      3.817      0.000         0.005     0.015
-t_diff        -0.0305      0.018     -1.704      0.088        -0.066     0.005
-intercept      0.3114      0.052      6.019      0.000         0.210     0.413
+ya_diff       -0.0002      0.000     -0.767      0.443        -0.001     0.000
+pa_diff       -0.0062      0.002     -2.471      0.013        -0.011    -0.001
+tf_diff        0.0061      0.018      0.342      0.733        -0.029     0.041
+fd_diff        0.0115      0.006      1.946      0.052      -8.4e-05     0.023
+yg_diff        0.0002      0.000      0.607      0.544        -0.000     0.001
+pc_diff       -0.0050      0.002     -2.691      0.007        -0.009    -0.001
+p_diff         0.0093      0.003      3.570      0.000         0.004     0.014
+t_diff        -0.0269      0.018     -1.490      0.136        -0.062     0.008
+intercept      0.3293      0.052      6.344      0.000         0.228     0.431
 ==============================================================================
 </pre>
 </div>
@@ -1273,43 +1275,11 @@ intercept      0.3114      0.052      6.019      0.000         0.210     0.413
 <p>The logistic regression model can be written as</p>
 \begin{equation}
 Pr(Y=1 \vert \pmb{X}) = \Lambda(\pmb{x'}\pmb{\beta})
-\end{equation}<p>In our case, <em>Y</em> is <code>home_win</code> and <em>X</em> represents the collection of diffs we will use to train the model. The $\beta$s are the parameters we will estimate while $\Lambda$ represents the cumulative  logistic distribution function (Greene, 667). The probability that there is a home win given the training variables can also be written as</p>
+\end{equation}<p>In our case, <em>Y</em> is <code>home_win</code> and <em>X</em> represents the collection of diffs we will use to train the model. The $\beta$s are the parameters we will estimate while $\Lambda$ represents the cumulative  logistic distribution function (Greene, <em>Econometric Analysis, 7th Ed.</em>, p. 667). The probability that there is a home win given the training variables can also be written as</p>
 \begin{equation}
 \frac{e^{x'\beta}}{1 + e^{-(x'\beta)}}
-\end{equation}<p>The general consensus is that the $\beta$s in a logistic model are difficult to interpret and not intuitive. Roughly speaking, we can say that the coefficients are changes in the log odds associated with changes in the values of X. More important, is the significance and magnitude of the coefficients. If you believe in p-values, then points, points allowed, first downs, number of plays, and turnovers are significant. Of these, turnover is the largest in magnitude being almost three times the size of the next biggest coefficient. Keep in mind these coefficients are based on changes in the differences in the five week sums between teams. For example, if Buffalo has 1 more turnover than the Jets in the past 5 weeks, their log-odds of a <code>home_win</code> decrease by -0.0305. A simple takeaway is that teams that protect the ball better---more so than scoring more points or forcing more turnovers--are more likely to win at home.</p>
-<p>Because log odds are not clear, we can exponentiate them to get just regular odds. Values less than 1 indicate a decrease in odds of a home win when the associated X value increases. As we would expect, the variable with the greatest impact (the furthest from 1) is turnover differential.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [38]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#log odds</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>ya_diff      0.999808
-pa_diff      0.993069
-tf_diff      1.002592
-fd_diff      1.010402
-yg_diff      1.000075
-pc_diff      0.995710
-p_diff       1.010071
-t_diff       0.969919
-intercept    1.365370
-dtype: float64
-</pre>
-</div>
-</div>
+\end{equation}<p>where $x'\beta$ is our linear model. The $\beta$s in a logistic model do not have an immediately intuitive interpretation. Roughly speaking, we can say that the coefficients are changes in the log odds associated with changes in the values of X. A more scholarly post would layout theoretical reasons for the variables chosen, the <em>ceteris paribus</em> interpretation of each coefficient, and a hypothesis test with confidence intervals. However, we are more interested in the predicted result and fully recognize that the model is not particularly great, so we'll save the interpretation for another post.</p>
+<p>If you believe in p-values, we can see that points-allowed, points-scored, and play count are the significant variables of interest. Furthermore, can see that point-scored differential has the largest magnitude in effect. Also note that points-allowed has a negative sign which is what we expect---allowing more points should reduce your probability of scoring.</p>
 </div>
 </div>
 </div>
@@ -1324,11 +1294,11 @@ dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [39]:</div>
+<div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># predict the results </span>
-<span class="n">preds</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])</span>
+<span class="n">preds</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="n">training_cols_intercept</span><span class="p">])</span>
 
 <span class="c1"># add probabilities to next week</span>
 <span class="n">future_games</span><span class="p">[</span><span class="s1">'win_prob'</span><span class="p">]</span> <span class="o">=</span> <span class="n">preds</span>
@@ -1345,7 +1315,7 @@ dtype: float64
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[39]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <table border="1" class="dataframe">
@@ -1360,109 +1330,109 @@ dtype: float64
 </thead>
 <tbody>
 <tr>
-<th>1792</th>
+<th>1794</th>
 <td>BUF</td>
 <td>NYJ</td>
 <td>BUF</td>
-<td>0.734928</td>
-</tr>
-<tr>
-<th>1793</th>
-<td>CHI</td>
-<td>ATL</td>
-<td>ATL</td>
-<td>0.271247</td>
-</tr>
-<tr>
-<th>1794</th>
-<td>CIN</td>
-<td>BAL</td>
-<td>CIN</td>
-<td>0.677391</td>
-</tr>
-<tr>
-<th>1795</th>
-<td>CLE</td>
-<td>PIT</td>
-<td>PIT</td>
-<td>0.415514</td>
+<td>0.740586</td>
 </tr>
 <tr>
 <th>1796</th>
-<td>DAL</td>
-<td>NYG</td>
-<td>DAL</td>
-<td>0.647978</td>
+<td>CHI</td>
+<td>ATL</td>
+<td>ATL</td>
+<td>0.289686</td>
 </tr>
 <tr>
 <th>1797</th>
-<td>DET</td>
-<td>ARI</td>
-<td>ARI</td>
-<td>0.466745</td>
-</tr>
-<tr>
-<th>1798</th>
-<td>GB</td>
-<td>SEA</td>
-<td>GB</td>
-<td>0.669263</td>
+<td>CIN</td>
+<td>BAL</td>
+<td>CIN</td>
+<td>0.666432</td>
 </tr>
 <tr>
 <th>1799</th>
-<td>HOU</td>
-<td>JAC</td>
-<td>HOU</td>
-<td>0.603216</td>
+<td>CLE</td>
+<td>PIT</td>
+<td>PIT</td>
+<td>0.412271</td>
 </tr>
 <tr>
 <th>1800</th>
-<td>MIA</td>
-<td>TB</td>
-<td>TB</td>
-<td>0.493744</td>
-</tr>
-<tr>
-<th>1801</th>
-<td>MIN</td>
-<td>NO</td>
-<td>MIN</td>
-<td>0.605072</td>
+<td>DAL</td>
+<td>NYG</td>
+<td>DAL</td>
+<td>0.651773</td>
 </tr>
 <tr>
 <th>1802</th>
-<td>NE</td>
-<td>KC</td>
-<td>NE</td>
-<td>0.713972</td>
+<td>DET</td>
+<td>ARI</td>
+<td>ARI</td>
+<td>0.482228</td>
 </tr>
 <tr>
 <th>1803</th>
-<td>SF</td>
-<td>CAR</td>
-<td>SF</td>
-<td>0.554456</td>
+<td>GB</td>
+<td>SEA</td>
+<td>GB</td>
+<td>0.668167</td>
 </tr>
 <tr>
 <th>1804</th>
+<td>HOU</td>
+<td>JAC</td>
+<td>HOU</td>
+<td>0.607474</td>
+</tr>
+<tr>
+<th>1808</th>
+<td>MIA</td>
+<td>TB</td>
+<td>TB</td>
+<td>0.498714</td>
+</tr>
+<tr>
+<th>1809</th>
+<td>MIN</td>
+<td>NO</td>
+<td>MIN</td>
+<td>0.599167</td>
+</tr>
+<tr>
+<th>1810</th>
+<td>NE</td>
+<td>KC</td>
+<td>NE</td>
+<td>0.702829</td>
+</tr>
+<tr>
+<th>1816</th>
+<td>SF</td>
+<td>CAR</td>
+<td>SF</td>
+<td>0.550054</td>
+</tr>
+<tr>
+<th>1817</th>
 <td>STL</td>
 <td>IND</td>
 <td>IND</td>
-<td>0.185217</td>
+<td>0.176881</td>
 </tr>
 <tr>
-<th>1805</th>
+<th>1820</th>
 <td>TEN</td>
 <td>OAK</td>
 <td>TEN</td>
-<td>0.530964</td>
+<td>0.532179</td>
 </tr>
 <tr>
-<th>1806</th>
+<th>1821</th>
 <td>WAS</td>
 <td>PHI</td>
 <td>WAS</td>
-<td>0.676628</td>
+<td>0.683817</td>
 </tr>
 </tbody>
 </table>
@@ -1477,18 +1447,85 @@ dtype: float64
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This table passes the smell test. The Patriots, who rarely lose at home, have a 71% chance of winning. The Jets, who many are saying could be one of the worst teams of all time this year, have the second highest probability of losing---despite playing an underwhelming Buffalo team.</p>
-<h2 id="Better-Model">Better Model<a class="anchor-link" href="#Better-Model">¶</a></h2><p>While there are many improvements to be made to the model, three we will briefly deploy are:</p>
+<p>This table passes the smell test. The Patriots, who rarely lose at home, have a 71% chance of winning [<em>Update: they lost</em>]. The Jets, who many are saying could be one of the worst teams of all time this year, have the second highest probability of losing---despite playing an underwhelming Buffalo team.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Better-Model">Better Model<a class="anchor-link" href="#Better-Model">¶</a></h2><p>There are four improvements we will  make to the model:</p>
 <ol>
 <li>Shrinkage</li>
+<li>Hyperparameter Tuning</li>
 <li>Scaling</li>
 <li>Cross Validation</li>
 </ol>
-<p>Shrinkage is a statistical learning technique designed to reduce the variance of a model by shrinking the coefficient towards zero. The ultimate goal is to have a model that performs consistently on different test sets. By reducing variance, we also reduce the mean squared error, thus improving the quality of the model overall.</p>
-<p>To shrink our coefficients, we will use <code>sklearn</code>, a popular Python library for machine learning. One nice thing about <code>skelearn</code> is that it defaults to using a shrinkage method called ridge regression. The standard regression model attempts to minimize the sum of the squared residuals (RSS). A ridge regression uses the $\ell_2$ norm to minimize</p>
+<h3 id="Shrinkage">Shrinkage<a class="anchor-link" href="#Shrinkage">¶</a></h3><p>Shrinkage is a statistical learning technique designed to reduce the variance of a model by shrinking the coefficient towards zero. The ultimate goal is to have a model that performs consistently on different test sets. By reducing variance, we also reduce the mean squared error, a measure of the overall the quality of the model. I highly recommend Chapter 6 of <a href="http://www-bcf.usc.edu/~gareth/ISL/">Introduction to Statistical Learning</a> for an accessible introduction to the topic.</p>
+<p>To shrink our coefficients, we will use <code>sklearn</code>, a popular Python library for machine learning. One nice thing about <code>skelearn</code> is that it defaults to using a shrinkage method called ridge regression. The standard regression model attempts to minimize the sum of the squared residuals (RSS). A ridge regression on the other hand uses the $\ell_2$ norm to minimize</p>
 \begin{equation}
-RSS + \lambda \sum_{j=1}^p \beta_j^2
-\end{equation}<p>where $\lambda$ is a tuning parameter that defaults to 1.</p>
+RSS + \alpha \sum_{j=1}^p \beta_j^2
+\end{equation}<p>where $\alpha$ is a tuning parameter that defaults to 1 (you will sometimes see this as $\lambda$). If you would like to know more about norms, take a quick look at my other <a href="http://timothykylethomas.me/cot-norm.html#cot-norm">post</a> on the topic.</p>
+<h3 id="Hyperparameter-Tuning">Hyperparameter Tuning<a class="anchor-link" href="#Hyperparameter-Tuning">¶</a></h3><p>But how do we know what value for $\alpha$ to use? The <code>sklearn</code> package <code>GridSearchcv</code> allows us to specify a series of alphas as a "parameter grid" and then iterate models over this series of values. <code>GridSearch</code> is a very handy tool to try out multiple models with very little coding involved. But which values do you choose to iterate over? This is an interesting topic with some scholarly research being dedicated to it for several years. For our purposes, I'm going to use a logspace I came across at <a href="http://datacamp.com">Datacamp</a>.</p>
+<h3 id="Scaling">Scaling<a class="anchor-link" href="#Scaling">¶</a></h3><p>Many regression methods---in particular ridge regression---are based on some kind of distance metric and work best when the variables are equally scaled (i.e., to have an comparable measure of distance from some centroid). We can use <code>sklearn</code> to standardize the variables to have a comparable measure of distance from the mean (where each variable is transformed to have a mean of zero and standard deviation of one).</p>
+<h3 id="Cross-Validation">Cross Validation<a class="anchor-link" href="#Cross-Validation">¶</a></h3><p>Cross validation is a crucial machine learning technique wherein the model is trained against various subsamples and then tested against the data that is outside of the subsample. Ultimately, we want a model that is robust to differences in sampling and will choose the model that performs the best. Again, <code>sklearn</code> makes this very simple for us. We will perform a five-fold cross validation where we sample, train, and test the data five different ways. After shrinking, tuning, scaling, and cross validating our model we can check the overall accuracy.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import logistic regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+
+<span class="c1"># specify the alphas</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">)}</span>
+
+<span class="c1"># Instantiate a logistic regression classifier: logreg</span>
+<span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+
+<span class="c1"># specify five-fold cross validation logistic regression while tuning over alpha space</span>
+<span class="n">logit_cv</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># fit the model</span>
+<span class="n">logit_cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">past_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">],</span><span class="n">past_games</span><span class="p">[</span><span class="s1">'home_win'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>GridSearchCV(cv=5, error_score='raise',
+       estimator=LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr', n_jobs=1,
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0, warm_start=False),
+       fit_params=None, iid=True, n_jobs=1,
+       param_grid={'C': array([  1.00000e-05,   5.17947e-05,   2.68270e-04,   1.38950e-03,
+         7.19686e-03,   3.72759e-02,   1.93070e-01,   1.00000e+00,
+         5.17947e+00,   2.68270e+01,   1.38950e+02,   7.19686e+02,
+         3.72759e+03,   1.93070e+04,   1.00000e+05])},
+       pre_dispatch='2*n_jobs', refit=True, return_train_score=True,
+       scoring=None, verbose=0)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ROC-Curve">ROC Curve<a class="anchor-link" href="#ROC-Curve">¶</a></h2><p>One way to assess the accuracy of our model is to plot an ROC curve. An ROC curve plots the true positive rate against the false positive rate over a varying threshold. While the ROC curve gives us a visual representation of the accuracy of our model, we can also use it to compute the Area Under the Curve (AUC) to give us a single number for assessing our model.</p>
 </div>
 </div>
 </div>
@@ -1497,182 +1534,26 @@ RSS + \lambda \sum_{j=1}^p \beta_j^2
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import sklearn</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># define sklearn logit with default intercept</span>
-<span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Compute predicted probabilities: y_pred_prob</span>
+<span class="n">y_pred_prob</span> <span class="o">=</span> <span class="n">logit_cv</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">past_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])[:,</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># fit the</span>
-<span class="n">logit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">past_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">],</span><span class="n">past_games</span><span class="p">[</span><span class="s1">'home_win'</span><span class="p">])</span>
+<span class="c1"># Generate ROC curve values: fpr, tpr, thresholds</span>
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">past_games</span><span class="p">[</span><span class="s1">'home_win'</span><span class="p">],</span> <span class="n">y_pred_prob</span><span class="p">)</span>
 
-<span class="c1"># retrieve and display the probabilities</span>
-<span class="n">preds</span><span class="o">=</span><span class="n">logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])</span>
-<span class="n">future_games</span><span class="p">[</span><span class="s1">'prediction'</span><span class="p">]</span> <span class="o">=</span> <span class="n">preds</span>
-<span class="n">future_games</span><span class="p">[</span><span class="s1">'winner'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="s1">'prediction'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="n">future_games</span><span class="p">[</span><span class="s1">'home_team'</span><span class="p">],</span><span class="n">future_games</span><span class="p">[</span><span class="s1">'away_team'</span><span class="p">])</span>
-<span class="n">future_games</span><span class="p">[</span><span class="s1">'win_prob'</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])[:,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">future_games</span><span class="p">[[</span><span class="s1">'home_team'</span><span class="p">,</span><span class="s1">'away_team'</span><span class="p">,</span><span class="s1">'winner'</span><span class="p">,</span><span class="s1">'win_prob'</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[13]:</div>
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>home_team</th>
-<th>away_team</th>
-<th>winner</th>
-<th>win_prob</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1792</th>
-<td>BUF</td>
-<td>NYJ</td>
-<td>BUF</td>
-<td>0.734825</td>
-</tr>
-<tr>
-<th>1793</th>
-<td>CHI</td>
-<td>ATL</td>
-<td>ATL</td>
-<td>0.271191</td>
-</tr>
-<tr>
-<th>1794</th>
-<td>CIN</td>
-<td>BAL</td>
-<td>CIN</td>
-<td>0.677282</td>
-</tr>
-<tr>
-<th>1795</th>
-<td>CLE</td>
-<td>PIT</td>
-<td>PIT</td>
-<td>0.415410</td>
-</tr>
-<tr>
-<th>1796</th>
-<td>DAL</td>
-<td>NYG</td>
-<td>DAL</td>
-<td>0.647876</td>
-</tr>
-<tr>
-<th>1797</th>
-<td>DET</td>
-<td>ARI</td>
-<td>ARI</td>
-<td>0.466641</td>
-</tr>
-<tr>
-<th>1798</th>
-<td>GB</td>
-<td>SEA</td>
-<td>GB</td>
-<td>0.669158</td>
-</tr>
-<tr>
-<th>1799</th>
-<td>HOU</td>
-<td>JAC</td>
-<td>HOU</td>
-<td>0.603107</td>
-</tr>
-<tr>
-<th>1800</th>
-<td>MIA</td>
-<td>TB</td>
-<td>TB</td>
-<td>0.493659</td>
-</tr>
-<tr>
-<th>1801</th>
-<td>MIN</td>
-<td>NO</td>
-<td>MIN</td>
-<td>0.604957</td>
-</tr>
-<tr>
-<th>1802</th>
-<td>NE</td>
-<td>KC</td>
-<td>NE</td>
-<td>0.713873</td>
-</tr>
-<tr>
-<th>1803</th>
-<td>SF</td>
-<td>CAR</td>
-<td>SF</td>
-<td>0.554342</td>
-</tr>
-<tr>
-<th>1804</th>
-<td>STL</td>
-<td>IND</td>
-<td>IND</td>
-<td>0.185181</td>
-</tr>
-<tr>
-<th>1805</th>
-<td>TEN</td>
-<td>OAK</td>
-<td>TEN</td>
-<td>0.530865</td>
-</tr>
-<tr>
-<th>1806</th>
-<td>WAS</td>
-<td>PHI</td>
-<td>WAS</td>
-<td>0.676535</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Using the ridge regression we get slightly different probabilities but ultimately the same picks.</p>
-<p>Many regression methods---in particular ridge regression---work best when the dependent variables equally scaled. We can use <code>sklearn</code> to standardize the variables to have mean zero and standard deviation of one.</p>
-<p>As an additional check on the model also use <code>sklearn</code> to cross validate our model. Cross validation is a crucial machine learning technique and should almost always be used. After shrinking, scaling, and cross validating our model we can check the overall accuracy.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [23]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">cross_validation</span>
+<span class="c1">#compute area under the curve</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span><span class="n">tpr</span><span class="p">)</span>
 
-<span class="c1"># scale</span>
-<span class="n">past_games_scaled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">past_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">]))</span>
-
-<span class="c1"># cross validate</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">past_games_scaled</span><span class="p">,</span> <span class="n">past_games</span><span class="p">[</span><span class="s1">'home_win'</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># accuracy</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Accuracy: </span><span class="si">%0.2f</span><span class="s2"> (+/- </span><span class="si">%0.2f</span><span class="s2">)"</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+<span class="c1"># Plot ROC curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'k--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"AUC = </span><span class="si">%0.2f</span><span class="s2">"</span> <span class="o">%</span> <span class="n">auc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'False Positive Rate'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'True Positive Rate'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'ROC Curve'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1681,9 +1562,251 @@ RSS + \lambda \sum_{j=1}^p \beta_j^2
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Accuracy: 0.63 (+/- 0.05)
-</pre>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+AABJRU5ErkJggg==
+" />
 </div>
 </div>
 </div>
@@ -1694,29 +1817,21 @@ RSS + \lambda \sum_{j=1}^p \beta_j^2
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So our new model has a 63% accuracy which is better than always picking the home team (53%).</p>
-<p>The <code>cross_validation</code> module form <code>sklearn</code> will only provide the model score. If we want to cross validate and see the predicted probabilities, we need to use the <code>LogisticRegressionCV</code> module.</p>
+<p>Our AUC of .67 is not that great, but I wouldn't really expect anything too high given the difficulty of predicting NFL wins. Remember the default home-win rate is 56%.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [24]:</div>
+<div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import cross validated logistic regression</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegressionCV</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># predict the results </span>
+<span class="n">preds</span><span class="o">=</span><span class="n">logit_cv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])</span>
 
-<span class="c1"># define sklearn logit with default intercept</span>
-<span class="n">logitcv</span> <span class="o">=</span> <span class="n">LogisticRegressionCV</span><span class="p">()</span>
-
-<span class="c1"># fit the</span>
-<span class="n">logitcv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">past_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">],</span><span class="n">past_games</span><span class="p">[</span><span class="s1">'home_win'</span><span class="p">])</span>
-
-<span class="n">preds</span><span class="o">=</span><span class="n">logitcv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])</span>
 <span class="n">future_games</span><span class="p">[</span><span class="s1">'prediction'</span><span class="p">]</span> <span class="o">=</span> <span class="n">preds</span>
 <span class="n">future_games</span><span class="p">[</span><span class="s1">'winner'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="s1">'prediction'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="n">future_games</span><span class="p">[</span><span class="s1">'home_team'</span><span class="p">],</span><span class="n">future_games</span><span class="p">[</span><span class="s1">'away_team'</span><span class="p">])</span>
-<span class="n">future_games</span><span class="p">[</span><span class="s1">'win_prob'</span><span class="p">]</span> <span class="o">=</span> <span class="n">logitcv</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">future_games</span><span class="p">[</span><span class="s1">'win_prob'</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit_cv</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">future_games</span><span class="p">[</span><span class="n">training_cols</span><span class="p">])[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">future_games</span><span class="p">[[</span><span class="s1">'home_team'</span><span class="p">,</span><span class="s1">'away_team'</span><span class="p">,</span><span class="s1">'winner'</span><span class="p">,</span><span class="s1">'win_prob'</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -1725,7 +1840,7 @@ RSS + \lambda \sum_{j=1}^p \beta_j^2
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[16]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <table border="1" class="dataframe">
@@ -1740,109 +1855,109 @@ RSS + \lambda \sum_{j=1}^p \beta_j^2
 </thead>
 <tbody>
 <tr>
-<th>1792</th>
+<th>1794</th>
 <td>BUF</td>
 <td>NYJ</td>
 <td>BUF</td>
-<td>0.734951</td>
-</tr>
-<tr>
-<th>1793</th>
-<td>CHI</td>
-<td>ATL</td>
-<td>ATL</td>
-<td>0.271292</td>
-</tr>
-<tr>
-<th>1794</th>
-<td>CIN</td>
-<td>BAL</td>
-<td>CIN</td>
-<td>0.677103</td>
-</tr>
-<tr>
-<th>1795</th>
-<td>CLE</td>
-<td>PIT</td>
-<td>PIT</td>
-<td>0.415273</td>
+<td>0.719539</td>
 </tr>
 <tr>
 <th>1796</th>
-<td>DAL</td>
-<td>NYG</td>
-<td>DAL</td>
-<td>0.647738</td>
+<td>CHI</td>
+<td>ATL</td>
+<td>ATL</td>
+<td>0.276296</td>
 </tr>
 <tr>
 <th>1797</th>
-<td>DET</td>
-<td>ARI</td>
-<td>ARI</td>
-<td>0.466740</td>
-</tr>
-<tr>
-<th>1798</th>
-<td>GB</td>
-<td>SEA</td>
-<td>GB</td>
-<td>0.669675</td>
+<td>CIN</td>
+<td>BAL</td>
+<td>CIN</td>
+<td>0.643283</td>
 </tr>
 <tr>
 <th>1799</th>
-<td>HOU</td>
-<td>JAC</td>
-<td>HOU</td>
-<td>0.603226</td>
+<td>CLE</td>
+<td>PIT</td>
+<td>PIT</td>
+<td>0.391733</td>
 </tr>
 <tr>
 <th>1800</th>
-<td>MIA</td>
-<td>TB</td>
-<td>TB</td>
-<td>0.493640</td>
-</tr>
-<tr>
-<th>1801</th>
-<td>MIN</td>
-<td>NO</td>
-<td>MIN</td>
-<td>0.605073</td>
+<td>DAL</td>
+<td>NYG</td>
+<td>DAL</td>
+<td>0.630312</td>
 </tr>
 <tr>
 <th>1802</th>
-<td>NE</td>
-<td>KC</td>
-<td>NE</td>
-<td>0.713934</td>
+<td>DET</td>
+<td>ARI</td>
+<td>ARI</td>
+<td>0.460246</td>
 </tr>
 <tr>
 <th>1803</th>
-<td>SF</td>
-<td>CAR</td>
-<td>SF</td>
-<td>0.554278</td>
+<td>GB</td>
+<td>SEA</td>
+<td>GB</td>
+<td>0.646261</td>
 </tr>
 <tr>
 <th>1804</th>
+<td>HOU</td>
+<td>JAC</td>
+<td>HOU</td>
+<td>0.584420</td>
+</tr>
+<tr>
+<th>1808</th>
+<td>MIA</td>
+<td>TB</td>
+<td>TB</td>
+<td>0.480326</td>
+</tr>
+<tr>
+<th>1809</th>
+<td>MIN</td>
+<td>NO</td>
+<td>MIN</td>
+<td>0.575437</td>
+</tr>
+<tr>
+<th>1810</th>
+<td>NE</td>
+<td>KC</td>
+<td>NE</td>
+<td>0.681198</td>
+</tr>
+<tr>
+<th>1816</th>
+<td>SF</td>
+<td>CAR</td>
+<td>SF</td>
+<td>0.527231</td>
+</tr>
+<tr>
+<th>1817</th>
 <td>STL</td>
 <td>IND</td>
 <td>IND</td>
-<td>0.185321</td>
+<td>0.169339</td>
 </tr>
 <tr>
-<th>1805</th>
+<th>1820</th>
 <td>TEN</td>
 <td>OAK</td>
 <td>TEN</td>
-<td>0.530590</td>
+<td>0.510825</td>
 </tr>
 <tr>
-<th>1806</th>
+<th>1821</th>
 <td>WAS</td>
 <td>PHI</td>
 <td>WAS</td>
-<td>0.676453</td>
+<td>0.663922</td>
 </tr>
 </tbody>
 </table>
@@ -1857,8 +1972,7 @@ RSS + \lambda \sum_{j=1}^p \beta_j^2
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ultimately we see that the results are the same with slightly different probabilities.</p>
-<h1 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h1><p>While our model makes perfectly reasonable picks, there is not reason to think that it is superior to just being mildly observant of NFL trends. The most dire limitation of the current model is failure to take into account injury. If New England loses Tom Brady,that could easily knock 10-20 percentage points from the probability of a home win.</p>
+<h1 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h1><p>While our model makes perfectly reasonable picks, there is no reason to think that it is superior to just being mildly observant of NFL trends. The most dire limitation of the current model is failure to take into account injury. If New England loses Tom Brady, that could easily knock 10-20 percentage points from the probability of a home win.</p>
 <p>Later in the year we will have more sophisticated models for predicting wins (e.g., support vector machines) as well as models for projecting individual statistics.</p>
 </div>
 </div>
