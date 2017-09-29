@@ -9,7 +9,25 @@ Summary: A streaming repo of consciousness
 ---
 September 28, 2017
 
-*Napoleon: A Life*: punishment should be infrequent but severe; "truth is so precious she should be surrounded by a bodyguard of lies";
+When interpreting regression results it is valuable to remember that the *ceteris peribus* interpretation is due to the coefficients being partial derivatives. A derivative is simply defined as
+
+$$
+\frac{\Delta y}{\Delta x} = \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+$$
+
+In words, if $y=f(x)$ the change in y ($\Delta y$) per change in x ($\Delta x$) is how much how much a function changes ($f(x_0 + \Delta x) - f(x_0)$) given a change in x ($\Delta x$). Hence we get the standard derivative notation:
+
+$$
+\frac{dy}{dx} \equiv f'(x) \equiv \lim_{\Delta x \rightarrow 0} \frac{\Delta y}{\Delta x}
+$$
+
+In both simple and multiple regression, we interpret $\beta$s in similar ways: a unit change in $x$ results in a $\beta$ amount of change in $y$. But how can we ignore other coefficients in multiple regression? Because they are partial derivatives where one variable is held constant while the other is allowed to vary. For example, the derivative of $f(x,y)$ while holding $x$ constant can be written as
+
+$$
+f_x'(y) = \frac{\partial f(x,y)}{\partial x}
+$$
+
+*Napoleon: A Life*: punishment should be infrequent but severe; "truth is so precious she should be surrounded by a bodyguard of lies"
 
 *Philosopher's Toolkit*: Richard Dawkins' "selfish gene" is an example of a failed intuition pump---doesn't mean at all what people think it does (he is referring to how genes optimize locally instead of globally for the organism)
 
