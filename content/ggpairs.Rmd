@@ -12,7 +12,7 @@ Quick visual analysis of data is an essential first step to familiarizing yourse
 We will be using the banknote authentication data from [UCI machine learning repository](http://archive.ics.uci.edu/ml/datasets.html). This dataset contains five variables: a binary class variable indicating if a banknote is fake or note and four variables of visual data from a scan of each banknote (variance, skew, kurtosis, and entropy). The nature of the data itself is not important for our purposes; we are merely interested in the distribution of the four continuous variables over the binary class variable. In a practical setting, the goal of this quick analysis would be to give us a hint as to which variables are most important to explaining the classification of each bank note.
 
 ```{r read_data, echo=FALSE}
-note <- read.table("/Users/kthomas1/github/r_code/data/data_banknote_authentication.txt",sep=",")
+note <- read.table("/Users/kthomas1/github_data/data_banknote_authentication.txt",sep=",")
 ```
 
 In this first chunk, read in data, give each column a name, and present basic boxplots

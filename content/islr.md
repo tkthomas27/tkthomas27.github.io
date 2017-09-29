@@ -52,4 +52,6 @@ Below is a basic table of contents with select topics. Each chapter has an R lab
 
 One reason why the ISLR is so popular is because it's free! You can download the book and lab code [here](http://www-bcf.usc.edu/~gareth/ISL/).
 
-Lectures from the authors of the book can be viewed [here](http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/).
+Lectures from the authors of the book can be viewed [here](http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/). I highly recommend these videos. It definitely took my data analysis to the next level.
+
+Currently I am compiling my own notes/outline of the book, which can be found on [github](https://github.com/tkthomas27/ISL-Notes).

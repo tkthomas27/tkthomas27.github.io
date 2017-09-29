@@ -7,9 +7,9 @@ Summary: Despite its many controversies, the IRR is a fundamental tool in financ
 
 # Time Value of Money
 
-The internal rate of return (IRR) is simply the rate *r* that equates the future value of money to the present value. The actually economic interpretation of this value is highly contested.
+The internal rate of return (IRR) is simply the rate *r* that equates the future value of money to the present value. Despite being a foundational tool in financial analysis, the economic interpretation of this value is highly contested.
 
-Before getting into the IRR, lets establish the basic axioms of the time value of money that depict the relationship between present value (PV), future value (FV), and the rate of return *r* over the total number of periods ($T$):
+Before getting into the interpretation of IRR, lets establish the basic axioms of the time value of money that depict the relationship between present value (PV), future value (FV), and the rate of return *r* over the total number of periods ($T$):
 
 $$
 \begin{equation}
@@ -25,9 +25,11 @@ FV = PV(1+r)^T
 \end{equation}
 $$
 
-In words, Eq. $\ref{basic_pv}$ tells us that PV is equal to some FV discounted at a discount rate across the the total time period, where *T* represents the total number of time periods. The core idea is that cash now is more valuable than cash later. Therefore if I were to lend you money, I would charge you interest to make up for not having money now. This is why we compound our PV to get a FV. We simply reverse this processing by discounting to go from FV back to PV. The focus on our exposition will be on *r*, the rate of return that is used to discount/compound.
+In words, Eq. $\ref{basic_pv}$ tells us that PV is equal to some FV discounted at a rate across the the total time period, where *T* represents the total number of time periods. Eq. $\ref{basic_fv}$ simply rearranges the equation so that FV is PV compounded by a rate *r* across time.
 
-We can rearrange Eq. $\ref{basic_pv}$ into Eq. $\ref{basic_irr}$ to see the relationship between the IRR and FV and PV. Eq. $\ref{basic_irr}$ will be our final step in computing the IRR.
+The core idea is that cash now is more valuable than cash later. Therefore if I were to lend you money, I would charge you interest to make up for not having money now. As an example, say person A lends person B $10 for $10 years at a rate of 20%. The FV of the money for person A is $10(1+.2)^10=61$. Alternatively, if person B wanted to know how much they needed to invest to have $61 after 10 years of compounding at 20%, they would find that $61/(1+.2)^10 = 10$.
+
+The focus on our exposition will be on *r*, the rate of return that is used to discount/compound. We can rearrange Eq. $\ref{basic_pv}$ into Eq. $\ref{basic_irr}$ to see the relationship between the IRR and FV and PV. Eq. $\ref{basic_irr}$ will be our final step in computing the IRR.
 
 $$
 \begin{equation}
@@ -38,7 +40,7 @@ $$
 
 # Streams of Cash
 
-There are plenty of investments that take the form of a single payment in (a negative cash flow out of your pocketbook) followed by a single payment out (a positive cash flow into your pocketbook) after a some period of time. This, however, is a trivial example to be solved and I will instead focus on investments that take the form of multiple cashflows over several periods.
+There are plenty of investments that take the form of a single payment in (a negative cash flow out of your pocketbook) followed by a single payment out (a positive cash flow into your pocketbook) after a some period of time. This, however, is a trivial example to be solved (see above) and I will instead focus on investments that take the form of multiple cashflows over several periods.
 
 Because we are dealing with a stream of cash flows and not a single value, FV needs to be rewritten. Consider a cash flow at t=1, if the final future period is 60 periods from t=1, then we need to compute the future value of that cash flow for for 60-1 periods from that time. We can rewrite the PV and the FV of a stream of cash flows as
 
@@ -73,9 +75,11 @@ $$
 \end{equation}
 $$
 
+This shows that the initial CF is equal to the sum of the compounded cash flows and the terminal CF all discounted at by the same rate of compounding. For IRR, the numerator and the denominator *r* are assumed to be the same. This assumption is key to the alternatives to IRR such as MIRR (modified internal rate of return).
+
 # Solving for Internal Rate of Return
 
-Our primary goal is to find the *r* that solves Eq. $\ref{pv_fv}$. The most common method to do so is to treat this as a polynomial root finding exercise. For clarity, we can trivially rewrite Eq. $\ref{pv_cf}$ as
+Our primary goal is to find the *r* that solves Eq. $\ref{pv_fv}$. The most common method is to treat this as a polynomial root finding exercise. For clarity, we can trivially rewrite Eq. $\ref{pv_cf}$ as
 
 $$
 \begin{equation}
@@ -101,6 +105,5 @@ One way of finding it is to plug and chug using the `npv` function in Excel and 
 Similarly we use the `uniroot` function of R. first specify the function then use `uniroot` on it. `uniroot` uses the golden section ratio method in combination with parabolic interpolation to efficiently guess the root that satisfies the function along a specified interval.
 
 
-<!-- explain excel/secant method -->
-<!-- r code  for uniroot -->
-<!-- latex appendix for formulas -->
+<!-- Change sections to Excel, R -->
+<!-- R uses uniroot; which uses secant method (link to wikipedia) -->

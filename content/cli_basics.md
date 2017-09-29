@@ -17,7 +17,7 @@ An alternative to Terminal is [iTerm](https://www.iterm2.com). iTerm is a termin
 
 # Basic Commands
 
-Below are a few basic commands that form the bedrock of command line interaction. If you ever have any questions about a command you come across [Explain Shell](http://explainshell.com) is an excellent resource as well as this [cheatsheet](https://github.com/0nn0/terminal-mac-cheatsheet).
+Below are a few basic commands that form the bedrock of command line interaction. If you ever have any questions about a command you come across, [Explain Shell](http://explainshell.com) is an excellent resource as well as this [cheatsheet](https://github.com/0nn0/terminal-mac-cheatsheet).
 
 Before we begin, here are a few tips:
 
@@ -70,7 +70,7 @@ Before we begin, here are a few tips:
 
 * Text editors
     * `nano [file_name]` a very simple text editor
-    * `vim [file_name]` a more robust and extensible text editor
+    * `vim [file_name]` a more robust and extensible text editor; type `esc` then `:q` to exit
     * `emacs [file_name]` a more robust and extensible text editor
 
 # Shells
@@ -86,7 +86,7 @@ The easiest way to get started with zsh is to install it using brew (checkout my
 ``` bash
 brew install zsh zsh-completions
 ```
-To get the most out of zsh, you can try one of the several frameworks available. I am currently using [oh my zsh](http://ohmyz.sh). Oh my zsh gives you easy access to many useful [plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)
+To get the most out of zsh, you can try one of the several frameworks available. I am currently using [oh my zsh](http://ohmyz.sh). Oh my zsh gives you easy access to many useful [plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins).
 
 
 <!-- need post on how I customized my setup

@@ -15,12 +15,13 @@ This series of articles will review packages and package managers for a variety 
 
 <!-- You will need to be at least somewhat familiar with the command line to work with `brew`; please see XXX for a quick guide. -->
 
+You will need to be a least a little familiar with the terminal to follow this guide; please see a quick overview [here](http://timothykylethomas.me/cli-basics.html#cli-basics).
 
 # homebrew
 
 `brew`: basic package management for command line software (distributed under open source). A simple run down and further documentation details are found at the [brew website](http://brew.sh).
 
-For installation simply type:
+For installation simply type the following into terminal:
 
 ``` bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -33,12 +34,12 @@ A breakdown of what is happening with the installation command above:
 * `curl` program to download contents at specified URL
 * `fsSL` this is actually four flags
 	* `-f` fail silently if something goes wrong
-	* `-s` silent mode; not progress or failure message
+	* `-s` silent mode
 	* `-S` display error message if fails in silent mode
 	* `-L` if server says that webpage has moved to a new location, curl will try that location
 * URL: location of installation script
 
-Terminology (for more details checkout the [formula cookbook](https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md#homebrew-terminology)
+Terminology (for more details checkout the [formula cookbook](https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md#homebrew-terminology))
 
 * **formula** is a package
 * **keg** is the installation prefix
@@ -55,7 +56,7 @@ Some useful commands:
 
 # cask
 
-`cask` There is an extension for `brew` called `cask` for the installation of licensed software. Because `cask` is an extension of `brew` it works the same as `brew` in terms of commands and taps.
+There is an extension for `brew` called `cask` for the installation of licensed software. Because `cask` is an extension of `brew` it works the same as `brew` in terms of commands and taps.
 
 To install `cask`:
 
@@ -70,7 +71,7 @@ To install a program like RStudio:
 
 # Current Packages
 
-Below is a select list of packages that I use brew to manage. Some are trivial (e.g., `cowsay`) while others are frequently used system wide (e.g., `r`, `ruby`)
+Below is a select list of packages that I use brew to manage. Some are trivial (e.g., `cowsay`) while others are frequently used system wide (e.g., `r`)
 
 ## Brew Packages
 

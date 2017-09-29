@@ -24,7 +24,7 @@
 <meta name="description" content="Chain of Thought: starting with regularization techniques of ridge regression and lasso we move to what is a norm while covering optimization, Moore-Penrose Pseudoinverse matrix, and Lagrangian multiplier." />
 <meta name="keywords" content="linear-algebra, regression, math">
 <meta property="og:site_name" content="cmd+build"/>
-<meta property="og:title" content="Chain of Thought: Norm"/>
+<meta property="og:title" content="Chain of Thought: Ridge Regression, Norms, and Optimization"/>
 <meta property="og:description" content="Chain of Thought: starting with regularization techniques of ridge regression and lasso we move to what is a norm while covering optimization, Moore-Penrose Pseudoinverse matrix, and Lagrangian multiplier."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="./cot-norm.html"/>
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="math"/>
 <meta property="og:image" content="">
 
-  <title>cmd+build &ndash; Chain of Thought: Norm</title>
+  <title>cmd+build &ndash; Chain of Thought: Ridge Regression, Norms, and Optimization</title>
 
 </head>
 <body>
@@ -77,7 +77,7 @@
 
 <article class="single">
   <header>
-    <h1 id="cot-norm">Chain of Thought: Norm</h1>
+    <h1 id="cot-norm">Chain of Thought: Ridge Regression, Norms, and Optimization</h1>
     <p>
           Posted on Wed 08 February 2017 in <a href="./category/tech.html">tech</a>
 
@@ -90,7 +90,7 @@
     <h1>1 Ridge Regression and the Lasso</h1>
 <p>While working through <a href="http://timothykylethomas.me/islr.html#islr">Introduction to Statistical Learning</a> (ISLR), I became intrigued by the lecture on <a href="https://lagunita.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/model_selection.pdf">subset selection</a>. Subset selection is the process of reducing linear models to only those features (viz. independent variables) that are most relevant. Old standbys in this field are piecewise forward and backward selection. The hot topic now, however, are the shrinkage methods ridge regression and lasso.</p>
 <p>This two methods are popular now because of the explosion of higher dimensional data (i.e., where there are more features than observations). Piecewise selection frequently becomes intractable where there are many features. Shrinkage methods solve this method by building in a penalty to OLS estimation that automatically pushes coefficients to zero (you should read the above notes on subset selection for more details, here we are just plowing ahead with my chain of thought). The point of having less features and lower coefficients is the reduction in the overall variance of the model.</p>
-<p>Let's briefly overview OLS estimation and the changes the ridge and lasso make. With a vector <span class="math">\(b\)</span> of responses and a matrix <span class="math">\(A\)</span> of features, we seek to find the vector <span class="math">\(x\)</span> that makes <span class="math">\(Ax = b\)</span>.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> Using standard terms for OLS, <span class="math">\(b\)</span> is the dependent variable <span class="math">\(y\)</span>, <span class="math">\(A\)</span> is our observations <span class="math">\(X\)</span>, and <span class="math">\(x\)</span> is the vector of <span class="math">\(\beta\)</span>s giving use the formula <span class="math">\(X \beta = y\)</span> (note that the order of <span class="math">\(X\)</span> and <span class="math">\(\beta\)</span> is important). The simplest way to express is from a geometric perspective: we want to choose a <span class="math">\(\beta\)</span> vector that minimizes the distance between <span class="math">\(X\)</span> and <span class="math">\(y\)</span> (the bars <span class="math">\(||\)</span> tell us that this is a  euclidean norm --- a fancy way of saying a distance):</p>
+<p>Let's briefly overview OLS estimation and the changes the ridge and lasso make. With a vector <span class="math">\(b\)</span> of responses and a matrix <span class="math">\(A\)</span> of features, we seek to find the vector <span class="math">\(x\)</span> that makes <span class="math">\(Ax = b\)</span>.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> Using standard terms for OLS, <span class="math">\(b\)</span> is the dependent variable <span class="math">\(y\)</span>, <span class="math">\(A\)</span> is our observations <span class="math">\(X\)</span>, and <span class="math">\(x\)</span> is the vector of <span class="math">\(\beta\)</span>s giving use the formula <span class="math">\(X \beta = y\)</span> (note that the order of <span class="math">\(X\)</span> and <span class="math">\(\beta\)</span> is important). The simplest way to express this is from a geometric perspective: we want to choose a <span class="math">\(\beta\)</span> vector that minimizes the distance between <span class="math">\(X\)</span> and <span class="math">\(y\)</span> (the bars <span class="math">\(||\)</span> tell us that this is a  euclidean norm --- a fancy way of saying a distance):</p>
 <div class="math">$$\hat{\beta} = \min_{\beta} ||y - X\beta||. $$</div>
 <p>The OLS way to do this is to minimize the sum of the squared residuals (RSS). There are many ways to express the minimization of RSS (a la the geometric version above), but here we will use the version presented in ISLR to remain consistent.</p>
 <p>First, the RSS we seek to minimize is:</p>

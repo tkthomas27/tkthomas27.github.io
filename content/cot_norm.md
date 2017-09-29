@@ -1,4 +1,4 @@
-Title: Chain of Thought: Norm
+Title: Chain of Thought: Ridge Regression, Norms, and Optimization
 Date: 2017-02-08
 Tags: linear-algebra, regression, math
 Category: tech
@@ -12,7 +12,7 @@ While working through [Introduction to Statistical Learning](http://timothykylet
 
 This two methods are popular now because of the explosion of higher dimensional data (i.e., where there are more features than observations). Piecewise selection frequently becomes intractable where there are many features. Shrinkage methods solve this method by building in a penalty to OLS estimation that automatically pushes coefficients to zero (you should read the above notes on subset selection for more details, here we are just plowing ahead with my chain of thought). The point of having less features and lower coefficients is the reduction in the overall variance of the model.
 
-Let's briefly overview OLS estimation and the changes the ridge and lasso make. With a vector $b$ of responses and a matrix $A$ of features, we seek to find the vector $x$ that makes $Ax = b$.[^1] Using standard terms for OLS, $b$ is the dependent variable $y$, $A$ is our observations $X$, and $x$ is the vector of $\beta$s giving use the formula $X \beta = y$ (note that the order of $X$ and $\beta$ is important). The simplest way to express is from a geometric perspective: we want to choose a $\beta$ vector that minimizes the distance between $X$ and $y$ (the bars $||$ tell us that this is a  euclidean norm --- a fancy way of saying a distance):
+Let's briefly overview OLS estimation and the changes the ridge and lasso make. With a vector $b$ of responses and a matrix $A$ of features, we seek to find the vector $x$ that makes $Ax = b$.[^1] Using standard terms for OLS, $b$ is the dependent variable $y$, $A$ is our observations $X$, and $x$ is the vector of $\beta$s giving use the formula $X \beta = y$ (note that the order of $X$ and $\beta$ is important). The simplest way to express this is from a geometric perspective: we want to choose a $\beta$ vector that minimizes the distance between $X$ and $y$ (the bars $||$ tell us that this is a  euclidean norm --- a fancy way of saying a distance):
 
 $$\hat{\beta} = \min_{\beta} ||y - X\beta||. $$
 
