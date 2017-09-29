@@ -87,7 +87,19 @@
   <div>
     <hr />
 <p>September 28, 2017</p>
-<p><em>Napoleon: A Life</em>: punishment should be infrequent but severe; "truth is so precious she should be surrounded by a bodyguard of lies";</p>
+<p>When interpreting regression results it is valuable to remember that the <em>ceteris peribus</em> interpretation is due to the coefficients being partial derivatives. A derivative is simply defined as</p>
+<div class="math">$$
+\frac{\Delta y}{\Delta x} = \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+$$</div>
+<p>In words, if <span class="math">\(y=f(x)\)</span> the change in y (<span class="math">\(\Delta y\)</span>) per change in x (<span class="math">\(\Delta x\)</span>) is how much how much a function changes (<span class="math">\(f(x_0 + \Delta x) - f(x_0)\)</span>) given a change in x (<span class="math">\(\Delta x\)</span>). Hence we get the standard derivative notation:</p>
+<div class="math">$$
+\frac{dy}{dx} \equiv f'(x) \equiv \lim_{\Delta x \rightarrow 0} \frac{\Delta y}{\Delta x}
+$$</div>
+<p>In both simple and multiple regression, we interpret <span class="math">\(\beta\)</span>s in similar ways: a unit change in <span class="math">\(x\)</span> results in a <span class="math">\(\beta\)</span> amount of change in <span class="math">\(y\)</span>. But how can we ignore other coefficients in multiple regression? Because they are partial derivatives where one variable is held constant while the other is allowed to vary. For example, the derivative of <span class="math">\(f(x,y)\)</span> while holding <span class="math">\(x\)</span> constant can be written as</p>
+<div class="math">$$
+f_x'(y) = \frac{\partial f(x,y)}{\partial x}
+$$</div>
+<p><em>Napoleon: A Life</em>: punishment should be infrequent but severe; "truth is so precious she should be surrounded by a bodyguard of lies"</p>
 <p><em>Philosopher's Toolkit</em>: Richard Dawkins' "selfish gene" is an example of a failed intuition pump---doesn't mean at all what people think it does (he is referring to how genes optimize locally instead of globally for the organism)</p>
 <hr />
 <p>September 22, 2017</p>
@@ -100,6 +112,63 @@
 <p>L1 norm for accuracy---less bias; L2 norm gives parsimony---less variance &lt;|||&gt; New favorite military title: 1st Sea Lord &lt;|||&gt; Ada Lovelace thought of using punch cards after being inspired by weaving loom &lt;|||&gt; 37% optimal stopping problems and Secretary problem</p>
 <p>Jeremy Bentham referred to natural rights as "nonsense on stilts"---similar sentiment from other Enlightenment thinkers &lt;|||&gt; John Adams thought the idea that "all mean are created equal" was absurd</p>
 <p><a href="http://www.wikiwand.com/en/Strassen_algorithm">Strassen’s Subcubic Matrix Multiplication Algorithm</a>: a divide-conquer-combine strategy that is completely non-obvious but hugely important because it saves on recursive calls.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
   <div class="tag-cloud">
     <p>
