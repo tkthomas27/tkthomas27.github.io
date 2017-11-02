@@ -1,0 +1,21 @@
+
+    body {
+        background-color: #ECF0F1;
+        font-family: 'Georgia','Verdana',serif;
+        counter-reset: h2counter;
+    }
+    h1 {
+        font-family: 'Georgia','Verdana',serif;
+        counter-reset: h2counter;
+    }
+    h2:before {
+        font-family: 'Georgia','Verdana',serif;
+        content: counter(h2counter) ".\0000a0\0000a0";
+        counter-increment: h2counter;
+        counter-reset: h3counter;
+    }
+    h3:before {
+        font-family: 'Georgia','Verdana',serif;
+        content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+        counter-increment: h3counter;
+    }

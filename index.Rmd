@@ -4,4 +4,18 @@ title: "Notebook Archive"
 
 # R Notebooks
 
+<a href="https://www.timothykylethomas.me/crsp_gettingdata.html" target="_blank">Getting Data from CRSP</a>
+
+<a href="https://www.timothykylethomas.me/ggpairs.html" target="_blank">GGPairs</a>
+
+
 # Python Notebooks
+
+
+<a href="https://www.timothykylethomas.me/checkio-vol1.html" target="_blank">Checkio Vol. 1</a>
+
+<a href="https://www.timothykylethomas.me/nfl-prediction-1.html" target="_blank">NFL Prediction</a>
+
+<a href="https://www.timothykylethomas.me/nfldb-postgresql.html" target="_blank">NFLDB Postgresql</a>
+
+<a href="https://www.timothykylethomas.me/supply-demand-basics.html" target="_blank">Supply Demand Basics</a>
