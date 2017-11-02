@@ -20,6 +20,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
@@ -67,6 +70,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 
 </head>
 
@@ -162,6 +166,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -172,11 +271,11 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">Notebook Archive</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown-header">Home</li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -198,7 +297,7 @@ $(document).ready(function () {
 <p>Wharton Research Data Services (WRDS) is the standard finance and accounting data source for academic research. WRDS is composed of many individual datasets provided by different vendors. The two most commonly used are Compustat (for accounting data) and CRSP (for stock data). In this post we will be focusing on getting CRSP data but the process for getting Compustat data (or any other dataset) is the same.</p>
 <p>The Center for Research in Security Pricing (CRSP) is a University of Chicago service to provide accurate, historical stock data. The dataset extends to December 1925 and new data is typically added 3-6 months ex post. The monthly dataset (which we will be using) currently has over 4 million firm-month observations. CRSP data is not one monolithic dataset. Instead it is over a hundred different datasets each holding different slices of data. The way these datasets are connected is a key difference between the two ways of extracting data from WRDS.</p>
 <div id="point-and-click-web-interface" class="section level1">
-<h1>Point and Click Web Interface</h1>
+<h1><span class="header-section-number">1</span> Point and Click Web Interface</h1>
 <p>The most straightforward method of retrieving CRSP data is by using the point-and-click web query on the WRDS website. Simply navigate to the database you want, specify the time period, the company (or companies you want), select the variable, then choose the data format you want (csv, dta, xlsx, etc.). This entire process can be saved as a query with a specific name for later reference.</p>
 <p><strong>Pros</strong></p>
 <ul>
@@ -212,7 +311,7 @@ $(document).ready(function () {
 </ul>
 </div>
 <div id="command-line" class="section level1">
-<h1>Command Line</h1>
+<h1><span class="header-section-number">2</span> Command Line</h1>
 <p>Although we’ll be saving the automation part for another post (there is preliminary work to be done first that we’ll go over here), it’s important to know why automation might be useful. Say you have a research idea and you get your WRDS, process it, analyze, and type a preliminary paper. You shop the paper around to others who might help, get some feedback, present at conferences, etc. Now it’s been a year since you did your first analysis and there is an additional year of data on CRSP. With the web query format you would have to go back and do the entire process over again. With an automatic process, a single command could update your data and run your analysis and generate a new paper (assuming you’re using reproducible research method like <code>R</code> and <code>knitr</code>/<code>rmarkdown</code>).</p>
 <p>The pros and cons for the command line method are flipped from the point-and-click method. The biggest disadvantage is that to get many of the variables you want (like GICs) you need to merge in data from multiple datasets. The key challenge here is that it is not entirely obvious what these databases are called and where they are from. The point-and-click interface takes care of a lot of work for you in this regard.</p>
 <p>That being said, once you do have your query down pat (meaning you know the variables and databases you need), the entire process could be automated. But to get there we first have to get our pipeline established. We will be using a combination of <code>R</code>+<code>bash</code>+<code>PostgreSQL</code>. <code>PostgreSQL</code> is a relational database that is a very easy, commonly used method of storing and accessing data.</p>
@@ -225,11 +324,11 @@ $(document).ready(function () {
 <li>Upload to a <code>PostgreSQL</code> database.</li>
 </ol>
 <div id="download-postgresql" class="section level2">
-<h2>Download PostgreSQL</h2>
+<h2><span class="header-section-number">2.1</span> Download PostgreSQL</h2>
 <p>To use <a href="https://postgresapp.com">Postgres.app</a> you must not have any previous installation of Postgres on you computer. Installation and setup is a breeze. We will be using the initial database that uses <code>localhost</code>, port 5432, and the user and database named with your system user name.</p>
 </div>
 <div id="wrds-server-environment" class="section level2">
-<h2>WRDS Server Environment</h2>
+<h2><span class="header-section-number">2.2</span> WRDS Server Environment</h2>
 <p>The R environment on your personal node on the WRDS server needs to be setup in order to query the data using <code>R</code>. This requires you to <code>ssh</code> into the server and edit the <code>.Rprofile</code> and <code>.Renviron</code> files. There are several text editing tools available to do so. The most ‘normal’ (i.e., not like <code>vim</code>) is <code>nano</code>. Additionally, you will need to encode your password using SAS following the <a href="https://wrds-web.wharton.upenn.edu/wrds/support/Accessing%20and%20Manipulating%20the%20Data/_007R%20Programming/_001Using%20R%20with%20WRDS.cfm">hints</a> page.</p>
 <pre class="bash"><code>ssh &lt;user_name&gt;@wrds-cloud.wharton.upenn.edu
 #then enter your password
@@ -262,7 +361,7 @@ wrdsconnect &lt;- function(user=&lt;user_name&gt;, pass=&lt;password&gt;){
 CLASSPATH=&quot;/usr/local/sas/jdbc_driver/sas.core.jar:/usr/local/sas/jdbc_driver/sas.intrnet.javatools.jar&quot;</code></pre>
 </div>
 <div id="extracting-data" class="section level2">
-<h2>Extracting Data</h2>
+<h2><span class="header-section-number">2.3</span> Extracting Data</h2>
 <p>Now that the environment is setup, type the following two commands to enter an <code>R</code> session:</p>
 <pre class="bash"><code>qrsh #launch the wrds shell
 R #start an R session</code></pre>
@@ -273,13 +372,13 @@ data &lt;- fetch(res, n = -1) #connect, query, and save to data; n=-1 to select 
 write.csv(data,&quot;crsp_raw.csv&quot;) #write to a csv file</code></pre>
 </div>
 <div id="download-the-data" class="section level2">
-<h2>Download the Data</h2>
+<h2><span class="header-section-number">2.4</span> Download the Data</h2>
 <p>Now that the data has been saved to our WRDS node, we need to download it to our computer. The easiest way is to ftp the data from WRDS to our computer using the <code>get</code> command.</p>
 <pre class="bash"><code>sftp &lt;user_name&gt;@wrds-cloud.wharton.upenn.edu
 get crsp_raw.csv /data/destination/path</code></pre>
 </div>
 <div id="postgresql-setup" class="section level2">
-<h2>PostgreSQL Setup</h2>
+<h2><span class="header-section-number">2.5</span> PostgreSQL Setup</h2>
 <p>Moving data to <code>PostgreSQL</code> is super easy. We will be following <a href="http://www.win-vector.com/blog/2011/01/sql-screwdriver/">Win-Vector’s</a> very helpful tutorial.</p>
 <pre class="r"><code># read in the crsp data
 crsp&lt;-read_csv(&#39;crsp_raw.csv&#39;) 
@@ -329,6 +428,8 @@ crsp %&gt;% ggplot(., aes(x=year, y=n)) + geom_line(size=2,color=&quot;#E74C3C&q
 
 
 
+</div>
+</div>
 
 </div>
 

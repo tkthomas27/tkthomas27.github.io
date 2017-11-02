@@ -1,10 +1,6 @@
 ---
 title: Getting WRDS CRSP Data
 author: Kyle Thomas
-output: html_document
-category: tech
-tags: r, wrds, crsp, cli, postgresql
-summary: There are multiple ways of getting data from WRDS. In this post, we will go over two primary ways as well as their respective pros and cons. We'll also go over how to upload the data into a PostgreSQL database for easier use with your data analysis package of choice.
 ---
 
 ```{r kni, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}

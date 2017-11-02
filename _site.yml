@@ -1,11 +1,12 @@
 name: "my-website"
 output_dir: "."
 navbar:
-    title: "My Website"
-    left:
-    - text: "Home"
-    href: index.html
+    title: "Notebook Archive"
 output:
     html_document:
         theme: flatly
         highlight: default
+        toc: true
+        toc_float: true
+        number_sections: true
+        css: style.css

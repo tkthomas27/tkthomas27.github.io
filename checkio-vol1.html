@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>nfl_test</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>checkio-vol1</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11819,65 +11819,45 @@ $( document ).ready(function(){
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">plotly</span> <span class="k">as</span> <span class="nn">py</span>
-<span class="kn">import</span> <span class="nn">plotly.figure_factory</span> <span class="k">as</span> <span class="nn">ff</span>
-<span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="k">import</span> <span class="n">download_plotlyjs</span><span class="p">,</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">iplot</span>
-<span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Challenge-1">Challenge 1<a class="anchor-link" href="#Challenge-1">&#182;</a></h1><p>In this first challenge, we need to sum the even indexed items and then multiply this sum by the final element. The base example is:</p>
+\begin{equation}
+    [0,1,2,3,4,5] = (0+2+4)*5 = 30
+\end{equation}<p>Where 0,2,4 are the numbers at the even indexes (0,2,4). Remember that Python starts indexing at 0 and that 0 is <a href="http://www.wikiwand.com/en/Parity_of_zero">even</a>.</p>
 
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-
-<div class="output_html rendered_html output_subarea ">
-<script>requirejs.config({paths: { 'plotly': ['https://cdn.plot.ly/plotly-latest.min']},});if(!window.Plotly) {{require(['plotly'],function(plotly) {window.Plotly=plotly;});}}</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conn</span><span class="o">=</span><span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;dbname=&#39;nfldb&#39; user=&#39;kthomas1&#39; host=&#39;localhost&#39; password=&#39;&#39; port=5432&quot;</span><span class="p">)</span>
-<span class="n">cur</span><span class="o">=</span><span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">checkio</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
 
-</div>
-</div>
-</div>
+    <span class="c1">#make sure array is not empty</span>
+    <span class="k">if</span> <span class="n">array</span> <span class="o">==</span> <span class="p">[]:</span>
+        <span class="k">return</span> <span class="mi">0</span>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT college, count(*) as freq </span>
-<span class="s2">from player </span>
-<span class="s2">where college is not null </span>
-<span class="s2">group by college </span>
-<span class="s2">order by freq DESC </span>
-<span class="s2">limit 10&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">even_index</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="c1">#create a list that is the even arrays</span>
+    
+    <span class="n">sum_even</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">even_index</span><span class="p">)</span> <span class="c1">#sum this array</span>
+    
+    <span class="n">las_num</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#retrieve the final number to multiply the sum by</span>
+
+    <span class="c1"># return the sum multiplied by the final number</span>
+    <span class="k">return</span> <span class="n">sum_even</span><span class="o">*</span><span class="n">las_num</span>
+
+<span class="c1">#These &quot;asserts&quot; using only for self-checking and not necessary for auto-testing</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">checkio</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;(0+2+4)*5=30&quot;</span>
+    <span class="k">assert</span> <span class="n">checkio</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;(1+5)*5=30&quot;</span>
+    <span class="k">assert</span> <span class="n">checkio</span><span class="p">([</span><span class="mi">6</span><span class="p">])</span> <span class="o">==</span> <span class="mi">36</span><span class="p">,</span> <span class="s2">&quot;(6)*6=36&quot;</span>
+    <span class="k">assert</span> <span class="n">checkio</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;An empty array = 0&quot;</span>
 </pre></div>
 
 </div>
@@ -11885,45 +11865,97 @@ $( document ).ready(function(){
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Code Review</strong></p>
+<ul>
+<li><code>array[0::2]</code>: subset the array from 0 to the end (the blank bit between <code>::</code>), but takes every second index. </li>
+<li><code>array[-1]</code>: subset the array by retrieving the final element (counting backwards using -1). </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Challenge-2">Challenge 2<a class="anchor-link" href="#Challenge-2">&#182;</a></h1><p>In this challenge, we want to find a secret message by returning the capital letters in a string. My strategy for tackling this challenge was to use a list comprehension that iterates through each letter in the text and determines if the letter is capitalize.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-<span class="n">t2</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;School&quot;</span><span class="p">,</span><span class="s2">&quot;Count&quot;</span><span class="p">)]</span> <span class="o">+</span> <span class="n">rows</span>
-<span class="n">table</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">figure_factory</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
-<span class="n">iplot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;simple_table&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_message</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">message</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">letter</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">letter</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span><span class="o">==</span><span class="kc">True</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1">#These &quot;asserts&quot; using only for self-checking and not necessary for auto-testing</span>
+    <span class="k">assert</span> <span class="n">find_message</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;How are you? Eh, ok. Low or Lower? Ohhh.&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;HELLO&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span>
+    <span class="k">assert</span> <span class="n">find_message</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Nothing&quot;</span>
+    <span class="k">assert</span> <span class="n">find_message</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;HELLO WORLD!!!&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;HELLOWORLD&quot;</span><span class="p">,</span> <span class="s2">&quot;Capitals&quot;</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-
-<div class="output_html rendered_html output_subarea ">
-<div id="bc4b358f-2734-497e-b89a-5081ceca2973" style="height: 380px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("bc4b358f-2734-497e-b89a-5081ceca2973", [{"hoverinfo": "none", "type": "heatmap", "showscale": false, "z": [[0, 0], [0.5, 0.5], [1, 1], [0.5, 0.5], [1, 1], [0.5, 0.5], [1, 1], [0.5, 0.5], [1, 1], [0.5, 0.5], [1, 1]], "opacity": 0.75, "colorscale": [[0, "#00083e"], [0.5, "#ededee"], [1, "#ffffff"]]}], {"height": 380, "xaxis": {"gridwidth": 2, "tick0": -0.5, "showticklabels": false, "dtick": 1, "zeroline": false, "ticks": ""}, "yaxis": {"gridwidth": 2, "tick0": 0.5, "showticklabels": false, "dtick": 1, "zeroline": false, "autorange": "reversed", "ticks": ""}, "margin": {"l": 0, "b": 0, "t": 0, "r": 0}, "annotations": [{"x": -0.45, "text": "<b>School</b>", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#ffffff"}, "y": 0, "align": "left"}, {"x": 0.55, "text": "<b>Count</b>", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#ffffff"}, "y": 0, "align": "left"}, {"x": -0.45, "text": "Ohio State", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 1, "align": "left"}, {"x": 0.55, "text": "118", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 1, "align": "left"}, {"x": -0.45, "text": "LSU", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 2, "align": "left"}, {"x": 0.55, "text": "118", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 2, "align": "left"}, {"x": -0.45, "text": "Miami (Fla.)", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 3, "align": "left"}, {"x": 0.55, "text": "116", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 3, "align": "left"}, {"x": -0.45, "text": "USC", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 4, "align": "left"}, {"x": 0.55, "text": "113", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 4, "align": "left"}, {"x": -0.45, "text": "Florida", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 5, "align": "left"}, {"x": 0.55, "text": "107", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 5, "align": "left"}, {"x": -0.45, "text": "Georgia", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 6, "align": "left"}, {"x": 0.55, "text": "104", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 6, "align": "left"}, {"x": -0.45, "text": "Florida State", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 7, "align": "left"}, {"x": 0.55, "text": "98", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 7, "align": "left"}, {"x": -0.45, "text": "Oklahoma", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 8, "align": "left"}, {"x": 0.55, "text": "98", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 8, "align": "left"}, {"x": -0.45, "text": "Alabama", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 9, "align": "left"}, {"x": 0.55, "text": "95", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 9, "align": "left"}, {"x": -0.45, "text": "Notre Dame", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 10, "align": "left"}, {"x": 0.55, "text": "89", "xref": "x1", "showarrow": false, "yref": "y1", "xanchor": "left", "font": {"color": "#000000"}, "y": 10, "align": "left"}]}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Code Review</strong></p>
+<ul>
+<li>The list comprehension should be self-explanatory if you have even a limited knowledge of control flows. The novel feature is that Python allows you to do this in a single line. Very Pythonic. The result is an array of just the capital letters from the string.</li>
+<li><code>''.join(message)</code>: we combined the array of capital letters using the <code>'join</code> function. We do not want any spaces, so we live the first bit blank. If we wanted to have a comma between each capital letter, we would write <code>','.join(message)</code>.</li>
+</ul>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Challenge-3">Challenge 3<a class="anchor-link" href="#Challenge-3">&#182;</a></h1><p>In this challenge, we want to raise the nth index to the nth power. This is very straightforward. The only twist is that we need to use a <code>try except</code> flow in case an index is passed that is outside of the range of the array.</p>
 
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">index_power</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1">#These &quot;asserts&quot; using only for self-checking and not necessary for auto-testing</span>
+    <span class="k">assert</span> <span class="n">index_power</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Square&quot;</span>
+    <span class="k">assert</span> <span class="n">index_power</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1000000</span><span class="p">,</span> <span class="s2">&quot;Cube&quot;</span>
+    <span class="k">assert</span> <span class="n">index_power</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Zero power&quot;</span>
+    <span class="k">assert</span> <span class="n">index_power</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;IndexError&quot;</span>
 </pre></div>
 
 </div>
