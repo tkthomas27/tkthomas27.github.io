@@ -7,18 +7,18 @@ need to change the colors
 
 # R Notebooks
 
-<a href="https://www.tkthomas27.github.io/crsp_gettingdata.html" target="_blank">Getting Data from CRSP</a>
+<a href="http://timothykylethomas.me/crsp_gettingdata.html" target="_blank">Getting Data from CRSP</a>
 
-<a href="https://www.tkthomas27.github.io/ggpairs.html" target="_blank">GGPairs</a>
+<a href="http://timothykylethomas.me/ggpairs.html" target="_blank">GGPairs</a>
 
 
 # Python Notebooks
 
 
-<a href="https://www.tkthomas27.github.io/checkio-vol1.html" target="_blank">Checkio Vol. 1</a>
+<a href="http://timothykylethomas.me/checkio-vol1.html" target="_blank">Checkio Vol. 1</a>
 
-<a href="https://www.tkthomas27.github.ionfl-prediction-1.html" target="_blank">NFL Prediction</a>
+<a href="http://timothykylethomas.me/nfl-prediction-1.html" target="_blank">NFL Prediction</a>
 
-<a href="https://www.tkthomas27.github.io/nfldb-postgresql.html" target="_blank">NFLDB Postgresql</a>
+<a href="http://timothykylethomas.me/nfldb-postgresql.html" target="_blank">NFLDB Postgresql</a>
 
-<a href="https://www.tkthomas27.github.io/supply-demand-basics.html" target="_blank">Supply Demand Basics</a>
+<a href="http://timothykylethomas.me/supply-demand-basics.html" target="_blank">Supply Demand Basics</a>
