@@ -1,0 +1,22 @@
+---
+title: "Habits"
+author: John Doe
+date: March 22, 2005
+output: html_document
+---
+
+some words about things
+
+
+```{python}
+
+# import pandas and numpy for 
+import pandas as pd
+import numpy as np
+
+x=2+2
+print(x)
+
+
+```
+
