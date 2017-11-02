@@ -3,3 +3,17 @@ title: "My Website"
 ---
 
 Hello, Website!
+
+# Section Header 1
+
+$$
+x = \frac{-b\pm\sqrt{3+2}}{0}
+$$
+
+```{r}
+net_eq = function(data) {
+    #should net repo be set to zero when there is no previous observation
+    data %>% mutate(net_eq = ifelse(lmcapa!=0,(shra - lshra)*(prca),0))
+}
+```
+lorem ipsum text here for people to read about the things
