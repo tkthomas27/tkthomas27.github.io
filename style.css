@@ -1,6 +1,7 @@
 body {
     font-family: 'Georgia','Verdana',serif;
     background-color: #ECF0F1;
+    font-size:14pt;
 }
 
 h1 {
@@ -24,5 +25,13 @@ a {
 }
 
 a:hover {
+    color: #E74C3C;
+}
+
+nav ul>a:hover{
+    color: #E74C3C;
+}
+
+a.navbar-brand{
     color: #E74C3C;
 }
