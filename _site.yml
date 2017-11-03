@@ -1,12 +1,29 @@
-name: "my-website"
+name: "thomas archive"
 output_dir: "."
 navbar:
-    title: "Notebook Archive"
+    title: ""
+    left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Notebooks"
+      icon: fa-book
+      href: notebook_archive.html
+    - text: "Logs"
+      icon: ion-clipboard
+      href: log_archive.html
+    right:
+    - icon: ion-social-github
+      href: https://github.com/tkthomas27
+    - icon: ion-social-twitter
+      href: https://twitter.com/tkylethomas27
 output:
     html_document:
         theme: flatly
         highlight: default
         toc: true
-        toc_float: true
+        toc_float:
+            collapsed: false
+            smooth_scroll: false
         number_sections: true
         css: style.css

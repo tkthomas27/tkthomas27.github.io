@@ -1,0 +1,16 @@
+---
+title: "Log Archive"
+author: Kyle Thomas
+---
+
+---
+
+# Overview
+
+These logs are simply a collection of interesting facts, concepts, or thoughts from a day in the life of a research associate. I think there is much to be said for varying the topics that you read about, so I try to make the log entries as diverse as possible.
+
+---
+
+# Log Archive
+
+<a href="http://timothykylethomas.me/log_2017.html" target="_blank">Log 2017</a>

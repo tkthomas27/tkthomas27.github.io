@@ -1,0 +1,49 @@
+---
+title: "Notebook Archive"
+---
+
+---
+
+# R Notebooks
+
+---
+
+<a href="http://timothykylethomas.me/crsp_gettingdata.html" target="_blank">Getting Data from CRSP</a>
+
+There are multiple ways of getting data from WRDS. In this notebook, we will go over two primary ways as well as their respective pros and cons. We'll also go over how to upload the data into a PostgreSQL database for easier use with your data analysis package of choice.
+
+---
+
+<a href="http://timothykylethomas.me/ggpairs.html" target="_blank">GGPairs</a>
+
+In this notebook we walk through the R package `ggpairs` and how it can help us quickly visualize the relationship between variables.
+
+---
+
+# Python Notebooks
+
+---
+
+<a href="http://timothykylethomas.me/nfldb-postgresql.html" target="_blank">Getting Started with NFLDB and Postgresql</a>
+
+NFLDB and PostgreSQL are powerful yet easy to use tools for querying NFL data. This workflow can be used to answer questions you might have regarding the NFL or building a predictive model.
+
+---
+
+<a href="http://timothykylethomas.me/nfl-prediction-1.html" target="_blank">NFL Prediction with Logistic Regression</a>
+
+The NFL season is upon us. Most pundits can barely pick over 50% of the games right. Can we use machine learning techniques to beat them? Using a PostgreSQL database, we can build statistical tables that fed into a logistic regression model to predict home team wins. We also strengthen our model using ridge regression, scaling, and cross validation.
+
+---
+
+<a href="http://timothykylethomas.me/supply-demand-basics.html" target="_blank">Supply Demand Basics</a>
+
+Supply and demand are fundamental building blocks to understanding economics. We will review the basics of supply and demand as well as some simple (and fun) python plot building.
+
+---
+
+<a href="http://timothykylethomas.me/checkio-vol1.html" target="_blank">Checkio Vol. 1</a>
+
+checkio.org is a great place to practice your coding. In this post, we will present solutions to three of the easier challenges on checkio.
+
+---

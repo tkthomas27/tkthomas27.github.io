@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Kyle Thomas" />
+
+
+<title>Log 2017</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Archive</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="notebook_archive.html">Notebooks</a>
+</li>
+<li>
+  <a href="log.Rmd">Logs</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Log 2017</h1>
+<h4 class="author"><em>Kyle Thomas</em></h4>
+
+</div>
+
+
+<div id="october-2017" class="section level1">
+<h1><span class="header-section-number">1</span> October 2017</h1>
+<div id="october-24-2017" class="section level2">
+<h2><span class="header-section-number">1.1</span> October 24, 2017</h2>
+<p><em>Millennium</em>: Until 1434, Europeans thought that Cape Bojador along the coast of the Sahara was impassable. By 1522, they had completed a circumnavigation of the world.</p>
+<p>Economist, Oct 21, 2017</p>
+<ul>
+<li><p>Should the revised charter refer to “Xi Jinping Thought”, then Mr Xi will become an ideologue on a par with Mao. The party has a hierarchy of words describing systems of ideas, with “thought” (sixiang) nearly at the top, “theory” (lilun) in the middle and “view” or “perspective” (guan) at the bottom</p></li>
+<li><p>Five outliers - Chesapeake Energy, Netflix, Nextera Energy, Tesla and Uber - have collectively lost $100bn in the past decade</p></li>
+<li><p>Chesapeake Energy, a fracking firm at the heart of America’s shale revolution, has lost at least $1bn of free cashflow a year for an incredible 14 years in a row</p></li>
+<li><p>Netflix amortises the cost of content over periods of up to five years, so reports an accounting profit even as it bleeds cash.</p></li>
+<li><p>Saudi Aramco has 15 times more reserves of oil and gas than ExxonMobil, its biggest private competitor, higher production, fewer employees and lower costs per barrel.</p></li>
+<li><p>IMF study says higher taxes can lower inequality without lowering economic growth; optimal high tax rate is 44%</p></li>
+<li><p>AlphaGo Zero has an ELO of 5000; the best human players are ~3500</p></li>
+</ul>
+</div>
+</div>
+<div id="october-20-2017" class="section level1">
+<h1><span class="header-section-number">2</span> October 20, 2017</h1>
+<p><a href="http://www.wikiwand.com/en/Aberfan_disaster">Aberfan Disaster</a>: Over 160 were killed in England in 1966 when a pile of coal spilled onto a village.</p>
+<div id="october-19-2017" class="section level2">
+<h2><span class="header-section-number">2.1</span> October 19, 2017</h2>
+<p><em>Millennium</em>: The Black Death came to Norway via a ghost ship; The Black Death killed 45% of the England in 7 months over 1348—an annualized mortality rate of 77%; a low estimate is that 1/3 of Europe died during the initial phases of the plague.</p>
+<p>Speaking of the end of the world, here is a list of near misses: <a href="http://www.wikiwand.com/en/List_of_meteor_air_bursts">list of air bursts</a></p>
+<p>Chain of Thought - Power Law: <a href="http://www.wikiwand.com/en/Power_law">Power Law</a> -&gt; <a href="http://www.wikiwand.com/en/Pareto_principle">Pareto Principle</a> -&gt; <a href="http://www.wikiwand.com/en/Fat-tailed_distribution">Fat Tailed Distribution</a></p>
+</div>
+<div id="october-18-2017" class="section level2">
+<h2><span class="header-section-number">2.2</span> October 18, 2017</h2>
+<p>Conditional expectation tells us that</p>
+<p><span class="math display">\[
+E(Y \vert X=x) = \sum_{i=1}^k y_i \text{Pr}(Y=y_i \vert X = x)
+\]</span></p>
+<p>In words, the expected value of Y given a particular value of X is equal to the sum of the probabilities of each value of Y when X=x. Let’s say X takes two values, 2 and 3, and Y takes on many values from 0-100. For conditional expectation, we want to know what the expected value of Y when X=2. To do this we would just sum all the values of y multiplied by their probabilities whenever X=2.</p>
+<p>The Law of Iterated Expectations tells us that</p>
+<p><span class="math display">\[
+E[Y] = \sum_{i=1}^l E(Y \vert X = x) Pr(x=x_i)
+\]</span></p>
+<p><span class="math display">\[
+E[Y] = E[E[Y \vert X]]
+\]</span></p>
+<p>Essentially, the law of iterated expectations asks, what if we took a conditional probability of Y on X but then did it for every value of X. If you do this, you are essentially just taking the expectation of Y because you are going over the entire Y space.</p>
+<p>Covariance can be written as:</p>
+<p><span class="math display">\[
+\sigma_{X,Y} = \sum_{i=1}^k \sum_{j=1}^l (x_j - \mu_X)(y_i - \mu_Y) Pr(X=x_j,Y=y_i)
+\]</span></p>
+</div>
+<div id="october-17-2017" class="section level2">
+<h2><span class="header-section-number">2.3</span> October 17, 2017</h2>
+<p><em>Millennium</em>: Pious Folk Count of Anjou not really pious forced to build monasteries and go to Jerusalem</p>
+</div>
+<div id="october-5-2017" class="section level2">
+<h2><span class="header-section-number">2.4</span> October 5, 2017</h2>
+<p>Would like to host R Markdown Notebooks and Jupyter Notebooks separately from the main blog so that the interactive bits can be rendered properly. I should be able to replicate <a href="https://github.com/RaoOfPhysics/phd-notebooks">this</a> and <a href="https://raoofphysics.github.io/phd-notebooks/benefits/#">this</a>. The only trick will be getting it to work with the Pelican framework.</p>
+<p><strong>Economist, October 2</strong></p>
+<ul>
+<li><p>Under Margaret Thatcher the Conservatives were more popular than Labour among 18- to 24-year-olds</p></li>
+<li><p>Structural unemployability due to automation; labor force participation rate has increased in Britain possibly due to better benefits for parents</p></li>
+<li><p>Pollution from ships is causing more lightning in Mallaca straits and other places</p></li>
+<li><p>If today’s asset prices have been propped up by loose monetary policy, tightening could cause a big correction; bizarre that inflation has not increased (I think due to lagging wages); part of problem is graying population and risk aversion after the crisis is prompting more saving</p></li>
+<li><p>In most rich world countries, women are paid 98 cents to the dollar as a man for the same job</p></li>
+<li><p>Gerrymandering: in Wisconsin in 2012, Republicans won 48% of the vote but got 60% of the seats; later with 52% of the vote they got 98% of the seats; efficiency gap</p></li>
+<li><p>Despite what 538 says, there is <a href="https://www.economist.com/news/united-states/21730022-it-also-suggests-tweaks-gun-laws-would-still-leave-america-unusually-high">evidence</a> that gun laws work</p></li>
+<li><p>CAPE a measure of how much willing to pay for profits; average since 1881 is 17, today it is 30; credit spreads are narrowing — huge demand for risky bonds; China’s entry into the world market introduced many thrifty savers — Ben Bernanke; companies don’t need as much capital (more intangibles) yet still make profits—result is more cash; low interest rates mean low discount rates which mean higher future earnings which mean high prices; some argue that interest rates are no longer a good guide to the economy—Philips curve no longer holds; but tendency to save is starting to fade—older people mean more spending in retirement; some argue stock markets are irrelevant bc not IPOs, more important are banks and credit markets</p></li>
+<li><p>Chinese now love Chiang Kai Shek because he wanted a reunified China</p></li>
+<li><p>BJP grandee said voiding of high-denomination bills was a bold step but “suicide too is a bold step”</p></li>
+</ul>
+</div>
+<div id="october-4-2017" class="section level2">
+<h2><span class="header-section-number">2.5</span> October 4, 2017</h2>
+<p><em>Napoleon: A Life</em>: I’ve heard that the Siege of Petersburg in the American Civl War was first modern battle due to its extensive use of artillery and trench warfare. However, the Battle of Eylau during the Napoleonic wars may be an even earlier example due to its use of artillery and overall brutality. The French Marshall Ney commented, “What a massacre! And without a result.”</p>
+</div>
+</div>
+<div id="september-2017" class="section level1">
+<h1><span class="header-section-number">3</span> September 2017</h1>
+<div id="september-28-2017" class="section level2">
+<h2><span class="header-section-number">3.1</span> September 28, 2017</h2>
+<p>When interpreting regression results it is valuable to remember that the <em>ceteris peribus</em> interpretation is due to the coefficients being partial derivatives. A derivative is simply defined as</p>
+<p><span class="math display">\[
+\frac{\Delta y}{\Delta x} = \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+\]</span></p>
+<p>In words, if <span class="math inline">\(y=f(x)\)</span> the change in y (<span class="math inline">\(\Delta y\)</span>) per change in x (<span class="math inline">\(\Delta x\)</span>) is how much how much a function changes (<span class="math inline">\(f(x_0 + \Delta x) - f(x_0)\)</span>) given a change in x (<span class="math inline">\(\Delta x\)</span>). Hence we get the standard derivative notation:</p>
+<p><span class="math display">\[
+\frac{dy}{dx} \equiv f&#39;(x) \equiv \lim_{\Delta x \rightarrow 0} \frac{\Delta y}{\Delta x}
+\]</span></p>
+<p>In both simple and multiple regression, we interpret <span class="math inline">\(\beta\)</span>s in similar ways: a unit change in <span class="math inline">\(x\)</span> results in a <span class="math inline">\(\beta\)</span> amount of change in <span class="math inline">\(y\)</span>. But how can we ignore other coefficients in multiple regression? Because they are partial derivatives where one variable is held constant while the other is allowed to vary. For example, the derivative of <span class="math inline">\(f(x,y)\)</span> while holding <span class="math inline">\(x\)</span> constant can be written as</p>
+<p><span class="math display">\[
+f_x&#39;(y) = \frac{\partial f(x,y)}{\partial x}
+\]</span></p>
+<p><em>Napoleon: A Life</em>: punishment should be infrequent but severe; “truth is so precious she should be surrounded by a bodyguard of lies”</p>
+<p><em>Philosopher’s Toolkit</em>: Richard Dawkins’ “selfish gene” is an example of a failed intuition pump—doesn’t mean at all what people think it does (he is referring to how genes optimize locally instead of globally for the organism)</p>
+</div>
+<div id="september-22-2017" class="section level2">
+<h2><span class="header-section-number">3.2</span> September 22, 2017</h2>
+<p><em>Napoleon: A Life</em>: notorious micromanager; emo youth—wrote excessively Romantic letters on suicide and his 1st wife Josephine; lived frugally when younger—only ate once a day; more concerned by mulberry nursery than revolution; “We have them now”</p>
+<p><a href="http://www.wikiwand.com/en/Petrozavodsk_phenomenon">Petrozavodsk Phenomenon</a>: an unusual and unexplained atmospheric phenomenon. Never heard of this until recently</p>
+<p><a href="http://www.wikiwand.com/en/Pythagorean_expectation">Pythagorean Expectation</a>: way of computing expected wins. Pro football uses exponent of 2.67, <a href="https://www.reddit.com/r/nfl/comments/6rkmbv/introduction_to_pythagorean_expectation/">Redditor</a> says this doesn’t make sense due to <a href="http://www.wikiwand.com/en/VC_dimension">VC Dimension issues</a>. Some <a href="https://www.quora.com/Explain-VC-dimension-and-shattering-in-lucid-Way">more</a> on VC dimensions.</p>
+<p>IgNobel Award Winner: Elisabeth Oberzaucher and Karl Grammer, for trying to use mathematical techniques to determine whether and how Moulay Ismael the Bloodthirsty, the Sharifian Emperor of Morocco, managed, during the years from 1697 through 1727, to father 888 children</p>
+</div>
+<div id="september-21-2017" class="section level2">
+<h2><span class="header-section-number">3.3</span> September 21, 2017</h2>
+<p>L1 norm for accuracy—less bias; L2 norm gives parsimony—less variance &lt;|||&gt; New favorite military title: 1st Sea Lord &lt;|||&gt; Ada Lovelace thought of using punch cards after being inspired by weaving loom &lt;|||&gt; 37% optimal stopping problems and Secretary problem</p>
+<p>Jeremy Bentham referred to natural rights as “nonsense on stilts”—similar sentiment from other Enlightenment thinkers &lt;|||&gt; John Adams thought the idea that “all mean are created equal” was absurd</p>
+<p><a href="http://www.wikiwand.com/en/Strassen_algorithm">Strassen’s Subcubic Matrix Multiplication Algorithm</a>: a divide-conquer-combine strategy that is completely non-obvious but hugely important because it saves on recursive calls.</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
