@@ -25,13 +25,5 @@ a {
 }
 
 a:hover {
-    color: #E74C3C;
-}
-
-nav ul>a:hover{
-    color: #E74C3C;
-}
-
-a.navbar-brand{
-    color: #E74C3C;
+    color: #E74C3C !important;
 }
