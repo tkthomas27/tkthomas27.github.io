@@ -5,6 +5,12 @@ author: Kyle Thomas
 
 ---
 
+# November 2017
+
+## November 3, 2017
+
+*The Storm Before the Storm*: 
+
 # October 2017
 
 ## October 24, 2017
@@ -27,7 +33,7 @@ Economist, Oct 21, 2017
 
 * AlphaGo Zero has an ELO of 5000; the best human players are ~3500
 
-# October 20, 2017
+## October 20, 2017
 
 [Aberfan Disaster](http://www.wikiwand.com/en/Aberfan_disaster): Over 160 were killed in England in 1966 when a pile of coal spilled onto a village.
 
