@@ -13,10 +13,15 @@ navbar:
       icon: ion-clipboard
       href: log_archive.html
     right:
-    - icon: ion-social-github
+    - text: "Github"
+      icon: ion-social-github
       href: https://github.com/tkthomas27
     - icon: ion-social-twitter
+      text: "Twitter"
       href: https://twitter.com/tkylethomas27
+    - icon: ion-social-linkedin
+      text: "LinkedIn"
+      href: https://www.linkedin.com/in/timothykylethomas/
 output:
     html_document:
         theme: flatly

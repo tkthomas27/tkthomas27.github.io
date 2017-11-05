@@ -12,7 +12,7 @@
 <meta name="author" content="Kyle Thomas" />
 
 
-<title>Log Archive</title>
+<title>Internal Rate of Return</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -336,21 +336,92 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Log Archive</h1>
+<h1 class="title toc-ignore">Internal Rate of Return</h1>
 <h4 class="author"><em>Kyle Thomas</em></h4>
 
 </div>
 
 
-<hr />
-<div id="overview" class="section level1">
-<h1><span class="header-section-number">1</span> Overview</h1>
-<p>These logs are simply a collection of interesting facts, concepts, or thoughts from a day in the life of a research associate. I think there is much to be said for varying the topics that you read about, so I try to make the log entries as diverse as possible.</p>
-<hr />
+<div id="time-value-of-money" class="section level1">
+<h1><span class="header-section-number">1</span> Time Value of Money</h1>
+<p>The internal rate of return (IRR) is simply the rate <em>r</em> that equates the future value of money to the present value. Despite being a foundational tool in financial analysis, the economic interpretation of this value is highly contested.</p>
+<p>Before getting into the interpretation of IRR, lets establish the basic axioms of the time value of money that depict the relationship between present value (PV), future value (FV), and the rate of return <em>r</em> over the total number of periods (<span class="math inline">\(T\)</span>):</p>
+<p><span class="math display">\[
+\begin{equation}
+PV = \frac{FV}{(1+r)^T}
+\label{basic_pv}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+FV = PV(1+r)^T
+\label{basic_fv}
+\end{equation}
+\]</span></p>
+<p>In words, Eq. <span class="math inline">\(\ref{basic_pv}\)</span> tells us that PV is equal to some FV discounted at a rate across the the total time period, where <em>T</em> represents the total number of time periods. Eq. <span class="math inline">\(\ref{basic_fv}\)</span> simply rearranges the equation so that FV is PV compounded by a rate <em>r</em> across time.</p>
+<p>The core idea is that cash now is more valuable than cash later. Therefore if I were to lend you money, I would charge you interest to make up for not having money now. As an example, say person A lends person B $10 for $10 years at a rate of 20%. The FV of the money for person A is <span class="math inline">\(10(1+.2)^10=61\)</span>. Alternatively, if person B wanted to know how much they needed to invest to have $61 after 10 years of compounding at 20%, they would find that <span class="math inline">\(61/(1+.2)^10 = 10\)</span>.</p>
+<p>The focus on our exposition will be on <em>r</em>, the rate of return that is used to discount/compound. We can rearrange Eq. <span class="math inline">\(\ref{basic_pv}\)</span> into Eq. <span class="math inline">\(\ref{basic_irr}\)</span> to see the relationship between the IRR and FV and PV. Eq. <span class="math inline">\(\ref{basic_irr}\)</span> will be our final step in computing the IRR.</p>
+<p><span class="math display">\[
+\begin{equation}
+r = \sqrt[T]{\frac{FV}{PV}}-1
+\label{basic_irr}
+\end{equation}
+\]</span></p>
 </div>
-<div id="log-archive" class="section level1">
-<h1><span class="header-section-number">2</span> Log Archive</h1>
-<p><a href="http://timothykylethomas.me/log_2017.html" target="_blank">Log 2017</a></p>
+<div id="streams-of-cash" class="section level1">
+<h1><span class="header-section-number">2</span> Streams of Cash</h1>
+<p>There are plenty of investments that take the form of a single payment in (a negative cash flow out of your pocketbook) followed by a single payment out (a positive cash flow into your pocketbook) after a some period of time. This, however, is a trivial example to be solved (see above) and I will instead focus on investments that take the form of multiple cashflows over several periods.</p>
+<p>Because we are dealing with a stream of cash flows and not a single value, FV needs to be rewritten. Consider a cash flow at t=1, if the final future period is 60 periods from t=1, then we need to compute the future value of that cash flow for for 60-1 periods from that time. We can rewrite the PV and the FV of a stream of cash flows as</p>
+<p><span class="math display">\[
+\begin{equation}
+PV = \sum_{t=1}^{t=T}\frac{CF_t}{(1+r)^{t}}
+\label{pv_cf}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+FV = \sum_{t=1}^{t=T}CF_t(1+r)^{T-t}
+\label{fv_cf}
+\end{equation}
+\]</span></p>
+<p>Substituting Eq. <span class="math inline">\(\ref{fv_cf}\)</span> into Eq. <span class="math inline">\(\ref{basic_pv}\)</span> and expanding we get:</p>
+<p><span class="math display">\[
+\begin{equation}
+PV = \frac{\sum_{t=1}^{t=T}CF_t(1+r)^{T-t}}{(1+r)^T} = \frac{CF_1(1+r)^{T-1}}{(1+r)^T} + \frac{CF_2(1+r)^{T-2}}{(1+r)^T} + ... + \frac{CF_T(1+r)^{T-T}}{(1+r)^T}
+\label{pv_fv}
+\end{equation}
+\]</span></p>
+<p>We could also modify Eq. <span class="math inline">\(\ref{pv_fv}\)</span> to read:</p>
+<p><span class="math display">\[
+\begin{equation}
+\mathit{CF}_{t=0} = \frac{\sum_{t=1}^{t=T}CF_t(1+r)^{T-t} + \mathit{CF}_{t=T}}{(1+r)^T}
+\end{equation}
+\]</span></p>
+<p>This shows that the initial CF is equal to the sum of the compounded cash flows and the terminal CF all discounted at by the same rate of compounding. For IRR, the numerator and the denominator <em>r</em> are assumed to be the same. This assumption is key to the alternatives to IRR such as MIRR (modified internal rate of return).</p>
+</div>
+<div id="solving-for-internal-rate-of-return" class="section level1">
+<h1><span class="header-section-number">3</span> Solving for Internal Rate of Return</h1>
+<p>Our primary goal is to find the <em>r</em> that solves Eq. <span class="math inline">\(\ref{pv_fv}\)</span>. The most common method is to treat this as a polynomial root finding exercise. For clarity, we can trivially rewrite Eq. <span class="math inline">\(\ref{pv_cf}\)</span> as</p>
+<p><span class="math display">\[
+\begin{equation}
+PV = CF_1 (1+r)^{-1} + CF_2 (1+r)^{-2} + ... + CF_n (1+r)^{-n}
+\end{equation}
+\]</span></p>
+<p>To find the root of this equation we need to set it to zero.</p>
+<p><span class="math display">\[
+\begin{equation}
+0 = -PV + CF_1 (1+r)^{-1} + CF_2 (1+r)^{-2} + ... + CF_n (1+r)^{-n}
+\end{equation}
+\]</span></p>
+<p>The root <em>r</em> that satisfies this equation is the Internal Rate of Return (IRR). There are several methods of finding this root.</p>
+<div id="educated-guess-and-interpolation" class="section level2">
+<h2><span class="header-section-number">3.1</span> Educated Guess and Interpolation</h2>
+<p>One way of finding it is to plug and chug using the <code>npv</code> function in Excel and see which rate gives us a negative value. This would not be super precise but would give you an educated guess and allow you to use the secant method to determine a more precise IRR.</p>
+</div>
+<div id="root-finding-algorithm" class="section level2">
+<h2><span class="header-section-number">3.2</span> Root Finding Algorithm</h2>
+<p>Similarly we use the <code>uniroot</code> function of R. first specify the function then use <code>uniroot</code> on it. <code>uniroot</code> uses the golden section ratio method in combination with parabolic interpolation to efficiently guess the root that satisfies the function along a specified interval.</p>
+</div>
 </div>
 
 
