@@ -364,9 +364,13 @@ boxplot(var~class, data=note, main=&quot;Variance over Class&quot;)</code></pre>
 <p>While this graph certainly gets the job done, it is not aesthetically pleasing. For better looking graphs, let use <code>ggplot2</code>. We would also like to see each variable distributed over class. So to present the graphs side by side, we will use the <code>grid.arrage</code> function from <code>gridExtra</code> package.</p>
 <pre class="r"><code># load libraries
 library(ggplot2)
-library(gridExtra)
-
-# boxplots
+library(gridExtra)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;gridExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     combine</code></pre>
+<pre class="r"><code># boxplots
 box_var&lt;-ggplot(note, aes(factor(class),var))+geom_boxplot(aes(fill=factor(class)))
 
 box_skew&lt;-ggplot(note, aes(factor(class),skew))+geom_boxplot(aes(fill=factor(class)))
