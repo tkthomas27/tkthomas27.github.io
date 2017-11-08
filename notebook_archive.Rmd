@@ -46,4 +46,5 @@ Supply and demand are fundamental building blocks to understanding economics. We
 
 checkio.org is a great place to practice your coding. In this post, we will present solutions to three of the easier challenges on checkio.
 
+
 ---
