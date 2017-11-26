@@ -14,7 +14,7 @@ navbar:
       href: services.html
     - text: "Notebooks"
       icon: fa-book
-      href: notebook_archive.html
+      href: notebooks.html
     right:
     - text: "Github"
       icon: ion-social-github
