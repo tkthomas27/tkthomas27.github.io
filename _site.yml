@@ -6,12 +6,15 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
+    - text: "Resume"
+      icon: fa-circle-o-notch
+      href: resume.html
+    - text: "Services"
+      icon: fa-mortar-board
+      href: services.html
     - text: "Notebooks"
       icon: fa-book
       href: notebook_archive.html
-    - text: "Logs"
-      icon: ion-clipboard
-      href: log_archive.html
     right:
     - text: "Github"
       icon: ion-social-github

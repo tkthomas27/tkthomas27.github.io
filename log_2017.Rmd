@@ -6,9 +6,25 @@ title: "Log 2017"
 
 # November 2017
 
+## November 22, 2017
+
+Ascent of Money factoid
+
+## November 19, 2017
+
+Storm Before the Storm Review: 
+
+## November 16, 2017
+
+tidyverse package `reprex` allows for quick creation of reproducible examples when asking for help
+
+SEM: for depeendceis of dependnet variable
+
+Stata dynamic documents: dyndoc, alright
+
 ## November 3, 2017
 
-*The Storm Before the Storm*: 
+*The Storm Before the Storm*: Story of Marius being seven time consul from when he was fleeing; impressive give his physique; interesting that all those workouts everyone made fun of him for are useful
 
 # October 2017
 
@@ -150,3 +166,225 @@ L1 norm for accuracy---less bias; L2 norm gives parsimony---less variance <|||> 
 Jeremy Bentham referred to natural rights as "nonsense on stilts"---similar sentiment from other Enlightenment thinkers <|||> John Adams thought the idea that "all mean are created equal" was absurd
 
 [Strassen’s Subcubic Matrix Multiplication Algorithm](http://www.wikiwand.com/en/Strassen_algorithm): a divide-conquer-combine strategy that is completely non-obvious but hugely important because it saves on recursive calls.
+
+# January 
+
+## January 28, 2017
+
+>“Languages build up to reflect specializations in a way of life. Each specialization may be recognized by its words, by its assumptions and sentence structures. Look for stoppages. Specializations represent places where life is being stopped, where the movement is dammed up and frozen.”
+>-- Frank Herbert, *Children of Dune*
+
+## January 27, 2017
+
+Things that describe Kary Mullis:
+
+* Avid surfer
+* Denier of HIV-Aids link
+* Married four times
+* Winner of Nobel Prize
+* Avid user of LSD
+* Encountered glowing green raccoon (possibly extraterrestrial)
+
+One of these is not like the other...
+
+The work of Lenoir, NC-born Kary Mullis has had an enduring, epoch-defining influence on biology in spite of his unusual predilections and controversial views,. In particular, his Nobel-prize winning work on polymerase chain reaction (PCR) was "highly original and significant, virtually dividing biology into the two epochs of before P.C.R. and after P.C.R."
+
+PCR is essentially a "kind of genetic photocopying, and it became the basis for all subsequent genetic science, from academic studies to police forensic work." PCR relies on breaking done DNA and assembling a new copy of the strand with the help of heat-resistant polymerase. The end result of repeated applications are multiple copies of the original DNA strand. You can immediately see how this could be useful in forensic science: just a single hair fiber is now more than enough to produce sufficient DNA to test for comparisons to suspects.
+
+As for Kary Mullis, well... maybe his autobiography is the best source of information: [*Dancing Naked in the Mindfield*](https://www.amazon.com/Dancing-Naked-Mind-Field-Mullis/dp/0679774009/ref=sr_1_1?ie=UTF8&qid=1486654696&sr=8-1&keywords=kary+mullis).  
+
+## January 26, 2017
+
+We all know Charlemagne: King of the Franks, First Holy Roman Emperor, coronated on Christmas Day in 800 CE. But what about Karl der Grosse? Or Carolus Magnus? This isn't a mere translation issue --- the equivalency of these two names points towards the fundamental similitude of Germany and France as well as the nearly universal appearance of the name "Charles."
+
+So Germany and France hate each other (see World War II, World War I, Franco-Prussian War... you know what --- just check out the wikipedia page on the [French-German Enmity](http://www.wikiwand.com/en/French–German_enmity)). The EU was essentially founded to prevent another World War between the two --- they even gave the Nobel Prize to themselves for so bravely refraining from war for a few decades. With this in mind, it's a little awkward that France and Germany are historically the same. This issue is only possible because, until 1871, Germany wasn't even a country and was more a general cultural idea.
+
+Historically, France is a part of this idea --- the Franks (France and Frankfurt, Germany) were a collection of Germanic tribes occupying the continental Europe north of the Alps. The most famous of the Franks (apologies to [Pepin](http://www.wikiwand.com/en/Pepin_the_Short)) is known almost exclusively by his French name Charlemagne (Char le Magne) despite that his name was actually Karl (Karl der Grosse). Add this to to wiki on "French-German Enmity."
+
+I remember thinking that it was pretty neat when I finally realized Charlemagne's name is quite obviously "Charles the Great." Investigating the relation between Charles, Char, and Karl, you quickly find an expansive list of other Karl derivatives: Carolina (North Carolina is named after Charles I, King of England), Charlotte (the city is named after the queen consort of George III), Caroline, Carla, Carl, Charlene, Carol, Carolyn, and Carlos.
+
+## January 25, 2017
+
+R Markdown [Notebooks](http://rmarkdown.rstudio.com/r_notebooks.html) is a new feature for RStudio that allows for independent and interactive chunk execution, quick rendering of LaTeX, and selective updating of html files (i.e., the entire page does not have to re-rendered each time). This is a very cool advancement in literate programming that takes the best features of iPython notebooks and applies it to a R development environment.
+
+My continuing [notes](https://github.com/tkthomas27/ISL-Notes) on the *Introduction to Statistical Learning* showoff some of these features.
+
+* Full Markdown capabilities
+* The ability to reference defined variables
+* See plots displayed below chunks.
+* See Tex code rendered as you go. The following will be automatically displayed as you type.
+
+$$
+	\begin{equation}
+	\begin{split}
+		E[(Y - \hat{Y})^2] &= E[(f(X) + \epsilon - \hat{f}(X))^2]\\
+		&= \underset{Reducible}{[f(X) - \hat{f}(X)]^2} + \underset{Irreducible}{Var(\epsilon)}
+	\end{split}
+	\end{equation}
+$$
+
+I highly recommend you try it out. Reading about the features is quite underwhelming compared to seeing it in action.
+
+To start a notebook you need to save a file as `.Rmd` and add a header like this:
+
+```r
+---
+title: "Notebook Title"
+output:
+  html_notebook:
+    toc: true
+    number_sections: true
+  pdf_document: default
+---
+```
+
+This will produce a PDF document with a table of contents and numbered sections.
+
+## January 24, 2017
+
+From the [January 28, 2017 edition](http://www.economist.com/printedition/2017-01-28)
+
+*The Multinational Company: In Retreat*: Multinationals, which account for a third of the world's stock markets, are increasingly posting anemic performance results with declining profits and plunging ROE. The cause of this fall is that the opportunities that multinationals exploited in the international market are being "massaged" away: income is rising in the third world, mismatched tax treaties are being synchronized, and local firms are becoming more sophisticated. With a current rise in anti-globalism, the future direction and scale of multinationals are in question.
+
+More articles:
+
+* *Replacing Obamacare: High Risk by Name*: The alternative to the ACA that Republicans are touting relies on high-risk pools. High-risk pools gather all the unhealthy people into a single tranche and charges them higher premiums, thus allowing healthier people to not subsidize the cost of less healthy people. The problem is, of course, that healthy people do end up subsidizing the unhealthy because the high-risk pools require extensive government backing which is turn funded by tax payers.
+
+* New favorite term is the *Herbal Tea Party* --- the liberal version of the conservative Tea Party.
+
+* *Trade War Scenario: Apocalypse Now*: Donald Trump's suggested 45% tariff on imported good's from China would end up hitting the poorest the hardest because they buy the most tradable goods. Such a tariff wouldn't be the end of the world but would be quite uncomfortable for many.
+
+* *The Academy and the Marketplace: Mathematical Transformations*: Speaking of globablization, a recent paper has studied the impact of the liberalization of China following Mao's death and the disintegration of the USSR on employment and productivity of math PhDs. The findings support that unemployment increased with the large influxes of both populations.
+
+## January 23, 2017
+
+**'Member when...**
+
+* Maybe it shouldn't be surprising that Princeton, the first football program, claims the most national titles at 29 --- none of which occurred since 1950. Just to give you an idea of how ridiculous this idea is, Princeton's first 7 national titles were won with with a total of 11 wins. Princeton claims national titles for years 1870 and 1872 were there final record was 1-0.
+* Yes this is ridiculous, but remember that a mere 90 years later, the Boston Celtics were winning multiple championships in a 8-team NBA.
+
+## January 22, 2017
+
+**Watching**
+
+* *Parks and Rec*: The campaign of Leslie Knope, a blonde woman who is unsubstantially and viciously attacked while she runs against a wealthy, bumbling, narcissistic imbecile, is spookily prescient.
+
+**Listening**
+
+* *X-Files-Files with Kumail Nanjiani*: An interesting factoid from Chris Weitz (writer of *American Pie* and *Rogue One*) is that directors are not allowed to direct extras too much (or at all) without paying them more (I guess at some point they transcend being a mere extra and advance to featured extra who gets paid more).
+* *Hacker's: Heroes of the Computer Revolution* by Steve Levy, cont'd: A recurring topic is the "Hacker Ethic" centering on the freedom of information and devotion to exploration. Levy breaks his history into three parts: software hackers (MIT crew), hardware hackers (guys in California building personal computers), and game hackers (a third generation were the Hacker Ethic, like the light of the First Men of Numenor, is utterly diminished).
+
+
+**Reading**
+
+* *The Book of the New Sun* by Gene Wolfe: My anchor of reference for this book is *Hyperion* given that I just finished that a few weeks ago. So far very similar in quality of prose and world building, and I highly enjoy it. I decided to make a list of words I had never heard before. For now, I'll leave this [lamp-shade](http://tvtropes.org/pmwiki/pmwiki.php/Main/LampshadeHanging): "He mispronounced quite common words: urticate, salpinx, bordereau."
+
+
+
+
+## January 21, 2017
+
+>When Lawrence understood, it was as if the math teacher had suddenly played the good part of Bach’s Fantasia and Fugue in G Minor on a pipe organ the size of the Spiral Nebula in Andromeda—the part where Uncle Johann dissects the architecture of the Universe in one merciless descending ever-mutating chord, as if his foot is thrusting through skidding layers of garbage until it finally strikes bedrock.
+> -- Neal Stephenson, *Cryptonomicon*
+
+<!--  -->
+
+>His outfit is a little bizarre. I thought he was a performer of some sort when I first came in, although I tried not to imagine the nature of his act.
+>-- John Kennedy Toole, *A Confederacy of Dunces*
+
+## January 20, 2017
+
+In this classic [story](https://en.wikipedia.org/wiki/Zhuangzi_(book)#.22The_Butterfly_Dream.22), the Chinese sage Zhuangzi (ca. 370 BCE) awakes from dreaming that he was a butterfly only to ask the question: am I a man dreaming of being a butterfly or am I a butterfly dreaming of being a man? Daoists, scholars, philosophers, poets, artists, and laymen alike have all been equally moved by so profound yet so simple of a question. Although the concept has been [elaborated and explored](https://en.wikipedia.org/wiki/Dream_argument) numerous times (there are certainly [more](https://en.wikipedia.org/wiki/Vasubandhu) and [less](https://en.wikipedia.org/wiki/Meditations_on_First_Philosophy) sophisticated takes on the idea), I believe Zhuangzi's simple story has staying power due to its simultaneous depth and shallowness. The very form of the story, incredibly simple yet profound in implications, underlines the point that distinctions between deep and shallow --- between anything in fact --- is ultimately fruitless.
+
+## January 19, 2017
+
+The earliest known representation of the [Yin-Yang](https://en.wikipedia.org/wiki/Taijitu) is not from China but from the late Roman Empire (ca. 430). The [*Notitia Dignitatum*](https://en.wikipedia.org/wiki/Notitia_Dignitatum), which "details the administrative organization of the Eastern and Western Empires," includes a depiction of the shield carrying a Yin-Yang symbol.
+
+So does this mean China and Europe were trading ideas a millennium before the colonial period? Of course! Asia and Europe have been in contact for a [long](https://en.wikipedia.org/wiki/Sino-Roman_relations#Embassy_to_Augustus), [long](https://en.wikipedia.org/wiki/Periplus_of_the_Erythraean_Sea) time. But *Notitia* is not the smoking gun. The current version of the *Notitia* is actually a Medieval copy of an ancient document --- meaning that it's about 1000 years younger than the 430 date.
+
+## January 18, 2017
+
+The [Australian Motoring Enthusiast Party](https://en.wikipedia.org/wiki/Australian_Motoring_Enthusiast_Party) is a micro political party that remarkably won federal representation in 2013. Let's review a few spectacular facts from this Australian [news article](http://www.abc.net.au/news/2014-06-30/australian-motoring-enthusiasts-party-ricky-muir-begins-senate/5561076):
+
+* The Senator representing AMEP, Ricky Muir, is a 32-year-old former timber worker
+* Mr. Muir only won .51% of the primary vote
+* Mr. Muir will make $190,000 a year --- $16,000 more than a US Senator
+* The party has no clear stances on any topic outside of anti-hoon regulations (FYI: hoon refers to making crazy car modifications and/or performing dangerous maneuvers in the street.)
+
+This is not an irrelevant [incident](http://www.economist.com/news/asia/21695553-prime-minister-threatens-early-election-bid-stamp-his-authority-turnbulls-big-gamble): in 2016, "eight senators representing tiny parties... hold the balance of power [in the Australian Senate]." Nor is it isolated: in 2016, the [Pirate Party](https://en.wikipedia.org/wiki/Pirate_Party_(Iceland)) won 10 seats in the [Althing](https://en.wikipedia.org/wiki/Althing). Ultimately, this represents a potential pitfall of the Parlimentary system (a system that many Americans would like to try out given the current two-party deadlock in America.)
+
+## January 17, 2017
+
+As someone who started with Stata and R for data analysis, I've always wanted to try a more general use language like Python. I worked through [Python the Hard Way](https://learnpythonthehardway.org) and played around with [Dataquest](https://www.dataquest.io) (whose [tips](https://www.dataquest.io/blog/how-to-setup-a-data-science-blog/) helped me build this blog). However, the best way of learning I have found is writing algorithms in Python.
+
+Two of the cooler functions I have come across are [zip](https://docs.python.org/3.3/library/functions.html#zip) and [pop](https://docs.python.org/2/tutorial/datastructures.html#more-on-lists). `zip` essentially allows you to iterate over two iterables simultaneously. A trivial example would be
+
+```python
+x = [1,2,3]
+y = [4,5,6]
+
+for i,j in zip(x,y):
+  print(i,j)
+```
+the output would be `[1,4],[2,5][3,6]`. I can't think of how much time this simple function would have saved me if it was available in Stata.
+
+`list.pop[i]` is like the opposite of `append`: it removes the specified element from the list. This might sound simple, but it is by far the easiest way of removing something from a list that I have come across in R or Stata. My first use of `pop` came in writing the [inversion counting algorithm](https://github.com/tkthomas27/stanford_algos/blob/master/course1/count_inversions.py). Here is a snippet (`B` and `C` are both arrays of numbers):
+
+```python
+while B and C:
+    if B[0] <= C[0]:
+        outlist.append(B.pop(0))
+    else:
+        count += len(B)
+        outlist.append(C.pop(0))
+```
+This chunk of code does the following:
+
+1. Checks if element 0 of `B` is less than or equal to element 0 of `C`
+2. If it is, then it removes that element from `B` and places it into `outlist`
+3. If it is not, then it increases `count` by the number of elements left in `B` (this is part of the counting inversions) and then removes that element from `C` and places it into `outlist` (the effect is two sorted arrays)
+
+## January 15, 2017
+
+From the [January 21, 2017 edition](http://www.economist.com/printedition/2017-01-21)
+
+*Buttonwood*: This weeks Buttonwood column addresses one of the pitfalls of the current trend towards protectionist policies: shielding established yet failing companies from displacement by global competition. Specifically, a paper from the OECD finds that companies that owe more than they make (interest-coverage ratio of less than 1 and are over 10 years older) might be stifling growth and lowering labor productivity. These older, less profitable companies use their lobbying clout (leveraging their employment size, no doubt) to pressure their respective governments into passing protectionist policies. To be sure, however, this isn't a Right v Left issue: Sandernistas and Corbynistas alike were clamoring for anti-globalist policies as well.
+
+Other articles:
+
+* *Free Exchange: Tariff-eyeing Policy* takes a dive into the proposed tax reforms from the current administration including a look at Paul Ryan's proposed VAT system
+* *Tata's Sons: Chandra's Challenge* gives an update on the current leadership challenges of Tata Group (Hint: the not-Tata guy is out and the Tata-guy is in)
+* *Cigarette Companies: Plucky Strike* drops the interesting fact that smoking is on the rise in Africa and Eastern Mediterranean
+* *Asian-American Voters: Bulls in a China Shop* explores the ramifications of Chinese-American support for Donald Trump
+
+## January 14, 2017
+
+**NFL Conference Championship Games**
+
+* The Patriots trounced the sleep-walking Steelers (I wonder how much that early morning wake up call affected them). I guess this should have been predictable, but the Patriots really haven't played anyone recently so I though it would be closer. That being said, the Steelers implemented one of the worst gameplans in recent history by deciding to drop everyone in coverage and only sending a few rushers.
+* Similarly, the Falcons demolished Green Bay in another snooze-fest. I still think Aaron Rodgers is technically the best QB in the NFL right now, but even he can't overcome the insane number of injuries they've had (particularly in the secondary.)
+
+**College Basketball**
+
+* Another great week of college ball. The ACC continually pumps out terrific matchups (see Florida State-Louisville). I think the storyline of the year so far is the failing of this Duke team. I know Coach K is gone, but come on this team is stacked!
+
+**'Member when...**
+
+* Remember when Kansas won 12 games in 2007? And were ranked No.2 going into the last week of the season? Kansas hasn't won more than 12 games in the **past 6 seasons combined**. 2007 has and forever will be the craziest year in college football.
+
+## January 12, 2017
+
+**Watching**
+
+* *Silence*: Martin Scorcese's passion project about Jesuit priests in early-modern Japan was right in my wheel house. It was somber and slow (like a good Kurosawa film) and about a topic that I studied frequently during my time in at the Divinity School (that topic deserves it's own post). I particularly appreciated the absence of a mustache-twirling evil Jesuit missionary priest.
+* *Parks and Rec*: an affable comedy series that feels a little before it's time given the current political climate.
+
+**Listening**
+
+* *X-Files-Files with Kumail Nanjiani*: This is a fun podcast about the X-Files with *Silicon Valley* star Kumail Nanjiani. It's pretty funny and appropriately intellectual given the excellent writing of the show. Some of his guests are quite good: Darin Morgan (Flukeman, writer of the best episodes of the X-Files), Glen Morgan (frequent writer for the X-Files, Darin's brother), Chris Weitz (writer of *About a Boy* and *Rogue One*), and Dan Harmon (*Rick and Morty*) to name a few. I vividly remember watching the X-Files as a kid on Friday/Sunday nights and it's been great reliving the zeitgeist of the moment.
+* *Hacker's: Heroes of the Computer Revolution* by Steve Levy: This is a fun book about the history of hackers. So far I've finished the first part about the first hackers who grew out of the Tech Model Railroad Club at MIT. Also of note is the hacker hatred of IBM --- now that famous Ridley Scott-directed Apple commercial from the 1984 Super Bowl makes a lot more sense.
+
+**Reading**
+
+* *The Forever War* by Joe Haldeman: a mildly interesting but not very well written novel about a solider who, via time dilation effects of interstellar travel, lives over thousand years. Not terrible, but I'm not sure why this won so many awards.
+* *The Book of the Dying Sun* by Gene Wolfe: on a recommendation from a friend I started reading this sci-fi fantasy novel. So far it is definitely better written than *The Forever War* and quite good at evocative imagery. I find his extensive blend of imaginary, literary, and archaic words particularly amusing.

@@ -1,51 +1,36 @@
 ---
-title: "About"
-author: Kyle Thomas
+title: ""
+output:
+    html_document:
+        toc: false
 ---
 
-[alt](supply-demand-basics.html)
+---
 
 ---
 
-# About this Website
+<center>
 
-This repository is more of a storage facility than anything else. I originally had a Pelican website built on Python that could render my RMarkdown notebooks as well as my Jupyter Notebooks. This process, however, was a hassle and not worth the extra aesthetic points. Now I just dump my notebooks into github and use github pages to host them after they have been rendered. 
+<p style="font-size:30pt;">Research Consulting Services</p>
 
-I'm also using this repo to store two others items: the about me from the original website as well as my personal logs. The logs are simply a collection of interesting facts, concepts, or thoughts from a day.
+Highest Quality Services Guranteed
 
+---
 
-# About Me
+<button type="button" class="btn btn-primary btn-lg"> <a href="mailto:timothykylethomas@gmail.com"  style="font-size:20pt;color:white;">Contact</a> </button>
+</center>
 
->The grandeur of my physique, the complexity of my worldview, the decency and taste implicit in my carriage, the grace with which I function in the mire of today’s world -- all of these at once confuse and astound.
-> ---John Kennedy Toole
+---
 
-> When a true genius appears in the world, you may know him by this sign, that the dunces are all in confederacy against him
-> ---Johnathan Swift
+<center>
+<p style="font-size:20pt;">Services</p>
 
-## Professional
+$\LaTeX$ | Econometrics | Data Science
 
-I am a Research Associate at Harvard Business School working in the Accounting and Management unit. My work is quite broad, involving everything from processing unstructured data, analyzing financial data, writing cases, digesting vast quantities of research, directing film crews in India, and typesetting documents. Among other published works, I have written a cases on valuation at Airgas and tax inversions at Walgreens as well as a teaching note on corporate governance.
+</center>
 
-Most of my work is collecting and processing data. The data I primarily work with is either from WRDS (CRSP and Compustat mostly) or from private employers (e.g., sales, employee performance data). Each dataset provides unique challenges in sanitizing, managing, and combining---especially when tailoring the data for a particular research agenda.
+---
 
-I am a major proponent for the free and open source languages R and Python. I particularly am a fan of R Notebooks because of its ability to encapsulate the ideals of literate programming and leverage some of the typesetting power of Latex. Jupyter is also nice and one day, when peace reigns on earth, all will use literate programming instead of stitching together Stata, Excel, and Word.
-
-## Personal
-
-My wife, my daughter, and I currently live in the Boston metro area. I moved here a few years ago to study Buddhism at Harvard Divinity School. Before that, I went to Furman University were I double majored in Philosophy and Religion. To answer your first two questions:
-
-1. **Why did you study religion?** I studied religion because it's an impossible topic. You can never be "correct" when discussing someone's most deeply held convictions---no matter how much you try to abstract the topic into other genres of study like literature, sociology, or archaeology. I was initially attracted to Buddhism in particular for its impressively expansive expression of ideas. As I studied Buddhism, I became increasingly interested in its role as a cultural currency in a pan-Asian civilization and how we came to think of Buddhism through a European lens (a lens greatly shaped by the early missionaries to Asia).
-2. **How did you get into business and/or computer stuff?** I got an opportunity at HBS and then worked really hard. Once I got in as a research associate there was a need to quickly expand my technical skills. As I was teaching myself coding and statistics, I came to realize that the orderliness of the data science and math well suited my obsession with organizing research and had strong links to the logic I studied in philosophy. 
-
-Outside of academics I like to:
-
-* Play the guitar (Gretsch Duo Jet Center Block; classical guitar) and bass (Squier Jaguar, all black). Rocksmith is a blast and I try to play everyday!
-* Read Sci-Fi. I'm currently on a quest to read all the "classics" in the genre (unfortunately this means a lot of Heinlein). My top two are currently *Dune* and *Hyperion*.
-* I don't watch movies as much as I used to, but my favorite movies are from Leone and Kurosawa.
-* I am big sports fans. I am biased towards the Carolina Panthers (NFL) and UNC-Chapel Hill in college sports (and the Hornets I guess). I am also of the opinion that the college sports $>>$ professional sports but that opinion is verbotten in New England despite the fact that it literally invented college sports.
-
-## The Logo
-
-The site's logo is a reference to the vain attempts at squaring the circle. For me, it specifically recalls the life Thomas Hobbes, a renowned philosopher who one day passed an open book of geometry and became obsessed with the world of math.
-
-![](logo.png)
+<center>
+![](logo.png){ width=30% }
+</center>

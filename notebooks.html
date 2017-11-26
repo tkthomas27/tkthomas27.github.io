@@ -11,7 +11,7 @@
 
 
 
-<title>index.utf8</title>
+<title>Notebooks</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -166,6 +169,107 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -240,36 +344,65 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">Notebooks</h1>
 
 </div>
 
 
 <hr />
+<section id="r-notebooks" class="level1">
+<h1><span class="header-section-number">1</span> R Notebooks</h1>
 <hr />
-<center>
-<p style="font-size:30pt;">
-Research Consulting Services
-</p>
-<p>Highest Quality Services Guranteed</p>
+<p><a href="crsp_gettingdata.html">Getting Data from CRSP</a></p>
+<p>There are multiple ways of getting data from WRDS. In this notebook, we will go over two primary ways as well as their respective pros and cons. We’ll also go over how to upload the data into a PostgreSQL database for easier use with your data analysis package of choice.</p>
 <hr />
-<button type="button" class="btn btn-primary btn-lg">
-<a href="mailto:timothykylethomas@gmail.com"  style="font-size:20pt;color:white;">Contact</a>
-</button>
-</center>
+<p><a href="ggpairs.html">GGPairs</a></p>
+<p>In this notebook we walk through the R package <code>ggpairs</code> and how it can help us quickly visualize the relationship between variables.</p>
 <hr />
-<center>
-<p style="font-size:20pt;">
-Services
-</p>
-<p><span class="math inline">\(\LaTeX\)</span> | Econometrics | Data Science</p>
-</center>
+</section>
+<section id="python-notebooks" class="level1">
+<h1><span class="header-section-number">2</span> Python Notebooks</h1>
 <hr />
-<center>
-<img src="logo.png" style="width:30.0%" />
-</center>
+<p><a href="nfldb-postgresql.html">Getting Started with NFLDB and Postgresql</a></p>
+<p>NFLDB and PostgreSQL are powerful yet easy to use tools for querying NFL data. This workflow can be used to answer questions you might have regarding the NFL or building a predictive model.</p>
+<hr />
+<p><a href="nfl-prediction-1.html">NFL Prediction with Logistic Regression</a></p>
+<p>The NFL season is upon us. Most pundits can barely pick over 50% of the games right. Can we use machine learning techniques to beat them? Using a PostgreSQL database, we can build statistical tables that fed into a logistic regression model to predict home team wins. We also strengthen our model using ridge regression, scaling, and cross validation.</p>
+<hr />
+<p><a href="supply-demand-basics.html">Supply Demand Basic</a></p>
+<p>Supply and demand are fundamental building blocks to understanding economics. We will review the basics of supply and demand as well as some simple (and fun) python plot building.</p>
+<hr />
+<p><a href="checkio-vol1.html">Checkio Vol. 1</a></p>
+<p>checkio.org is a great place to practice your coding. In this post, we will present solutions to three of the easier challenges on checkio.</p>
+<hr />
+</section>
+<section id="explanatory-notes" class="level1">
+<h1><span class="header-section-number">3</span> Explanatory Notes</h1>
+<p><a href="irr.html">Internal Rate of Return</a></p>
+<p><a href="cli_basics.html">Command Line</a></p>
+<p><a href="macOS_package_management.html">macOS Package Management</a></p>
+<p><a href="cot_norm.html">Chain of Thought</a></p>
+<p><a href="note-melody-music.html">Note Melody Music</a></p>
+<hr />
+</section>
+<section id="logs" class="level1">
+<h1><span class="header-section-number">4</span> Logs</h1>
+<hr />
+<section id="overview" class="level2">
+<h2><span class="header-section-number">4.1</span> Overview</h2>
+<p>These logs are simply a collection of interesting facts, concepts, or thoughts from a day in the life of a research associate. I think there is much to be said for varying the topics that you read about, so I try to make the log entries as diverse as possible.</p>
+<hr />
+</section>
+<section id="log-archive" class="level2">
+<h2><span class="header-section-number">4.2</span> Log Archive</h2>
+<p><a href="log_2017.html">Log 2017</a></p>
+</section>
+</section>
 
 
 
+</div>
+</div>
 
 </div>
 

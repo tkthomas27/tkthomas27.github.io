@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Kyle Thomas" />
+
+
+<title>Chain of Thought: Norm</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="resume.html">
+    <span class="fa fa-circle-o-notch"></span>
+     
+    Resume
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-mortar-board"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="notebook_archive.html">
+    <span class="fa fa-book"></span>
+     
+    Notebooks
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/tkthomas27">
+    <span class="ion ion-social-github"></span>
+     
+    Github
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/tkylethomas27">
+    <span class="ion ion-social-twitter"></span>
+     
+    Twitter
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/timothykylethomas/">
+    <span class="ion ion-social-linkedin"></span>
+     
+    LinkedIn
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Chain of Thought: Norm</h1>
+<h4 class="author"><em>Kyle Thomas</em></h4>
+
+</div>
+
+
+<section id="ridge-regression-and-the-lasso" class="level1">
+<h1><span class="header-section-number">1</span> Ridge Regression and the Lasso</h1>
+<p>While working through <a href="http://timothykylethomas.me/islr.html#islr">Introduction to Statistical Learning</a> (ISLR), I became intrigued by the lecture on <a href="https://lagunita.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/model_selection.pdf">subset selection</a>. Subset selection is the process of reducing linear models to only those features (viz. independent variables) that are most relevant. Old standbys in this field are piecewise forward and backward selection. The hot topic now, however, are the shrinkage methods ridge regression and lasso.</p>
+<p>This two methods are popular now because of the explosion of higher dimensional data (i.e., where there are more features than observations). Piecewise selection frequently becomes intractable where there are many features. Shrinkage methods solve this method by building in a penalty to OLS estimation that automatically pushes coefficients to zero (you should read the above notes on subset selection for more details, here we are just plowing ahead with my chain of thought). The point of having less features and lower coefficients is the reduction in the overall variance of the model.</p>
+<p>Let’s briefly overview OLS estimation and the changes the ridge and lasso make. With a vector <span class="math inline">\(b\)</span> of responses and a matrix <span class="math inline">\(A\)</span> of features, we seek to find the vector <span class="math inline">\(x\)</span> that makes <span class="math inline">\(Ax = b\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Using standard terms for OLS, <span class="math inline">\(b\)</span> is the dependent variable <span class="math inline">\(y\)</span>, <span class="math inline">\(A\)</span> is our observations <span class="math inline">\(X\)</span>, and <span class="math inline">\(x\)</span> is the vector of <span class="math inline">\(\beta\)</span>s giving use the formula <span class="math inline">\(X \beta = y\)</span> (note that the order of <span class="math inline">\(X\)</span> and <span class="math inline">\(\beta\)</span> is important). The simplest way to express this is from a geometric perspective: we want to choose a <span class="math inline">\(\beta\)</span> vector that minimizes the distance between <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span> (the bars <span class="math inline">\(||\)</span> tell us that this is a euclidean norm — a fancy way of saying a distance):</p>
+<p><span class="math display">\[\hat{\beta} = \min_{\beta} ||y - X\beta||. \]</span></p>
+<p>The OLS way to do this is to minimize the sum of the squared residuals (RSS). There are many ways to express the minimization of RSS (a la the geometric version above), but here we will use the version presented in ISLR to remain consistent.</p>
+<p>First, the RSS we seek to minimize is:</p>
+<p><span class="math display">\[ RSS = \sum_{i=1}^n (y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij})^2 .\]</span></p>
+<p>This is probably the most complicated way to present OLS, but in doing so, it quite exactly tells you what is happening.</p>
+<p>For ridge regression we add a shrinkage penalty with tuning parameter <span class="math inline">\(\lambda\)</span> to the criterion:</p>
+<p><span class="math display">\[ RSS + \lambda \sum_{j=1}^p \beta^2_j .\]</span></p>
+<p>Now, instead of just trying to minimize RSS, we are trying to minimize a larger number: RSS plus the shrinkage penalty. This will force the model to prefer <span class="math inline">\(\beta\)</span>s that are smaller and closer to zero thus helping to reduce the variance of the model (you will often end up with very small coefficients and not ones exactly equal to zero).</p>
+<p>The <span class="math inline">\(\sum \beta^2\)</span> part of the penalty is also known as the <span class="math inline">\(\ell_2\)</span> penalty and can be written in its geometric form as <span class="math inline">\(||\beta|\vert_2\)</span>.</p>
+<p>A newer sibling of the ridge regression that is becoming increasingly more popular is the lasso:</p>
+<p><span class="math display">\[ RSS + \lambda \sum_{j=1}^p |\beta_j |\]</span></p>
+<p>By recasting the penalty as an <span class="math inline">\(\ell_1\)</span> norm (alternatively <span class="math inline">\(||\beta|\vert_1\)</span>), the minimization can take coefficients to zero (not just close to zero as in ridge regression). The result is feature selection: only those coefficients that are non-zero are kept. The disadvantage of the lasso is that it requires computationally intensive numerical searching algorithms.</p>
+<p>So the difference between ridge and lasso is the nature of this penalty: ridge uses the <span class="math inline">\(\ell_2\)</span> norm while the lasso uses the <span class="math inline">\(\ell_1\)</span> norm (the <span class="math inline">\(\LaTeX\)</span> code for <span class="math inline">\(\ell\)</span> is <code>\ell</code>). So what are these norms?</p>
+</section>
+<section id="norm" class="level1">
+<h1><span class="header-section-number">2</span> Norm</h1>
+<p>When researching norms — particularly in the context of optimization problems like those used in subset selection — I came across this helpful <a href="https://rorasa.wordpress.com/2012/05/13/l0-norm-l1-norm-l2-norm-l-infinity-norm/">blog post</a>.</p>
+<p>There is a lot to unpack from this post and many avenues of thoughts. One could easily start exploring the nature of Euclidean space and its alternatives (i.e., <a href="https://en.wikipedia.org/wiki/Hyperbolic_space">hyperbolic space</a>) and the variety of <a href="https://en.wikipedia.org/wiki/Norm_(mathematics)">norms</a>. However, I decided to keep to the <span class="math inline">\(\ell_1\)</span> and <span class="math inline">\(\ell_2\)</span> norms, their optimization, and their application to the statistical issues presented above.</p>
+<p>A simple way to think of a norm is a distance or size in a p-dimensional space. As the author of the blog writes, the general form of a norm is:</p>
+<p><span class="math display">\[||x|\vert_p = \sqrt[p]{\sum_i |x_i|^p} \]</span></p>
+<p>The <span class="math inline">\(\ell_1\)</span> norm ends up simply being the sum of the absolute value of each element, while the <span class="math inline">\(\ell_2\)</span> norm is the square root of the sum of the squared elements.</p>
+<p>You may remember from grade school the formula for the distance (<span class="math inline">\(d\)</span>) between two points on the 2-dimensional plane <span class="math inline">\((x_1,y_2)\)</span> and <span class="math inline">\((x_2,y_2)\)</span>:</p>
+<p><span class="math display">\[ d = \sqrt{(x_1-x_2)^2 + (y_1 - y_2)^2} \]</span></p>
+<p>Which we can rewrite as:</p>
+<p><span class="math display">\[|| y - x|\vert_2 = \sqrt{\sum (y - x)^2} \]</span></p>
+<p>Does the above remind you of our minimization problem <span class="math inline">\(\hat{\beta} = \min_{\beta} ||y - X\beta||\)</span> or the RSS formula? It should because, as stated above, the OLS optimization is simply trying to find the <span class="math inline">\(\beta\)</span>s that minimizes the distance between <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span>. In other words, OLS wants the vector of <span class="math inline">\(\beta\)</span>s that makes the <span class="math inline">\(\ell_2\)</span> norm <span class="math inline">\(||y - X\beta||\)</span> the smallest. OLS is just a more multi-faceted version of something you have been doing all along.</p>
+</section>
+<section id="norm-optimization" class="level1">
+<h1><span class="header-section-number">3</span> Norm Optimization</h1>
+<p>To tie it together: regular OLS is simply minimizing an <span class="math inline">\(\ell_2\)</span> norm, ridge regression is minimizing an <span class="math inline">\(\ell_2\)</span> norm plus an <span class="math inline">\(\ell_2\)</span> penalty, and the lasso is minimizing an <span class="math inline">\(\ell_2\)</span> norm plus an <span class="math inline">\(\ell_1\)</span> norm.</p>
+<p>Minimizing the <span class="math inline">\(\ell_1\)</span> norm (or any optimization problem involving the <span class="math inline">\(\ell_1\)</span> norm) requires the use of various numerical analysis <a href="https://www.cs.ubc.ca/~schmidtm/Documents/2005_Notes_Lasso.pdf">algorithms</a>. These were computationally unfeasible until recent developments in computing power.</p>
+<p>Minimizing the <span class="math inline">\(\ell_2\)</span> norm is a more simple prospect. The author of the blog presents a way of doing this involving Lagrangian multipliers that ultimately dumps us off in OLS land. First, note that our objective function is</p>
+<p><span class="math display">\[ \min ||x|\vert_2 \text{ s.t. } Ax = b  \]</span></p>
+<p>The Lagrangian for this is:</p>
+<p><span class="math display">\[ ||x||^2_2 + \lambda&#39; (Ax - b)\]</span></p>
+<p>After solving<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, the minimized estimate of x is <span class="math inline">\(A&#39; (AA&#39;)^{-1} b\)</span>. The ‘a-ha’ moment for me, was recognizing that this is in fact the same as <span class="math inline">\(\hat{\beta} = (X&#39;X)^{-1}X&#39;y\)</span>. The <span class="math inline">\((X&#39;X)^{-1}X&#39;\)</span> is known as the <a href="https://en.wikipedia.org/wiki/Moore–Penrose_pseudoinverse">Moore-Penrose Pseudoinverse Matrix</a>.</p>
+</section>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Tikhonov_regularization">Tikhonov Regularization</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>The mechanics of this process in the context of OLS (called constrained least squares) can be seen <a href="http://stanford.edu/class/ee103/lectures/constrained-least-squares/constrained-least-squares_slides.pdf">here</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

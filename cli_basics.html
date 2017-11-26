@@ -12,7 +12,7 @@
 <meta name="author" content="Kyle Thomas" />
 
 
-<title>Internal Rate of Return</title>
+<title>Quick Guide to Command Line Basics</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -345,91 +345,91 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Internal Rate of Return</h1>
+<h1 class="title toc-ignore">Quick Guide to Command Line Basics</h1>
 <h4 class="author"><em>Kyle Thomas</em></h4>
 
 </div>
 
 
-<section id="time-value-of-money" class="level1">
-<h1><span class="header-section-number">1</span> Time Value of Money</h1>
-<p>The internal rate of return (IRR) is simply the rate <em>r</em> that equates the future value of money to the present value. Despite being a foundational tool in financial analysis, the economic interpretation of this value is highly contested.</p>
-<p>Before getting into the interpretation of IRR, lets establish the basic axioms of the time value of money that depict the relationship between present value (PV), future value (FV), and the rate of return <em>r</em> over the total number of periods (<span class="math inline">\(T\)</span>):</p>
-<p><span class="math display">\[
-\begin{equation}
-PV = \frac{FV}{(1+r)^T}
-\label{basic_pv}
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-FV = PV(1+r)^T
-\label{basic_fv}
-\end{equation}
-\]</span></p>
-<p>In words, Eq. <span class="math inline">\(\ref{basic_pv}\)</span> tells us that PV is equal to some FV discounted at a rate across the the total time period, where <em>T</em> represents the total number of time periods. Eq. <span class="math inline">\(\ref{basic_fv}\)</span> simply rearranges the equation so that FV is PV compounded by a rate <em>r</em> across time.</p>
-<p>The core idea is that cash now is more valuable than cash later. Therefore if I were to lend you money, I would charge you interest to make up for not having money now. As an example, say person A lends person B $10 for $10 years at a rate of 20%. The FV of the money for person A is <span class="math inline">\(10(1+.2)^10=61\)</span>. Alternatively, if person B wanted to know how much they needed to invest to have $61 after 10 years of compounding at 20%, they would find that <span class="math inline">\(61/(1+.2)^10 = 10\)</span>.</p>
-<p>The focus on our exposition will be on <em>r</em>, the rate of return that is used to discount/compound. We can rearrange Eq. <span class="math inline">\(\ref{basic_pv}\)</span> into Eq. <span class="math inline">\(\ref{basic_irr}\)</span> to see the relationship between the IRR and FV and PV. Eq. <span class="math inline">\(\ref{basic_irr}\)</span> will be our final step in computing the IRR.</p>
-<p><span class="math display">\[
-\begin{equation}
-r = \sqrt[T]{\frac{FV}{PV}}-1
-\label{basic_irr}
-\end{equation}
-\]</span></p>
+<!-- for more detailed overview see command line tutorial -->
+<p>Before graphical user interfaces (GUI), drag and drop desktops, and voice activated assistances (e.g., Siri), the only way to interact with a computer was through written commands using the command line interface (CLI). Although you could be quite successful at using a computer without ever knowing what the CLI is, mastery of the CLI is that gateway to becoming a power user and unlocking the full potential of your computer. This is a quick overview of some command line basics as well as a few tips on how to make your experience more efficient (and cool).</p>
+<section id="terminal" class="level1">
+<h1><span class="header-section-number">1</span> Terminal</h1>
+<p>To access the command line interface on macOS you need to open Terminal. It is located in <code>/Applications/Utilities/Terminal</code>; the easiest way to open it is to use spotlight (<code>⌘+space</code>) and simply type <code>terminal</code>.</p>
+<p>An alternative to Terminal is <a href="https://www.iterm2.com">iTerm</a>. iTerm is a terminal emulator that can be used as a replacement for the native Terminal app. iTerm adds a host of new <a href="https://www.iterm2.com/features.html">features</a> that provided much needed productivity boosters like autocompletion and split panes.</p>
 </section>
-<section id="streams-of-cash" class="level1">
-<h1><span class="header-section-number">2</span> Streams of Cash</h1>
-<p>There are plenty of investments that take the form of a single payment in (a negative cash flow out of your pocketbook) followed by a single payment out (a positive cash flow into your pocketbook) after a some period of time. This, however, is a trivial example to be solved (see above) and I will instead focus on investments that take the form of multiple cashflows over several periods.</p>
-<p>Because we are dealing with a stream of cash flows and not a single value, FV needs to be rewritten. Consider a cash flow at t=1, if the final future period is 60 periods from t=1, then we need to compute the future value of that cash flow for for 60-1 periods from that time. We can rewrite the PV and the FV of a stream of cash flows as</p>
-<p><span class="math display">\[
-\begin{equation}
-PV = \sum_{t=1}^{t=T}\frac{CF_t}{(1+r)^{t}}
-\label{pv_cf}
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-FV = \sum_{t=1}^{t=T}CF_t(1+r)^{T-t}
-\label{fv_cf}
-\end{equation}
-\]</span></p>
-<p>Substituting Eq. <span class="math inline">\(\ref{fv_cf}\)</span> into Eq. <span class="math inline">\(\ref{basic_pv}\)</span> and expanding we get:</p>
-<p><span class="math display">\[
-\begin{equation}
-PV = \frac{\sum_{t=1}^{t=T}CF_t(1+r)^{T-t}}{(1+r)^T} = \frac{CF_1(1+r)^{T-1}}{(1+r)^T} + \frac{CF_2(1+r)^{T-2}}{(1+r)^T} + ... + \frac{CF_T(1+r)^{T-T}}{(1+r)^T}
-\label{pv_fv}
-\end{equation}
-\]</span></p>
-<p>We could also modify Eq. <span class="math inline">\(\ref{pv_fv}\)</span> to read:</p>
-<p><span class="math display">\[
-\begin{equation}
-\mathit{CF}_{t=0} = \frac{\sum_{t=1}^{t=T}CF_t(1+r)^{T-t} + \mathit{CF}_{t=T}}{(1+r)^T}
-\end{equation}
-\]</span></p>
-<p>This shows that the initial CF is equal to the sum of the compounded cash flows and the terminal CF all discounted at by the same rate of compounding. For IRR, the numerator and the denominator <em>r</em> are assumed to be the same. This assumption is key to the alternatives to IRR such as MIRR (modified internal rate of return).</p>
+<section id="basic-commands" class="level1">
+<h1><span class="header-section-number">2</span> Basic Commands</h1>
+<p>Below are a few basic commands that form the bedrock of command line interaction. If you ever have any questions about a command you come across, <a href="http://explainshell.com">Explain Shell</a> is an excellent resource as well as this <a href="https://github.com/0nn0/terminal-mac-cheatsheet">cheatsheet</a>.</p>
+<p>Before we begin, here are a few tips:</p>
+<ul>
+<li><p>The term “directory” is just a way of referring to folders; “directory” is preferred on *nix operating systems as opposed to “folder” on Windows (checkout <a href="http://superuser.com/questions/169457/directory-vs-folder">this</a> for the super nerd answer)</p></li>
+<li><p>The action that a command performs can be modified using flags. These are typically a “-” followed by a single letter. For example, to list the visible AND the hidden the contents in a directory you would type the list command <code>ls</code> followed by the flag <code>-a</code>.</p></li>
+</ul>
+<!-- screenshots; tree -->
+<p><strong>Creating Files and Folders</strong></p>
+<ul>
+<li><p><code>mkdir [dir_name]</code> make a directory</p></li>
+<li><p><code>touch [file_name]</code> change file timestamps; easy way to create files</p></li>
+<li><code>rm [file_name]</code> removes files (does not remove directories by default)
+<ul>
+<li><code>-r [dir_name]</code> remove directories and their contents recursively</li>
+</ul></li>
+</ul>
+<p><strong>Moving Around and Exploring the Computer</strong></p>
+<ul>
+<li><p><code>cd</code> traverse the directory structure forward (i.e., open a directory)</p></li>
+<li><p><code>../</code> traverse the directory structure backward (i.e., exit a directory)</p></li>
+<li><code>ls</code> list contents of current directory
+<ul>
+<li><code>-l</code> list detailed info such as permissions, owners, size, etc.</li>
+<li><code>-a</code> list all contents including hidden contents</li>
+<li><code>-S</code> sort</li>
+<li><code>Sr</code> reverse sort</li>
+</ul></li>
+<li><p><code>cp [file] [path]</code> copy source file to a destination</p></li>
+<li><p><code>mv</code> rename source to destination or move source to a directory; whereas <code>cp</code> duplicates the file, <code>mv</code> only keeps one copy (either with the new name or in the new location)</p></li>
+<li><p><code>grep [&quot;pattern&quot;] [file_name]</code> print lines matching a pattern</p></li>
+<li><p><code>find [file_name]</code> find a file</p></li>
+<li><p><code>cat [file_name]</code> display contents of file</p></li>
+<li><p><code>echo [&quot;string&quot;]</code> display a line of text</p></li>
+</ul>
+<p><strong>Other Useful Commands</strong></p>
+<ul>
+<li><p><code>sudo [command]</code> execute command as super user (requires password)</p></li>
+<li><p><code>[command] | [command]</code> piping — feed output of one command into the input of another command</p></li>
+<li><code>echo [&quot;string&quot;] &gt; [file_name]</code> overwrite file with string
+<ul>
+<li><code>echo [&quot;string&quot;] &gt;&gt; [file_name]</code> append file with string</li>
+</ul></li>
+<li>Text editors
+<ul>
+<li><code>nano [file_name]</code> a very simple text editor</li>
+<li><code>vim [file_name]</code> a more robust and extensible text editor; type <code>esc</code> then <code>:q</code> to exit</li>
+<li><code>emacs [file_name]</code> a more robust and extensible text editor</li>
+</ul></li>
+</ul>
 </section>
-<section id="solving-for-internal-rate-of-return" class="level1">
-<h1><span class="header-section-number">3</span> Solving for Internal Rate of Return</h1>
-<p>Our primary goal is to find the <em>r</em> that solves Eq. <span class="math inline">\(\ref{pv_fv}\)</span>. The most common method is to treat this as a polynomial root finding exercise. For clarity, we can trivially rewrite Eq. <span class="math inline">\(\ref{pv_cf}\)</span> as</p>
-<p><span class="math display">\[
-\begin{equation}
-PV = CF_1 (1+r)^{-1} + CF_2 (1+r)^{-2} + ... + CF_n (1+r)^{-n}
-\end{equation}
-\]</span></p>
-<p>To find the root of this equation we need to set it to zero.</p>
-<p><span class="math display">\[
-\begin{equation}
-0 = -PV + CF_1 (1+r)^{-1} + CF_2 (1+r)^{-2} + ... + CF_n (1+r)^{-n}
-\end{equation}
-\]</span></p>
-<p>The root <em>r</em> that satisfies this equation is the Internal Rate of Return (IRR). There are several methods of finding this root.</p>
-<section id="educated-guess-and-interpolation" class="level2">
-<h2><span class="header-section-number">3.1</span> Educated Guess and Interpolation</h2>
-<p>One way of finding it is to plug and chug using the <code>npv</code> function in Excel and see which rate gives us a negative value. This would not be super precise but would give you an educated guess and allow you to use the secant method to determine a more precise IRR.</p>
-</section>
-<section id="root-finding-algorithm" class="level2">
-<h2><span class="header-section-number">3.2</span> Root Finding Algorithm</h2>
-<p>Similarly we use the <code>uniroot</code> function of R. first specify the function then use <code>uniroot</code> on it. <code>uniroot</code> uses the golden section ratio method in combination with parabolic interpolation to efficiently guess the root that satisfies the function along a specified interval.</p>
+<section id="shells" class="level1">
+<h1><span class="header-section-number">3</span> Shells</h1>
+<p>While terminal is an application, the underlying software that you are using to do the command line interfacing is known as a shell. The default shell for macOS is Bash (Bourne Again Shell). Although Bash has stood the test of time, I currently using Zsh (pronounced Zee Shell) which provides useful features like command line completions, spell corrections, themeable prompts, etc.</p>
+<!-- ## Bash -->
+<section id="zsh" class="level2">
+<h2><span class="header-section-number">3.1</span> ZSH</h2>
+<p>The easiest way to get started with zsh is to install it using brew (checkout my other <a href="timothykylethomas.me/package-management">post</a> for instructions on how to use brew). To install zsh this way, simply type:</p>
+<pre class="bash"><code>brew install zsh zsh-completions</code></pre>
+<p>To get the most out of zsh, you can try one of the several frameworks available. I am currently using <a href="http://ohmyz.sh">oh my zsh</a>. Oh my zsh gives you easy access to many useful <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins">plugins</a>.</p>
+<!-- need post on how I customized my setup
+
+# iTerm
+
+split but can also use tmux
+
+# Extras
+
+`rtv`
+`t`
+other commands from brew (XX see package management for tips on Brew) -->
 </section>
 </section>
 

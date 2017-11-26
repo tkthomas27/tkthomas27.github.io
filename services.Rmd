@@ -1,0 +1,31 @@
+---
+title: "Services"
+---
+
+Organized Services into stacks. Front end/Back End. Back End 
+
+# Back End Services
+
+Critical Writing
+
+Logic
+
+Reproducible Research
+
+
+# Front End Services
+
+Data Science
+
+Statistics
+
+Econometrics
+
+
+proof reading
+
+typesetting
+
+5 business days from confirmation
+3 Busines days from confirmation
+24 Hours from confirmation

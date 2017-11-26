@@ -1,0 +1,111 @@
+---
+title: ""
+---
+
+# Work Experience
+
+## Research Associate at Harvard Business School
+
+Started in 2013-Current working in Accounting and Management; years of expericence writing papers doing applied data science statitisc 
+
+Indian Telecommunications Company Experiment and Data Analysis
+
+* Planned and executed survey-based experiment with faculty and executives at Indian telecommunications company.
+* Created SQL database of employee and store data for use in analysis while complying with IRB data governance standards.
+* Analyzed data in R and Stata using standard regression techniques such as clustered fixed effects, diff-in-diff, and PCA.
+
+Corporate Filing Collection and Web-Scraping
+
+* Managed teams of research assistants to collect over 10,000 corporate filings from micro-fiche and extract unstructured data.
+* Used R and regex for web-scraping of SEC's EDGAR website to facilitate qualitative coding of data by assistants.
+
+Financial and Accounting Data Analysis
+
+* Remote access millions of financial records via ssh and command line R interface from WRDS and store data in PostgreSQL database.
+* Data processed using dplyr with code collaboartion on github; results reported using RMarkdown and Latex to dynamically generate documents and visualizations using ggplot2 and plotly.
+
+Convenience Store
+
+* Used machine learning algorithms to cluster company stores based on geospatial data from ArcGIS and US Census bureau.
+
+## Freelance Web Development
+
+Roby Realty
+
+* Used HTML, CSS, Javascript, and PHP to develop a dynamic, mobile-friendly website for a real estate startup
+
+# Publications
+
+* [Air Products' Pursuit of Airgas (A-B)](https://cb.hbsp.harvard.edu/cbmp/product/116024-PDF-ENG): Covers equity valuation and corporate governance defenses during a hostile takeover bid; used in Business Analysis and Valuation course at Harvard Business School; over 500 downloads.
+* [Walgreens and Alliance Boots](https://cb.hbsp.harvard.edu/cbmp/product/115046-PDF-ENG): Discusses the technical details of Walgreens proposed tax inversion as well as the social consequences.
+* [Note on Board of Directors](https://cb.hbsp.harvard.edu/cbmp/product/114096-PDF-ENG): Summarizes essential information regarding US corporate governance; over 4000 downloads.
+* Teaching plans for Air Products' Pursuit of Airgas, The Container Store, and Go Mobile; teaching plans are guides on how to effectively lead discussion when teaching a case.
+* [Go Mobile Video](https://cb.hbsp.harvard.edu/cbmp/product/116702-VID-ENG): Directed film crew in Delhi and edited footage using Premiere Pro to supplement Go Mobile case.
+
+# Education
+
+**Harvard College and Extension School** (2013-2017)
+
+* Econometrics (A-)
+* Quantitative Methods in Economics (B+)
+* Capital Markets and Investments (A)
+* Dynamic Web Applications (A-)
+
+***
+
+**Harvard Divinity School** (2010-2012)
+
+*Masters in Theological Studies* (GPA: 3.75)
+
+* Concentration in South Asian Relgions and Buddhism
+* 2 years of Sanskrit
+* 1 year of Chinese 
+* 1 summer intensive course in German
+
+***
+
+**Furman University** (2005-2009)
+
+*Bachelor of Arts* (*Magna Cum Laude*)
+
+* Double major in Philosophy and Religion
+
+***
+
+# About
+
+## This Website
+
+This repository is more of a storage facility than anything else. I originally had a Pelican website built on Python that could render my RMarkdown notebooks as well as my Jupyter Notebooks. This process, however, was a hassle and not worth the extra aesthetic points. Now I just dump my notebooks into github and use github pages to host them after they have been rendered.
+
+I'm also using this repo to store two others items: the about me from the original website as well as my personal logs. The logs are simply a collection of interesting facts, concepts, or thoughts from a day.
+
+## Professional
+
+I am a Research Associate at Harvard Business School working in the Accounting and Management unit. My work is quite broad, involving everything from processing unstructured data, analyzing financial data, writing cases, digesting vast quantities of research, directing film crews in India, and typesetting documents. Among other published works, I have written a cases on valuation at Airgas and tax inversions at Walgreens as well as a teaching note on corporate governance.
+
+Most of my work is collecting and processing data. The data I primarily work with is either from WRDS (CRSP and Compustat mostly) or from private employers (e.g., sales, employee performance data). Each dataset provides unique challenges in sanitizing, managing, and combining---especially when tailoring the data for a particular research agenda.
+
+I am a major proponent for the free and open source languages R and Python. I particularly am a fan of R Notebooks because of its ability to encapsulate the ideals of literate programming and leverage some of the typesetting power of Latex. Jupyter is also nice and one day, when peace reigns on earth, all will use literate programming instead of stitching together Stata, Excel, and Word.
+
+## Personal
+
+My wife, my daughter, and I currently live in the Boston metro area. I moved here a few years ago to study Buddhism at Harvard Divinity School. Before that, I went to Furman University were I double majored in Philosophy and Religion. To answer your first two questions:
+
+1. **Why did you study religion?** I studied religion because it's an impossible topic. You can never be "correct" when discussing someone's most deeply held convictions---no matter how much you try to abstract the topic into other genres of study like literature, sociology, or archaeology. I was initially attracted to Buddhism in particular for its impressively expansive expression of ideas. As I studied Buddhism, I became increasingly interested in its role as a cultural currency in a pan-Asian civilization and how we came to think of Buddhism through a European lens (a lens greatly shaped by the early missionaries to Asia).
+2. **How did you get into business and/or computer stuff?** I got an opportunity at HBS and then worked really hard. Once I got in as a research associate there was a need to quickly expand my technical skills. As I was teaching myself coding and statistics, I came to realize that the orderliness of the data science and math well suited my obsession with organizing research and had strong links to the logic I studied in philosophy.
+
+Outside of academics I like to:
+
+* Play the guitar (Gretsch Duo Jet Center Block; classical guitar) and bass (Squier Jaguar, all black). Rocksmith is a blast and I try to play everyday!
+* Read Sci-Fi. I'm currently on a quest to read all the "classics" in the genre (unfortunately this means a lot of Heinlein). My top two are currently *Dune* and *Hyperion*.
+* I don't watch movies as much as I used to, but my favorite movies are from Leone and Kurosawa.
+* I am big sports fans. I am biased towards the Carolina Panthers (NFL) and UNC-Chapel Hill in college sports (and the Hornets I guess). I am also of the opinion that the college sports $>>$ professional sports but that opinion is verbotten in New England despite the fact that it literally invented college sports.
+
+## The Logo
+
+The site's logo is a reference to the vain attempts at squaring the circle. For me, it specifically recalls the life Thomas Hobbes, a renowned philosopher who one day passed an open book of geometry and became obsessed with the world of math.
+
+<center>
+![](logo.png){ width=30% }
+</center>

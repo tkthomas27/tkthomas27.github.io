@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Kyle Thomas" />
+
+
+<title>Note, Melody, Music</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="resume.html">
+    <span class="fa fa-circle-o-notch"></span>
+     
+    Resume
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-mortar-board"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="notebook_archive.html">
+    <span class="fa fa-book"></span>
+     
+    Notebooks
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/tkthomas27">
+    <span class="ion ion-social-github"></span>
+     
+    Github
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/tkylethomas27">
+    <span class="ion ion-social-twitter"></span>
+     
+    Twitter
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/timothykylethomas/">
+    <span class="ion ion-social-linkedin"></span>
+     
+    LinkedIn
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Note, Melody, Music</h1>
+<h4 class="author"><em>Kyle Thomas</em></h4>
+
+</div>
+
+
+<p><em>The following is adapted from a paper submitted for the course “Buddhist Narrative” at Harvard Divinity School</em></p>
+<p>In the commentary on the <em>Mangalasuttam</em>, Buddhaghosa’s “theory of a text” is his awareness of the various ways that meaning can be realized from a text. One of the defining characteristics of Buddhaghosa’s “theory of a text” is that meaning is the grounds for ever more meaning. This seems to run contrary to the notion that a commentary is supposed to solve the mysteries of a text by limiting the number of possible meanings. This notion arises from a tension between a <em>knowledge</em> of a multiplicity of meaning and the need to <em>choose</em> from the multiplicity of meaning. Buddhaghosa does not forego the issue of choice, but instead resolves the potential limitations of choice by demonstrating how choice can actually be the grounds for an infinitude of meaning. This process is Buddhaghosa’s “theory of a text.” By looking closely at the imbedded “theory of a text” in Buddhaghosa’s commentary on <em>evam</em> <em>me</em> <em>sutam</em>, we can see how Buddhaghosa’s commentary remains a lively spring of meaning even today.</p>
+<p>Buddhaghosa selects the phrase <em>evam</em> <em>me</em> <em>sutam</em> and proceeds to realize multiple avenues of meaning that are opened up by this simple statement. This meaning-realization is forged from a tension between an intuition of more and the need to make choices. For each root word of <em>evam</em>, me, and <em>sutam</em>, Buddhaghosa gives a list of possible meanings and then chooses which ones are to be used. For example, <em>evam</em> can mean “simile, giving directions, praise, reproof, acceptance of a statement, mode, demonstrations, memorizing, and so on” (106). Buddhaghosa, however, goes on to say, “Here it should be regarded as mode, as demonstration, and as memorizing” (107). There are numerous more possible meanings (“and so on”) to the word <em>evam</em>, from which Buddhaghosa chooses a particular set of meanings to work with. This process of presentation of possibilities and choosing from among these possibilities is repeated for the words <em>me</em> and <em>sutam</em> as well. Buddhaghosa then ties together the possible meanings of the individual words <em>evam</em>, me, and <em>sutam</em> into a series of possible meanings for the whole phrase <em>evam</em> <em>me</em> <em>sutam</em>. However, this “whole phrase” meaning is not a final result, and is itself open up to further possible compositions of meaning.</p>
+<p>The three step process for a “theory of a text” then is: (1) possibility (2) choice (3) composition. Regarding step (2), what are the criteria for Buddhaghosa to decide which meanings to use and which to not use? Answering this question will help us better see the relationships between the infinitude of possible meanings and the specific chosen meanings given.</p>
+<p>To help visualize Buddhaghosa’s practice, we can employ a simple analogy of music composition. Just as the root text <em>evam</em> <em>me</em> <em>sutam</em> are points on which multiple scenarios of meaning can be composed, in that same way <em>evam</em> <em>me</em> <em>sutam</em> are like the root notes of an ostinato on which melodies can be built. <em>evam</em> <em>me</em> <em>sutam</em> continuously resounds throughout the commentary while melodies of meaning are continuously accumulated on it. Buddhaghosa’s role as a composer is to see the possible variations emerging from the root note and then compose something from them. These variations on the root note consist of other notes that have a particular resonance with the root note. These root note variations thus form a chord of resonant notes.</p>
+<p>For example, Buddhaghosa sees how the term “demonstration” has a particular resonance with the root word <em>evam</em>, and from the combination of these two (i.e., <em>evam</em> as demonstration), one possible “chord of meaning” emerges. As noted above, each root word of <em>evam</em>, me, and <em>sutam</em> has its own collection of possible “meaning chords.” After establishing a selection of these chords, Buddhaghosa then must choose which possible meanings he will keep. This tension between possibility of meanings and the selection of meanings is critical to understanding commentarial practice and how it keeps a text open to more and more meaning.</p>
+<p>The criteria for his choices are not concerned with which possible chords have the best or most authoritative resonance with the root text; his choices are rather concerned with how well a possible chord based on a root note resonates with a possible chord of the next root note. To put this in terms of the commentary, his criteria for choosing a certain possible meaning of a word is based on how well it serves to make more meaning in conjunction with the other possible meanings of the other words. As a composer and commentator, Buddhaghosa is trying to make the best melodies of meaning from the root text. The following provides an example of a melody of meaning composed by Buddhaghosa from the possible chords emerging from <em>evam</em> <em>me</em> <em>sutam</em>:</p>
+<blockquote>
+<p>Similarly <em>evam</em> (thus) demonstrates that the kinds of cognizance beginning with hearing have [actually] occurred in the various ways with respect to an object; <em>me</em> (by me, I) demonstrates an [individual] self; and <em>sutam</em> (heard) demonstrates an idea [cognized]. (109)</p>
+</blockquote>
+<p>A possible meaning of <em>evam</em> is given as “demonstration.” This possible meaning of “demonstration” is then put in conjunction with other possible meanings of the words <em>me</em> (“self”) and <em>sutam</em> (“idea”), and we are thus provided with a meaning for the whole phrase <em>evam</em> <em>me</em> <em>sutam</em>.</p>
+<p>If viewing a commentary as an authoritative, final source of meaning, then this simple melody and the other similar melodies (109) would suffice as a final meaning for the phrase <em>evam</em> <em>me</em> <em>sutam</em>. Buddhaghosa, however, shows how this composition itself is open to new levels of possible meanings. For example, <em>evam</em> and <em>me</em> can also have the possible meaning of “true sense and ultimate sense” and <em>sutam</em> can also possibly mean “a description [in terms] of the factual” (109). This possible meaning can be conjoined with the above melody to make a new melody of meaning. Buddhaghosa is thus opening up the melodies he has composed to the possibility of being the root notes for some other melody of possible meaning. Possibility and choice give rise to more possibility and choice, ad infinitum. Thus we can see how Buddhaghosa resolves the potentially delimiting tension of “choice” by demonstrating how “choice” can actually be the fertile grounds for more and more choice of possible meanings.</p>
+<p>The infinite quality, the endless possibility for words to accumulate more meaning and for notes to compose more melodies is the feature that makes Buddhaghosa’s commentary a musical whole capable of producing meaning even today. Thus, Buddhaghosa’s “theory of a text” is that the possibility of meaning is an active question in perpetual need of response, and that any response is simply the grounds for potential future responses.</p>
+<p><em>All references are to:</em> The Minor Readings (Khuddakapāṭha). Trans. Bhikkhu Ñānamoli. Oxford: Pali Text Society. 1991.</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

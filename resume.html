@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>resume.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="resume.html">
+    <span class="fa fa-circle-o-notch"></span>
+     
+    Resume
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-mortar-board"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="notebook_archive.html">
+    <span class="fa fa-book"></span>
+     
+    Notebooks
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/tkthomas27">
+    <span class="ion ion-social-github"></span>
+     
+    Github
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/tkylethomas27">
+    <span class="ion ion-social-twitter"></span>
+     
+    Twitter
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/timothykylethomas/">
+    <span class="ion ion-social-linkedin"></span>
+     
+    LinkedIn
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<section id="work-experience" class="level1">
+<h1><span class="header-section-number">1</span> Work Experience</h1>
+<section id="research-associate-at-harvard-business-school" class="level2">
+<h2><span class="header-section-number">1.1</span> Research Associate at Harvard Business School</h2>
+<p>Started in 2013-Current working in Accounting and Management; years of expericence writing papers doing applied data science statitisc</p>
+<p>Indian Telecommunications Company Experiment and Data Analysis</p>
+<ul>
+<li>Planned and executed survey-based experiment with faculty and executives at Indian telecommunications company.</li>
+<li>Created SQL database of employee and store data for use in analysis while complying with IRB data governance standards.</li>
+<li>Analyzed data in R and Stata using standard regression techniques such as clustered fixed effects, diff-in-diff, and PCA.</li>
+</ul>
+<p>Corporate Filing Collection and Web-Scraping</p>
+<ul>
+<li>Managed teams of research assistants to collect over 10,000 corporate filings from micro-fiche and extract unstructured data.</li>
+<li>Used R and regex for web-scraping of SEC’s EDGAR website to facilitate qualitative coding of data by assistants.</li>
+</ul>
+<p>Financial and Accounting Data Analysis</p>
+<ul>
+<li>Remote access millions of financial records via ssh and command line R interface from WRDS and store data in PostgreSQL database.</li>
+<li>Data processed using dplyr with code collaboartion on github; results reported using RMarkdown and Latex to dynamically generate documents and visualizations using ggplot2 and plotly.</li>
+</ul>
+<p>Convenience Store</p>
+<ul>
+<li>Used machine learning algorithms to cluster company stores based on geospatial data from ArcGIS and US Census bureau.</li>
+</ul>
+</section>
+<section id="freelance-web-development" class="level2">
+<h2><span class="header-section-number">1.2</span> Freelance Web Development</h2>
+<p>Roby Realty</p>
+<ul>
+<li>Used HTML, CSS, Javascript, and PHP to develop a dynamic, mobile-friendly website for a real estate startup</li>
+</ul>
+</section>
+</section>
+<section id="publications" class="level1">
+<h1><span class="header-section-number">2</span> Publications</h1>
+<ul>
+<li><a href="https://cb.hbsp.harvard.edu/cbmp/product/116024-PDF-ENG">Air Products’ Pursuit of Airgas (A-B)</a>: Covers equity valuation and corporate governance defenses during a hostile takeover bid; used in Business Analysis and Valuation course at Harvard Business School; over 500 downloads.</li>
+<li><a href="https://cb.hbsp.harvard.edu/cbmp/product/115046-PDF-ENG">Walgreens and Alliance Boots</a>: Discusses the technical details of Walgreens proposed tax inversion as well as the social consequences.</li>
+<li><a href="https://cb.hbsp.harvard.edu/cbmp/product/114096-PDF-ENG">Note on Board of Directors</a>: Summarizes essential information regarding US corporate governance; over 4000 downloads.</li>
+<li>Teaching plans for Air Products’ Pursuit of Airgas, The Container Store, and Go Mobile; teaching plans are guides on how to effectively lead discussion when teaching a case.</li>
+<li><a href="https://cb.hbsp.harvard.edu/cbmp/product/116702-VID-ENG">Go Mobile Video</a>: Directed film crew in Delhi and edited footage using Premiere Pro to supplement Go Mobile case.</li>
+</ul>
+</section>
+<section id="education" class="level1">
+<h1><span class="header-section-number">3</span> Education</h1>
+<p><strong>Harvard College and Extension School</strong> (2013-2017)</p>
+<ul>
+<li>Econometrics (A-)</li>
+<li>Quantitative Methods in Economics (B+)</li>
+<li>Capital Markets and Investments (A)</li>
+<li>Dynamic Web Applications (A-)</li>
+</ul>
+<hr />
+<p><strong>Harvard Divinity School</strong> (2010-2012)</p>
+<p><em>Masters in Theological Studies</em> (GPA: 3.75)</p>
+<ul>
+<li>Concentration in South Asian Relgions and Buddhism</li>
+<li>2 years of Sanskrit</li>
+<li>1 year of Chinese</li>
+<li>1 summer intensive course in German</li>
+</ul>
+<hr />
+<p><strong>Furman University</strong> (2005-2009)</p>
+<p><em>Bachelor of Arts</em> (<em>Magna Cum Laude</em>)</p>
+<ul>
+<li>Double major in Philosophy and Religion</li>
+</ul>
+<hr />
+</section>
+<section id="about" class="level1">
+<h1><span class="header-section-number">4</span> About</h1>
+<section id="this-website" class="level2">
+<h2><span class="header-section-number">4.1</span> This Website</h2>
+<p>This repository is more of a storage facility than anything else. I originally had a Pelican website built on Python that could render my RMarkdown notebooks as well as my Jupyter Notebooks. This process, however, was a hassle and not worth the extra aesthetic points. Now I just dump my notebooks into github and use github pages to host them after they have been rendered.</p>
+<p>I’m also using this repo to store two others items: the about me from the original website as well as my personal logs. The logs are simply a collection of interesting facts, concepts, or thoughts from a day.</p>
+</section>
+<section id="professional" class="level2">
+<h2><span class="header-section-number">4.2</span> Professional</h2>
+<p>I am a Research Associate at Harvard Business School working in the Accounting and Management unit. My work is quite broad, involving everything from processing unstructured data, analyzing financial data, writing cases, digesting vast quantities of research, directing film crews in India, and typesetting documents. Among other published works, I have written a cases on valuation at Airgas and tax inversions at Walgreens as well as a teaching note on corporate governance.</p>
+<p>Most of my work is collecting and processing data. The data I primarily work with is either from WRDS (CRSP and Compustat mostly) or from private employers (e.g., sales, employee performance data). Each dataset provides unique challenges in sanitizing, managing, and combining—especially when tailoring the data for a particular research agenda.</p>
+<p>I am a major proponent for the free and open source languages R and Python. I particularly am a fan of R Notebooks because of its ability to encapsulate the ideals of literate programming and leverage some of the typesetting power of Latex. Jupyter is also nice and one day, when peace reigns on earth, all will use literate programming instead of stitching together Stata, Excel, and Word.</p>
+</section>
+<section id="personal" class="level2">
+<h2><span class="header-section-number">4.3</span> Personal</h2>
+<p>My wife, my daughter, and I currently live in the Boston metro area. I moved here a few years ago to study Buddhism at Harvard Divinity School. Before that, I went to Furman University were I double majored in Philosophy and Religion. To answer your first two questions:</p>
+<ol type="1">
+<li><strong>Why did you study religion?</strong> I studied religion because it’s an impossible topic. You can never be “correct” when discussing someone’s most deeply held convictions—no matter how much you try to abstract the topic into other genres of study like literature, sociology, or archaeology. I was initially attracted to Buddhism in particular for its impressively expansive expression of ideas. As I studied Buddhism, I became increasingly interested in its role as a cultural currency in a pan-Asian civilization and how we came to think of Buddhism through a European lens (a lens greatly shaped by the early missionaries to Asia).</li>
+<li><strong>How did you get into business and/or computer stuff?</strong> I got an opportunity at HBS and then worked really hard. Once I got in as a research associate there was a need to quickly expand my technical skills. As I was teaching myself coding and statistics, I came to realize that the orderliness of the data science and math well suited my obsession with organizing research and had strong links to the logic I studied in philosophy.</li>
+</ol>
+<p>Outside of academics I like to:</p>
+<ul>
+<li>Play the guitar (Gretsch Duo Jet Center Block; classical guitar) and bass (Squier Jaguar, all black). Rocksmith is a blast and I try to play everyday!</li>
+<li>Read Sci-Fi. I’m currently on a quest to read all the “classics” in the genre (unfortunately this means a lot of Heinlein). My top two are currently <em>Dune</em> and <em>Hyperion</em>.</li>
+<li>I don’t watch movies as much as I used to, but my favorite movies are from Leone and Kurosawa.</li>
+<li>I am big sports fans. I am biased towards the Carolina Panthers (NFL) and UNC-Chapel Hill in college sports (and the Hornets I guess). I am also of the opinion that the college sports <span class="math inline">\(&gt;&gt;\)</span> professional sports but that opinion is verbotten in New England despite the fact that it literally invented college sports.</li>
+</ul>
+</section>
+<section id="the-logo" class="level2">
+<h2><span class="header-section-number">4.4</span> The Logo</h2>
+<p>The site’s logo is a reference to the vain attempts at squaring the circle. For me, it specifically recalls the life Thomas Hobbes, a renowned philosopher who one day passed an open book of geometry and became obsessed with the world of math.</p>
+<center>
+<img src="logo.png" style="width:30.0%" />
+</center>
+</section>
+</section>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
