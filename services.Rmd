@@ -2,30 +2,32 @@
 title: "Services"
 ---
 
-Organized Services into stacks. Front end/Back End. Back End 
+Coming Soon!
 
-# Back End Services
+<!-- Organized Services into stacks. Front end/Back End. Back End  -->
 
-Critical Writing
+<!-- # Back End Services -->
 
-Logic
+<!-- Critical Writing -->
 
-Reproducible Research
+<!-- Logic -->
 
-
-# Front End Services
-
-Data Science
-
-Statistics
-
-Econometrics
+<!-- Reproducible Research -->
 
 
-proof reading
+<!-- # Front End Services -->
 
-typesetting
+<!-- Data Science -->
 
-5 business days from confirmation
-3 Busines days from confirmation
-24 Hours from confirmation
+<!-- Statistics -->
+
+<!-- Econometrics -->
+
+
+<!-- proof reading -->
+
+<!-- typesetting -->
+
+<!-- 5 business days from confirmation -->
+<!-- 3 Busines days from confirmation -->
+<!-- 24 Hours from confirmation -->
