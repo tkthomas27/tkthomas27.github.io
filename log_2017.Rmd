@@ -2,23 +2,35 @@
 title: "Log 2017"
 ---
 
+datafest
+
 ---
 
 # December 2017
 
+## December 6, 2017
+
+The [Orthagonality Thesis](http://www.wikiwand.com/en/Existential_risk_from_artificial_general_intelligence#/Orthogonality:_Does_intelligence_inevitably_result_in_moral_wisdom.3F) from Nick Bostrom supposes that any level of intelligence is capable of having any goal, i.e., super-intelligence does not mean super morality. An example is a super-intelligent paperclip maker that resolves to make the largest number of paperclips possible.
+
+## December 5, 2017
+
+Researh Project idea: [This](https://www.brookings.edu/research/using-earnings-data-to-rank-colleges-a-value-added-approach-updated-with-college-scorecard-data/) analysis from Brookings and [this](https://www.economist.com/blogs/graphicdetail/2015/10/value-university) are very similar in showing the value add of certain universities. The process is relatively simple: collect data, run regression, see difference between median salary actually observed and what the regression expects, then rank into percentiles. Could expand into a shiny dashboard.
+
 ## December 4, 2017
 
-Marriage in China
+[Marriage in China](https://www.economist.com/news/special-report/21731495-shortage-brides-bending-chinese-society-out-shape-distorted-sex-ratio): some families are paying years of salary in the form of bridal payments. Also, Germany saves 10% of pay but Chinese households save 38%!
 
-Data Science Design Skiena
+[Data Science Design Manual](http://www.springer.com/us/book/9783319554433): I just started reading this book and it seems like a pretty great foundation for data science.
 
-Duke Time Series analysis 
+This [page](https://people.duke.edu/~rnau/411arim3.htm) shows how to use acf and pacf plots to identify the numbers of AR/MA terms in an ARIMA model.
+
+[R for Data Science](http://r4ds.had.co.nz) is a nice little book by Hadley on using R for foundational data science work. Not a math/stats book, just a book on R.
 
 ## December 3, 2017
 
-modelr
+[`modelr`](https://github.com/tidyverse/modelr) is an early attempt at trying to apply elegant pipes to model building.
 
-Tangled Hierarchies of Buddhist Literature
+Idea: *Tangled Hierarchies of Buddhist Literature*: Buddhist literature as self-aware; reading itself when we're away? 
 
 # November 2017
 
@@ -28,27 +40,23 @@ Richard Gombrich What the Buddha Thought
 
 ## November 25, 2017
 
-British Invention of Buddhism
+*British Discovery of Buddhism*: This book concerns the early British mappings of "Buddhism." I think this is a critical fact that most have a hard time accepting: there was singular idea of Buddhism as a pan-Asian civilizational religion that was delieverd wholesale to Europeans. It was a idea that was crafted over decades of discovery and interaction. The implication being that practitioners of Buddhism probably had wildly divergent ideas of what Buddhism was that what western scholars had crafted.
 
 ## November 22, 2017
 
-Ascent of Money factoid
-
-## November 19, 2017
-
-Storm Before the Storm Review: 
+*Ascent of Money*: Relistening to the *Ascent of Money* by Niall Ferguson. The two most interesting narratives from the book is the rise of the Rothschilds. The Rothschilds were textile traders in continental Europe who opened up shop in England before the Napoleonic era. To continue their business under Napoleon's protectionist continental system, the Rothschilds became adept at smuggling gold into Europe. Needing to fund their armies in Portugal, Britain turned to the Rothschilds to deliever gold. 
 
 ## November 16, 2017
 
-tidyverse package `reprex` allows for quick creation of reproducible examples when asking for help
+Stata 15: new version of Stata includes dynamic documentations. This is nice but woefully underpowered compared to R Markdown.
 
-SEM: for depeendceis of dependnet variable
+The tidyverse package `reprex` allows for quick creation of reproducible examples when asking for help
 
-Stata dynamic documents: dyndoc, alright
+Structural Equaltion Modeling allows for measuing dependencies between independent variables in regression. Much of this field was made possible by Stata releasing easy to use SEM.
 
 ## November 3, 2017
 
-*The Storm Before the Storm*: Story of Marius being seven time consul from when he was fleeing; impressive give his physique; interesting that all those workouts everyone made fun of him for are useful
+*The Storm Before the Storm*: An interesting story about Marius: to demonstrate his vivacity despite his age, Marius exercised strenuosuly on the Campus Martius. Everyone laughed at him. Not to long after this, Marius had to flee Sulla on foot through swamps and over water, so his survival was due in large part to this exercise. While fleeing, Marius told the few people brave enough to accompany him the story of how he discoverd a nest of seven eagles as a child --- thus prophesing his eventual return to Rome to claim his seventh consulship
 
 # October 2017
 
@@ -190,6 +198,360 @@ L1 norm for accuracy---less bias; L2 norm gives parsimony---less variance <|||> 
 Jeremy Bentham referred to natural rights as "nonsense on stilts"---similar sentiment from other Enlightenment thinkers <|||> John Adams thought the idea that "all mean are created equal" was absurd
 
 [Strassen’s Subcubic Matrix Multiplication Algorithm](http://www.wikiwand.com/en/Strassen_algorithm): a divide-conquer-combine strategy that is completely non-obvious but hugely important because it saves on recursive calls.
+
+# July
+
+## July 7, 2017
+
+* *Urth of the New Sun*: finished; what a strange book. I'm not sure I have any idea what happened. The language was certainly not as floral as previous books in the series, but the actions and significance were incredibly obscure. Most of the time I had no idea what was happening. That being said, I can totally see this being the next big HBO show to fill in after Game of Thrones.
+* *Illuminatus*: half way through; what a strange and hilarious book. One of the funniest I've ever read. Hail Eris!
+* *The Lost World*: almost done; what a strange combination of under-developed writing and thought provoking monologues. It definitely feels like Crichton really wasn't into the dino-terror part and just wanted to talk about evolution and extinction. Also interesting how much the movie deviates from the book since Crichton had to rush the book out before the next movie.
+
+Having a newborn means you can't sleep but you're too tired to work. So what do you do? Bing watch:
+
+* *Spaced*: Absolutely hilarious. Edgar Wright's first big project is one of the funniest TV shows I've seen.
+* *Star Trek: The Next Generation*: First season, not so great. Interesting to see that Rob Bowman (who directed many classic *X-Files* episodes) directed a lot of the first two seasons.
+* *Logan*: I thought it was great if not a little too comically violent for the tone it was going for. But it is a fitting send off and one that certainly respects the characters.
+* *BvS:DoJ*: The beginning of this movie is hilarious. A man standing in an office watching the entire city get destroyed around gets a call from his boss telling him he should leave the building. Why does someone need to tell you that! The world is clearly ending!
+* *MST3K*: I think the new MST3K is superior to old one. I said it.
+* *Hacksaw Ridge*: Hugo Weaving could have won an Oscar for his performance but his accent is out of control.
+
+* *Innovators*: finished; actually pretty epic in scope and detail. One of the big takeaways was how different the internet could have been (e.g., anonymity could have been banned).
+* *Misbehaving*: almost finished; a history of behavioral economics from Richard Thaler's point of view. As someone who works in academia, it is interesting to see how fraught the advancement of new field is.
+* *Revisionist History*: a new podcast by Malcolm Gladwell --- pretty good! The topics are quite eclectic which suits me just fine!
+
+## July 6, 2017
+
+[**Super Valuation of Amazon**](https://www.economist.com/news/leaders/21719487-amazon-has-potential-meet-expectations-investors-success-will-bring-big): All you need to know about Amazon's current price is this: "Never before has a company been worth so much for so long while making so little money: 92% of its value is due to profits expected after 2020." For Amazon to justify it's current price, it would have to become the most profitable company of all time. Is it possible?
+
+The biggest hurdle for Amazon will be regulatory not economic. As the Economist continually points out, current regulations regarding monopolies and the like are outdated for times when custom data and smart algorithms can competitively set prices that normally would only appear under monopolies. Eventually regulations will catch up and Amazon as we know it might become multiple Amazon-lets.
+
+[**Vix**](https://www.economist.com/news/finance-and-economics/21722181-low-level-popular-measure-volatility-causes-alarm-markets-are) is the implied premium of insuring options against volatility in the markets. Over the past few months, Vix has been surprisingly low---and some fear it is the calm before the storm. This complacency prior to disaster seems to quantify an old trend of saying "the business cycle has been tamed---no more recessions" right before a financial crisis. Speaking of which...
+
+[**Cape Fear**](https://www.economist.com/news/finance-and-economics/21721649-american-share-valuations-are-higher-now-eve-financial): Right before the financial crisis of 2007, Ben Bernanke assured everyone that the looming housing crisis would be contained. We know how that ended. Ten years on and we've now just reached the same CAPE (cyclically adjusted price to earnings) ratio that we had in May 2007. Does this mean that equities are valued to high? The Shiller 10-year PE [suggests](http://www.multpl.com/shiller-pe/) that were about 10 percentage points above the historically observed median. However, if realized returns are a bad predictor of future returns, then how much should we trust these signals of another recession?
+
+[**Akzovism**](https://www.economist.com/news/business/21721953-activist-funds-have-moved-being-gobby-bad-boys-markets-bosss-guide-fending): Shades of Airgas with an somewhat beleaguered industrial company rebuffing multiple takeovers and then being assailed by activists. The interesting turn here is the unique corporate governance structure wherein a foundation appoints board members thus negating attempts to vote in new slate of sympathetic directors.
+
+[**Toshiba Delisting**](https://www.economist.com/news/business/21722233-japans-government-wants-fend-asian-potential-buyers-embattled-toshiba-tries-sell-its): Seemingly every month another titanic Japanese company begins to die off. Toshiba is under threat of delisting, Sharp is in trouble, and Takata just sold itself. But does this mean that Shinzo Abe's economic reforms are failing, or is the greater accountability a sign of its success?
+
+
+## July 5, 2017
+
+I recently wrote some [code](https://github.com/tkthomas27/stata_code/blob/master/mean_obs_summary.do) that can take a Stata dataset and produce a table with means and number of observations by variable and time series. The code is essentially agnostic to the data so long as all variables are wanted in the table and are numeric.
+
+In early June, Apple held its annual developer conference were it announced a new lineup of computers. The price drop in MacBooks makes the Pro more reasonable, but the lack of 32gb RAM is unforgivable (some of us like loading huge datasets in `R`!). The touchbar is pretty cool, but I am not willing to pay the premium that it added to the price when it was first announced in 2016. The new iMac Pro, on the other hand, looks ridiculous, but I'm not really sure who it is for outside of Premiere Pro users.  
+
+## July 4, 2017
+
+A newish feature to RStudio are [addins](https://rstudio.github.io/rstudioaddins/). These addins add a bit of convenient functionality to RStudio. For example, the base examples include an addin that can easily prettify `R` code.
+
+A few other useful addins I have found:
+
+* [copydat](https://github.com/BAAQMD/copydat): easily copy dataframes to clipboard
+* [radiant](https://github.com/radiant-rstats/radiant.data): explore data; like a light version of [Exploratory](https://exploratory.io)
+* [ggedit](https://github.com/metrumresearchgroup/ggedit): interactively edit ggplots
+* [strcode](https://github.com/lorenzwalthert/strcode): insert code break chunks
+* [alignassign](https://github.com/seasmith/AlignAssign): align code at assignment operators
+* [citr](https://github.com/crsh/citr): search and add bibtex citations.
+
+If you have `devtools` installed in `R` then you can run the following code to install all of the above packages:
+
+```r
+install_github("rstudio/addinexamples", type = "source")
+install_github("BAAQMD/copydat")
+install.packages("radiant", repos = "https://radiant-rstats.github.io/minicran/", type = "binary")
+install.packages('ggedit')
+install_github("lorenzwalthert/strcode")
+  install_github("seasmith/AlignAssign")
+install.packages("citr")
+```
+
+## July 3, 2017
+
+Any English speaking society that would think a name like "Praise-God Barebone" is a good name, is probably a little strange. The most innovative aspect of the Puritans (of which Praise-God was a member) was their ability to be strange and old-fashioned at the same time (after all, anyone can be new and strange). The Puritans were obsessed with keeping things the way they were. As David Hackett Fischer points out in *Albion's Seed*,
+
+>"In the early records of the Bay Colony, the adjectives 'new' and 'novel were pejorative terms.' In 1639, for example, a special 'day of humiliation' was called in Massachusetts on account of 'novelties, oppression, atheism, exesse, superfluity, idleness, contempt of authority...'"
+
+The first thing most readers would zero-in on is the 'day of humiliation.' But Fischer focuses on something else: he notes that novelty is first in the list---even ahead of atheism. It seems odd to us in our ever-innovating, fast-paced society that even the most conservative person would prefer no change at all. Fischer suggests that part of their desire to keep things the way they were (are?) was to preserve a memory of their lost home in England. You have to remember that the Puritans were upper-middle class merchants with deep roots in East Anglia who were forced to flee Europe after being branded as 'fanatics.' This could also explain why colonial Virginians (a slightly less fanatical population) also considered words like 'innovation,' 'novelty,' and 'modern' to be pejorative terms. Ironically they to were forced to flee to the new world after the Puritans briefly took control of England under Oliver Cromwell.
+
+You might be thinking, wouldn't a strange name like "Praise-God" be novel? And you would be right---I don't think anyone who wasn't a Puritan ever had that name. The Puritans, however, could justify this "new" name because of how it was derived. A common naming convention for the Puritans was to simply open the Bible at random and point to a word. So in a sense there is nothing new at all about---God chose the name, at random, from the book he wrote several hundred years ago.
+
+On a broader note, I wonder how much of the progression of our knowledge of earth's history has also impacted our view of innovation. Until very recently (the 19th c. in fact), the idea that a species could go extinct was patently absurd. The world is as it was when God created it. If the world is (as we know now) constantly in flux, then it is no great leap to embrace the change we inevitably must experience.
+
+
+
+## July 2, 2017
+
+An ancient Greek [adage](http://www.wikiwand.com/en/The_Hedgehog_and_the_Fox) states: "a fox knows many things, but a hedgehog knows one important thing." With no additional context, the adage simply bifurcates styles of epistemology without ascribing an upper-hand to either condition. Recently, however, I've seen the phrase used to describe winners and losers in the race for better, data-based predictions.
+
+Philip Tetlock has centered his research on assessing and improving forecasts and makes clear his preference for foxes. His book *Superforecasters*, for example, details everyday people who consistently make better predictions than most experts regarding a wide range of world events. One reason for their success is their nearly obsessive collection of eclectic knowledge, making them "supernewsjunkies". The core idea being that a critical quantity of information quanta can reveal patterns not recognized by large, over-arching narratives.
+
+If you were to predict the future of oil prices, for example, would an intimate knowledge of OPEC's history be all you need for accuracy? Or would you need to know how China's aging population might affect aggregate demand for oil? Or what the median waterline on shipping vessels across the Pacific might reveal about global oil usage? What about CFOs who successfully hedge shale companies, keeping them afloat during a glut of oil? Many small details might give you an insight missed by the standard narrative.
+
+Tetlock is not alone. Nate Silver in his book *The Signal and the Noise* also espouses a fox-outlook. His noted website [538](http://www.fivethirtyeight.com) subtly alludes to this with its fox logo.
+
+
+## July 1, 2017
+
+>I have no data yet. It is a capital mistake to theorise before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts.
+
+>---Arthur Conan Doyle
+
+
+# March
+
+## March 15, 2017
+
+* *Book of the New Sun* by Gene Wolfe: `COMPLETE`. What a strange book. In many ways it's like reading the Bible - bizarre random things happening with no explanation or followup. But overall, well written and the narration device of the man with a perfect memory who also subtly deceives the reader is fun.
+* *Urth of the New Sun* by Gene Wolfe: I need answers. So I begin the fifth book. The first chapter is quite funny with Severian on a spaceship (given how the series began this is quite an unusual turn) and nonchalantly jumping into the blackness of space.
+
+* *Arrival* was pretty good, but I probably had too high of expectations. I'm not entirely sure where they got the Sanskrit word for "war" from. I didn't find any "war" related words related to cows in [Apte](http://dsal.uchicago.edu/dictionaries/apte/). Personally, I would have gone with युद्धा.
+
+* *Innovators* by Walter Isaacson: I never knew Lord Byron's life was so scandalous...  
+
+I love Rocksmith. This week I'm playing some E♭ standard tuning songs:
+
+* "Danger Zone" by Kenny Loggins
+* "Pride and Joy" by Stevie Ray Vaughn
+* "My Name is Jonas" by Weezer
+
+
+
+## March 14, 2017
+
+From the [February 25th Edition](http://www.economist.com/printedition/2017-02-25)
+
+**The Sanctity of Trade Statistics**: A proposal to remove re-exports from official figures would inflate the trade deficit and bolster the current administrations case for tougher trade relations. *The Economist* comments, "the new administration seems prone to using statistics as a drunk uses a lamppost -- for support rather than illumination."
+
+From the [March 4th Edition](http://www.economist.com/printedition/2017-03-04)
+
+**China and Currency Manipulation** China has had its reputation as a currency manipulator longer than it has actually been a currency manipulator. This article, using their own measurements inspired by official US determinants, scores Taiwan and South Korea as greater depressors of their currencies than China. In fact, China has taken steps to strengthen the yuan to keep capital from flowing out.
+
+## March 13, 2017
+
+I downloaded exercise files from Lynda for a [course](https://www.lynda.com/Python-tutorials/Python-Programming-Efficiently/534425-2.html) in efficient python programming. I wanted to preserve the original files, so I made two copies of the files in different folders. The problem is that I needed to change the name of all the files *en masse* to distinguish them from the original files. I modified some code I found online and used the following in the command line:
+
+```bash
+for file in *.ipynb; do echo mv "$file" "${file/begin./kt.}"; done
+```
+The files were named `xx_begin.pynb`. The above code renames all of these files by replacing the "begin" part with "kt". A few points
+
+* `for file in *.ipynb` creates a for loop that goes through each file ending in `.ipynb` (where each file name is saved to the variable `file`).
+
+* `;` mark line breaks
+
+* `do` and `done` demarcate the commands that are to be done in `bash`
+
+* `echo` will read out what is happening in the loop
+
+* `mv` is what will use to rename the files. If a location is not specified, `mv` will simply rename the file where it is
+
+* `$file` is used to access the current file name in the for loop
+
+* `/begin./kt./` is a parameter expansion that searches the file name for `begin` and replaces it with `kt`
+
+
+## March 12, 2017
+
+KDNuggets runs an [annual survey](http://www.kdnuggets.com/2016/06/r-python-top-analytics-data-mining-data-science-software.html) asking "What software you used for Analytics, Data Mining, Data Science, Machine Learning projects in the past 12 months?" The 2016 results are:
+
+1. R
+2. Python
+3. SQL
+4. Excel
+5. RapidMiner
+6. Hadoop
+7. Spark
+8. Tableau
+9. KNIME
+10. scikit-learn
+
+A few observations:
+
+* You know data science has gone mainstream when some of the most used analytics tools are point and click interfaces. I'm not talking about Excel (general purpose utility and industry standard for decades) or Tableau (visualization tool). I'm referring to RapidMiner and KNIME (although not listed, I prefer Orange). These tools allow you to run regressions, cluster analysis, PCA, etc. without ever typing a piece of code. It is interesting to see RapidMiner so high given its steep cost and all but useless free version.
+
+* Notice what is missing? SAS and Stata. Want to know why? They're archaic and cost lots of money. The only reason they still exist is because of the imagined frictions of transitioning to R or Python. I'm not saying you shouldn't know how to use either (you never know when you'll encounter some legacy code), but they should not be your primary tools of analysis (I say this having spent my Saturday working in Stata...).
+
+* I am amused that scikit-learn is on this list given that it is just a library for Python. How is it above pandas and numpy?
+
+
+## March 11, 2017
+
+**Here There Everywhere: Quantum Computing**: Just the other day I was wondering what it was like to be a US civilian just prior to the atomic bomb drop in 1945. Was there any idea that the US was working on a super weapon? What was it like to realize that your country had been secretly coordinating with the greatest minds on earth and spending billions of dollars developing an unstoppable instrument of destruction? What would be a current/future analog to this? Perhaps Russia attempts a major cyber attack on the US only to find out that America has developed a highly advanced quantum computer that not only renders the truly important parts of the US cyber infrastructure invulnerable, but also makes Russia an open book.
+
+Timely enough, the technology quarterly for this week's *Economist* focuses on quantum computers. The major take away is that progress in this field is rapidly advancing thanks to the growing and inevitable commercialization of quantum techniques. Quantum computers will soon provide more accurate location than GPS, more precise sensing abilities than anything available, unbreakable cryptography, and the ability to quickly solve problems in finance and engineering.
+
+This last point reminds of the time saved in solving liner equations that came with the advance of analytical engines and early computers. Problems with 6+ unknowns would take weeks to solve, but advances in simple computers reduced the time to mere hours (your computer could probably do it in seconds).
+
+From the [March 11th Edition](https://www.economist.com/printedition/2017-03-11)
+
+## March 10, 2017
+
+Reading Walter Isaacson's *Innovators*, I was struck by his telling of the first-long distance phone call. In the 1910s, AT&T was facing the expiration of their patent on the basic technology underlying telephone calls. To compensate, AT&T aggressively pursued new technologies such as long-distance phone calling. Sure enough, by 1915 Alexander Graham Bell recreated his famous first phone call with Thomas A. Watson, except this time a continent separated them and not a room.
+
+I find it compelling how different it is today: namely, that a claim on intellectual property would be allowed to expire. Mickey Mouse, for example, should have gone into the [public domain](https://priceonomics.com/how-mickey-mouse-evades-the-public-domain/) in 1984. However, due to intense lobbying, Disney has been able force changes in the law so that Mickey Mouse will almost always remain in the Disney vault. What kind of innovation has Disney denied the world by not letting their rodent mascot into the public domain?
+
+## March 9, 2017
+
+On April 15, 1912 the RMS *Titanic* sank in the northern Atlantic taking the lives of approximately 1500 people. Stop anyone on the streets, and they certainly could tell you the general outlines of the disaster. But what about the sinking of the *Sultana*? On April 27, 1865 (April is the cruelest month), the steamboat [*Sultana*](http://www.wikiwand.com/en/Sultana_(steamboat)) caught fire and sank on the Mississippi river killing roughly 1700 -- 200 more than the *Titanic*.
+
+So why does everyone remember the *Titanic* and not the *Sultana*. One reason is timing: the *Sultana* sank the day after John Wilkes Booth was killed after himself assassinating President Lincoln. Another reason would be media coverage and popular interest: the *Titanic* catered to social elites who the media naturally gravitates towards. Add in the morality play of the ship "that even God could not sink" sinking and killing most on board, and you have the perfect storm of everlasting infamy.
+
+Interestingly enough, this isn't the only dyad of famous/forgotten maritime disasters. Everyone knows about the [Spanish Armada](http://www.wikiwand.com/en/Spanish_Armada) -- the most powerful naval force in the world dashed to pieces by the fury of a north Atlantic storm as it tried to attack England in 1588. Ultimately the loses Spain totaled 35 ships and 20,000 dead. But what about the [English Armada](http://www.wikiwand.com/en/English_Armada)? In the ensuing year, the English attempted a punitive expedition against Spain but met a similar fate losing 40 ships and upwards of 15,000 men.
+
+A similar-in-magnitude pairing of remembered-and-forgotten can be found in the disastrous "kamikaze" invasion of the Mongols into Japan in the 13th century and the massive losses suffered by Roman naval forces in the second Punic war -- both with high-end estimate losses of 100,000 men.
+
+## March 8, 2017
+
+>Reasoning will never make a Man correct an ill Opinion, which by Reasoning he never acquired
+
+>---Jonathan Swift
+
+## March 7, 2017
+
+* *Hacker's: Heroes of the Computer Revolution* by Steve Levy, completed: Listening to the coda of the book and it's quite shocking to find out that the book was published in 1980s. The extensive time spent elaborating the Hacker Ethic of free information and anti locks and barriers is shockingly prescient.
+* *Great Courses: Civl Liberties and the Bill of Rights*, started: I was pleased that the professor began the course by elaborating on the implications of the 14th Amendment and the gradual incorporation of the bill of rights across all levels of government (namely, state government). Most people don't realize that, as originally written and interpreted in the *Barron v Baltimore* case, the bill of rights only applies to the federal government.
+
+## March 6, 2017
+
+* *Parks and Rec*: Recently I watched the episode were Ron Swanson goes on a trip to the Lagavulin distillery somewhere in the British Isles. I noticed, however, that the Lagavulin facility looked suspiciously like the Laphroaig distillery (I should know, I own several square feet of the Isle of Islay). Well, [turns out](http://www.wikiwand.com/en/Lagavulin_distillery) there is a reason for that: Lagavulin and Laphroaig are located near each other and Lagavulin was even sued for trying to copy Laphroaig.
+
+## March 5, 2017
+
+Joe Dimaggio's parents were classified as enemy aliens due to their immigration from Italy (a Axis power during WWII) and forbidden from traveling farther than a five miles from their home. It should also be noted that Dimaggio's own Italian heritage was controversial when he started playing in the major leagues.
+
+## March 4, 2017
+
+From the [February 11, 2017 edition](http://www.economist.com/printedition/2017-02-11)
+
+* *Financial Regulation in America: The Litter of the Law*: From 2010-2016, "Dodd-Frank soaked up 73m paperwork hours and $36bn in costs." Small price to pay for the economic damage created by the financial industry in the Great Recession right? Maybe, but vengeance is not the point of the justice system and nor should it be the thrust of regulations. The idea of financial regulations is to act like the speed governor on your car. You should be able to drive to work any way you want but not at an extreme speed that would prove reckless to you or others. One proposed step in the article is to consolidate regulating agencies to lower the burden of compliance. Simplification, consolidation, and harmonization would make compliance more effective and help lower compliance costs for companies. However, if the continuing issues with IFRS-GAAP harmonization is any indication, this will probably never get done.
+
+* *American Retailing: Run Ragged*: Retail is not the most thrilling field of research but it is a massive component of the economy and the gradual demise of storied franchises such as Macy's and Sears are certainly touchstones in the changing economic landscape of America. The future, it seems, is fast-fashion (Zara's, Uniqlo, Primark, etc.) and smaller stores.
+
+* *Schumpeter: Snaptrap*: Now this is a thrilling topic of research: corporate governance. Snapchat's recent IPO (looking for a $20-25bn valuation) continues the trend toward diminished shareholder rights for companies going public (particularly tech companies). For Snap, the problem is acute: shareholder's buying into the IPO have no voting rights. Google and Facebook are similar with dual voting rights that divorces cashflow rights from voting rights. Alibaba's attempt to follow suit in their IPO lead to them listing with the NYSE after the HKSE rejected their corporate governance structure. So why are tech companies such avid fans of these patently undemocratic structures? One argument is that tech companies, given their dependence on forecasting the future and secretive R&D efforts, are more likely to have information that the market will be incapable of adequately pricing. Tech IPOs, by this argument, need to protect their interest from uninformed market forces.
+
+
+## March 3, 2017
+
+From the [February 11, 2017 edition](http://www.economist.com/printedition/2017-02-11) of the Technology Quarterly
+
+* *Entertainment: The Paradox of Choice*: In his book *The Long Tail*, Chris Anderson famously predicted that the winners in the coming digital entertainment revolution (think Netflix) would be the ones who provided the most customized, expansive, and rare collection. Essentially, whatever service could lay claim to the most hard to get titles would be the winners. This has not proven to be the case. It seems that the easier it is to get things that were once rare (I remember scouring Best Buys for any copy of Kurosawa that I can now watch on youtube for free) people more and more want the biggest names in TV and movies. The winners it seems, are those who can get stream *The Force Awakens* and not *Rashomon*. (In hindsight this seems pretty obvious.)
+
+* *Recommendation Algorithms*: In statistics, we obsess over the bias-variance tradeoff. When algorithms meet people, however, the tradeoff is explore-exploit. You could simply keep recommending things you know for sure that customers like, but this runs the risk of overfitting and failing to adapt to the vacillations of human desire. However, if you loosen your parameters to achieve lower errors when switching between human states, you might under-fit and the human will reject the recommendation as not applicable to them.
+
+* *Alternative Realities*: The frictions involved in AR, VR, and Haptic immersion rigs (viz., they look stupid to wear and are uncomfortable) will probably limit their adoption to only those who play video games. Hence why I think the future is still in full eye replacements.
+
+## March 2, 2017
+
+Here are few interesting factoids about names of places in the ancient world:
+
+* Iberia in Roman times did not refer to the Iberian peninsula (modern day Spain and Portugal) but to a Kingdom (the first Christian kingdom in fact) centered on present day Georgia.
+
+* The original province of Syria is approximately present day Syria. However, following the Bar Kokhba revolt, Hadrian (who really, really hated the Jews) merged Judaea into Syria to create the province Syria-Palestine. He also renamed Jerusalem Aelia Capitolina.
+
+* The name "Germania" is of unknown origin, probably a Gaulish term appropriated by the Romans. It is appropriate then that only non-Germans call Germany "Germany" and native Germans refer to it as Deutschland. The "Deutsch" part of Deutschland is ultimately from the PIE root "teuta" meaning "people." This root is origin of the word "Teutons" as well as the Italian word for German, "tedesco." [Wikipedia](http://www.wikiwand.com/en/Names_of_Germany) makes the interesting point of contrasting the word for "people" with the opposite word "walesc" used to indicate "foreigner." This word has been applied to the Welsh (who call themselves Cymry) as well as Wallonia (the Belgians who recently held the EU hostage in trade negotiations) and Wallachia (the home of Dracula).
+
+
+## March 1, 2017
+
+>I’m saying that at Leipzig all goods—silk, coins, shares in mines—lose their hard dull gross forms and liquefy, and give up their true nature, as ores in an alchemist’s furnace sweat mercury—and all mercury is mercury and can be freely swapped for mercury of like weight—indeed cannot be distinguished from it.
+
+>---Neal Stephenson. “Quicksilver.”
+
+# February
+
+## February 7, 2017
+
+**Listening**
+
+* *Hardcore History: Destroyer of Worlds*: Dan Carlin's latest podcast explores the early political machinations surrounding the use of atomic weaponry. It's quite amazing how resolute Truman, Eisenhower, and especially Kennedy were in declining to use nuclear weapons after Hiroshima and Nagasaki despite intense pressure to do so.
+* *Hacker's: Heroes of the Computer Revolution* by Steve Levy, cont'd: Steve Jobs was notorious for his unwashed, shoeless, extreme vegetarian lifestyle. Yet, for all his free spirited-ness, he was the first of the computer nerds to seek out professional management of a personal computer company. The result was Apple and its nearly trillion dollar market capitalization.
+
+**Reading**
+
+* *The Book of the Dying Sun* by Gene Wolfe: Words I discovered: peccary, pardine, bartizan, peltast, martello, conventicle, abattoir, par-terre, citron, sardonyx, tyrian, lansquenet, casern, monomachy, sabretache, nidorous, mensal, dray, onager, champian, tholus, delectation, lianas, smilodon, freshet, specula, soubrette, columbine, coryphees, harlequinas, figurantes, pagne, pavonine, misericorde, etc., etc.
+
+## February 6, 2017
+
+**Super Bowl**
+
+Stunning comeback or stunning collapse? An excellent [article](https://fivethirtyeight.com/features/about-those-falcons-play-calls/) details how Falcons bumbled and the Patriots exploited a 99% chance of victory. Despite the Falcon's mind-boggling calls down the stretch (attempting passes despite Devonta Freeman averaging 8 yards a carry and only needing to run out the clock), the story during the course of the game was how little the Falcons offense was on the field.
+
+I would also be remiss if I didn't point out that the Patriots almost Seahawked themselves by throwing a nearly intercepted pass from the two yard line at the end of the game.
+
+**'Member when...**
+
+Given Tom Brady's legendary success in the NFL, much talk has been given to him as the "Greatest of All Time." This is a fine argument, but two caveats should be noted. Is he the greatest player of all time? That is a definitive no. [Red Grange](http://www.wikiwand.com/en/Red_Grange), a charter member of both the college and professional football hall of fame, is undeniably the greatest of all time. Is he the greatest QB of all time? Perhaps. Outside of Peyton Manning (who might be the *best* QB of all time), the biggest competition Brady has is Otto Graham: in his 10 year career he went to 10 championship games and won 7 of them.
+
+
+## February 5, 2017
+
+* January 30, 1649: In one of the first great modern political revolutions, King Charles I is beheaded
+* January 31, 1937: American composer Philip Glass, notable for his scores in *Koyaanisqatsi* and *Candyman* (?!?), is born
+* February 1, 2003: The space shuttle *Columbia* disintegrated on re-entry killing all on board. I remember waking on a cold February morning at my grandparents house and seeing this on the news.
+* February 2: Boris Karloff, Sid Vicious, Bertrand Russell, Gene Kelly, Donald Pleasance, and Philip Seymour-Hoffman all died (in different years)
+* February 3, 1943: The SS *Dorcester* was sunk by a German U-boat off the coast of Greenland; many were saved by the famous [Four Chaplains](http://www.wikiwand.com/en/Four_Chaplains#/Sinking_of_the_Dorchester)
+* February 4, 1724: British entomologist Dru Drury is born
+* February 5, 1958: The US Air Force loses a hydrogen bomb off the coast of Georgia
+
+
+## February 4, 2017
+
+From the [February 4, 2017 edition](http://www.economist.com/printedition/2017-02-04)
+
+* *Universal Basic: Bonfire of the Subsidies*: I'm critical of UBI schemes in general because the income provided would dramatically cut the amount of welfare provided to the poorest while giving income to those who don't need it. In India, however, such a scheme might actually prove beneficial in that it wouldn't be "universal." Instead, because Indian currency has very high purchasing power, it would replace at similar cost the current proliferation of welfare schemes.
+
+* *Augmented Reality*: AR is very cool, but "social factors often govern the path to mass adoption, and for AR, two problems stand out." The first problem is aesthetics in that wearing the current headsets make you look like a Neal Stephenson gargoyle. The second problem is that you might act like a Neal Stephenson gargoyle by recording everything that happens around you (never forget the "Glasshole" phenomenon).
+
+* *Alternative Religions: The Joy of Sects*: I have about 13 years of formally studying religion (7 years at private Christian school, 4 years undergraduate degree in religion, 2 years at Harvard Divinity School) and my final conclusion is that religion is whatever the IRS says it is. Also, [Simpsons did it](http://www.wikiwand.com/en/The_Joy_of_Sect)!
+
+* *Gambling in Japan*: Until December 2016, casino's were illegal in Japan, but that didn't keep the country from spending $203 billion on pachinko every year.
+
+* *The Indian Economy: Rupees for Nothing*: UBI would help with the nearly apocalyptic impact of Indian's demonitization scheme in November 2016, that severely impacted the mostly cash based economy.
+
+* *Asset Management: Ctrl Alt Beta*: A new kind of investment fund known as "alt-beta" funds attempts to replicate the putative advantage of a hedge fund by deriving returns uncorrelated (and hopefully positive) from the market. I see these as slightly more sophisticated trading automation plans like those found on [Portfolio123](https://www.portfolio123.com).
+
+## February 3, 2017
+
+**See Tim Roughgarden's Coursera course on Algorithms for more.**
+
+The `Master Method` is a general tool for analysis of the run time of divide and conquer algorithms. The general form of the master method is:
+
+$$
+T(n) \leq a T(n/b) + O(n^d)
+$$
+
+Here the parameters are:
+
+* $a$ is the number of recursive calls
+
+* $b$ is the factor by which input shrinks until recursion is called
+
+* $d$ is the exponent on the combine step
+
+The relationship between these three parameters result in three different run times:
+
+* if $a=b^d$, then $O(n^d \space log \space n)$
+
+* if $a<b^d$, then $O(n^d)$
+
+* if $a>b^d$, then $O(n^{log_b a})$
+
+Mergesort, for example, has the form of $T(n)=2 T(n/2)+O(n^1)$, which gives us a run time of $O(n \space log \space n)$.
+
+
+## February 2, 2017
+
+Most stars are binary in nature, i.e., most stars have a counterpart star that orbits a mutual barycenter. So what about our sun? What if our sun had a sibling? And what if that sibling was the cause of the mass extinctions that have periodically wracked earth? Such is the speculation that gave rise to the theory of [Nemesis](http://www.wikiwand.com/en/Nemesis_(hypothetical_star)), a proposed star, small and very dark, that orbits with our Sun and periodically smashes through the Oort cloud every 26 million years, sending armageddon levels of debris to earth. In theory, this could include the impactor that lead to the extinction of the dinosaurs (if indeed they did go extinct from the impact of an extraterrestrial object).
+
+This theory is quite engaging: it plays on our wonder at the enormity of the cosmos, the interconnectedness of time, as well as the possibility of mystery left in the universe. There is also something of the operatic in the idea of a long lost, evil twin who periodically ruins your life.
+
+Unfortunately, as cool as this theory sounds, there is little evidence to support it. Despite being small and dark, such a body would have probably been detected by now. Furthermore the periodicity of mass extinctions has been challenged.
+
+## February 1, 2017
+
+>A firm rule must be imposed upon our nation before it destroys itself. The United States needs some theology and geometry, some taste and decency. I suspect that we are teetering on the edge of the abyss
+>-- John Kennedy Toole, *A Confederacy of Dunces*
 
 # January 
 
