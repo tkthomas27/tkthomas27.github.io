@@ -1,12 +1,20 @@
 ---
-title: ""
+title: "Resume"
 ---
 
 # Work Experience
 
 ## Research Associate at Harvard Business School
 
-Started in 2013-Current working in Accounting and Management; years of expericence writing papers doing applied data science statitisc 
+Starting in 2012, I have been doing research at Harvard Business School. In February 2013, I became a full-time Research Associate working for two professors in the Accounting and Management unit. I have nearly five-years of experience: 
+
+* professionally typesetting and editing academic papers for publication
+
+* collecting and analyzing data using R, Python, and Excel
+
+* writing case studies and teaching plans that form the curriculum at HBS
+
+I have worked on a huge vareity and 
 
 Indian Telecommunications Company Experiment and Data Analysis
 
@@ -22,7 +30,7 @@ Corporate Filing Collection and Web-Scraping
 Financial and Accounting Data Analysis
 
 * Remote access millions of financial records via ssh and command line R interface from WRDS and store data in PostgreSQL database.
-* Data processed using dplyr with code collaboartion on github; results reported using RMarkdown and Latex to dynamically generate documents and visualizations using ggplot2 and plotly.
+* Data processed using dplyr with code collaboration on github; results reported using RMarkdown and Latex to dynamically generate documents and visualizations using ggplot2 and plotly.
 
 Convenience Store
 

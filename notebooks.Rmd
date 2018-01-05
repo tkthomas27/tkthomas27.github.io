@@ -50,28 +50,34 @@ checkio.org is a great place to practice your coding. In this post, we will pres
 
 # Explanatory Notes
 
+---
+
 [Internal Rate of Return](irr.html)
+
+A brief note walking the formulas of the time value of money and the computation of the internal rate of return.
+
+---
 
 [Command Line](cli_basics.html)
 
+A quick cheatsheet to getting started with the command line on MacOS.
+
+---
+
 [macOS Package Management](macOS_package_management.html)
 
-[Chain of Thought](cot_norm.html)
+Whether you are adding functionality to your base OS or expanding the capabilities of R or Python, effectively managing your packages is an essential task for any data scientist.
+
+---
+
+[Chain of Thought: Norm](cot_norm.html)
+
+A chain of thought regarding the mathematical concept of norm.
+
+---
 
 [Note Melody Music](note-melody-music.html)
 
----
-
-# Logs
+A meditation on Buddhaghosa and the phrase 'evam me sutam'.
 
 ---
-
-## Overview
-
-These logs are simply a collection of interesting facts, concepts, or thoughts from a day in the life of a research associate. I think there is much to be said for varying the topics that you read about, so I try to make the log entries as diverse as possible.
-
----
-
-## Log Archive
-
-[Log 2017](log_2017.html)

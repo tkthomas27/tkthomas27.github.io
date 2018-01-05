@@ -2,32 +2,14 @@
 title: "Services"
 ---
 
-Coming Soon!
+# Copy-Editing
 
-<!-- Organized Services into stacks. Front end/Back End. Back End  -->
+I have edited, typeset, and proof-read multiple papers that have appeared in publications such as *The Accounting Review* and *The Journal of Financial Economics*. Additionally, I have coauthored several cases and teaching plans that are available at Harvard Business Publishing. My experience allows me to deliever the highest possible quality for publications.
 
-<!-- # Back End Services -->
+# Consulting
 
-<!-- Critical Writing -->
+In my time at Harvard Business School, I have aided fellow researchers, doctoral students, and faculty in getting started with an effective data analysis pipeline including R, Python, text editors, Stata, command line, or advanced Excel techniques. I place a special emphasis on bibliography management and reproducible research as a means to dramatically increase the efficiency.
 
-<!-- Logic -->
+# Tutoring
 
-<!-- Reproducible Research -->
-
-
-<!-- # Front End Services -->
-
-<!-- Data Science -->
-
-<!-- Statistics -->
-
-<!-- Econometrics -->
-
-
-<!-- proof reading -->
-
-<!-- typesetting -->
-
-<!-- 5 business days from confirmation -->
-<!-- 3 Busines days from confirmation -->
-<!-- 24 Hours from confirmation -->
+As someone who was originally from a humanities background, I understand that math, statistics, and data science can be difficult to start. I provide tutoring to those who need additional help understanding the core concepts in these fields. For more advanced students, I offer insights into how to quickly perform the kind of research required for serious academic projects. I additionally provide tutoring in critical writing, logic, and grammar.

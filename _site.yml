@@ -15,15 +15,18 @@ navbar:
     - text: "Notebooks"
       icon: fa-book
       href: notebooks.html
+    - text: "Blog"
+      icon: fa-terminal
+      href: blog.html
     right:
-    - text: "Github"
+    - text: ""
       icon: ion-social-github
       href: https://github.com/tkthomas27
     - icon: ion-social-twitter
-      text: "Twitter"
+      text: ""
       href: https://twitter.com/tkylethomas27
     - icon: ion-social-linkedin
-      text: "LinkedIn"
+      text: ""
       href: https://www.linkedin.com/in/timothykylethomas/
 output:
     html_document:
