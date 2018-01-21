@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head><style type="text/css">
-div.output_subarea {
-	max-width: 100% !important;
-}
-</style>
-<meta charset="utf-8" />
-<title>Notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<head><meta charset="utf-8" />
+<title>supply-demand-basics</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11719,6 +11714,35 @@ ul.typeahead-list > li > a {
 .ansi-bold { font-weight: bold; }
 
     </style>
+<style type="text/css">
+    /*
+    Name:       Base16 Solarized Dark
+    Author:     Ethan Schoonover (http://ethanschoonover.com/solarized)
+    CodeMirror template adapted for IPython Notebook by Nikhil Sonnad (https://github.com/nsonnad/base16-ipython-notebook)
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg/base16-chrome-devtools)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+*/
+
+
+div#notebook, div.output_area pre, div.output_wrapper, div.prompt {
+  font-family: Georgia, monospace !important;
+  color: #00173a;
+}
+
+
+/*Otherwise, a lot of backgrounds are white.*/
+div#notebook {background-color: #ECF0F1; border-top: none;}
+div#notebook-container, div#maintoolbar, div#header, div.navbar-collapse {background-color: #ECF0F1;}
+
+a {
+    color: #2980B9;
+}
+
+a:hover {
+    color: #E74C3C !important;
+}
+.cm-s-ipython.CodeMirror {background: #ECF0F1;}
+    </style>
 
 
 <style type="text/css">
@@ -11776,54 +11800,13 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;nav class=&quot;navbar navbar-default&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    &lt;ul class=&quot;nav navbar-nav&quot;&gt;
-      &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;notebook_archive.html&quot;&gt;Notebooks&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;log_archive&quot;&gt;Logs&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/nav&gt;
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Home"><a href="index.html">Home</a><a class="anchor-link" href="#Home">&#182;</a></h1>
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-    
-        <div class="prompt"></div>
-        
-	
-            
-<div class="output_html rendered_html output_subarea output_execute_result">
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Home</a></li>
-      <li><a href="notebook_archive.html">Notebooks</a></li>
-      <li><a href="log_archive">Logs</a></li>
-    </ul>
-  </div>
-</nav>
-</div>
- 
-             </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -11896,13 +11879,13 @@ div#notebook {
 
 
 <div class="output_area">
-    
-        <div class="prompt"></div>
-        
-	
-            
 
-<div class="output_png output_subarea output_execute_result">
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAECCAYAAAD0JMwBAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3WmYFNXd9/Fv7+tMz/SsLAqIKIoBI5ooikJcIoq7ARGI
 SlyS3FETl8Ro7hijJibGJY9xiXcSoyKCqKi4gohE4x4SFEFRQJTArL1P7931vCirAmF6YOjuYqbn
@@ -12170,8 +12153,8 @@ IUSF+v82kFJZb7iJ+gAAAABJRU5ErkJggg==
 "
 >
 </div>
- 
-             </div>
+
+</div>
 
 </div>
 </div>
@@ -12243,13 +12226,13 @@ IUSF+v82kFJZb7iJ+gAAAABJRU5ErkJggg==
 
 
 <div class="output_area">
-    
-        <div class="prompt"></div>
-        
-	
-            
 
-<div class="output_png output_subarea output_execute_result">
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAECCAYAAAD0JMwBAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XecE3X+x/FXNm03yW6ynQVEigqCYEMElRMsYEMPG/Yu
 6Kk/PBTPw37YC6hnL+cpqKgn2LGBDVHQuxMEEUQQEdi+2exu6ibf3x9D5kCShSXJbOHzfDzyADKT
@@ -12583,8 +12566,8 @@ ItKob0dJEaL4NjyJAAAAAElFTkSuQmCC
 "
 >
 </div>
- 
-             </div>
+
+</div>
 
 </div>
 </div>
@@ -12644,13 +12627,13 @@ ItKob0dJEaL4NjyJAAAAAElFTkSuQmCC
 
 
 <div class="output_area">
-    
-        <div class="prompt"></div>
-        
-	
-            
 
-<div class="output_png output_subarea output_execute_result">
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAECCAYAAAD0JMwBAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xl8VNXdP/DP7MudfSaTyUZAQAUUFXcwrSi2ioKoLbhR
 BBUrIkEQpOwowQUkVHGjbuAGxeKjIK0+WrVaRGq1VhQF2bPOZPZ9vb8/8rv3IZIZEmbmJpl836/X
@@ -12925,8 +12908,8 @@ SIGigCeEkAJFAU8IIQWKAp4QQgoUBTwhhBQoCnhCCClQ/w8Hqn2NQ0hFPwAAAABJRU5ErkJggg==
 "
 >
 </div>
- 
-             </div>
+
+</div>
 
 </div>
 </div>
@@ -12994,13 +12977,13 @@ SIGigCeEkAJFAU8IIQWKAp4QQgoUBTwhhBQoCnhCCClQ/w8Hqn2NQ0hFPwAAAABJRU5ErkJggg==
 
 
 <div class="output_area">
-    
-        <div class="prompt"></div>
-        
-	
-            
 
-<div class="output_png output_subarea output_execute_result">
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAECCAYAAAD0JMwBAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl4FEXeB/Dv3PedOwFEQBAEEfAGAVHxABdhF1CXFQLe
 rHiBgAgqCqKcCoguovgCgnjjouuFBy7Csoguh6ByBpJMkrnvq94/xm4TyQwJM9NJJr/P8+SRZHpS
@@ -13328,8 +13311,8 @@ RhF4ADCKwAOAUQQeAIwi8ABgFIEHAKOe0mBoGEboE24AAAAASUVORK5CYII=
 "
 >
 </div>
- 
-             </div>
+
+</div>
 
 </div>
 </div>
@@ -13385,13 +13368,13 @@ RhF4ADCKwAOAUQQeAIwi8ABgFIEHAKOe0mBoGEboE24AAAAASUVORK5CYII=
 
 
 <div class="output_area">
-    
-        <div class="prompt"></div>
-        
-	
-            
 
-<div class="output_png output_subarea output_execute_result">
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAECCAYAAAD0JMwBAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXd4VNXWh9/pk94LJBAgQCjSFFAQFAVRUBFQqqCCggUR
 BNu9KJar2BDQy6coioUaiqIUxYtdKYqFGnoJgfRM+kxmMjPfH8c5EJgJ4MyctP0+Tx5Izp7ZKydn
@@ -13801,8 +13784,8 @@ YII=
 "
 >
 </div>
- 
-             </div>
+
+</div>
 
 </div>
 </div>

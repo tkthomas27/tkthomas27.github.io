@@ -8,13 +8,17 @@ title: "Resume"
 
 Starting in 2012, I have been doing research at Harvard Business School. In February 2013, I became a full-time Research Associate working for two professors in the Accounting and Management unit. I have nearly five-years of experience: 
 
-* professionally typesetting and editing academic papers for publication
+* collecting and analyzing data using R, Python, Stata, and Excel
 
-* collecting and analyzing data using R, Python, and Excel
+* rapidly synthesizing domain specific knowledge and applying to real world applications
+
+* extract useful information from both structured and unstructured data
 
 * writing case studies and teaching plans that form the curriculum at HBS
 
-I have worked on a huge vareity and 
+* professionally typesetting and editing academic papers for publication
+
+**Select Projects**
 
 Indian Telecommunications Company Experiment and Data Analysis
 
@@ -40,7 +44,7 @@ Convenience Store
 
 Roby Realty
 
-* Used HTML, CSS, Javascript, and PHP to develop a dynamic, mobile-friendly website for a real estate startup
+* Used HTML, CSS, JavaScript, and PHP to develop a dynamic, mobile-friendly website for a real estate startup
 
 # Publications
 
@@ -65,7 +69,7 @@ Roby Realty
 
 *Masters in Theological Studies* (GPA: 3.75)
 
-* Concentration in South Asian Relgions and Buddhism
+* Concentration in South Asian Regions and Buddhism
 * 2 years of Sanskrit
 * 1 year of Chinese 
 * 1 summer intensive course in German
@@ -108,7 +112,7 @@ Outside of academics I like to:
 * Play the guitar (Gretsch Duo Jet Center Block; classical guitar) and bass (Squier Jaguar, all black). Rocksmith is a blast and I try to play everyday!
 * Read Sci-Fi. I'm currently on a quest to read all the "classics" in the genre (unfortunately this means a lot of Heinlein). My top two are currently *Dune* and *Hyperion*.
 * I don't watch movies as much as I used to, but my favorite movies are from Leone and Kurosawa.
-* I am big sports fans. I am biased towards the Carolina Panthers (NFL) and UNC-Chapel Hill in college sports (and the Hornets I guess). I am also of the opinion that the college sports $>>$ professional sports but that opinion is verbotten in New England despite the fact that it literally invented college sports.
+* I am big sports fans. I am biased towards the Carolina Panthers (NFL) and UNC-Chapel Hill in college sports (and the Hornets I guess). 
 
 ## The Logo
 

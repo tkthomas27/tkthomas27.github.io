@@ -1,6 +1,7 @@
 ---
 title: "Internal Rate of Return"
 author: Kyle Thomas
+output: html_document2  
 ---
 
 # Time Value of Money
@@ -28,13 +29,6 @@ In words, Eq. $\ref{basic_pv}$ tells us that PV is equal to some FV discounted a
 The core idea is that cash now is more valuable than cash later. Therefore if I were to lend you money, I would charge you interest to make up for not having money now. As an example, say person A lends person B $10 for $10 years at a rate of 20%. The FV of the money for person A is $10(1+.2)^10=61$. Alternatively, if person B wanted to know how much they needed to invest to have $61 after 10 years of compounding at 20%, they would find that $61/(1+.2)^10 = 10$.
 
 The focus on our exposition will be on *r*, the rate of return that is used to discount/compound. We can rearrange Eq. $\ref{basic_pv}$ into Eq. $\ref{basic_irr}$ to see the relationship between the IRR and FV and PV. Eq. $\ref{basic_irr}$ will be our final step in computing the IRR.
-
-$$
-\begin{equation}
-r = \sqrt[T]{\frac{FV}{PV}}-1
-\label{basic_irr}
-\end{equation}
-$$
 
 # Streams of Cash
 

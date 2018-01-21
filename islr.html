@@ -9,10 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Kyle Thomas" />
 
 
-<title>Quick Guide to Command Line Basics</title>
+<title>islr.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -352,92 +351,72 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Quick Guide to Command Line Basics</h1>
-<h4 class="author"><em>Kyle Thomas</em></h4>
 
 </div>
 
 
-<!-- for more detailed overview see command line tutorial -->
-<p>Before graphical user interfaces (GUI), drag and drop desktops, and voice activated assistances (e.g., Siri), the only way to interact with a computer was through written commands using the command line interface (CLI). Although you could be quite successful at using a computer without ever knowing what the CLI is, mastery of the CLI is that gateway to becoming a power user and unlocking the full potential of your computer. This is a quick overview of some command line basics as well as a few tips on how to make your experience more efficient (and cool).</p>
-<section id="terminal" class="level1">
-<h1><span class="header-section-number">1</span> Terminal</h1>
-<p>To access the command line interface on macOS you need to open Terminal. It is located in <code>/Applications/Utilities/Terminal</code>; the easiest way to open it is to use spotlight (<code>⌘+space</code>) and simply type <code>terminal</code>.</p>
-<p>An alternative to Terminal is <a href="https://www.iterm2.com">iTerm</a>. iTerm is a terminal emulator that can be used as a replacement for the native Terminal app. iTerm adds a host of new <a href="https://www.iterm2.com/features.html">features</a> that provided much needed productivity boosters like autocompletion and split panes.</p>
+<p>Title: Introduction to Statistical Learning Date: 2017-01-01 Tags: data-science, learning, statistics Category: tech Slug: islr Summary: <em>An Introduction to Statistical Learning with Applications in R</em> is a popular textbook covering basic statistical learning techniques (classification, regression, cross-validation, etc.) as well as their application in R.</p>
+<p><em>An Introduction to Statistical Learning with Applications in R</em>, or just ISLR, is an accessible and frequently used introductory textbook for the basics of statistical learning. While machine learning is concerned more with pure prediction, statistical learning emphasizes estimation methods and valid inference. These two fields are less black and white differences and more shades of gray.</p>
+<section id="prereq" class="level1">
+<h1><span class="header-section-number">1</span> Prereq</h1>
+<p>At least one course in statistics is needed. A second course that specializes in regression would also go a long way (particularly for those who are self teaching).</p>
+<p>Calculus is mostly avoided and linear algebra is kept to a minimum. Of course, a “just algebra” approach can get fairly complicated when dealing with Bayesian manipulations (this is particularly true during the section on linear discriminant analysis).</p>
 </section>
-<section id="basic-commands" class="level1">
-<h1><span class="header-section-number">2</span> Basic Commands</h1>
-<p>Below are a few basic commands that form the bedrock of command line interaction. If you ever have any questions about a command you come across, <a href="http://explainshell.com">Explain Shell</a> is an excellent resource as well as this <a href="https://github.com/0nn0/terminal-mac-cheatsheet">cheatsheet</a>.</p>
-<p>Before we begin, here are a few tips:</p>
+<section id="contents" class="level1">
+<h1><span class="header-section-number">2</span> Contents</h1>
+<p>Below is a basic table of contents with select topics. Each chapter has an R lab applying the ideas covered as well as exercises.</p>
+<ol type="1">
+<li>Introduction</li>
+<li>Statistical Learning
 <ul>
-<li><p>The term “directory” is just a way of referring to folders; “directory” is preferred on *nix operating systems as opposed to “folder” on Windows (checkout <a href="http://superuser.com/questions/169457/directory-vs-folder">this</a> for the super nerd answer)</p></li>
-<li><p>The action that a command performs can be modified using flags. These are typically a “-” followed by a single letter. For example, to list the visible AND the hidden the contents in a directory you would type the list command <code>ls</code> followed by the flag <code>-a</code>.</p></li>
-</ul>
-<!-- screenshots; tree -->
-<p><strong>Creating Files and Folders</strong></p>
-<ul>
-<li><p><code>mkdir [dir_name]</code> make a directory</p></li>
-<li><p><code>touch [file_name]</code> change file timestamps; easy way to create files</p></li>
-<li><code>rm [file_name]</code> removes files (does not remove directories by default)
-<ul>
-<li><code>-r [dir_name]</code> remove directories and their contents recursively</li>
+<li>Assessing Model Accuracy</li>
+<li>Bias-Variance Trade-off</li>
 </ul></li>
-</ul>
-<p><strong>Moving Around and Exploring the Computer</strong></p>
+<li>Linear Regression
 <ul>
-<li><p><code>cd</code> traverse the directory structure forward (i.e., open a directory)</p></li>
-<li><p><code>../</code> traverse the directory structure backward (i.e., exit a directory)</p></li>
-<li><code>ls</code> list contents of current directory
-<ul>
-<li><code>-l</code> list detailed info such as permissions, owners, size, etc.</li>
-<li><code>-a</code> list all contents including hidden contents</li>
-<li><code>-S</code> sort</li>
-<li><code>Sr</code> reverse sort</li>
+<li>Simple and Multiple Linear Regression</li>
+<li>Qualitative Predictors</li>
+<li>Assessing Model Accuracy</li>
 </ul></li>
-<li><p><code>cp [file] [path]</code> copy source file to a destination</p></li>
-<li><p><code>mv</code> rename source to destination or move source to a directory; whereas <code>cp</code> duplicates the file, <code>mv</code> only keeps one copy (either with the new name or in the new location)</p></li>
-<li><p><code>grep [&quot;pattern&quot;] [file_name]</code> print lines matching a pattern</p></li>
-<li><p><code>find [file_name]</code> find a file</p></li>
-<li><p><code>cat [file_name]</code> display contents of file</p></li>
-<li><p><code>echo [&quot;string&quot;]</code> display a line of text</p></li>
-</ul>
-<p><strong>Other Useful Commands</strong></p>
+<li>Classification
 <ul>
-<li><p><code>sudo [command]</code> execute command as super user (requires password)</p></li>
-<li><p><code>[command] | [command]</code> piping — feed output of one command into the input of another command</p></li>
-<li><code>echo [&quot;string&quot;] &gt; [file_name]</code> overwrite file with string
-<ul>
-<li><code>echo [&quot;string&quot;] &gt;&gt; [file_name]</code> append file with string</li>
+<li>Logistic Regression</li>
+<li>Linear Discriminant Analysis</li>
 </ul></li>
-<li>Text editors
+<li>Resampling Methods
 <ul>
-<li><code>nano [file_name]</code> a very simple text editor</li>
-<li><code>vim [file_name]</code> a more robust and extensible text editor; type <code>esc</code> then <code>:q</code> to exit</li>
-<li><code>emacs [file_name]</code> a more robust and extensible text editor</li>
+<li>Cross-Validation</li>
+<li>Bootstrap</li>
 </ul></li>
-</ul>
+<li>Linear Model Selection and Regularization
+<ul>
+<li>Subset Selection</li>
+<li>Shrinkage Methods</li>
+<li>Dimension Reduction Methods</li>
+</ul></li>
+<li>Moving Beyond Linearity
+<ul>
+<li>Polynomial Regression</li>
+<li>Splines</li>
+</ul></li>
+<li>Tree-Based Methods
+<ul>
+<li>Decision Trees</li>
+<li>Bagging, Random Forests, Boosting</li>
+</ul></li>
+<li>Support Vector Machines</li>
+<li>Unsupervised Learning
+<ul>
+<li>PCA</li>
+<li>Clustering Methods</li>
+</ul></li>
+</ol>
 </section>
-<section id="shells" class="level1">
-<h1><span class="header-section-number">3</span> Shells</h1>
-<p>While terminal is an application, the underlying software that you are using to do the command line interfacing is known as a shell. The default shell for macOS is Bash (Bourne Again Shell). Although Bash has stood the test of time, I currently using Zsh (pronounced Zee Shell) which provides useful features like command line completions, spell corrections, themeable prompts, etc.</p>
-<!-- ## Bash -->
-<section id="zsh" class="level2">
-<h2><span class="header-section-number">3.1</span> ZSH</h2>
-<p>The easiest way to get started with zsh is to install it using brew (checkout my other <a href="timothykylethomas.me/package-management">post</a> for instructions on how to use brew). To install zsh this way, simply type:</p>
-<pre class="bash"><code>brew install zsh zsh-completions</code></pre>
-<p>To get the most out of zsh, you can try one of the several frameworks available. I am currently using <a href="http://ohmyz.sh">oh my zsh</a>. Oh my zsh gives you easy access to many useful <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins">plugins</a>.</p>
-<!-- need post on how I customized my setup
-
-# iTerm
-
-split but can also use tmux
-
-# Extras
-
-`rtv`
-`t`
-other commands from brew (XX see package management for tips on Brew) -->
-</section>
+<section id="resources" class="level1">
+<h1><span class="header-section-number">3</span> Resources</h1>
+<p>One reason why the ISLR is so popular is because it’s free! You can download the book and lab code <a href="http://www-bcf.usc.edu/~gareth/ISL/">here</a>.</p>
+<p>Lectures from the authors of the book can be viewed <a href="http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/">here</a>. I highly recommend these videos. It definitely took my data analysis to the next level.</p>
+<p>Currently I am compiling my own notes/outline of the book, which can be found on <a href="https://github.com/tkthomas27/ISL-Notes">github</a>.</p>
 </section>
 
 

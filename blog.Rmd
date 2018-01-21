@@ -7,17 +7,37 @@ output:
 ---
 ---
 
+## January 15, 2017
+
+[Weather Data](https://github.com/Ram-N/weatherData) is a R library for importing weather data from the NOAA. Will be interesting to see how detailed and expansive the data is. Goal is to build a shiny app that facilitates weather comparisons between cities.
+
+## January 14, 2017
+
+The Vikings won in miraculous fashion. When Diggs took off down the sideline, I initially thought he was an idiot and was going to get tackled with no time left. But then he kept going and the rest is history.
+
+## January 9, 2017
+[Plotly](https://moderndata.plot.ly) has a very cool webiste for demoing there dash platform for interactive graphics. 
+
+**Reading**
+
+*Hobbit*: Interesting to note how much Tolkien developed the world the next 20 years after publication. The Elvenking is not even given a name.
+
+## January 6, 2017
+[infer](https://infer.netlify.com/index.html) is a tidy way of doing inferential statistics. Still early but, with modelr, would be very efficient.
+
 ## January 5, 2017
 
-I have been binge listening to the podcast '80s All Over' while shoveling snow. It is a month by month recounting of the theatrical releases in US for the 1980s. 
+I have been binge listening to the podcast '80s All Over' while shoveling snow. It is a month by month recounting of the theatrical releases in US for the 1980s. A lot of interesting movies that seemed to have been lost to time.
+
+Cold is incredible. Running low on oil.
 
 ## January 4, 2017
 
 **Reading**
 
-*Left Hand of Darkness*: Just finished this "classic" that won both the Hugo and Nebula awards. I found the telling somewhat and the prose unimpressive. The gender politics was somehow both challenging and oddly traditional. Despite being told repeatedly that the characters are all andogynous black people, the characters are written like flabby old white men. 
+*Left Hand of Darkness*: Just finished this "classic" that won both the Hugo and Nebula awards. I found the telling somewhat and the prose unimpressive. The gender politics was somehow both challenging and oddly traditional. Despite being told repeatedly that the characters are all androgynous black people, the characters are written like flabby old white men. 
 
-*Lord of the Rings*: Beginning to reread LOTR after my first read through in 2002. I began by reading the Prologue and the Appendices. It's amazing that almost every detail of the making of the books and the movies has been documented so thoroughly. Also, apparently Gandalf is pronouned *Gandalv*??
+*Lord of the Rings*: Beginning to reread LOTR after my first read through in 2002. I began by reading the Prologue and the Appendices. It's amazing that almost every detail of the making of the books and the movies has been documented so thoroughly. Also, apparently Gandalf is pronounced *Gandalv*??
 
 Big snow day here in Watertown. Received 18 inches of snow. Sharp cold coming in soon.
 
@@ -27,7 +47,7 @@ The [Orthagonality Thesis](http://www.wikiwand.com/en/Existential_risk_from_arti
 
 ## December 5, 2017
 
-Researh Project idea: [This](https://www.brookings.edu/research/using-earnings-data-to-rank-colleges-a-value-added-approach-updated-with-college-scorecard-data/) analysis from Brookings and [this](https://www.economist.com/blogs/graphicdetail/2015/10/value-university) are very similar in showing the value add of certain universities. The process is relatively simple: collect data, run regression, see difference between median salary actually observed and what the regression expects, then rank into percentiles. Could expand into a shiny dashboard.
+Research Project idea: [This](https://www.brookings.edu/research/using-earnings-data-to-rank-colleges-a-value-added-approach-updated-with-college-scorecard-data/) analysis from Brookings and [this](https://www.economist.com/blogs/graphicdetail/2015/10/value-university) are very similar in showing the value add of certain universities. The process is relatively simple: collect data, run regression, see difference between median salary actually observed and what the regression expects, then rank into percentiles. Could expand into a shiny dashboard.
 
 ## December 4, 2017
 
@@ -51,11 +71,11 @@ Idea: *Tangled Hierarchies of Buddhist Literature*: Buddhist literature as self-
 
 ## November 25, 2017
 
-*British Discovery of Buddhism*: This book concerns the early British mappings of "Buddhism." I think this is a critical fact that most have a hard time accepting: there was singular idea of Buddhism as a pan-Asian civilizational religion that was delieverd wholesale to Europeans. It was a idea that was crafted over decades of discovery and interaction. The implication being that practitioners of Buddhism probably had wildly divergent ideas of what Buddhism was that what western scholars had crafted.
+*British Discovery of Buddhism*: This book concerns the early British mappings of "Buddhism." I think this is a critical fact that most have a hard time accepting: there was singular idea of Buddhism as a pan-Asian civilizational religion that was delivered wholesale to Europeans. It was a idea that was crafted over decades of discovery and interaction. The implication being that practitioners of Buddhism probably had wildly divergent ideas of what Buddhism was that what western scholars had crafted.
 
 ## November 22, 2017
 
-*Ascent of Money*: Relistening to the *Ascent of Money* by Niall Ferguson. The two most interesting narratives from the book is the rise of the Rothschilds. The Rothschilds were textile traders in continental Europe who opened up shop in England before the Napoleonic era. To continue their business under Napoleon's protectionist continental system, the Rothschilds became adept at smuggling gold into Europe. Needing to fund their armies in Portugal, Britain turned to the Rothschilds to deliever gold. 
+*Ascent of Money*: Relistening to the *Ascent of Money* by Niall Ferguson. The two most interesting narratives from the book is the rise of the Rothschilds. The Rothschilds were textile traders in continental Europe who opened up shop in England before the Napoleonic era. To continue their business under Napoleon's protectionist continental system, the Rothschilds became adept at smuggling gold into Europe. Needing to fund their armies in Portugal, Britain turned to the Rothschilds to delivered gold. 
 
 ## November 16, 2017
 
@@ -63,11 +83,11 @@ Stata 15: new version of Stata includes dynamic documentations. This is nice but
 
 The tidyverse package `reprex` allows for quick creation of reproducible examples when asking for help
 
-Structural Equaltion Modeling allows for measuing dependencies between independent variables in regression. Much of this field was made possible by Stata releasing easy to use SEM.
+Structural Equation Modeling allows for measuring dependencies between independent variables in regression. Much of this field was made possible by Stata releasing easy to use SEM.
 
 ## November 3, 2017
 
-*The Storm Before the Storm*: An interesting story about Marius: to demonstrate his vivacity despite his age, Marius exercised strenuosuly on the Campus Martius. Everyone laughed at him. Not to long after this, Marius had to flee Sulla on foot through swamps and over water, so his survival was due in large part to this exercise. While fleeing, Marius told the few people brave enough to accompany him the story of how he discoverd a nest of seven eagles as a child --- thus prophesing his eventual return to Rome to claim his seventh consulship
+*The Storm Before the Storm*: An interesting story about Marius: to demonstrate his vivacity despite his age, Marius exercised strenuously on the Campus Martius. Everyone laughed at him. Not to long after this, Marius had to flee Sulla on foot through swamps and over water, so his survival was due in large part to this exercise. While fleeing, Marius told the few people brave enough to accompany him the story of how he discovered a nest of seven eagles as a child --- thus prophesying his eventual return to Rome to claim his seventh consulship
 
 ## October 24, 2017
 

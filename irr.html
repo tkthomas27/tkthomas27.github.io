@@ -40,7 +40,7 @@ if (window.hljs) {
   hljs.configure({languages: []});
   hljs.initHighlightingOnLoad();
   if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
   }
 }
 </script>
@@ -307,10 +307,17 @@ div.tocify {
   </a>
 </li>
 <li>
-  <a href="notebook_archive.html">
+  <a href="notebooks.html">
     <span class="fa fa-book"></span>
      
     Notebooks
+  </a>
+</li>
+<li>
+  <a href="blog.html">
+    <span class="fa fa-terminal"></span>
+     
+    Blog
   </a>
 </li>
       </ul>
@@ -319,21 +326,21 @@ div.tocify {
   <a href="https://github.com/tkthomas27">
     <span class="ion ion-social-github"></span>
      
-    Github
+    
   </a>
 </li>
 <li>
   <a href="https://twitter.com/tkylethomas27">
     <span class="ion ion-social-twitter"></span>
      
-    Twitter
+    
   </a>
 </li>
 <li>
   <a href="https://www.linkedin.com/in/timothykylethomas/">
     <span class="ion ion-social-linkedin"></span>
      
-    LinkedIn
+    
   </a>
 </li>
       </ul>
@@ -370,12 +377,6 @@ FV = PV(1+r)^T
 <p>In words, Eq. <span class="math inline">\(\ref{basic_pv}\)</span> tells us that PV is equal to some FV discounted at a rate across the the total time period, where <em>T</em> represents the total number of time periods. Eq. <span class="math inline">\(\ref{basic_fv}\)</span> simply rearranges the equation so that FV is PV compounded by a rate <em>r</em> across time.</p>
 <p>The core idea is that cash now is more valuable than cash later. Therefore if I were to lend you money, I would charge you interest to make up for not having money now. As an example, say person A lends person B $10 for $10 years at a rate of 20%. The FV of the money for person A is <span class="math inline">\(10(1+.2)^10=61\)</span>. Alternatively, if person B wanted to know how much they needed to invest to have $61 after 10 years of compounding at 20%, they would find that <span class="math inline">\(61/(1+.2)^10 = 10\)</span>.</p>
 <p>The focus on our exposition will be on <em>r</em>, the rate of return that is used to discount/compound. We can rearrange Eq. <span class="math inline">\(\ref{basic_pv}\)</span> into Eq. <span class="math inline">\(\ref{basic_irr}\)</span> to see the relationship between the IRR and FV and PV. Eq. <span class="math inline">\(\ref{basic_irr}\)</span> will be our final step in computing the IRR.</p>
-<p><span class="math display">\[
-\begin{equation}
-r = \sqrt[T]{\frac{FV}{PV}}-1
-\label{basic_irr}
-\end{equation}
-\]</span></p>
 </section>
 <section id="streams-of-cash" class="level1">
 <h1><span class="header-section-number">2</span> Streams of Cash</h1>
