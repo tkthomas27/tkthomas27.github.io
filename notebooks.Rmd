@@ -4,7 +4,27 @@ title: "Notebooks"
 
 ---
 
+# Shiny Apps
+
+[Financial Scatter Plots](https://kylethomas.shinyapps.io/finance_app/)
+
+Shiny app for comparing financial ratios and metrics. Allows to filter by year, market capitalization, S&P500 membership, share codes, industry and outliers. Dynamically displays scatter plot, distribution of variables being compared, as well as a fitted line with linear equation, $R^2$, and number of observations.
+
+---
+
+[Weather Comparison](https://kylethomas.shinyapps.io/weather_comp/)
+
+Shiny app for comparing climate data between two cities. Shows records highs/lows, average highs/lows, precipitation, sunshine hours, and geographic position. Scales are dynamically adjusted to be the same when comparing cities.
+
+---
+
 # R Notebooks
+
+---
+
+[Climate Data](weather_tables.html)
+
+Run down on how I scraped data from wikipedia and prepared it for use in [Weather Comparison](https://kylethomas.shinyapps.io/weather_comp/) app. 
 
 ---
 

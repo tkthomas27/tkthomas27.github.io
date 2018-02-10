@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Weather Comparison App</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="resume.html">
+    <span class="fa fa-circle-o-notch"></span>
+     
+    Resume
+  </a>
+</li>
+<li>
+  <a href="services.html">
+    <span class="fa fa-mortar-board"></span>
+     
+    Services
+  </a>
+</li>
+<li>
+  <a href="notebooks.html">
+    <span class="fa fa-book"></span>
+     
+    Notebooks
+  </a>
+</li>
+<li>
+  <a href="blog.html">
+    <span class="fa fa-terminal"></span>
+     
+    Blog
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/tkthomas27">
+    <span class="ion ion-social-github"></span>
+     
+    
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/tkylethomas27">
+    <span class="ion ion-social-twitter"></span>
+     
+    
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/timothykylethomas/">
+    <span class="ion ion-social-linkedin"></span>
+     
+    
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Weather Comparison App</h1>
+
+</div>
+
+
+<section id="overview" class="level1">
+<h1><span class="header-section-number">1</span> Overview</h1>
+<blockquote>
+<p>“Some place warm… a little place called Aspen”</p>
+</blockquote>
+<p>Anyone dreaming of moving or travelling has probably thought about how different the weather is in an exotic location compared to your current home. One of the quickest resources for this comparison is Wikipedia. On the page for most every city there is a handy climate table that summarizes average temperatures, precipitation, sunlight, and extremes in weather. I often found myself with two or more of these pages open and going back and forth comparing the data. That’s when I had an idea: why not crate an app that let’s me compare the climate of two cities side by side.</p>
+<p>When I first started to work on this project, I went looking for official weather data from resources such as the NOAA. However, this turned out to be more complicated than I initially thought and would have required downloading enormous amounts of data from many data sources.</p>
+<p>That’s when I thought: if Wikipedia has already done this work for me, then why not use it? So I decided to simply scrape the data from Wikipedia (note: not every climate table has every data variable we will end up plotting). With this idea in mind, the process eventually took the following shape:</p>
+<ol type="1">
+<li>Scrape a list of urls for many cities</li>
+<li>Add latitude and longitude to the list</li>
+<li>Use Python to scrape the tables using the climate tables</li>
+<li>Munge the scraped data</li>
+<li>Build a shiny app.</li>
+</ol>
+<p>Ultimately we will be graphing 4 items:</p>
+<ol type="1">
+<li>Temperature (monthly): record high, average high, average low, record low</li>
+<li>Precipitation (monthly average): snow, rain, precipitation as available (not every table has each one of these)</li>
+<li>Sunshine hours (monthly average)</li>
+<li>Geographic location on a world map</li>
+</ol>
+<pre class="r"><code>library(tidyverse) #for everything
+library(stringr) #for str_detect
+library(rvest) #for web scraping
+library(XML) #for web 
+library(measurements) #for converting coords
+
+setwd(&quot;~/github/weather&quot;)</code></pre>
+</section>
+<section id="scrape-list-of-cities" class="level1">
+<h1><span class="header-section-number">2</span> Scrape List of Cities</h1>
+<p>The first step is to get a list of cities, their latitude and longitude, and link to their Wikipedia page.</p>
+<p>We will be getting links to cities from three resources:</p>
+<ol type="1">
+<li>List of cities by latitude</li>
+<li>List of US state capitals</li>
+<li>List of World capitals (we use world capitals by elevation because the world capitals by population is not formatted in a way that is easily read by <code>html_table</code>)</li>
+</ol>
+<section id="getting-raw-links" class="level2">
+<h2><span class="header-section-number">2.1</span> Getting Raw Links</h2>
+<p>After specifying the url for the table we want, we use the <code>html_nodes</code> from <code>rvest</code> to traverse the tables looking for the links we need to extract. The <code>td:nth-child(3) a</code> part specifies the column of the cities (here it is the 3rd column).</p>
+</section>
+<section id="converting-latitude-and-longitude" class="level2">
+<h2><span class="header-section-number">2.2</span> Converting Latitude and Longitude</h2>
+<p>The ggplot for maps requires a degree decimal format, so we need to convert from the degree-minute-second format to the degree decimal format for two of the tables. The easiest way is to use the <code>measurements</code> library function <code>conv_unit</code>. I noticed, however that this doesn’t always work, so for one of the tables we do it manually using the following formula,</p>
+<p>Decimal Degrees = Degrees + Minutes/60</p>
+</section>
+<section id="cities-by-latitude" class="level2">
+<h2><span class="header-section-number">2.3</span> Cities by Latitude</h2>
+<pre class="r"><code># inspired by
+# https://dataorchid.wordpress.com/2015/06/14/web-scrapping-using-rvest-package-of-r/
+
+#url for cities by latitude
+url &lt;- &quot;https://en.wikipedia.org/wiki/List_of_population_centers_by_latitude&quot;
+
+# traverse the table for the city links
+raw_links &lt;- read_html(url) %&gt;% 
+    html_node(&quot;table&quot;) %&gt;%
+    html_nodes(&quot;tr&quot;) %&gt;% 
+    html_nodes(&quot;td:nth-child(3) a&quot;) %&gt;% #just the city column
+    html_attr(&quot;href&quot;)
+
+# format as a wikipedia link
+wiki_links &lt;- as.data.frame(raw_links) %&gt;% 
+    distinct(raw_links) %&gt;% #keep unique links
+    mutate(link = paste(&quot;https://en.wikipedia.org&quot;,raw_links,sep=&quot;&quot;)) %&gt;% #combine to make wikipedia url
+    mutate(wiki_city = substr(raw_links, 7, 100)) %&gt;% #get the name of the city from the end of the url
+    select(wiki_city, link)
+
+# format table and coordinates
+cities_lat &lt;- read_html(url) %&gt;% 
+    html_node(&quot;table&quot;) %&gt;%
+    html_table() %&gt;% # extract text from the city tables
+    cbind(wiki_links) %&gt;% # combine with the links
+    mutate(location = paste(City, `Province/State`, Country, sep = &quot;, &quot;)) %&gt;% # create the location name
+    rename(lat = Latitude, lon = Longitude) %&gt;%
+    filter(location!=&quot;Ålesund&quot;) %&gt;% # remove because lat/lon is in wrong format
+    mutate(x = lat,
+           y = lon,
+           lat = trimws(gsub(&#39;[^0-9]&#39;,&#39; &#39;,lat)),
+           lon = trimws(gsub(&#39;[^0-9]&#39;,&#39; &#39;,lon))) %&gt;% 
+    separate(lat, c(&quot;lat_deg&quot;,&quot;lat_min&quot;)) %&gt;% 
+    separate(lon, c(&quot;lon_deg&quot;,&quot;lon_min&quot;)) %&gt;% 
+    mutate(lat = as.numeric(lat_deg) + as.numeric(lat_min)/60,
+           lon = as.numeric(lon_deg) + as.numeric(lon_min)/60,
+           lat = case_when(str_detect(x,&quot;S&quot;)==TRUE ~ lat*-1, TRUE ~ lat),
+           lon = case_when(str_detect(y,&quot;W&quot;)==TRUE ~ lon*-1, TRUE ~ lon)) %&gt;% # convert lat/lon from DMS to degrees
+    select(location, lat, lon, link) %&gt;% 
+    mutate(location = gsub(&quot;N/A, &quot;, &quot;&quot;, location))</code></pre>
+</section>
+<section id="us-capitals" class="level2">
+<h2><span class="header-section-number">2.4</span> US Capitals</h2>
+<pre class="r"><code>#url for us capital
+url1 &lt;- &quot;https://en.wikipedia.org/wiki/List_of_capitals_in_the_United_States&quot;
+
+#url of coordinates
+url2 &lt;- &quot;https://www.jetpunk.com/data/countries/united-states/state-capitals-list&quot;
+
+#get city links
+raw_links &lt;- read_html(url1) %&gt;% 
+    html_node(&quot;table&quot;) %&gt;%
+    html_nodes(&quot;tr&quot;) %&gt;% 
+    html_nodes(&quot;td:nth-child(4) a&quot;) %&gt;% #just the city column
+    html_attr(&quot;href&quot;)
+
+# generate wikipedia links
+wiki_links &lt;- as.data.frame(raw_links) %&gt;% 
+    distinct(raw_links) %&gt;% 
+    mutate(link = paste(&quot;https://en.wikipedia.org&quot;,raw_links,sep=&quot;&quot;)) %&gt;% 
+    mutate(wiki_city = substr(raw_links, 7, 100)) %&gt;% 
+    select(wiki_city, link)
+
+# get list of us capital coordinates
+us_capitals &lt;- read_html(url2) %&gt;% 
+    html_node(&quot;table&quot;) %&gt;%
+    html_table() %&gt;% 
+    cbind(wiki_links)
+
+us_capitals$country &lt;- &quot;United States&quot;
+
+# combine coordinates and us capital names and links
+us_capitals %&lt;&gt;% mutate(location = paste(Capital, State, country, sep = &quot;, &quot;)) %&gt;% 
+    rename(lat = Latitude, lon = Longitude) %&gt;% 
+    select(location, lat, lon, link)</code></pre>
+</section>
+<section id="world-capitals-by-altitude" class="level2">
+<h2><span class="header-section-number">2.5</span> World Capitals by Altitude</h2>
+<pre class="r"><code>#url for world capital
+url &lt;- &quot;https://en.wikipedia.org/wiki/List_of_capital_cities_by_elevation&quot;
+#url for the coordinates
+url2 &lt;- &quot;http://www.lab.lmnixon.org/4th/worldcapitals.html&quot;
+
+# get the wikipedia links to the cities
+raw_links &lt;- read_html(url) %&gt;% 
+    html_node(&quot;table&quot;) %&gt;%
+    html_nodes(&quot;tr&quot;) %&gt;% 
+    html_nodes(&quot;td:nth-child(2) a&quot;) %&gt;% #just the city column
+    html_attr(&quot;href&quot;)
+
+# format the links
+wiki_links &lt;- as.data.frame(raw_links) %&gt;% 
+    distinct(raw_links) %&gt;% 
+    mutate(link = paste(&quot;https://en.wikipedia.org&quot;,raw_links,sep=&quot;&quot;)) %&gt;% 
+    mutate(wiki_city = substr(raw_links, 7, 100)) %&gt;% 
+    select(wiki_city, link) 
+
+city_table0 &lt;- read_html(url) %&gt;% 
+    html_node(&quot;table&quot;) %&gt;%
+    html_table() %&gt;% 
+    inner_join(wiki_links, by = c(&quot;Capital&quot; = &quot;wiki_city&quot;))
+
+#add coordinates
+world_capitals &lt;- read_html(url2) %&gt;% 
+    html_node(&quot;table&quot;) %&gt;% 
+    html_table(header = TRUE) %&gt;% 
+    inner_join(city_table0, by = c(&quot;Country&quot; = &quot;Country&quot;)) %&gt;% 
+    select(Country, Capital.x, Latitude, Longitude, link) %&gt;% 
+    rename(City = Capital.x) %&gt;% 
+    mutate(City = gsub(&#39;([A-z]+) .*&#39;, &#39;\\1&#39;, City)) %&gt;% #use first word in city name as that city&#39;s name
+    rename(lat = Latitude, lon = Longitude) %&gt;% 
+    mutate(x = lat,
+           y = lon,
+           lat = trimws(gsub(&#39;[^0-9]&#39;,&#39; &#39;,lat)),
+           lon = trimws(gsub(&#39;[^0-9]&#39;,&#39; &#39;,lon)),
+           lat = conv_unit(lat, from = &#39;deg_dec_min&#39;, to = &#39;dec_deg&#39;),
+           lon = conv_unit(lon, from = &#39;deg_dec_min&#39;, to = &#39;dec_deg&#39;),
+           lat = as.numeric(lat),
+           lon = as.numeric(lon),
+           lat = case_when(str_detect(x,&quot;S&quot;)==TRUE ~ lat*-1, TRUE ~ lat),
+           lon = case_when(str_detect(y,&quot;W&quot;)==TRUE ~ lon*-1, TRUE ~ lon)) %&gt;% 
+    mutate(location = paste(City, Country, sep = &quot;, &quot;)) %&gt;% 
+    select(location, lat, lon, link) </code></pre>
+</section>
+<section id="combine-the-city-tables" class="level2">
+<h2><span class="header-section-number">2.6</span> Combine the City Tables</h2>
+<pre class="r"><code>city_tables &lt;- rbind(cities_lat, us_capitals, world_capitals) %&gt;% distinct(location, .keep_all = TRUE)
+write_csv(city_tables, &quot;city_tables.csv&quot;)</code></pre>
+</section>
+</section>
+<section id="scrape-tables" class="level1">
+<h1><span class="header-section-number">3</span> Scrape Tables</h1>
+<p>I used Python (specifically <code>pandas</code>) to scrape the individual data tables. Why not use R? Because <code>pandas</code> has a function <code>read_html</code> that allows you to read a specific table based on matching text. Maybe <code>rvest</code> has this somewhere but I couldn’t find it.</p>
+<p>I used the regular expression <code>[Rr]ecord [Hh]igh</code> to find the climate table. This matches the phrase “record high” regardless of capitalization.</p>
+<pre class="python"><code># load pandas
+import pandas as pd
+
+#get good links from r
+city_links = pd.read_csv(&quot;city_tables.csv&quot;)
+city_links.head()
+
+#define empty dataframe
+climate_columns = [&#39;Month&#39;, &#39;Jan&#39;, &#39;Feb&#39;, &#39;Mar&#39;, &#39;Apr&#39;, &#39;May&#39;, &#39;Jun&#39;, &#39;Jul&#39;, &#39;Aug&#39;, &#39;Sep&#39;, &#39;Oct&#39;, &#39;Nov&#39;, &#39;Dec&#39;, &#39;Year&#39;,&#39;location&#39;,&#39;lat&#39;,&#39;lon&#39;]
+climate_tables = pd.DataFrame(columns = climate_columns)
+
+#go through every link, read the table in, 
+for x in range(0,len(city_links)):
+    try:
+        df = pd.read_html(city_links.loc[x,&quot;link&quot;], match=&quot;[Rr]ecord [Hh]igh&quot;, encoding = &#39;str&#39;, header = 1)[0].dropna(axis=0, how=&#39;any&#39;)
+        if list(df)[0]==&quot;Month&quot;:
+            df[&#39;location&#39;] = city_links.loc[x,&quot;location&quot;]
+            df[&#39;lat&#39;] = city_links.loc[x,&quot;lat&quot;]
+            df[&#39;lon&#39;] = city_links.loc[x,&quot;lon&quot;]
+            climate_tables = climate_tables.append(df, ignore_index=True)
+    except:
+        pass
+
+#write to csv
+climate_tables.to_csv(&quot;climate_tables.csv&quot;)
+</code></pre>
+</section>
+<section id="clean-data" class="level1">
+<h1><span class="header-section-number">4</span> Clean Data</h1>
+<p>Now that we have the table, it’s time to clean the data.</p>
+<section id="imperial-vs-metric" class="level2">
+<h2><span class="header-section-number">4.1</span> Imperial vs Metric</h2>
+<p>The climate tables specify data in metric and imperial using the format <code>Metric (Imperial)</code> or <code>Imperial (Metric)</code>. However, the order of the reporting varies based on the standard of that location. In the US, Fahrenheit comes first while in the UK Celsius comes first. The same is true for mm/cm and inches. To appropriately convert everything to imperial, we use <code>str_detect</code> to detect the order and then convert appropriately.</p>
+<pre class="r"><code>climate_table &lt;- read_csv(&quot;climate_tables.csv&quot;) %&gt;% distinct(location, Month, .keep_all = TRUE) 
+
+climate_data &lt;- climate_table %&gt;% 
+    select(-X1, -Year) %&gt;% 
+    gather(data_key, data_value, -location, -Month, -lat, -lon) %&gt;% 
+    rename(month = data_key,
+           data_key = Month) %&gt;% 
+    mutate(z = gsub(&quot;\\s*\\([^\\)]+\\)&quot;, &quot;&quot;, data_value)) %&gt;% #remove everything in parentheses
+    mutate(z = as.numeric(as.character(gsub(&quot;−&quot;, &quot;-&quot;, z)))) %&gt;% #replace wrong minus sign
+    mutate(y = case_when(str_detect(data_key,&quot;F\\)&quot;) == TRUE ~ z*1.8+32,
+                         str_detect(data_key,&quot;mm \\(inches\\)&quot;) == TRUE ~ z*.0393701,
+                         str_detect(data_key,&quot;cm \\(inches\\)&quot;) == TRUE ~ z*.393701,
+                         TRUE ~ z)) %&gt;%
+    mutate(y = round(y,4)) %&gt;% 
+    mutate(data_value = y) %&gt;% 
+    select(-z,-y) %&gt;% 
+    mutate(data_key = tolower(data_key)) %&gt;% 
+    filter(!str_detect(data_key,&quot;record high humidex&quot;)) %&gt;% 
+    filter(!str_detect(data_key,&quot;record low wind chill&quot;)) %&gt;% 
+    mutate(key = case_when(str_detect(data_key,&quot;record high&quot;) == TRUE ~ &quot;temp_high_rec&quot;,
+                           str_detect(data_key,&quot;record low&quot;) == TRUE ~ &quot;temp_low_rec&quot;,
+                           str_detect(data_key,&quot;average high&quot;) == TRUE ~ &quot;temp_high_avg&quot;,
+                           str_detect(data_key,&quot;average low&quot;) == TRUE ~ &quot;temp_low_avg&quot;,
+                           str_detect(data_key,&quot;daily mean&quot;) == TRUE ~ &quot;temp_avg&quot;,
+                           str_detect(data_key,&quot;precipitation days&quot;) == TRUE ~ &quot;percip_days&quot;,
+                           str_detect(data_key,&quot;precipitation&quot;) == TRUE ~ &quot;precip&quot;,
+                           str_detect(data_key,&quot;rainfall&quot;) == TRUE ~ &quot;rain&quot;,
+                           str_detect(data_key,&quot;snowfall&quot;) == TRUE ~ &quot;snow&quot;,
+                           str_detect(data_key,&quot;mean monthly sunshine&quot;) == TRUE ~ &quot;sun&quot;)) %&gt;% 
+    mutate(data_key = key) %&gt;% 
+    select(-key) %&gt;% 
+    filter(!is.na(data_key)) %&gt;% 
+    mutate(month = factor(month, levels = month.abb)) %&gt;% 
+    filter(!(data_key == &quot;rain&quot; &amp; data_value == 0)) 
+
+# create the temperature data
+temps &lt;- climate_data %&gt;% 
+    select(-lat, -lon) %&gt;% 
+    filter(str_detect(data_key,&quot;temp&quot;)) %&gt;% 
+    spread(data_key, data_value) %&gt;% 
+    mutate(temp_high_rec = round(temp_high_rec,0),
+                        temp_low_rec = round(temp_low_rec,0),
+                        temp_high_avg = round(temp_high_avg,0),
+                        temp_low_avg = round(temp_low_avg,0)) %&gt;% 
+    mutate(month = factor(month, levels = month.abb))
+
+# create the precipitation data
+precip &lt;- climate_data %&gt;% 
+    select(-lat, -lon) %&gt;% 
+    filter(str_detect(data_key,paste(c(&quot;snow&quot;,&quot;rain&quot;,&quot;precip&quot;),collapse = &quot;|&quot;))) %&gt;% 
+    replace_na(list(data_value = 0))
+
+# create the sunshine data
+sun &lt;- climate_data %&gt;% 
+    filter(str_detect(data_key,&quot;sun&quot;)) %&gt;% 
+    select(-lat, -lon) %&gt;% 
+    spread(data_key, data_value) %&gt;% 
+    mutate(night = case_when(month == &quot;Jan&quot; ~ (31*24)-sun,
+                             month == &quot;Feb&quot; ~ (28*24)-sun,
+                             month == &quot;Mar&quot; ~ (31*24)-sun,
+                             month == &quot;Apr&quot; ~ (30*24)-sun,
+                             month == &quot;May&quot; ~ (31*24)-sun,
+                             month == &quot;Jun&quot; ~ (30*24)-sun,
+                             month == &quot;Jul&quot; ~ (31*24)-sun,
+                             month == &quot;Aug&quot; ~ (31*24)-sun,
+                             month == &quot;Sep&quot; ~ (30*24)-sun,
+                             month == &quot;Oct&quot; ~ (31*24)-sun,
+                             month == &quot;Nov&quot; ~ (30*24)-sun,
+                             month == &quot;Dec&quot; ~ (31*24)-sun)) %&gt;% # compute average dark hours
+    gather(data_key, data_value, -location, -month)
+
+# geographic data
+geo &lt;- climate_data %&gt;% 
+    distinct(location, lat, lon) 
+
+# export to csv to be used in the app
+write_csv(temps, &quot;weather_comp/temps.csv&quot;)
+write_csv(precip, &quot;weather_comp/precip.csv&quot;)
+write_csv(sun, &quot;weather_comp/sun.csv&quot;)
+write_csv(geo, &quot;weather_comp/geo.csv&quot;)</code></pre>
+</section>
+</section>
+<section id="visualize-data" class="level1">
+<h1><span class="header-section-number">5</span> Visualize Data</h1>
+<section id="temperature-plot" class="level2">
+<h2><span class="header-section-number">5.1</span> Temperature plot</h2>
+<pre class="r"><code>ext1 &lt;- temps %&gt;% filter(location == &quot;Charlotte, North Carolina, United States&quot;)
+
+ggplot(ext1, aes(x=month)) + 
+    geom_hline(yintercept = 32, color = &quot;#D9D1C7&quot;) +
+    
+    geom_point(aes(y=temp_high_rec), size=9, color = &quot;#CD2C24&quot;) + 
+    geom_line(aes(y=temp_high_rec), group =1, color = &quot;#CD2C24&quot;) +
+    geom_text(aes(y=temp_high_rec, label=temp_high_rec), color = &quot;white&quot;, size = 3.3) +
+    
+    geom_point(aes(y=temp_high_avg), size=9, color = &quot;#F2594B&quot;) + 
+    geom_line(aes(y=temp_high_avg), group =1, color = &quot;#F2594B&quot;) +
+    geom_text(aes(y=temp_high_avg, label=temp_high_avg), color = &quot;white&quot;, size = 3.3) +
+    
+    geom_point(aes(y=temp_low_avg), size=9, color = &quot;#3498DB&quot;) + 
+    geom_line(aes(y=temp_low_avg), group =1, color = &quot;#3498DB&quot;) +
+    geom_text(aes(y=temp_low_avg, label=temp_low_avg), color = &quot;white&quot;, size = 3.3) +
+    
+    geom_point(aes(y=temp_low_rec), size=9, color = &quot;#2C3E50&quot;) + 
+    geom_line(aes(y=temp_low_rec), group =1, color = &quot;#2C3E50&quot;) +
+    geom_text(aes(y=temp_low_rec, label=temp_low_rec), color = &quot;white&quot;, size = 3.3) +
+    
+    labs(y = &quot;Temperature (F)&quot;, x = &quot;Month&quot;) +
+    
+    theme_minimal()</code></pre>
+<p><img src="weather_tables_files/figure-html/temp_plot-1.png" width="672" /></p>
+</section>
+<section id="sunshin-plot" class="level2">
+<h2><span class="header-section-number">5.2</span> Sunshin plot</h2>
+<pre class="r"><code>exs1 &lt;- sun %&gt;% filter(location == &quot;Charlotte, North Carolina, United States&quot;)
+
+ggplot(exs1, aes(month, data_value, fill=data_key)) + 
+    geom_bar(stat = &quot;identity&quot;) +
+    scale_fill_manual(values = c(&quot;#004358&quot;,&quot;#FFE11A&quot;), name = &quot;Time&quot;) +
+    labs(y = &quot;Average Sunshine (Hours)&quot;, x = &quot;Month&quot;) +
+    theme_minimal()</code></pre>
+<p><img src="weather_tables_files/figure-html/sun_plot-1.png" width="672" /></p>
+</section>
+<section id="precipitation-plot" class="level2">
+<h2><span class="header-section-number">5.3</span> Precipitation Plot</h2>
+<pre class="r"><code>exp1 &lt;- precip %&gt;% filter(location == &quot;Charlotte, North Carolina, United States&quot;)
+
+ggplot(exp1, aes(month, data_value, fill=data_key)) + 
+    geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) +
+    scale_fill_manual(values = c(&quot;#225378&quot;,&quot;#1695A3&quot;,&quot;#ACF0F2&quot;), name = &quot;Type&quot;) +
+    labs(y = &quot;Precipitation (Inches)&quot;, x = &quot;Month&quot;) +
+    theme_minimal()</code></pre>
+<p><img src="weather_tables_files/figure-html/percip_plot-1.png" width="672" /></p>
+</section>
+<section id="map-plot" class="level2">
+<h2><span class="header-section-number">5.4</span> Map Plot</h2>
+<pre class="r"><code>exgeo1 &lt;- geo %&gt;% filter(location == &quot;Charlotte, North Carolina, United States&quot;)
+
+global &lt;- map_data(&quot;world&quot;)
+
+ggplot() + geom_polygon(data = global, aes(x=long, y = lat, group = group), fill = &quot;#2C3E50&quot;) +
+    geom_point(data=exgeo1, aes(lon, lat), color = &quot;#CD2C24&quot;, size=3, shape = 25, fill = &quot;#CD2C24&quot;) +
+    labs(x=&quot;&quot;, y=&quot;&quot;) +
+    theme_minimal() +
+    theme(axis.text.x=element_blank(), axis.text.y=element_blank())</code></pre>
+<p><img src="weather_tables_files/figure-html/geo_plot-1.png" width="672" /></p>
+</section>
+</section>
+<section id="build-shiny-app" class="level1">
+<h1><span class="header-section-number">6</span> Build Shiny App</h1>
+<p>I used the data and plotting methods of above to construct a <a href="https://kylethomas.shinyapps.io/weather_comp/">shiny app</a>. Enjoy!</p>
+</section>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
