@@ -7,6 +7,36 @@ output:
 ---
 ---
 
+## March 5, 2018
+
+**Economist**
+[Why Oil Price is so High](https://www.economist.com/news/finance-and-economics/21735059-and-why-it-might-not-fall-very-much-soon-why-oil-price-so-high)
+
+[Hedge Fund Delusion that Grips Pension Fund Managers](https://www.economist.com/news/finance-and-economics/21735038-most-hedge-fund-managers-are-not-good-enough-average-offset-their-high)
+
+[Edge Computing](https://www.economist.com/news/business/21735022-rise-internet-things-one-reason-why-computing-emerging-centralised)
+
+**Reading**
+
+*LOTR*
+Just finished the first half of the Two Towers.
+
+## February 28, 2018
+
+Finished Airgas case C-D; still waiting for approval
+
+## February 26, 2018
+
+An article that represents many months of my life cleaning and managing data: [Are Buybacks Really Shortchanging Investment?](https://hbr.org/2018/03/are-buybacks-really-shortchanging-investment)
+
+## February 12, 2018
+
+A new case on New Constructs is submitted!s
+
+## January 20, 2017
+
+Check out the [Weather Comparison App](https://kylethomas.shinyapps.io/weather_comp/)! Still some formatting issues, bits of missing data, and need for better documentation.
+
 ## January 15, 2017
 
 [Weather Data](https://github.com/Ram-N/weatherData) is a R library for importing weather data from the NOAA. Will be interesting to see how detailed and expansive the data is. Goal is to build a shiny app that facilitates weather comparisons between cities.
@@ -20,7 +50,7 @@ The Vikings won in miraculous fashion. When Diggs took off down the sideline, I 
 
 **Reading**
 
-*Hobbit*: Interesting to note how much Tolkien developed the world the next 20 years after publication. The Elvenking is not even given a name.
+*Hobbit*: Decided to have a complete picture so I need to read the Hobbit first. Interesting to note how much Tolkien developed the world the next 20 years after publication. The Elvenking is not even given a name.
 
 ## January 6, 2017
 [infer](https://infer.netlify.com/index.html) is a tidy way of doing inferential statistics. Still early but, with modelr, would be very efficient.
