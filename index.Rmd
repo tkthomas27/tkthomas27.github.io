@@ -93,7 +93,7 @@ The NFL season is upon us. Most pundits can barely pick over 50% of the games ri
 <!-- </center> -->
 
 <!-- In my time at Harvard Business School, I have aided fellow researchers, doctoral students, and faculty in getting started with an effective data analysis pipeline including R, Python, text editors, Stata, command line, or advanced Excel techniques. I place a special emphasis on bibliography management and reproducible research as a means to dramatically increase the efficiency. -->
-o
+
 <!-- <center> -->
 <!-- ## Tutoring -->
 <!-- </center> -->
