@@ -2,14 +2,16 @@
 title: "Services"
 ---
 
-# Copy-Editing
+Coming Soon!
 
-I have edited, typeset, and proof-read multiple papers that have appeared in publications such as *The Accounting Review* and *The Journal of Financial Economics*. Additionally, I have coauthored several cases and teaching plans that are available at Harvard Business Publishing. My experience allows me to deliever the highest possible quality for publications.
+<!-- # Copy-Editing -->
 
-# Consulting
+<!-- I have edited, typeset, and proof-read multiple papers that have appeared in publications such as *The Accounting Review* and *The Journal of Financial Economics*. Additionally, I have coauthored several cases and teaching plans that are available at Harvard Business Publishing. My experience allows me to deliever the highest possible quality for publications. -->
 
-In my time at Harvard Business School, I have aided fellow researchers, doctoral students, and faculty in getting started with an effective data analysis pipeline including R, Python, text editors, Stata, command line, or advanced Excel techniques. I place a special emphasis on bibliography management and reproducible research as a means to dramatically increase the efficiency.
+<!-- # Consulting -->
 
-# Tutoring
+<!-- In my time at Harvard Business School, I have aided fellow researchers, doctoral students, and faculty in getting started with an effective data analysis pipeline including R, Python, text editors, Stata, command line, or advanced Excel techniques. I place a special emphasis on bibliography management and reproducible research as a means to dramatically increase the efficiency. -->
 
-As someone who was originally from a humanities background, I understand that math, statistics, and data science can be difficult to start. I provide tutoring to those who need additional help understanding the core concepts in these fields. For more advanced students, I offer insights into how to quickly perform the kind of research required for serious academic projects. I additionally provide tutoring in critical writing, logic, and grammar.
+<!-- # Tutoring -->
+
+<!-- As someone who was originally from a humanities background, I understand that math, statistics, and data science can be difficult to start. I provide tutoring to those who need additional help understanding the core concepts in these fields. For more advanced students, I offer insights into how to quickly perform the kind of research required for serious academic projects. I additionally provide tutoring in critical writing, logic, and grammar. -->

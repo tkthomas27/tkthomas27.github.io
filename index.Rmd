@@ -12,7 +12,7 @@ output:
 
 <p style="font-size:30pt;">Timothy Kyle Thomas</p>
 
-Research Consulting Services
+<!-- Research Consulting Services -->
 
 ---
 
@@ -73,35 +73,35 @@ The NFL season is upon us. Most pundits can barely pick over 50% of the games ri
 
 ---
 
----
+<!-- --- -->
 
-<center>
-# Services
-</center>
+<!-- <center> -->
+<!-- # Services -->
+<!-- </center> -->
 
-Leveraging five years of experience as a professional researcher at Harvard Business School (in addition to six years as a student at Harvard and Furman), I provide high quality services in copy-editing, consulting, and tutoring. 
+<!-- Leveraging five years of experience as a professional researcher at Harvard Business School (in addition to six years as a student at Harvard and Furman), I provide high quality services in copy-editing, consulting, and tutoring.  -->
 
-<center>
-## Copy-Editing
-</center>
+<!-- <center> -->
+<!-- ## Copy-Editing -->
+<!-- </center> -->
 
-I have edited, typeset, and proof-read multiple papers that have appeared in publications such as *The Accounting Review* and *The Journal of Financial Economics*. Additionally, I have coauthored several cases and teaching plans that are available at Harvard Business Publishing. My experience allows me to relieved the highest possible quality for publications.
-
-
-<center>
-## Consulting
-</center>
-
-In my time at Harvard Business School, I have aided fellow researchers, doctoral students, and faculty in getting started with an effective data analysis pipeline including R, Python, text editors, Stata, command line, or advanced Excel techniques. I place a special emphasis on bibliography management and reproducible research as a means to dramatically increase the efficiency.
-
-<center>
-## Tutoring
-</center>
-
-As someone who was originally from a humanities background, I understand that math, statistics, and data science can be difficult to start. I provide tutoring to those who need additional help understanding the core concepts in these fields. For more advanced students, I offer insights into how to quickly perform the kind of research required for serious academic projects. I additionally provide tutoring in critical writing, logic, and grammar.
+<!-- I have edited, typeset, and proof-read multiple papers that have appeared in publications such as *The Accounting Review* and *The Journal of Financial Economics*. Additionally, I have coauthored several cases and teaching plans that are available at Harvard Business Publishing. My experience allows me to relieved the highest possible quality for publications. -->
 
 
----
+<!-- <center> -->
+<!-- ## Consulting -->
+<!-- </center> -->
+
+<!-- In my time at Harvard Business School, I have aided fellow researchers, doctoral students, and faculty in getting started with an effective data analysis pipeline including R, Python, text editors, Stata, command line, or advanced Excel techniques. I place a special emphasis on bibliography management and reproducible research as a means to dramatically increase the efficiency. -->
+o
+<!-- <center> -->
+<!-- ## Tutoring -->
+<!-- </center> -->
+
+<!-- As someone who was originally from a humanities background, I understand that math, statistics, and data science can be difficult to start. I provide tutoring to those who need additional help understanding the core concepts in these fields. For more advanced students, I offer insights into how to quickly perform the kind of research required for serious academic projects. I additionally provide tutoring in critical writing, logic, and grammar. -->
+
+
+<!-- --- -->
 
 
 <center>

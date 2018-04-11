@@ -253,6 +253,96 @@ $(document).ready(function () {
 
 
 <hr />
+<section id="april-9-2018" class="level2">
+<h2>April 9, 2018</h2>
+<p><a href="https://github.com/rstudio/reticulate">Reticulate</a> for R-Python workflow in R Studio!</p>
+<p><strong>Reading</strong></p>
+<p>Onto the final book of <em>LOTR</em></p>
+</section>
+<section id="april-5-2018" class="level2">
+<h2>April 5, 2018</h2>
+<p><strong>See Tim Roughgarden’s Coursera course on Algorithms for more.</strong></p>
+<p>The <code>Master Method</code> is a general tool for analysis of the run time of divide and conquer algorithms. The general form of the master method is:</p>
+<p><span class="math display">\[
+T(n) \leq a T(n/b) + O(n^d)
+\]</span></p>
+<p>Here the parameters are:</p>
+<ul>
+<li><p><span class="math inline">\(a\)</span> is the number of recursive calls</p></li>
+<li><p><span class="math inline">\(b\)</span> is the factor by which input shrinks until recursion is called</p></li>
+<li><p><span class="math inline">\(d\)</span> is the exponent on the combine step</p></li>
+</ul>
+<p>The relationship between these three parameters result in three different run times:</p>
+<ul>
+<li><p>if <span class="math inline">\(a=b^d\)</span>, then <span class="math inline">\(O(n^d \space log \space n)\)</span></p></li>
+<li><p>if <span class="math inline">\(a&lt;b^d\)</span>, then <span class="math inline">\(O(n^d)\)</span></p></li>
+<li><p>if <span class="math inline">\(a&gt;b^d\)</span>, then <span class="math inline">\(O(n^{log_b a})\)</span></p></li>
+</ul>
+<p>Mergesort, for example, has the form of <span class="math inline">\(T(n)=2 T(n/2)+O(n^1)\)</span>, which gives us a run time of <span class="math inline">\(O(n \space log \space n)\)</span>.</p>
+</section>
+<section id="april-2-2018" class="level2">
+<h2>April 2, 2018</h2>
+<p>Conditional expectation tells us that</p>
+<p><span class="math display">\[
+E(Y \vert X=x) = \sum_{i=1}^k y_i \text{Pr}(Y=y_i \vert X = x)
+\]</span></p>
+<p>In words, the expected value of Y given a particular value of X is equal to the sum of the probabilities of each value of Y when X=x. Let’s say X takes two values, 2 and 3, and Y takes on many values from 0-100. For conditional expectation, we want to know what the expected value of Y when X=2. To do this we would just sum all the values of y multiplied by their probabilities whenever X=2.</p>
+<p>The Law of Iterated Expectations tells us that</p>
+<p><span class="math display">\[
+E[Y] = \sum_{i=1}^l E(Y \vert X = x) Pr(x=x_i)
+\]</span></p>
+<p><span class="math display">\[
+E[Y] = E[E[Y \vert X]]
+\]</span></p>
+<p>Essentially, the law of iterated expectations asks, what if we took a conditional probability of Y on X but then did it for every value of X. If you do this, you are essentially just taking the expectation of Y because you are going over the entire Y space.</p>
+<p>Covariance can be written as:</p>
+<p><span class="math display">\[
+\sigma_{X,Y} = \sum_{i=1}^k \sum_{j=1}^l (x_j - \mu_X)(y_i - \mu_Y) Pr(X=x_j,Y=y_i)
+\]</span></p>
+</section>
+<section id="march-27-2018" class="level2">
+<h2>March 27, 2018</h2>
+<p><em>New Constructs</em> was taught in BAV for the first time with great success! Very engaging discussion and a great way to close out BAV.</p>
+</section>
+<section id="march-13-2018" class="level2">
+<h2>March 13, 2018</h2>
+<p>I downloaded exercise files from Lynda for a <a href="https://www.lynda.com/Python-tutorials/Python-Programming-Efficiently/534425-2.html">course</a> in efficient python programming. I wanted to preserve the original files, so I made two copies of the files in different folders. The problem is that I needed to change the name of all the files <em>en masse</em> to distinguish them from the original files. I modified some code I found online and used the following in the command line:</p>
+<pre class="bash"><code>for file in *.ipynb; do echo mv &quot;$file&quot; &quot;${file/begin./kt.}&quot;; done</code></pre>
+<p>The files were named <code>xx_begin.pynb</code>. The above code renames all of these files by replacing the “begin” part with “kt”. A few points</p>
+<ul>
+<li><p><code>for file in *.ipynb</code> creates a for loop that goes through each file ending in <code>.ipynb</code> (where each file name is saved to the variable <code>file</code>).</p></li>
+<li><p><code>;</code> mark line breaks</p></li>
+<li><p><code>do</code> and <code>done</code> demarcate the commands that are to be done in <code>bash</code></p></li>
+<li><p><code>echo</code> will read out what is happening in the loop</p></li>
+<li><p><code>mv</code> is what will use to rename the files. If a location is not specified, <code>mv</code> will simply rename the file where it is</p></li>
+<li><p><code>$file</code> is used to access the current file name in the for loop</p></li>
+<li><p><code>/begin./kt./</code> is a parameter expansion that searches the file name for <code>begin</code> and replaces it with <code>kt</code></p></li>
+</ul>
+</section>
+<section id="march-5-2018" class="level2">
+<h2>March 5, 2018</h2>
+<p><strong>Economist</strong> <a href="https://www.economist.com/news/finance-and-economics/21735059-and-why-it-might-not-fall-very-much-soon-why-oil-price-so-high">Why Oil Price is so High</a></p>
+<p><a href="https://www.economist.com/news/finance-and-economics/21735038-most-hedge-fund-managers-are-not-good-enough-average-offset-their-high">Hedge Fund Delusion that Grips Pension Fund Managers</a></p>
+<p><a href="https://www.economist.com/news/business/21735022-rise-internet-things-one-reason-why-computing-emerging-centralised">Edge Computing</a></p>
+<p><strong>Reading</strong></p>
+<p><em>LOTR</em> Just finished the first half of the Two Towers.</p>
+</section>
+<section id="february-28-2018" class="level2">
+<h2>February 28, 2018</h2>
+<p>Finished Airgas case C-D; still waiting for approval</p>
+</section>
+<section id="february-26-2018" class="level2">
+<h2>February 26, 2018</h2>
+<p>An article that represents many months of my life cleaning and managing data: <a href="https://hbr.org/2018/03/are-buybacks-really-shortchanging-investment">Are Buybacks Really Shortchanging Investment?</a></p>
+</section>
+<section id="february-12-2018" class="level2">
+<h2>February 12, 2018</h2>
+<p>A new case on New Constructs is submitted!s</p>
+</section>
+<section id="january-20-2017" class="level2">
+<h2>January 20, 2017</h2>
+<p>Check out the <a href="https://kylethomas.shinyapps.io/weather_comp/">Weather Comparison App</a>! Still some formatting issues, bits of missing data, and need for better documentation.</p>
+</section>
 <section id="january-15-2017" class="level2">
 <h2>January 15, 2017</h2>
 <p><a href="https://github.com/Ram-N/weatherData">Weather Data</a> is a R library for importing weather data from the NOAA. Will be interesting to see how detailed and expansive the data is. Goal is to build a shiny app that facilitates weather comparisons between cities.</p>
@@ -265,7 +355,7 @@ $(document).ready(function () {
 <h2>January 9, 2017</h2>
 <p><a href="https://moderndata.plot.ly">Plotly</a> has a very cool webiste for demoing there dash platform for interactive graphics.</p>
 <p><strong>Reading</strong></p>
-<p><em>Hobbit</em>: Interesting to note how much Tolkien developed the world the next 20 years after publication. The Elvenking is not even given a name.</p>
+<p><em>Hobbit</em>: Decided to have a complete picture so I need to read the Hobbit first. Interesting to note how much Tolkien developed the world the next 20 years after publication. The Elvenking is not even given a name.</p>
 </section>
 <section id="january-6-2017" class="level2">
 <h2>January 6, 2017</h2>
@@ -348,26 +438,6 @@ $(document).ready(function () {
 <p><em>Millennium</em>: The Black Death came to Norway via a ghost ship; The Black Death killed 45% of the England in 7 months over 1348—an annualized mortality rate of 77%; a low estimate is that 1/3 of Europe died during the initial phases of the plague.</p>
 <p>Speaking of the end of the world, here is a list of near misses: <a href="http://www.wikiwand.com/en/List_of_meteor_air_bursts">list of air bursts</a></p>
 <p>Chain of Thought - Power Law: <a href="http://www.wikiwand.com/en/Power_law">Power Law</a> -&gt; <a href="http://www.wikiwand.com/en/Pareto_principle">Pareto Principle</a> -&gt; <a href="http://www.wikiwand.com/en/Fat-tailed_distribution">Fat Tailed Distribution</a></p>
-</section>
-<section id="october-18-2017" class="level2">
-<h2>October 18, 2017</h2>
-<p>Conditional expectation tells us that</p>
-<p><span class="math display">\[
-E(Y \vert X=x) = \sum_{i=1}^k y_i \text{Pr}(Y=y_i \vert X = x)
-\]</span></p>
-<p>In words, the expected value of Y given a particular value of X is equal to the sum of the probabilities of each value of Y when X=x. Let’s say X takes two values, 2 and 3, and Y takes on many values from 0-100. For conditional expectation, we want to know what the expected value of Y when X=2. To do this we would just sum all the values of y multiplied by their probabilities whenever X=2.</p>
-<p>The Law of Iterated Expectations tells us that</p>
-<p><span class="math display">\[
-E[Y] = \sum_{i=1}^l E(Y \vert X = x) Pr(x=x_i)
-\]</span></p>
-<p><span class="math display">\[
-E[Y] = E[E[Y \vert X]]
-\]</span></p>
-<p>Essentially, the law of iterated expectations asks, what if we took a conditional probability of Y on X but then did it for every value of X. If you do this, you are essentially just taking the expectation of Y because you are going over the entire Y space.</p>
-<p>Covariance can be written as:</p>
-<p><span class="math display">\[
-\sigma_{X,Y} = \sum_{i=1}^k \sum_{j=1}^l (x_j - \mu_X)(y_i - \mu_Y) Pr(X=x_j,Y=y_i)
-\]</span></p>
 </section>
 <section id="october-17-2017" class="level2">
 <h2>October 17, 2017</h2>
@@ -527,21 +597,6 @@ install.packages(&quot;citr&quot;)</code></pre>
 <p>From the <a href="http://www.economist.com/printedition/2017-03-04">March 4th Edition</a></p>
 <p><strong>China and Currency Manipulation</strong> China has had its reputation as a currency manipulator longer than it has actually been a currency manipulator. This article, using their own measurements inspired by official US determinants, scores Taiwan and South Korea as greater depressors of their currencies than China. In fact, China has taken steps to strengthen the yuan to keep capital from flowing out.</p>
 </section>
-<section id="march-13-2017" class="level2">
-<h2>March 13, 2017</h2>
-<p>I downloaded exercise files from Lynda for a <a href="https://www.lynda.com/Python-tutorials/Python-Programming-Efficiently/534425-2.html">course</a> in efficient python programming. I wanted to preserve the original files, so I made two copies of the files in different folders. The problem is that I needed to change the name of all the files <em>en masse</em> to distinguish them from the original files. I modified some code I found online and used the following in the command line:</p>
-<pre class="bash"><code>for file in *.ipynb; do echo mv &quot;$file&quot; &quot;${file/begin./kt.}&quot;; done</code></pre>
-<p>The files were named <code>xx_begin.pynb</code>. The above code renames all of these files by replacing the “begin” part with “kt”. A few points</p>
-<ul>
-<li><p><code>for file in *.ipynb</code> creates a for loop that goes through each file ending in <code>.ipynb</code> (where each file name is saved to the variable <code>file</code>).</p></li>
-<li><p><code>;</code> mark line breaks</p></li>
-<li><p><code>do</code> and <code>done</code> demarcate the commands that are to be done in <code>bash</code></p></li>
-<li><p><code>echo</code> will read out what is happening in the loop</p></li>
-<li><p><code>mv</code> is what will use to rename the files. If a location is not specified, <code>mv</code> will simply rename the file where it is</p></li>
-<li><p><code>$file</code> is used to access the current file name in the for loop</p></li>
-<li><p><code>/begin./kt./</code> is a parameter expansion that searches the file name for <code>begin</code> and replaces it with <code>kt</code></p></li>
-</ul>
-</section>
 <section id="march-12-2017" class="level2">
 <h2>March 12, 2017</h2>
 <p>KDNuggets runs an <a href="http://www.kdnuggets.com/2016/06/r-python-top-analytics-data-mining-data-science-software.html">annual survey</a> asking “What software you used for Analytics, Data Mining, Data Science, Machine Learning projects in the past 12 months?” The 2016 results are:</p>
@@ -689,27 +744,6 @@ install.packages(&quot;citr&quot;)</code></pre>
 <li><p><em>Asset Management: Ctrl Alt Beta</em>: A new kind of investment fund known as “alt-beta” funds attempts to replicate the putative advantage of a hedge fund by deriving returns uncorrelated (and hopefully positive) from the market. I see these as slightly more sophisticated trading automation plans like those found on <a href="https://www.portfolio123.com">Portfolio123</a>.</p></li>
 </ul>
 </section>
-<section id="february-3-2017" class="level2">
-<h2>February 3, 2017</h2>
-<p><strong>See Tim Roughgarden’s Coursera course on Algorithms for more.</strong></p>
-<p>The <code>Master Method</code> is a general tool for analysis of the run time of divide and conquer algorithms. The general form of the master method is:</p>
-<p><span class="math display">\[
-T(n) \leq a T(n/b) + O(n^d)
-\]</span></p>
-<p>Here the parameters are:</p>
-<ul>
-<li><p><span class="math inline">\(a\)</span> is the number of recursive calls</p></li>
-<li><p><span class="math inline">\(b\)</span> is the factor by which input shrinks until recursion is called</p></li>
-<li><p><span class="math inline">\(d\)</span> is the exponent on the combine step</p></li>
-</ul>
-<p>The relationship between these three parameters result in three different run times:</p>
-<ul>
-<li><p>if <span class="math inline">\(a=b^d\)</span>, then <span class="math inline">\(O(n^d \space log \space n)\)</span></p></li>
-<li><p>if <span class="math inline">\(a&lt;b^d\)</span>, then <span class="math inline">\(O(n^d)\)</span></p></li>
-<li><p>if <span class="math inline">\(a&gt;b^d\)</span>, then <span class="math inline">\(O(n^{log_b a})\)</span></p></li>
-</ul>
-<p>Mergesort, for example, has the form of <span class="math inline">\(T(n)=2 T(n/2)+O(n^1)\)</span>, which gives us a run time of <span class="math inline">\(O(n \space log \space n)\)</span>.</p>
-</section>
 <section id="february-2-2017" class="level2">
 <h2>February 2, 2017</h2>
 <p>Most stars are binary in nature, i.e., most stars have a counterpart star that orbits a mutual barycenter. So what about our sun? What if our sun had a sibling? And what if that sibling was the cause of the mass extinctions that have periodically wracked earth? Such is the speculation that gave rise to the theory of <a href="http://www.wikiwand.com/en/Nemesis_(hypothetical_star)">Nemesis</a>, a proposed star, small and very dark, that orbits with our Sun and periodically smashes through the Oort cloud every 26 million years, sending armageddon levels of debris to earth. In theory, this could include the impactor that lead to the extinction of the dinosaurs (if indeed they did go extinct from the impact of an extraterrestrial object).</p>
@@ -827,7 +861,7 @@ output:
 <p>His outfit is a little bizarre. I thought he was a performer of some sort when I first came in, although I tried not to imagine the nature of his act. – John Kennedy Toole, <em>A Confederacy of Dunces</em></p>
 </blockquote>
 </section>
-<section id="january-20-2017" class="level2">
+<section id="january-20-2017-1" class="level2">
 <h2>January 20, 2017</h2>
 <p>In this classic <a href="https://en.wikipedia.org/wiki/Zhuangzi_(book)#.22The_Butterfly_Dream.22">story</a>, the Chinese sage Zhuangzi (ca. 370 BCE) awakes from dreaming that he was a butterfly only to ask the question: am I a man dreaming of being a butterfly or am I a butterfly dreaming of being a man? Daoists, scholars, philosophers, poets, artists, and laymen alike have all been equally moved by so profound yet so simple of a question. Although the concept has been <a href="https://en.wikipedia.org/wiki/Dream_argument">elaborated and explored</a> numerous times (there are certainly <a href="https://en.wikipedia.org/wiki/Vasubandhu">more</a> and <a href="https://en.wikipedia.org/wiki/Meditations_on_First_Philosophy">less</a> sophisticated takes on the idea), I believe Zhuangzi’s simple story has staying power due to its simultaneous depth and shallowness. The very form of the story, incredibly simple yet profound in implications, underlines the point that distinctions between deep and shallow — between anything in fact — is ultimately fruitless.</p>
 </section>
