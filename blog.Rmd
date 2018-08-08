@@ -7,6 +7,14 @@ output:
 ---
 ---
 
+## August 7, 2018
+
+Just published an updated [Weather Compare](https://kylethomas.shinyapps.io/weather_comp/) Shiny app. Things I learned:
+
+* You can achieve a lot through CSS --- if you know where to apply it
+* Viridis looks really cool
+* Pick a color theme and stick to it. Don't try to reinvent the wheel. I'll be solarized from now on.
+
 ## April 9, 2018
 
 [Reticulate](https://github.com/rstudio/reticulate) for R-Python workflow in R Studio!
