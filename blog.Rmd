@@ -14,6 +14,7 @@ output:
 Glue is great for creating long strings of sql code. For example, imagine tables are stored in individual year-month files. Here is how we can use R to access these tables with a single query instead of writing out by hand every year-month combination.
 
 ```{r}
+library(tidyverse)
 # create vector of year-month combos
 yearmon <- expand.grid(year = 15:19, month = 1:12) %>% 
     mutate(month = str_pad(month, width = 2, pad = "0")) %>% 
