@@ -7,6 +7,37 @@ output:
 ---
 ---
 
+## June 8, 2018
+
+*R Code*
+
+Glue is great for creating long strings of sql code. For example, imagine tables are stored in individual year-month files. Here is how we can use R to access these tables with a single query instead of writing out by hand every year-month combination.
+
+```{r}
+# create vector of year-month combos
+yearmon <- expand.grid(year = 15:19, month = 1:12) %>% 
+    mutate(month = str_pad(month, width = 2, pad = "0")) %>% 
+    mutate(ym = paste0(year,month)) %>% 
+    arrange(ym)
+
+yearmon <- yearmon$ym
+
+# glue together statements from each one
+query <- glue::glue("sel id, date, value 
+                    from table_{yearmon}")
+
+query <- glue::collapse(query, sep = "\n UNION ALL \n", last = "")
+
+```
+
+**Reading**
+
+*A Feast for Crows* and *A World of Ice and Fire*
+
+## September, 2018
+
+Starting new job at Bank of America in consumer analytics
+
 ## August 7, 2018
 
 Just published an updated [Weather Compare](https://kylethomas.shinyapps.io/weather_comp/) Shiny app. Things I learned:
